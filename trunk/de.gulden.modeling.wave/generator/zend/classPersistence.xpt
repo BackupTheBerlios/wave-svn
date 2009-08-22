@@ -1,0 +1,452 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION common»
+«EXTENSION zend::commonZend»
+«EXTENSION sql::sql»
+
+«REM»
+------------------------------------------------------------------------------
+--- Additional funtions to be included into class if persistency is activated
+------------------------------------------------------------------------------
+«ENDREM»
+«DEFINE class FOR Class»
+	public $_createdBy;
+	public $_created;
+	public $_modifiedBy;	
+	public $_modified;	
+	public $_deletedBy;	
+	public $_deleted = null;	
+	
+	public $_saveLock = false;
+
+	public function __construct(Array $arr = null)
+	{
+    	if (is_array($arr)) {
+        	«this.mapperName()»::setAll($this, $arr);
+    	}
+	}
+	
+	public function getCreatedBy()
+	{
+		return $this->_createdBy;
+	}
+
+	public function getCreated()
+	{
+		return $this->_created;
+	}
+
+	public function getModifiedBy()
+	{
+		return $this->_modifiedBy;
+	}
+
+	public function getModified()
+	{
+		return $this->_modified;
+	}
+
+	public function getDeletedBy()
+	{
+		return $this->_deletedBy;
+	}
+
+	public function getDeleted()
+	{
+		return $this->_deleted;
+	}
+
+ 	/*
+ 	protected $_mapper;
+ 	public function setMapper($mapper)
+    {
+        $this->_mapper = $mapper;
+        return $this;
+    }
+
+    public function getMapper()
+    {
+        if (null === $this->_mapper) {
+            $this->setMapper(new «EXPAND mapperClassName»());
+        }
+        return $this->_mapper;
+    }
+    */
+
+    public function save($deep=false)
+    {
+        «this.mapperName()»::save($this, $deep);
+    }
+
+    public function delete()
+    {
+        «this.mapperName()»::delete($this);
+    }
+
+    public static function find($id)
+    {
+        return «this.mapperName()»::find($id);
+    }
+
+    public static function findWhere($where)
+    {
+        return «this.mapperName()»::findWhere($where);
+    }
+
+    public static function findAll($sql=NULL)
+    {
+        return «this.mapperName()»::findAll($sql);
+    }
+
+«ENDDEFINE»
+
+«REM»
+------------------------------------------------------------------------------
+--- Persistency Db Table Class
+------------------------------------------------------------------------------
+«ENDREM»
+«DEFINE classDbTable FOR Class»
+<?php
+/**
+ * Persistency Db Table Class for:     "«this.codeName()»"
+ *
+ «EXPAND model::commentHeader» */
+
+class «this.codeNameBase()+"DbTable_"+this.name» extends Zend_Db_Table_Abstract 
+{
+    // table name
+    protected $_name = '«this.name.toLowerCase()»';
+
+	protected $_referenceMap = array(
+		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
+			«IF this.isNavigable(assoc)-»
+			"«assoc.name»Ref" => array (
+				"columns"       => "«this.outgoingName(assoc)»",
+				"refTableClass" => "«assoc.opposite(this).codeName()»"
+			),    
+			«ENDIF»
+		«ENDFOREACH»
+		«REM» opposite 1:m relationships «ENDREM»
+		«FOREACH this.allIngoingMultivalAssociations() AS assoc»
+			«IF ! this.isNavigable(assoc)-»
+			"«assoc.name»Ref" => array (
+				"columns"       => "«this.outgoingName(assoc)»Reverse",
+				"refTableClass" => "«assoc.opposite(this).codeName()»"
+			),    
+			«ENDIF»
+		«ENDFOREACH»
+	);
+
+} // end of class 
+?>
+«ENDDEFINE»
+
+«DEFINE classDbTableBidirectionalNToM FOR AssociationRelationship»
+<?php
+/**
+ * Persistency Db Table Class for bidirectional n to m relationship: "«this.name»"
+ *
+ «EXPAND model::commentHeader» */
+
+class «this.a.codeNameBase()+"DbTable_Relationship"+this.name.toFirstUpper()» extends Zend_Db_Table_Abstract 
+{
+    // table name
+    protected $_name = 'relationship«this.name.toLowerCase()»';
+
+    protected $_primary = array('«this.a.name.toFirstLower()»', '«this.b.name.toFirstLower()»');
+
+	protected $_referenceMap = array(
+			"«this.a.name»Ref" => array (
+				"columns"       => "«this.a.name.toFirstLower()»",
+				"refTableClass" => "«this.a.codeName()»"
+			),    
+			"«this.b.name»Ref" => array (
+				"columns"       => "«this.b.name.toFirstLower()»",
+				"refTableClass" => "«this.b.codeName()»"
+			),    
+	);
+
+} // end of class 
+?>
+«ENDDEFINE»
+
+«REM»
+------------------------------------------------------------------------------
+--- Persistency Mapper Class
+------------------------------------------------------------------------------
+«ENDREM»
+
+«DEFINE mapperClassName FOR Class»«this.codeNameBase()+"DbTable_"+this.name+"Mapper"»«ENDDEFINE»
+
+«DEFINE classMapper FOR Class»
+<?php
+/**
+ * Persistency Mapper Class for:     "«this.codeName()»"
+ *
+ «EXPAND model::commentHeader» */
+
+class «EXPAND mapperClassName» 
+{
+    static protected $_dbTable;
+    static protected $_cache = array();
+
+    public static function setDbTable($dbTable)
+    {
+        if (is_string($dbTable)) {
+            $dbTable = new $dbTable();
+        }
+        if (!$dbTable instanceof Zend_Db_Table_Abstract) {
+            throw new Exception("Invalid table data gateway provided");
+        }
+        self::$_dbTable = $dbTable;
+        //return $this;
+    }
+
+    public static function getDbTable()
+    {
+        if (null === self::$_dbTable) {
+            self::setDbTable("«this.codeNameBase()+"DbTable_"+this.name»");
+        }
+        return self::$_dbTable;
+    }
+
+    public static function save(«this.codeName()» $object, $deep = false)
+    {
+    	if ($object->_saveLock === true) return;
+    	$object->_saveLock = true;
+		$dbTable = self::getDbTable();
+        $data = array();
+		«FOREACH this.allAttributes() AS attr»
+			$data["«attr.name»"] = $object->«attr.getter()»();
+		«ENDFOREACH»
+		
+		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
+			«IF this.isNavigable(assoc)-»
+			$child = $object->«this.outgoingName(assoc).getter()»(); 
+			$data["«this.outgoingName(assoc)»"] = ( $child ? intval($child->getId()) : 0 );
+			if ( $child && $deep )
+			{
+				$child->save(true);
+			}
+			«ENDIF»
+		«ENDFOREACH»
+
+		$id = $object->getId();
+        if ($id == null) {
+            unset($data["id"]);
+            $data["created"] = null; // will set current timestamp
+            $data["createdBy"] = $_SERVER["PHP_AUTH_USER"];
+            $id = $dbTable->insert($data);
+            $object->setId($id);
+            $inserted = true;
+        } else {
+            $data["modifiedBy"] = $_SERVER["PHP_AUTH_USER"];
+            $dbTable->update($data, array("id = ?" => $id));
+        }
+
+		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
+            «REM» save back-references in other table «ENDREM»
+			«IF this.isNavigable(assoc) && (!assoc.isBidirectional())-»
+			//$reverse = new «assoc.opposite(this).codeName()»(); // prototype
+			$dbTable = «assoc.opposite(this).mapperName()»::getDbTable();
+			// TODO this is not perfectly clean, should be atomic
+			if (!$inserted) {
+				// remove old
+				$data = array(
+                	"«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF»" => "0"
+            	);
+            	$where = "«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF» = ".$object->getId();
+				$dbTable->update($data, $where);
+			}
+			// set new
+			$data = array(
+                "«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF»" => $id
+            );
+			$where = "(1=0)";
+			$children = $object->«this.outgoingName(assoc).getter()»();
+			if ($children)
+			{
+				foreach ($children as $ref) {
+					if ($ref)
+					{
+						$where .= " OR (id=".$ref->getId().")";
+					}
+				}
+			}
+			$dbTable->update($data, $where);
+			if ( $children && $deep )
+			{
+				foreach ($children as $ref) {
+					if ($ref)
+					{
+						$ref->save(true);
+					}
+				}
+			}
+			«ENDIF»
+		«ENDFOREACH»
+
+                      
+		«FOREACH this.allBidirectionalNtoMAssociations() AS assoc»
+			«IF this.isNavigable(assoc)-»
+			$relTable = new «this.package().name.toFirstUpper()»_Model_DbTable_Relationship«assoc.name.toFirstUpper()»();
+			// TODO not perfectly clean, should be atomic
+			//if (!$inserted)
+			//{
+				// remove old
+            	$where = "«this.name.toFirstLower()» = ".$object->getId();
+				$relTable->delete($where);
+			//}
+			// set new
+			$children = $object->«this.outgoingName(assoc).getter()»();
+			if ($children)
+			{
+				foreach ($children as $ref)
+				{
+					if ($ref)
+					{
+						//$where .= " OR («assoc.opposite(this).name.toFirstLower()»=".$ref->getId().")";
+						$data = array(
+    	            		"«this.name.toFirstLower()»" => $object->getId(),
+        	        		"«assoc.opposite(this).name.toFirstLower()»" => $ref->getId()
+            			);
+						$relTable->insert($data); // TODO possible to pass 2-dim array to $dbTable->insert?
+					}
+				}
+				if ($deep)
+				{
+					foreach ($children as $ref)
+					{
+						if ($ref)
+						{
+							$ref->save(true);
+						}
+					}
+				}
+			}
+			«ENDIF»
+		«ENDFOREACH»
+    	$object->_saveLock = false;
+    }
+
+    public static function delete(«this.codeName()» $object)
+    {
+		$dbTable = self::getDbTable();
+		$id = $object->getId();
+		$dbTable->delete("id=".$id);
+		
+		// TODO handle referential integrity
+    }
+        
+    public static function find($id)
+    {
+    	$cache = &self::$_cache;
+    	$cached = $cache[$id];
+    	if ($cached) {
+    		return $cached;
+    	}
+    	
+    	$object = new «this.codeName()»();
+        $result = self::getDbTable()->find($id);
+        if (0 == count($result)) {
+            return;
+        }
+        $row = $result->current();
+        $cache[$id] = $object; // must cache before setAll()
+        self::setAll($object, $row);
+        return $object;
+    }
+    
+    public static function findWhere($where)
+    {
+    	$arr = self::findAll($where);
+    	if ($arr)
+    	{
+    		$object = $arr[0];
+    		return $object;
+    	}
+    	else
+    	{
+    		return null;
+    	}
+    }
+
+    public static function findAll($sql=NULL)
+    {
+    	$cache = &self::$_cache;
+        $resultSet = self::getDbTable()->fetchAll($sql);
+        $result   = array();
+        foreach ($resultSet as $row) {
+        	$id = $row["id"];
+        	$object = $cache[$id];
+        	if ( ! $object ) { // assign and test
+            	$object = new «this.codeName()»();
+        		$cache[$row['id']] = $object; // must cache before setAll()
+/*var_dump($cache);
+echo("<hr>");        		
+var_dump(self::$_cache);
+die();*/        		
+        		self::setAll($object, $row);
+        	}
+            $result[] = $object;
+        }
+        return $result;
+    }
+    
+    public static function setAll(«this.codeName()» $object, $row) // $row has type Zend_Db_Table_Row or Array
+    {
+    	$cache = &self::$_cache;
+        $object->setId($row["id"]);
+		«FOREACH this.allAttributes() AS attr»
+		$object->«attr.setter()»($row["«attr.name»"]);
+		«ENDFOREACH»
+		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
+			«IF this.isNavigable(assoc)-»
+			$ref = «assoc.opposite(this).codeName()»::find($row["«assoc.outgoingName(this)»"]);
+			$object->«assoc.outgoingName(this).setter()»($ref);
+			«ENDIF»
+		«ENDFOREACH»
+		if ( $object->getId() ) 
+		{
+		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
+			«IF this.isNavigable(assoc) && (!assoc.isBidirectional())-»
+			$sqlWhere = "«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF» = ".$object->getId();
+			$refs = «assoc.opposite(this).codeName()»::findAll($sqlWhere);
+		    $object->«assoc.outgoingName(this).setter()»($refs);
+			«ENDIF»
+		«ENDFOREACH»
+		«FOREACH this.allBidirectionalNtoMAssociations() AS assoc»
+			«IF this.isNavigable(assoc)-»
+			$rtab = new «this.package().name.toFirstUpper()»_Model_DbTable_Relationship«assoc.name.toFirstUpper()»();
+			$sqlWhere = "«this.name.toFirstLower()» = ".$object->getId();
+            $resultSet = $rtab->fetchAll($sqlWhere);
+            $result   = array();
+            foreach ($resultSet as $rrow) // TODO optimize, query all at once 
+            { 
+				$id = $rrow["«assoc.opposite(this).name.toFirstLower()»"];
+				$ref = «assoc.opposite(this).codeName()»::find($id);
+                $result[] = $ref;
+            }
+		    $object->«assoc.outgoingName(this).setter()»($result);
+			«ENDIF»
+		«ENDFOREACH»
+		}
+		$object->_createdBy = $row["createdBy"];
+		$object->_created = $row["created"];
+		$object->_modifiedBy = $row["modifiedBy"];
+		$object->_modified = $row["modified"];
+		$object->_deletedBy = $row["deletedBy"];
+		$object->_deleted = $row["deleted"];
+    }
+
+} // end of class 
+?>
+«ENDDEFINE»

@@ -1,0 +1,81 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION org::openarchitectureware::util::stdlib::counter»
+«EXTENSION common»
+«EXTENSION sql::sql»
+
+«DEFINE model FOR Model»
+	«EXPAND member»
+	«REM»
+	DROP TABLE IF EXISTS `user`;
+	
+	CREATE TABLE `user` (
+		id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		username VARCHAR(255),
+		`password` VARCHAR(255),
+		realname VARCHAR(255),
+		description TEXT
+	);
+		
+	DROP TABLE IF EXISTS `user_roles`;
+	
+	CREATE TABLE `user_roles` (
+		username VARCHAR(255),
+		role VARCHAR(255),
+		PRIMARY KEY (username, role)
+	);
+	«ENDREM»
+«ENDDEFINE»
+
+«DEFINE member FOR TopLevelModelMember»«REM» nop «ENDREM»«ENDDEFINE»
+
+«DEFINE member FOR Package-»
+	«EXPAND member FOREACH members»
+«ENDDEFINE»
+
+«DEFINE member FOR Class-»
+	«IF this.isPersistent && (! this.isAbstract)-»
+	DROP TABLE IF EXISTS `«this.name.dbTable()»`;
+	
+	CREATE TABLE `«this.name.dbTable()»` (
+		id INT NOT NULL AUTO_INCREMENT,«FOREACH this.allAttributes() AS attr»
+        `«attr.name»` «attr.type.sqlType()»,«ENDFOREACH»
+«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»«IF this.isNavigable(assoc) && (!assoc.isBidirectional())»
+        `«assoc.outgoingName(this)»` INT,«ENDIF»«ENDFOREACH»
+«FOREACH this.allIngoingMultivalAssociations() AS assoc»«IF ! this.isNavigable(assoc)»
+        `«assoc.outgoingName(this)»Reverse` INT,«ENDIF»«ENDFOREACH»
+        `createdBy` VARCHAR(50),
+        `created` TIMESTAMP DEFAULT 0,
+        `modifiedBy` VARCHAR(50),
+        `modified` TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+        `deletedBy` VARCHAR(50),
+        `deleted` TIMESTAMP DEFAULT 0,
+«FOREACH this.allAttributes() AS attr»«IF attr.type.isEnumerationType()»
+        INDEX(`«attr.name»`),«ENDIF»«ENDFOREACH»
+		PRIMARY KEY (id)
+	);
+	
+	«ENDIF-»
+«ENDDEFINE»
+
+«DEFINE member FOR AssociationRelationship-»
+	«IF (this.isBidirectionalNToM() && this.isPersistent())-»
+	DROP TABLE IF EXISTS «this.dbTable()»;
+	
+	CREATE TABLE «this.dbTable()» (
+		`«this.a.name.toFirstLower()»` INT,
+		`«this.b.name.toFirstLower()»` INT,
+		PRIMARY KEY («this.a.name.toFirstLower()», «this.b.name.toFirstLower()»)
+	);
+	
+	«ENDIF-»
+«ENDDEFINE»
+

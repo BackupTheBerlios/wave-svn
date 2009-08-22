@@ -1,0 +1,57 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION common»
+
+«DEFINE generator FOR Model»
+
+	«storeGlobalVar("authorName", this.author)»
+	«storeGlobalVar("versionName", this.version)»
+	«storeGlobalVar("basePackage", this.basePackage)»
+	«storeGlobalVar("layoutTemplate", this.layoutTemplate)»
+	«storeGlobalVar("allEnumerations", this.enumerations())»
+	«storeGlobalVar("generatorTarget", this.generatorTarget)»
+	«storeGlobalVar("lang", this.generatorTarget.toString())»
+	
+	---------------- 
+	     Code
+	----------------
+	«REM»«IF (this.generatorTarget == "zend")»«ENDREM»
+	«EXPAND zend::model::model»
+	«REM»«ENDIF»«ENDREM»
+	
+	---------------- 
+	     DB-Schema
+	---------------- 
+	«IF (getGlobalVar("generateDBSchema") != null)»
+		«FILE getGlobalVar("basePackage").noNull().replaceAll("[.]", "/") + "/" + "dbschema.sql"»
+			«EXPAND sql::dbschema::model»
+		«ENDFILE»
+	«ENDIF»
+	
+	---------------- 
+	  Style Sheet
+	---------------- 
+	«IF this.styleSheets().has()»
+	«FILE this.sourceBaseFolder().concat("/", "styles.css")»
+	«FOREACH this.styleSheets() AS style»
+	«style.code»
+	«ENDFOREACH»
+	«ENDFILE»
+	«ENDIF»
+	
+«ENDDEFINE»
+
+
+«DEFINE roundtrip FOR Model»
+
+	«EXPAND roundtrip::model_roundtrip::model»
+	
+«ENDDEFINE»

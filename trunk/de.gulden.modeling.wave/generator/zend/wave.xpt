@@ -1,0 +1,103 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«DEFINE wave FOR Model»<?php
+
+/*
+ Model-independent code parts modifyable by the user.
+ 
+ This file may be modified manually, it will only be re-generated if it gets deleted. 
+*/
+
+class Wave
+{
+	// --- global functions used by WAVE superstructure ---
+	
+	// TODO provide Interface to plug in any user-handling framework 
+
+	public static function getUser()
+	{
+		return $_SERVER["PHP_AUTH_USER"];
+	}
+
+	public static function getUserLanguage($user)
+	{
+		return ""; // use default
+	}
+	
+	public static function msg($id, $icon)
+	{
+		global $_text; // from langstring.inc.php
+		global $DEFAULT_LANG;
+
+		$dictionaryFile = dirname(__FILE__) . "/configs/langstrings.inc.php";
+		if (file_exists($dictionaryFile)) 
+		{
+			include_once($dictionaryFile);
+		}
+		
+		$user = self::getUser();
+		$lang = self::getUserLanguage($user);
+		if ( ! $lang )
+		{
+			$lang = $DEFAULT_LANG;
+		}
+		$result = $_text[$id][$lang];
+		
+		if ($icon)
+		{
+			$result = "<img src='".$icon."' border='0'/>&#160;" . $result;
+		}
+		
+		return $result;
+	}
+}
+
+class FormLabel extends Zend_Form_Element 
+{
+	protected $_label;
+	
+	public function FormLabel($label)
+	{
+		$this->_label = $label;
+	}
+	
+	public function render()
+	{
+		return "<dt class=''><br/><i>".$this->_label."</i></dt>"; // TODO better
+	}
+
+} // end of class 
+
+
+class DecoratorMenuAction extends Zend_Form_Decorator_Abstract 
+{
+	protected $_label;
+	protected $_params;
+	//protected $_url;
+
+	public function DecoratorMenuAction($label, $controllerName, $actionName, $params=array())
+	{
+		$params["controller"] = $controllerName;
+		$params["action"] = $actionName;
+		$this->_params = $params;
+		$this->_label = $label;
+		//$this->_url = $this->getElement()->getView()->url($params, "default", false);
+	} 
+	
+	public function render($content)
+	{
+		return $content . "<div class='menuaction ".$this->_params["controller"]." ".$this->_params["action"]."'>" // TODO
+		       ."<a href='" . $this->getElement()->getView()->url($this->_params, "default", false) ."'>".$this->_label."</a>"
+		       ."</div>";
+	}
+
+} // end of class
+
+«ENDDEFINE»

@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+  WAVE - Web Application Visual Environment
+  A Graphical Modeling Framework (GMF) Plugin for Eclipse
+  Copyright Jens Gulden, 2009, mail@jensgulden.de
+  Licensed under the GNU General Public License (GPL)
+
+ $Id$
+-->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://jensgulden.de/modeling/wave" 
+       class = "de.gulden.modeling.wave.WavePackage"
+       genModel = "model/wave.genmodel" /> 
+  </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+      <?gmfgen generated="true"?>
+      <fileTypes
+         type="text"
+         extension="wave_diagram">
+      </fileTypes>
+   </extension>
+<extension point="org.eclipse.emf.ecore.extension_parser">
+      <?gmfgen generated="true"?>
+      <parser
+         type="wave_diagram"
+         class="org.eclipse.gmf.runtime.emf.core.resources.GMFResourceFactory">
+      </parser>
+   </extension>
+<extension point="org.eclipse.ui.editors">
+      <?gmfgen generated="true"?>
+      <editor
+         id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID"
+         name="%editorName"
+         icon="icons/obj16/WaveDiagramFile.gif"
+         extensions="wave_diagram"
+         default="true"
+         class="de.gulden.modeling.wave.diagram.part.WaveDiagramEditor"
+         matchingStrategy="de.gulden.modeling.wave.diagram.part.WaveMatchingStrategy"
+         contributorClass="de.gulden.modeling.wave.diagram.part.WaveDiagramActionBarContributor">
+      </editor>
+   </extension>
+<extension point="org.eclipse.ui.contexts">
+      <?gmfgen generated="true"?>
+      <context
+         description="%context.description"
+         id="de.gulden.modeling.wave.diagram.ui.diagramContext"
+         name="%context.name"
+         parentId="org.eclipse.gmf.runtime.diagram.ui.diagramContext">
+      </context>
+   </extension>
+<extension point="org.eclipse.ui.newWizards">
+      <?gmfgen generated="FALSE"?> <!-- MANUALLY CHANGED (%newWizardCategory instead of Examples) -->
+      <category name="%newWizardCategory" id="%newWizardCategoryID"/>
+  	  <wizard
+  	     name="%newWizardName"
+  	     icon="icons/obj16/WaveDiagramFile.gif"
+  	     category="%newWizardCategoryID"
+  	     class="de.gulden.modeling.wave.diagram.part.WaveCreationWizard"
+  	     id="de.gulden.modeling.wave.diagram.part.WaveCreationWizardID">
+  	  	 <description>%newWizardDesc</description>  
+      </wizard>
+   </extension>
+<extension point="org.eclipse.ui.popupMenus">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            adaptable="false"
+            id="de.gulden.modeling.wave.LoadResource"
+            objectClass="de.gulden.modeling.wave.diagram.edit.parts.ModelEditPart">
+         <action
+               class="de.gulden.modeling.wave.diagram.part.WaveLoadResourceAction"
+               enablesFor="1"
+               id="de.gulden.modeling.wave.LoadResourceAction"
+               label="%loadResourceActionLabel"
+               menubarPath="additions">
+         </action>
+      </objectContribution>           
+   </extension>
+<extension point="org.eclipse.ui.popupMenus">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="de.gulden.modeling.wave.InitDiagram"
+            nameFilter="*.wave"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="de.gulden.modeling.wave.diagram.part.WaveInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="de.gulden.modeling.wave.InitDiagramAction">
+         </action>
+      </objectContribution>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.action.globalActionHandlerProviders">
+      <?gmfgen generated="true"?>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.DiagramGlobalActionHandlerProvider"
+         id="WavePresentation">
+         <Priority name="Lowest"/>
+         <ViewId id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="delete"/>
+            </ElementType>
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+               <GlobalActionId actionId="save"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.printing.render.providers.DiagramWithPrintGlobalActionHandlerProvider"
+         id="WavePresentationPrint">
+         <Priority name="Lowest"/>
+         <ViewId id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="print"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+         class="org.eclipse.gmf.runtime.diagram.ui.providers.ide.providers.DiagramIDEGlobalActionHandlerProvider"
+         id="WavePresentationIDE">
+         <Priority name="Lowest"/>
+         <ViewId id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="bookmark"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+      <GlobalActionHandlerProvider
+            class="org.eclipse.gmf.runtime.diagram.ui.render.providers.DiagramUIRenderGlobalActionHandlerProvider"
+            id="WaveRender">
+         <Priority name="Lowest"/>
+         <ViewId id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">
+            <ElementType class="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+               <GlobalActionId actionId="cut"/>
+               <GlobalActionId actionId="copy"/>
+               <GlobalActionId actionId="paste"/>
+            </ElementType>
+         </ViewId>
+      </GlobalActionHandlerProvider>
+   </extension>
+
+<extension point="org.eclipse.core.runtime.preferences">
+      <?gmfgen generated="true"?>
+      <initializer class="de.gulden.modeling.wave.diagram.preferences.DiagramPreferenceInitializer"/>
+   </extension>
+<extension point="org.eclipse.ui.preferencePages">
+      <?gmfgen generated="true"?>
+      <page
+            id="de.gulden.modeling.wave.diagram.general"
+            name="%preference.page.title.de.gulden.modeling.wave.diagram.general"
+            class="de.gulden.modeling.wave.diagram.preferences.DiagramGeneralPreferencePage">
+      </page>
+      <page
+            id="de.gulden.modeling.wave.diagram.appearance"
+            name="%preference.page.title.de.gulden.modeling.wave.diagram.appearance"
+            category="de.gulden.modeling.wave.diagram.general"
+            class="de.gulden.modeling.wave.diagram.preferences.DiagramAppearancePreferencePage">
+      </page>
+      <page
+            id="de.gulden.modeling.wave.diagram.connections"
+            name="%preference.page.title.de.gulden.modeling.wave.diagram.connections"
+            category="de.gulden.modeling.wave.diagram.general"
+            class="de.gulden.modeling.wave.diagram.preferences.DiagramConnectionsPreferencePage">
+      </page>
+      <page
+            id="de.gulden.modeling.wave.diagram.printing"
+            name="%preference.page.title.de.gulden.modeling.wave.diagram.printing"
+            category="de.gulden.modeling.wave.diagram.general"
+            class="de.gulden.modeling.wave.diagram.preferences.DiagramPrintingPreferencePage">
+      </page>
+      <page
+            id="de.gulden.modeling.wave.diagram.rulersAndGrid"
+            name="%preference.page.title.de.gulden.modeling.wave.diagram.rulersAndGrid"
+            category="de.gulden.modeling.wave.diagram.general"
+            class="de.gulden.modeling.wave.diagram.preferences.DiagramRulersAndGridPreferencePage">
+      </page>
+      <page
+            id="de.gulden.modeling.wave.diagram.pathmaps"
+            name="%preference.page.title.de.gulden.modeling.wave.diagram.pathmaps"
+            category="de.gulden.modeling.wave.diagram.general"
+            class="org.eclipse.gmf.runtime.emf.ui.preferences.PathmapsPreferencePage">
+      </page>
+   </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <?gmfgen generated="true"?>
+      <propertyContributor
+            contributorId="de.gulden.modeling.wave"
+            labelProvider="de.gulden.modeling.wave.diagram.sheet.WaveSheetLabelProvider">
+         <propertyCategory category="domain"/>
+         <propertyCategory category="visual"/>
+         <propertyCategory category="extra"/>
+      </propertyContributor>
+   </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <?gmfgen generated="FALSE"?> <!-- MANUALLY CHANGED -->  
+      <propertyTabs contributorId="de.gulden.modeling.wave">
+         <propertyTab
+             category="visual"
+             id="property.tab.AppearancePropertySection"
+             label="%tab.appearance"/>
+          <propertyTab
+             category="visual"
+             id="property.tab.DiagramPropertySection"
+             label="%tab.diagram"/>
+          <propertyTab
+             category="domain"
+             id="property.tab.domain"
+             label="%tab.domain"/>
+          <!-- MANUALLY ADDED: -->   
+          <propertyTab
+             category="extra"
+             id="property.tab.source"
+             label="%tab.source"/>
+      </propertyTabs>
+   </extension>
+<extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <?gmfgen generated="FALSE"?>  <!-- MANUALLY CHANGED -->
+      <propertySections contributorId="de.gulden.modeling.wave">
+         <propertySection id="property.section.ConnectorAppearancePropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ConnectionEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ConnectionAppearancePropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>
+         <propertySection id="property.section.ShapeColorAndFontPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.ShapeEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.ShapeColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection> 
+         <propertySection id="property.section.DiagramColorsAndFontsPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.appearance.DiagramColorsAndFontsPropertySection" 
+            tab="property.tab.AppearancePropertySection">
+         </propertySection>     
+         <propertySection id="property.section.RulerGridPropertySection" 
+            filter="org.eclipse.gmf.runtime.diagram.ui.properties.filters.DiagramEditPartPropertySectionFilter" 
+            class="org.eclipse.gmf.runtime.diagram.ui.properties.sections.grid.RulerGridPropertySection" 
+            tab="property.tab.DiagramPropertySection">
+         </propertySection>     
+         <propertySection
+            id="property.section.domain" 
+            tab="property.tab.domain"
+            class="de.gulden.modeling.wave.diagram.sheet.WavePropertySection">
+            <input type="org.eclipse.gmf.runtime.notation.View"/>
+            <input type="org.eclipse.gef.EditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+         </propertySection>
+          <!-- MANUALLY ADDED: -->   
+         <propertySection
+            id="property.section.source" 
+            tab="property.tab.source"
+            class="de.gulden.modeling.wave.diagram.sheet.WavePropertySourceSectionManual">
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.OperationEditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.Operation2EditPart"/>
+            <!--<input type="de.gulden.modeling.wave.diagram.edit.parts.Operation3EditPart"/>-->
+            <!--<input type="de.gulden.modeling.wave.diagram.edit.parts.Operation4EditPart"/>-->
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.Operation5EditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.IncludeEditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.Include2EditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.StyleSheetEditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.ActionEditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.ViewEditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.edit.parts.View2EditPart"/>
+            <input type="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+         </propertySection>
+      </propertySections>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.diagram.core.viewProviders">
+      <?gmfgen generated="true"?>
+      <viewProvider class="de.gulden.modeling.wave.diagram.providers.WaveViewProvider">
+         <Priority name="Lowest"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Wave"/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints=""/>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints=""/>
+      </viewProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+      <?gmfgen generated="true"?>
+      <editpartProvider class="de.gulden.modeling.wave.diagram.providers.WaveEditPartProvider">
+         <Priority name="Lowest"/>
+      </editpartProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.emf.ui.modelingAssistantProviders">
+      <?gmfgen generated="true"?>
+      <modelingAssistantProvider class="de.gulden.modeling.wave.diagram.providers.WaveModelingAssistantProvider">
+         <Priority name="Lowest"/>
+      </modelingAssistantProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.iconProviders">
+      <?gmfgen generated="true"?>
+      <IconProvider class="de.gulden.modeling.wave.diagram.providers.WaveIconProvider">
+         <Priority name="Low"/>
+      </IconProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.common.ui.services.parserProviders">
+      <?gmfgen generated="true"?>
+      <ParserProvider class="de.gulden.modeling.wave.diagram.providers.WaveParserProvider">
+         <Priority name="Lowest"/>
+      </ParserProvider>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
+      <?gmfgen generated="true"?>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Model_1000"
+               name="%metatype.name.Model_1000"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Model"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ModelEditHelper">
+            <param name="semanticHint" value="1000"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Class_2017"
+               name="%metatype.name.Class_2017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Class"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ClassEditHelper">
+            <param name="semanticHint" value="2017"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Interface_2018"
+               name="%metatype.name.Interface_2018"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Interface"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.InterfaceEditHelper">
+            <param name="semanticHint" value="2018"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Controller_2026"
+               name="%metatype.name.Controller_2026"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Controller"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ControllerEditHelper">
+            <param name="semanticHint" value="2026"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Include_2020"
+               name="%metatype.name.Include_2020"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Include"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.IncludeEditHelper">
+            <param name="semanticHint" value="2020"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Package_2021"
+               name="%metatype.name.Package_2021"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Package"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.PackageEditHelper">
+            <param name="semanticHint" value="2021"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Documentation_2013"
+               name="%metatype.name.Documentation_2013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Documentation"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.DocumentationEditHelper">
+            <param name="semanticHint" value="2013"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.StyleSheet_2022"
+               name="%metatype.name.StyleSheet_2022"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="StyleSheet"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.StyleSheetEditHelper">
+            <param name="semanticHint" value="2022"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.UsecaseSubsystem_2023"
+               name="%metatype.name.UsecaseSubsystem_2023"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="UsecaseSubsystem"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.UsecaseSubsystemEditHelper">
+            <param name="semanticHint" value="2023"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Actor_2024"
+               name="%metatype.name.Actor_2024"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Actor"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ActorEditHelper">
+            <param name="semanticHint" value="2024"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Usecase_2025"
+               name="%metatype.name.Usecase_2025"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Usecase"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.UsecaseEditHelper">
+            <param name="semanticHint" value="2025"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Attribute_2001"
+               name="%metatype.name.Attribute_2001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Attribute"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.AttributeEditHelper">
+            <param name="semanticHint" value="2001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Operation_2002"
+               name="%metatype.name.Operation_2002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Operation"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.OperationEditHelper">
+            <param name="semanticHint" value="2002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Operation_2003"
+               name="%metatype.name.Operation_2003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Operation_2002"/>
+            <param name="semanticHint" value="2003"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Attribute_2004"
+               name="%metatype.name.Attribute_2004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Attribute_2001"/>
+            <param name="semanticHint" value="2004"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Action_13006"
+               name="%metatype.name.Action_13006"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Action"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ActionEditHelper">
+            <param name="semanticHint" value="13006"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Operation_13008"
+               name="%metatype.name.Operation_13008"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Operation_2002"/>
+            <param name="semanticHint" value="13008"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.View_13007"
+               name="%metatype.name.View_13007"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="View"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ViewEditHelper">
+            <param name="semanticHint" value="13007"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Operation_13009"
+               name="%metatype.name.Operation_13009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Operation_2002"/>
+            <param name="semanticHint" value="13009"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.Area_13001"
+               name="%metatype.name.Area_13001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="Area"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.AreaEditHelper">
+            <param name="semanticHint" value="13001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.View_13002"
+               name="%metatype.name.View_13002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.View_13007"/>
+            <param name="semanticHint" value="13002"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Operation_2009"
+               name="%metatype.name.Operation_2009"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Operation_2002"/>
+            <param name="semanticHint" value="2009"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Class_13003"
+               name="%metatype.name.Class_13003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Class_2017"/>
+            <param name="semanticHint" value="13003"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Interface_13004"
+               name="%metatype.name.Interface_13004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Interface_2018"/>
+            <param name="semanticHint" value="13004"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Package_13005"
+               name="%metatype.name.Package_13005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Package_2021"/>
+            <param name="semanticHint" value="13005"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.Include_13010"
+               name="%metatype.name.Include_13010"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.Include_2020"/>
+            <param name="semanticHint" value="13010"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.DependencyRelationship_3001"
+               name="%metatype.name.DependencyRelationship_3001"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="DependencyRelationship"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.DependencyRelationshipEditHelper">
+            <param name="semanticHint" value="3001"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.InheritanceRelationship_3002"
+               name="%metatype.name.InheritanceRelationship_3002"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="InheritanceRelationship"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.InheritanceRelationshipEditHelper">
+            <param name="semanticHint" value="3002"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.RealizationRelationship_3003"
+               name="%metatype.name.RealizationRelationship_3003"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="RealizationRelationship"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.RealizationRelationshipEditHelper">
+            <param name="semanticHint" value="3003"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.AssociationRelationship_3004"
+               name="%metatype.name.AssociationRelationship_3004"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="AssociationRelationship"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.AssociationRelationshipEditHelper">
+            <param name="semanticHint" value="3004"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.ActionToViewTransition_3005"
+               name="%metatype.name.ActionToViewTransition_3005"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ActionToViewTransition"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ActionToViewTransitionEditHelper">
+            <param name="semanticHint" value="3005"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.ModelMemberDocs_4015"
+               name="%metatype.name.ModelMemberDocs_4015"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="org.eclipse.gmf.runtime.emf.type.core.null"/>
+            <param name="semanticHint" value="4015"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <metamodelType
+               id="de.gulden.modeling.wave.ViewTransition_4013"
+               name="%metatype.name.ViewTransition_4013"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType"
+               eclass="ViewTransition"
+               edithelper="de.gulden.modeling.wave.diagram.edit.helpers.ViewTransitionEditHelper">
+            <param name="semanticHint" value="4013"/>
+         </metamodelType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.DependencyRelationship_4016"
+               name="%metatype.name.DependencyRelationship_4016"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.DependencyRelationship_3001"/>
+            <param name="semanticHint" value="4016"/>
+         </specializationType>
+      </metamodel>
+      <metamodel nsURI="http://jensgulden.de/modeling/wave">
+         <specializationType
+               id="de.gulden.modeling.wave.DependencyRelationship_4017"
+               name="%metatype.name.DependencyRelationship_4017"
+               kind="org.eclipse.gmf.runtime.emf.type.core.IHintedType">
+            <specializes id="de.gulden.modeling.wave.DependencyRelationship_3001"/>
+            <param name="semanticHint" value="4017"/>
+         </specializationType>
+      </metamodel>
+   </extension>
+<extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypeBindings">
+      <?gmfgen generated="true"?>
+      <clientContext id="de.gulden.modeling.wave.TypeContext">
+         <enablement>
+            <test
+               property="org.eclipse.gmf.runtime.emf.core.editingDomain"
+               value="de.gulden.modeling.wave.EditingDomain"/>
+         </enablement>
+      </clientContext> 
+      <binding context="de.gulden.modeling.wave.TypeContext">
+         <elementType ref="de.gulden.modeling.wave.Model_1000"/>
+         <elementType ref="de.gulden.modeling.wave.Class_2017"/>
+         <elementType ref="de.gulden.modeling.wave.Interface_2018"/>
+         <elementType ref="de.gulden.modeling.wave.Controller_2026"/>
+         <elementType ref="de.gulden.modeling.wave.Include_2020"/>
+         <elementType ref="de.gulden.modeling.wave.Package_2021"/>
+         <elementType ref="de.gulden.modeling.wave.Documentation_2013"/>
+         <elementType ref="de.gulden.modeling.wave.StyleSheet_2022"/>
+         <elementType ref="de.gulden.modeling.wave.UsecaseSubsystem_2023"/>
+         <elementType ref="de.gulden.modeling.wave.Actor_2024"/>
+         <elementType ref="de.gulden.modeling.wave.Usecase_2025"/>
+         <elementType ref="de.gulden.modeling.wave.Attribute_2001"/>
+         <elementType ref="de.gulden.modeling.wave.Operation_2002"/>
+         <elementType ref="de.gulden.modeling.wave.Operation_2003"/>
+         <elementType ref="de.gulden.modeling.wave.Attribute_2004"/>
+         <elementType ref="de.gulden.modeling.wave.Action_13006"/>
+         <elementType ref="de.gulden.modeling.wave.Operation_13008"/>
+         <elementType ref="de.gulden.modeling.wave.View_13007"/>
+         <elementType ref="de.gulden.modeling.wave.Operation_13009"/>
+         <elementType ref="de.gulden.modeling.wave.Area_13001"/>
+         <elementType ref="de.gulden.modeling.wave.View_13002"/>
+         <elementType ref="de.gulden.modeling.wave.Operation_2009"/>
+         <elementType ref="de.gulden.modeling.wave.Class_13003"/>
+         <elementType ref="de.gulden.modeling.wave.Interface_13004"/>
+         <elementType ref="de.gulden.modeling.wave.Package_13005"/>
+         <elementType ref="de.gulden.modeling.wave.Include_13010"/>
+         <elementType ref="de.gulden.modeling.wave.DependencyRelationship_3001"/>
+         <elementType ref="de.gulden.modeling.wave.InheritanceRelationship_3002"/>
+         <elementType ref="de.gulden.modeling.wave.RealizationRelationship_3003"/>
+         <elementType ref="de.gulden.modeling.wave.AssociationRelationship_3004"/>
+         <elementType ref="de.gulden.modeling.wave.ActionToViewTransition_3005"/>
+         <elementType ref="de.gulden.modeling.wave.ModelMemberDocs_4015"/>
+         <elementType ref="de.gulden.modeling.wave.ViewTransition_4013"/>
+         <elementType ref="de.gulden.modeling.wave.DependencyRelationship_4016"/>
+         <elementType ref="de.gulden.modeling.wave.DependencyRelationship_4017"/>
+         <advice ref="org.eclipse.gmf.runtime.diagram.core.advice.notationDepdendents"/>
+      </binding>
+   </extension>
+<extension point="org.eclipse.core.expressions.propertyTesters">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="de.gulden.modeling.wave.URIEditorInputPropertyTester"
+           type="org.eclipse.emf.common.ui.URIEditorInput"
+           namespace="de.gulden.modeling.wave"
+           properties="isURIEditorInput"
+           class="de.gulden.modeling.wave.diagram.part.WaveUriEditorInputTester">
+       </propertyTester>
+   </extension>
+<extension point="org.eclipse.core.expressions.propertyTesters">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="de.gulden.modeling.wave.DomainModelElementPropertyTester"
+           type="org.eclipse.emf.ecore.EObject"
+           namespace="de.gulden.modeling.wave"
+           properties="isDomainModelElement"
+           class="de.gulden.modeling.wave.diagram.part.WaveDomainModelElementTester">
+       </propertyTester>
+   </extension>
+<extension point="org.eclipse.ui.navigator.viewer">
+      <?gmfgen generated="true"?>
+      <viewerContentBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <contentExtension pattern="de.gulden.modeling.wave.resourceContent"/>
+			<contentExtension pattern="de.gulden.modeling.wave.domainResourceContent"/>
+            <contentExtension pattern="de.gulden.modeling.wave.navigatorLinkHelper"/>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding viewerId="org.eclipse.ui.navigator.ProjectExplorer">
+         <includes>
+            <actionExtension pattern="de.gulden.modeling.wave.navigatorActionProvider"/>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+<extension point="org.eclipse.ui.navigator.navigatorContent">
+      <?gmfgen generated="true"?>
+      <navigatorContent
+            id="de.gulden.modeling.wave.resourceContent" 
+            name="%navigatorContentName" 
+            priority="normal" 
+            contentProvider="de.gulden.modeling.wave.diagram.navigator.WaveNavigatorContentProvider" 
+            labelProvider="de.gulden.modeling.wave.diagram.navigator.WaveNavigatorLabelProvider"
+            icon="icons/obj16/WaveDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="wave_diagram"/>
+               </and>
+               <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <or>
+         	   <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+            </or>
+         </possibleChildren>
+         <commonSorter 
+               id="de.gulden.modeling.wave.navigatorSorter" 
+               class="de.gulden.modeling.wave.diagram.navigator.WaveNavigatorSorter">
+            <parentExpression>
+               <or>
+	              <and>
+    	             <instanceof value="org.eclipse.core.resources.IFile"/>
+        	         <test property="org.eclipse.core.resources.extension" value="wave_diagram"/>
+                  </and>
+                  <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+               </or>
+            </parentExpression>
+         </commonSorter>
+      </navigatorContent>
+      <navigatorContent
+            id="de.gulden.modeling.wave.domainResourceContent" 
+            name="%domainNavigatorContentName" 
+            priority="normal" 
+            contentProvider="de.gulden.modeling.wave.diagram.navigator.WaveDomainNavigatorContentProvider" 
+            labelProvider="de.gulden.modeling.wave.diagram.navigator.WaveDomainNavigatorLabelProvider"
+            icon="icons/obj16/WaveDiagramFile.gif"
+            activeByDefault="true">
+         <triggerPoints>
+            <or>
+	           <and>
+    	          <instanceof value="org.eclipse.core.resources.IFile"/>
+        	      <test property="org.eclipse.core.resources.extension" value="wave"/>
+               </and>
+               <and>
+                  <instanceof value="org.eclipse.emf.ecore.EObject"/>
+                  <test property="de.gulden.modeling.wave.isDomainModelElement"/>
+               </and>
+            </or>
+         </triggerPoints>
+         <possibleChildren>
+            <and>
+       	       <instanceof value="org.eclipse.emf.ecore.EObject"/>
+       	       <test property="de.gulden.modeling.wave.isDomainModelElement"/>
+       	    </and>
+         </possibleChildren>
+      </navigatorContent>
+      <actionProvider
+            id="de.gulden.modeling.wave.navigatorActionProvider"
+            class="de.gulden.modeling.wave.diagram.navigator.WaveNavigatorActionProvider">
+         <enablement>
+            <or>
+               <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+            </or>
+         </enablement>
+      </actionProvider>
+   </extension>
+<extension point="org.eclipse.ui.navigator.linkHelper">
+      <?gmfgen generated="true"?>
+      <linkHelper
+            id="de.gulden.modeling.wave.navigatorLinkHelper"
+            class="de.gulden.modeling.wave.diagram.navigator.WaveNavigatorLinkHelper">
+         <editorInputEnablement>
+            <and>
+               <instanceof value="org.eclipse.emf.common.ui.URIEditorInput"/>
+               <test property="de.gulden.modeling.wave.isURIEditorInput"/>
+            </and>
+         </editorInputEnablement>
+         <selectionEnablement>
+            <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+         </selectionEnablement>
+      </linkHelper>
+   </extension>
+<extension point="org.eclipse.ui.commands">
+      <?gmfgen generated="true"?>
+      <command
+         categoryId="org.eclipse.ui.category.edit"
+         defaultHandler="de.gulden.modeling.wave.diagram.part.WaveDiagramUpdateCommand"
+         description="%update.diagram.description"
+         id="de.gulden.modeling.wave.diagram.updateDiagram"
+         name="%update.diagram.name"/>
+   </extension>
+<extension point="org.eclipse.ui.bindings">
+      <?gmfgen generated="true"?>
+      <key 
+         commandId="de.gulden.modeling.wave.diagram.updateDiagram"
+         contextId="de.gulden.modeling.wave.diagram.ui.diagramContext"
+         schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+         sequence="F5"/>
+   </extension>
+
+<!-- MANUAL EXTENSIONS - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+   <extension point="org.eclipse.gmf.runtime.diagram.ui.paletteProviders">
+      <paletteProvider class="org.eclipse.gmf.runtime.diagram.ui.providers.DefaultPaletteProvider">
+         <Priority name="High"/>
+         <contribution>
+            <predefinedEntry id="standardGroup/noteStack/noteTool" remove="true"/>
+            <predefinedEntry id="standardGroup/noteStack/noteattachmentTool" remove="true"/>
+            <!--predefinedEntry id="standardGroup/noteStack/textTool" remove="true"/-->
+         </contribution>
+         <editor id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID"/>
+      </paletteProvider>
+   </extension>
+
+
+  <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+    <factory 
+       uri = "http://jensgulden.de/modeling/wave" 
+       class = "de.gulden.modeling.wave.provider.WaveItemProviderAdapterFactory" 
+       supportedTypes = 
+         "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+          org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+          org.eclipse.emf.edit.provider.ITreeItemContentProvider
+          org.eclipse.emf.edit.provider.IItemLabelProvider
+          org.eclipse.emf.edit.provider.IItemPropertySource" />
+  </extension>
+
+  <extension point = "org.eclipse.ui.newWizards">
+    <?gmfgen generated="FALSE"?> <!-- MANUALLY ADDED -->
+    <category name="%newWizardCategory" id="%newWizardCategoryID"/>
+    <wizard
+      id = "de.gulden.modeling.wave.presentation.WaveModelWizardID"
+      name = "%_UI_WaveModelWizard_label"
+      class = "de.gulden.modeling.wave.presentation.WaveModelWizard"
+      category = "%newWizardCategoryID"
+      icon = "icons/full/obj16/WaveModelFile.gif">
+      <description>%_UI_WaveModelWizard_description</description>
+      <selection class = "org.eclipse.core.resources.IResource" />
+    </wizard>
+  </extension>
+
+  <extension point = "org.eclipse.ui.editors">
+    <editor
+        id = "de.gulden.modeling.wave.presentation.WaveEditorID"
+        name = "%_UI_WaveEditor_label"
+        icon = "icons/full/obj16/WaveModelFile.gif"
+        extensions = "wave"
+        class = "de.gulden.modeling.wave.presentation.WaveEditor" 
+        contributorClass="de.gulden.modeling.wave.presentation.WaveActionBarContributor" >
+    </editor>
+  </extension>
+  
+  <!-- custom commands -->
+  
+  <extension point="org.eclipse.ui.commands">
+	<category name="Wave" description="Commands related to Wave." id="de.gulden.modeling.wave.category.wave"/>
+	<command categoryId="de.gulden.modeling.wave.category.wave" description="Run Code Generation" id="de.gulden.modeling.wave.command.runCodeGeneration" name="Run Code Generation"/>
+  </extension>      
+
+  <extension point="org.eclipse.ui.bindings">
+    <key commandId="de.gulden.modeling.wave.command.runCodeGeneration" sequence="F9" schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"/>
+  </extension>
+
+  <extension point="org.eclipse.ui.popupMenus">
+    <objectContribution
+            adaptable="false"
+            id="de.gulden.modeling.wave.diagram.ui.objectContribution.ModelEditPartContribution"
+            objectClass="de.gulden.modeling.wave.diagram.edit.parts.ModelEditPart">
+         <menu 
+            id="RunCodeGenerationMenu" 
+            label="&amp;Run Code Generation" 
+            path="additions"> 
+         </menu>
+         <action
+               id="de.gulden.modeling.wave.popup.RunCodeGenerationActionID"
+               class="de.gulden.modeling.wave.action.RunCodeGenerationAction"
+               definitionId="de.gulden.modeling.wave.command.runCodeGeneration"
+               label="&amp;Run Code Generation" 
+               menubarPath="RunCodeGenerationMenu"
+               icon="icons/full/action16/RunCodeGeneration.gif" 
+               enablesFor="1">
+         </action>
+      </objectContribution>
+  </extension>
+  
+  <!--<extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID?after=additions">
+         <command commandId="de.gulden.modeling.wave.command.runCodeGeneration" 
+                  mnemonic="&amp;Run Code Generation"/>
+      </menuContribution>  
+  </extension>-->
+
+<!--  
+  de.gulden.modeling.wave.presentation.WaveEditorID
+-->  
+
+  <extension point = "org.eclipse.ui.editorActions">
+      <!--
+      <editorContribution 
+         id="de.gulden.modeling.wave.diagram.ui.editorContribution.WaveEditorID" 
+         targetID="de.gulden.modeling.wave.presentation.WaveEditorID">        
+	   <action 
+	          id="de.gulden.modeling.wave.toolbar.RunRoundtripActionID" 
+              class="de.gulden.modeling.wave.action.RunRoundtripAction"
+              definitionId="de.gulden.modeling.wave.command.runRoundtrip"
+              label="&amp;Run Roundtrip" 
+              toolbarPath="WaveEditorToolbarMenu" 
+              icon="icons/full/action16/RunRoundtrip.gif" 
+              tooltip="Import code changes into the model." 
+              /> 
+      </editorContribution>
+      -->
+      <editorContribution 
+         id="de.gulden.modeling.wave.diagram.ui.editorContribution.WaveEditorID" 
+         targetID="de.gulden.modeling.wave.presentation.WaveEditorID">        
+	   <action 
+	          id="de.gulden.modeling.wave.toolbar.RunCodeGenerationActionID" 
+              class="de.gulden.modeling.wave.action.RunCodeGenerationAction"
+              definitionId="de.gulden.modeling.wave.command.runCodeGeneration"
+              label="&amp;Run Code Generation" 
+              toolbarPath="WaveEditorToolbarMenu" 
+              icon="icons/full/action16/RunCodeGeneration.gif" 
+              tooltip="Generate source code from the model." 
+              /> 
+      </editorContribution>
+
+      <!--
+      <editorContribution 
+         id="de.gulden.modeling.wave.diagram.ui.editorContribution.WaveDiagramEditorID" 
+         targetID="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">        
+	   <action 
+	          id="de.gulden.modeling.wave.toolbar.RunRoundtripActionID" 
+              class="de.gulden.modeling.wave.action.RunRoundtripAction"
+              definitionId="de.gulden.modeling.wave.command.runRoundtrip"
+              label="&amp;Run Roundtrip" 
+              toolbarPath="WaveEditorToolbarMenu" 
+              icon="icons/full/action16/RunRoundtrip.gif" 
+              tooltip="Import code changes into the model." 
+              /> 
+      </editorContribution>
+      -->
+      <editorContribution 
+         id="de.gulden.modeling.wave.diagram.ui.editorContribution.WaveDiagramEditorID" 
+         targetID="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">        
+	   <action 
+	          id="de.gulden.modeling.wave.toolbar.RunCodeGenerationActionID" 
+              class="de.gulden.modeling.wave.action.RunCodeGenerationAction"
+              definitionId="de.gulden.modeling.wave.command.runCodeGeneration"
+              label="&amp;Run Code Generation" 
+              toolbarPath="WaveEditorToolbarMenu" 
+              icon="icons/full/action16/RunCodeGeneration.gif" 
+              tooltip="Generate source code from the model." 
+              /> 
+      </editorContribution>
+  </extension>
+  
+  <extension
+        point="org.eclipse.ui.navigator.navigatorContent">
+     <commonWizard
+           type="new"
+           wizardId="de.gulden.modeling.wave.diagram.part.WaveCreationWizardID">
+        <enablement></enablement>
+     </commonWizard>
+  </extension><extension point="org.eclipse.gmf.runtime.common.ui.services.action.contributionItemProviders">
+      <?gmfgen generated="true"?>
+      <contributionItemProvider class="de.gulden.modeling.wave.diagram.providers.WaveContributionItemProvider">
+         <Priority name="Low"/>
+         <partContribution id="de.gulden.modeling.wave.diagram.part.WaveDiagramEditorID">
+            <partAction menubarPath="/file/print" id="printPreviewAction"/>
+         </partContribution>
+      </contributionItemProvider>
+   </extension>
+
+
+
+
+
+</plugin>

@@ -1,0 +1,55 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION common»
+
+«DEFINE config FOR Model»
+
+; application/configs/application.ini
+
+[production]
+phpSettings.display_startup_errors = 0
+phpSettings.display_errors = 0
+includePaths.library = APPLICATION_PATH "/../library"
+bootstrap.path = APPLICATION_PATH "/Bootstrap.php"
+bootstrap.class = "Bootstrap"
+resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
+«IF this.layoutTemplate.is()»
+resources.layout.layoutPath = APPLICATION_PATH "/packages/«this.layoutTemplate.package().path()»"
+resources.view[] =
+«ENDIF»
+
+«IF getGlobalVar("generateDBSchema") != null»
+«REM»
+resources.db.adapter       = "PDO_SQLITE"
+resources.db.params.dbname = APPLICATION_PATH "/../data/db/«this.name».db"
+«ENDREM»
+resources.db.adapter = "pdo_mysql"
+resources.db.params.host = "localhost"
+resources.db.params.username = "root"
+resources.db.params.password = "KlsMre"
+resources.db.params.dbname = "«this.name»"
+«ENDIF»
+
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+[staging : production]
+
+[testing : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+[development : production]
+phpSettings.display_startup_errors = 1
+phpSettings.display_errors = 1
+
+«ENDDEFINE»
+

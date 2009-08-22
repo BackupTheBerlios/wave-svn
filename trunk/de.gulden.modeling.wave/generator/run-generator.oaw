@@ -1,0 +1,43 @@
+<!--
+  WAVE - Web Application Visual Environment
+  A Graphical Modeling Framework (GMF) Plugin for Eclipse
+  Copyright Jens Gulden, 2009, mail@jensgulden.de
+  Licensed under the GNU General Public License (GPL)
+ -->
+<workflow>
+
+<!--
+openArchitectureWare workflow script for manually running code-generation  
+ -->
+ 
+	<property name="model" value="/workspace-php/polls/polls.wave"/>
+	<property name="sourceFolder" value="/workspace-php/polls/htdocs"/>
+
+	<component class="oaw.emf.XmiReader">
+		<modelFile value="${model}"/>
+		<outputSlot value="model"/>
+	</component>
+		
+	<component class="org.openarchitectureware.check.CheckComponent">
+		<metaModel class="oaw.type.emf.EmfMetaModel">
+			<metaModelPackage value="de.gulden.modeling.wave.WavePackage"/>
+		</metaModel>
+		<checkFile value="zend::constraints" />
+		<emfAllChildrenSlot value="model" />
+		<abortOnError value="true"/>
+	</component>
+	
+	<!--<component id="dirCleaner" class="org.openarchitectureware.workflow.common.DirectoryCleaner" skipOnErrors="false">
+		<directory value="${sourceFolder}" />
+	</component>-->
+		
+	<component class="oaw.xpand2.Generator">
+		<fileEncoding value="ISO-8859-1"/>
+		<metaModel class="oaw.type.emf.EmfMetaModel">
+			<metaModelPackage value="de.gulden.modeling.wave.WavePackage"/>
+		</metaModel>
+		<outlet path="${sourceFolder}"/>
+		<expand value="main::generator FOR model"/>
+	</component>
+	
+</workflow>

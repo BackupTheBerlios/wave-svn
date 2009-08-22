@@ -1,0 +1,37 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION common»
+
+«DEFINE commentHeader FOR TopLevelModelMember»* File:      «this.sourceFileName()» 
+«IF is(getGlobalVar("authorName"))» * Author:    «getGlobalVar("authorName")»
+«ENDIF»«IF is(getGlobalVar("versionName"))» * Version:   «getGlobalVar("versionName")»
+«ENDIF»«REM»«IF is(getGlobalVar("currentDate"))» * Date:      «getGlobalVar("currentDate")»
+«ENDIF»«ENDREM»«ENDDEFINE»
+
+«REM»
+«ENDIF»«IF isNotEmpty(getGlobalVar("currentDate"))» * Date:      «getGlobalVar("currentDate")»«ENDDEFINE»
+«ENDREM»
+
+«DEFINE dictionary FOR Dictionary»
+«FILE ((Model)this.eContainer).langstringsPath()»<?php
+// Langstring dictionary for model '«((Model)this.eContainer).name»'
+$_defaultLang = "«this.defaultLang»";
+$_text = Array(
+«FOREACH this.label AS label SEPARATOR ","»
+	«label.labelIndex()» => Array(
+		"«this.defaultLang»" => "«label.text»"«FOREACH label.langstring AS langstring»,
+		"«langstring.lang»" => "«langstring.text»"
+	«ENDFOREACH»
+	)«ENDFOREACH»
+);
+?>
+«ENDFILE»
+«ENDDEFINE»

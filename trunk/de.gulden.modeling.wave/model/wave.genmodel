@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="WAVE - Web Application Visual Environment&#xD;&#xA;A Graphical Modeling Framework (GMF) Plugin for Eclipse&#xD;&#xA;Copyright Jens Gulden, 2009, mail@jensgulden.de&#xD;&#xA;Licensed under the GNU General Public License (GPL)"
+    modelDirectory="/de.gulden.modeling.wave/src" editDirectory="/de.gulden.modeling.wave/src"
+    editorDirectory="/de.gulden.modeling.wave/src" modelPluginID="de.gulden.modeling.wave"
+    modelName="Wave" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" language="">
+  <foreignModel>wave.ecore</foreignModel>
+  <genPackages prefix="Wave" basePackage="de.gulden.modeling" disposableProviderFactory="true"
+      ecorePackage="wave.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumAjaxModes">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumAjaxModes/AJAX_NO"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumAjaxModes/AJAX_YES"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumAjaxModes/AJAX_ONLY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumMultiplicity">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumMultiplicity/ZERO_OR_ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumMultiplicity/ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumMultiplicity/ZERO_OR_MORE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumMultiplicity/ONE_OR_MORE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumVisibility">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumVisibility/PUBLIC"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumVisibility/PACKAGE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumVisibility/PROTECTED"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumVisibility/PRIVATE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumDocumentationAudienceType">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDocumentationAudienceType/DOCUMENTATION_AUDIENCE_DEVELOPER"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDocumentationAudienceType/DOCUMENTATION_AUDIENCE_USER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumTargetModes">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumTargetModes/SERVER"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumTargetModes/CLIENT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumTargetModes/BOTH"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumDirection">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDirection/A_B"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDirection/B_A"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDirection/BOTH"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumDisplayMode">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDisplayMode/VIEW"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDisplayMode/EDIT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDisplayMode/LISTENTRY"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDisplayMode/DETAIL"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDisplayMode/USER"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumDisplayMode/ADMIN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumWidgetType">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/DEFAULT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/TEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/reserved"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/SELECT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/SELECTEDIT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/CHECKBOX"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/RADIOBUTTON"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/DATE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/FILE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/PASSWORD"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/LABEL"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/SPINNER"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="wave.ecore#//Classifier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Classifier/operations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Classifier/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Classifier/attributes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Classifier/isExternal"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Controller">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Controller/actions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Controller/views"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Controller/transitionsActionToView"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Controller/transitionsView"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//AssociationRelationship">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//AssociationRelationship/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//AssociationRelationship/multiplicityA"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//AssociationRelationship/multiplicityB"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//AssociationRelationship/a"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//AssociationRelationship/b"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//AssociationRelationship/direction"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Operation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Operation/returnType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Operation/isAbstract"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Operation/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Operation/throws"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Operation/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Action/ajaxMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Action/ajaxTarget"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//View">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//View/areas"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Attribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Attribute/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Attribute/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Attribute/isMultiple"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//InheritanceRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//InheritanceRelationship/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//InheritanceRelationship/child"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//RealizationRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//RealizationRelationship/parentInterface"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//RealizationRelationship/implementingClass"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Model">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/basePackage"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/sourceFolder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/generatorTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/copyright"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/provider"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Model/dictionary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Model/documentation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/factoryClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference wave.ecore#//Model/layoutTemplate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/baseUrl"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="wave.ecore#//ModelMember">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//ModelMember/taggedValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ModelMember/label"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ModelMember/description"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ModelMember/docs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ModelMember/stereotype"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Package">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Package/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Package/members"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//DependencyRelationship">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//DependencyRelationship/client"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//DependencyRelationship/supplier"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Class">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Class/isPersistent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Class/targetMode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Class/generateForm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Class/forms"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Interface">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Interface/targetMode"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="wave.ecore#//TopLevelModelMember"/>
+    <genClasses ecoreClass="wave.ecore#//ActionToViewTransition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ActionToViewTransition/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ActionToViewTransition/source"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//TaggedValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//TaggedValue/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//TaggedValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Documentation">
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Documentation/text"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Documentation/audience"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Documentation/detailLevel"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//OOPClassifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//OOPClassifier/isAbstract"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//OOPClassifier/visibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//OOPClassifier/externalExtends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//OOPClassifier/externalImplements"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//ClassifierMember">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ClassifierMember/signature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ClassifierMember/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ClassifierMember/visibility"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ClassifierMember/isStatic"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ClassifierMember/isFinal"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ClassifierMember/targetMode"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="wave.ecore#//ArtifactClassifier"/>
+    <genClasses ecoreClass="wave.ecore#//Include">
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Include/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Include/urlPath"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//StyleSheet">
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//StyleSheet/code"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//ViewTransition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ViewTransition/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ViewTransition/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="wave.ecore#//ControllerMember">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//ControllerMember/usecases"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//ControllerMember/name"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Enumeration/literals"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Enumeration/name"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//EnumerationLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//EnumerationLiteral/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//EnumerationLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Dictionary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Dictionary/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Dictionary/defaultLang"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Label">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Label/text"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Label/langstring"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Label/icon"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Langstring">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Langstring/lang"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Langstring/text"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//DatabaseTable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//DatabaseTable/name"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//DatabaseTable/sqlCreate"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Widget">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/widgetType"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/widgetHint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/readOnly"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/required"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/ignore"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Widget/filters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Widget/validators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Widget/options"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//Widget/menuActions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/elementFormName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/multiLine"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Widget/multiChoice"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//UsecaseSubsystem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//UsecaseSubsystem/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//UsecaseSubsystem/usecases"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="wave.ecore#//UsecaseClassifier"/>
+    <genClasses ecoreClass="wave.ecore#//Usecase" labelFeature="#//wave/Usecase/text">
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Usecase/text"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Actor"/>
+    <genClasses ecoreClass="wave.ecore#//Area">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Area/views"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Area/style"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//ControllerMemberExecutable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//ControllerMemberExecutable/operation"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//WidgetElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//WidgetElement/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//WidgetElement/options"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//WidgetElement/multiOptions"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//WidgetOption">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//WidgetOption/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//WidgetOption/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="wave.ecore#//Transition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Transition/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Transition/condition"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//Form">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Form/widgets"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//Form/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Form/name"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//WidgetAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//WidgetAttribute/attribute"/>
+    </genClasses>
+    <genClasses ecoreClass="wave.ecore#//WidgetAssociation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//WidgetAssociation/association"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference wave.ecore#//WidgetAssociation/elementsMenuActions"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

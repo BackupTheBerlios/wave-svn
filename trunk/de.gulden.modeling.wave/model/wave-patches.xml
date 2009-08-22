@@ -1,0 +1,369 @@
+<!--
+  WAVE - Web Application Visual Environment
+  A Graphical Modeling Framework (GMF) Plugin for Eclipse
+  Copyright Jens Gulden, 2009, mail@jensgulden.de
+  Licensed under the GNU General Public License (GPL)
+ -->
+<project name="wave-patches" basedir="../src" default="patch">
+
+<!--
+This ANT build file replaces some of the auto-generated source code with manual
+additions and does NOT mark them as "generated not".
+Thus, all changes captured here will be OVERWRITTEN AGAIN on next code generation
+run. This is useful, as here we collect all changes in those places where updated
+method code should be generated when changes to the metamodel have occurred.
+-->
+	
+<!-- invoke oaW workflow:
+<target name='generate'>
+    <taskdef name="workflow" classname="org.openarchitectureware.workflow.ant.WorkflowAntTask"/>
+    <workflow file='path/workflow.oaw'>
+        <param name='baseDir' value='/base/'/>
+    </workflow>
+</target>
+-->	
+
+  <!--property name="src" location="src"/-->
+
+  <target name="patch">
+
+    <!--
+    <replace file="de/gulden/modeling/wave/diagram/part/WaveVisualIDRegistry.java"
+      token="if (!ModelEditPart.MODEL_ID.equals(containerModelID)) {"
+      value="if ( ! de.gulden.modeling.wave.util.WaveUtil.allowedContainerModelIDs.contains(containerModelID) ) { // generated NOT, CHANGED BY wave-patches.xml"
+      summary="yes"/>
+    -->
+  	
+    <!-- 
+      Load icons from bundle 'de.gulden.modeling.wave', instead of 'wave'. 
+    -->
+    <replace file="de/gulden/modeling/wave/diagram/part/WavePaletteFactory.java"
+             token="/wave/icons"
+             value="/de.gulden.modeling.wave/icons"
+             summary="yes" />
+
+  	<!-- 
+  	  Let stereotype labels of dependency-relationships appear in french quotation marks.
+  	  [de.gulden.modeling.wave.util.WaveUtil.toStereotype(String)] 
+  	-->
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/DependencyRelationshipStereotypeEditPart.java" 
+    	     token="setLabelTextHelper(getFigure(), getLabelText());" 
+    	     value="setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toStereotype(getLabelText()));" 
+    	     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/DependencyRelationshipStereotype2EditPart.java" 
+    	     token="setLabelTextHelper(getFigure(), getLabelText());" 
+    	     value="setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toStereotype(getLabelText()));" 
+    	     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/DependencyRelationshipStereotype3EditPart.java" 
+    	     token="setLabelTextHelper(getFigure(), getLabelText());" 
+    	     value="setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toStereotype(getLabelText()));" 
+    	     summary="yes" /> 
+
+  	<!-- 
+  	  Use smaller font size for text-labels of relationships. 
+  	-->
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/DependencyRelationshipStereotypeEditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/DependencyRelationshipStereotype2EditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" /> 
+  	<replace file="de/gulden/modeling/wave/diagram/edit/parts/DependencyRelationshipStereotype3EditPart.java" 
+  		     token="getFontHeight()," 
+  		     value="getFontHeight()-2," 
+  		     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AssociationRelationshipMultiplicityAEditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AssociationRelationshipMultiplicityBEditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AssociationRelationshipNameEditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" /> 
+
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ActionToViewTransitionConditionEditPart.java" 
+    	     token="setLabelTextHelper(getFigure(), getLabelText());" 
+    	     value="setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toCondition(getLabelText()));" 
+    	     summary="yes" />
+  	
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ActionToViewTransitionConditionEditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" /> 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ViewTransitionNameEditPart.java" 
+    	     token="getFontHeight()," 
+    	     value="getFontHeight()-2," 
+    	     summary="yes" />
+    
+    <property name="search_rectilinearLinestyle" value="index, persisted);"/>
+    <property name="replace_rectilinearLinestyle" value="index, persisted);${line.separator}        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view); // @injected"/>
+
+  	<!--
+  	  Use 'rectilinear' line-style for relationships.
+  	  [de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(View)]
+  	-->
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/DependencyRelationshipViewFactory.java" summary="yes">
+      <replacetoken>index, persisted);</replacetoken>
+      <replacevalue>index,persisted);
+      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+      </replacevalue>
+    </replace>
+        
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/InheritanceRelationshipViewFactory.java" summary="yes">
+      <replacetoken>index, persisted);</replacetoken>
+      <replacevalue>index,persisted);
+      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+      </replacevalue>
+    </replace>
+        
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/RealizationRelationshipViewFactory.java" summary="yes">
+      <replacetoken>index, persisted);</replacetoken>
+      <replacevalue>index,persisted);
+      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+      </replacevalue>
+    </replace>
+        
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/ViewTransitionViewFactory.java" summary="yes">
+      <replacetoken>index, persisted);</replacetoken>
+      <replacevalue>index,persisted);
+      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+      </replacevalue>
+    </replace>
+  	
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/ActionToViewTransitionViewFactory.java" summary="yes">
+      <replacetoken>index, persisted);</replacetoken>
+      <replacevalue>index,persisted);
+      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+      </replacevalue>
+    </replace>
+        
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/AssociationRelationshipViewFactory.java" summary="yes">
+      <replacetoken>index, persisted);</replacetoken>
+      <replacevalue>index,persisted);
+      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+      </replacevalue>
+    </replace>
+    
+    <!--<replace file="de/gulden/modeling/wave/diagram/view/factories/DependencyRelationshipViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/InheritanceRelationshipViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/RealizationRelationshipViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/view/factories/ViewTransitionViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />-->
+  	
+    <replace file="de/gulden/modeling/wave/diagram/part/WavePaletteFactory.java" 
+    	     token="paletteContainer.add(createArea3CreationTool());" 
+    	     value="//paletteContainer.add(createArea3CreationTool()) ;" 
+    	     summary="yes" />
+  	
+
+  	<!-- 
+  	  Special behaviour of attribute / operation parts 
+  	-->
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AttributeEditPart.java" 
+    	     token="extends CompartmentEditPart" 
+    	     value="extends ClassifierMemberEditPartBase" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Attribute2EditPart.java" 
+    	     token="extends CompartmentEditPart" 
+    	     value="extends ClassifierMemberEditPartBase" 
+    	     summary="yes" />
+  	
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/OperationEditPart.java" 
+    	     token="extends CompartmentEditPart" 
+    	     value="extends ClassifierMemberEditPartBase" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Operation2EditPart.java" 
+    	     token="extends CompartmentEditPart" 
+    	     value="extends ClassifierMemberEditPartBase" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Operation5EditPart.java" 
+    	     token="extends CompartmentEditPart" 
+    	     value="extends ClassifierMemberEditPartBase" 
+    	     summary="yes" />
+  	
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AttributeEditPart.java" 
+    	     token="void refreshUnderline(" 
+    	     value="void refreshXXXUnderline(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AttributeEditPart.java" 
+    	     token="void refreshFont(" 
+    	     value="void refreshXXXFont(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Attribute2EditPart.java" 
+    	     token="void refreshUnderline(" 
+    	     value="void refreshXXXUnderline(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Attribute2EditPart.java" 
+    	     token="void refreshFont(" 
+    	     value="void refreshXXXFont(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/OperationEditPart.java" 
+    	     token="void refreshUnderline(" 
+    	     value="void refreshXXXUnderline(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/OperationEditPart.java" 
+    	     token="void refreshFont(" 
+    	     value="void refreshXXXFont(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Operation2EditPart.java" 
+    	     token="void refreshUnderline(" 
+    	     value="void refreshXXXUnderline(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Operation2EditPart.java" 
+    	     token="void refreshFont(" 
+    	     value="void refreshXXXFont(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Operation5EditPart.java" 
+    	     token="void refreshUnderline(" 
+    	     value="void refreshXXXUnderline(" 
+    	     summary="yes" />
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Operation5EditPart.java" 
+    	     token="void refreshFont(" 
+    	     value="void refreshXXXFont(" 
+    	     summary="yes" />
+  	
+
+    <replace file="de/gulden/modeling/wave/diagram/edit/helpers/WaveBaseEditHelper.java" summary="yes">
+      <replacetoken>super.getInsteadCommand(req);</replacetoken>
+	  <!-- this would lead to an infinite recursive execution of the create command, when an element is created inside another editor via shortcut -->
+      <replacevalue>super.getInsteadCommand(req) ;
+		if ( (req instanceof org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest) &amp;&amp; (epCommand instanceof org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand) ) return null;
+      </replacevalue>
+    </replace>
+    
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AssociationRelationshipEditPart.java" summary="yes">
+      <replacetoken>setTargetDecoration(createTargetDecoration());</replacetoken>
+      <replacevalue>setTargetDecoration(createTargetDecoration()) ;
+      	de.gulden.modeling.wave.util.WaveUtil.updateFace(AssociationRelationshipEditPart.this, this);
+      </replacevalue>
+    </replace>
+    
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AssociationRelationshipEditPart.java"
+    		token="extends ConnectionNodeEditPart"
+    		value="extends de.gulden.modeling.wave.diagram.edit.parts.AssociationRelationshipEditPartBase"
+    		summary="yes"/>
+     
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/AssociationRelationshipEditPart.java"
+    		token="extends PolylineConnectionEx"
+    		value="extends de.gulden.modeling.wave.diagram.edit.parts.AssociationRelationshipFigureBase"
+    		summary="yes"/>
+     
+  	
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Class2EditPart.java"
+    		token="extends ShapeNodeEditPart"
+    		value="extends de.gulden.modeling.wave.diagram.edit.parts.Class2EditPartBase"
+    		summary="yes"/>
+     
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/Class2EditPart.java" summary="yes">
+    	<replacetoken>.getFigureClassNameFigure());</replacetoken>
+    	<replacevalue>.getFigureClassNameFigure()) ; 
+    	de.gulden.modeling.wave.util.WaveUtil.updateNameLabel(this);
+    	</replacevalue>
+  	</replace>
+
+  	
+    <replace file="de/gulden/modeling/wave/impl/ModelMemberImpl.java"
+    		token="extends EObjectImpl"
+    		value="extends de.gulden.modeling.wave.impl.ModelMemberImplBase"
+    		summary="yes"/>
+  	
+    <replace file="de/gulden/modeling/wave/impl/ActionImpl.java"
+    		token="extends ControllerMemberExecutableImpl"
+    		value="extends de.gulden.modeling.wave.impl.ActionImplBase"
+    		summary="yes"/>
+  	
+    <replace file="de/gulden/modeling/wave/impl/ViewImpl.java"
+    		token="extends ControllerMemberExecutableImpl"
+    		value="extends de.gulden.modeling.wave.impl.ViewImplBase"
+    		summary="yes"/>
+  	
+    <replace file="de/gulden/modeling/wave/impl/AttributeImpl.java"
+    		token="extends ClassifierMemberImpl"
+    		value="extends de.gulden.modeling.wave.impl.AttributeImplBase"
+    		summary="yes"/>
+  	
+    <replace file="de/gulden/modeling/wave/impl/OperationImpl.java"
+    		token="extends ClassifierMemberImpl"
+    		value="extends de.gulden.modeling.wave.impl.OperationImplBase"
+    		summary="yes"/>
+  	
+    <replace file="de/gulden/modeling/wave/impl/TaggedValueImpl.java" summary="yes">
+    	<replacetoken>super();</replacetoken>
+    	<replacevalue>super() ;
+    	}
+    		
+    	/**
+    	 * @generated
+    	 */
+    	public TaggedValueImpl(String key, String value) {
+    		super() ;
+    		this.setKey(key);
+    		this.setValue(value);
+    	</replacevalue>
+  	</replace>
+    
+    <!-- 
+      Use 'canonical edit policy' for Action and View compartments. 
+    -->
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ActionActionOperationCompartmentEditPart.java" summary="yes">
+      <replacetoken>new DragDropEditPolicy());
+	}</replacetoken>
+    <replacevalue>new DragDropEditPolicy());
+    installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+        new ActionActionOperationCompartmentCanonicalEditPolicy());
+	}</replacevalue>
+    </replace>
+    
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ViewViewOperationCompartmentEditPart.java" summary="yes">
+      <replacetoken>new DragDropEditPolicy());
+	}</replacetoken>
+    <replacevalue>new DragDropEditPolicy());
+    installEditPolicy(EditPolicyRoles.CANONICAL_ROLE,
+        new ViewViewOperationCompartmentCanonicalEditPolicy());
+	}</replacevalue>
+    </replace>
+    
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ViewViewOperationCompartment2EditPart.java" summary="yes">
+      <replacetoken>new DragDropEditPolicy());
+	}</replacetoken>
+    <replacevalue>new DragDropEditPolicy());
+    installEditPolicy(EditPolicyRoles.CANONICAL_ROLE, 
+        new ViewViewOperationCompartment2CanonicalEditPolicy());
+	}</replacevalue>
+    </replace>
+  	
+  	<!--
+  	  Reference attribute name with class name. 
+  	-->
+    <replace file="de/gulden/modeling/wave/provider/AttributeItemProvider.java"
+    		token="((Attribute)object).getName()"
+    		value="de.gulden.modeling.wave.util.WaveUtil.getAttributeLabel((Attribute)object)"
+    		summary="yes"/>
+  	    
+    <echo>Minimal invasive changes done.</echo>
+  	
+  <!--  
+    <replace 
+      file="de/gulden/modeling/wave/diagram/part/WaveVisualIDRegistry.java"
+      token="public class WaveVisualIDRegistry {"
+      value="public class WaveVisualIDRegistry {
+      
+  /**&#10;
+   * MANUALLY ADDED through wave-patches.xml, no 'generated NOT' here.
+   */
+
+  protected final static Collection&#60;String&#62; allowedContainerModelIDs = Arrays
+      .asList(new String[] { ModelEditPart.MODEL_ID,
+          &#34;Process Control Flow&#34; //$NON-NLS-1$
+      });
+  "/>
+  -->    
+
+  </target>
+
+</project>

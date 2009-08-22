@@ -1,0 +1,23 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION common»
+
+«DEFINE dictionary FOR Dictionary»<?php
+// Langstring dictionary for model '«((Model)this.eContainer).name»'
+$DEFAULT_LANG = "«this.defaultLang»";
+$_text = array(
+«FOREACH this.label AS label SEPARATOR ","»
+	«label.labelIndex()» => array(
+		"«this.defaultLang»" => "«label.text»"«FOREACH label.langstring AS langstring»,
+		"«langstring.lang»" => "«langstring.text»"
+	«ENDFOREACH»
+	)«ENDFOREACH»
+);
+«ENDDEFINE»

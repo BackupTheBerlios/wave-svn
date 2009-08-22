@@ -1,0 +1,69 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION org::openarchitectureware::util::stdlib::counter»
+«EXTENSION common»
+«EXTENSION zend::commonZend»
+«EXTENSION sql::sql»
+
+«DEFINE model FOR Model»
+	«EXPAND memberAll»
+«ENDDEFINE»
+
+«DEFINE memberAll FOR Classifier»
+	«IF (! this.isExternal)»
+		«EXPAND member»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE memberAll FOR TopLevelModelMember»
+	«REM» nop «ENDREM»
+«ENDDEFINE»
+
+«DEFINE memberAll FOR Package»
+	«EXPAND memberAll FOREACH members»
+«ENDDEFINE»
+
+«DEFINE member FOR Controller»
+	«EXPAND classifier»
+«ENDDEFINE»
+
+«DEFINE member FOR Class»
+	«EXPAND classifier»
+«ENDDEFINE»
+
+«DEFINE member FOR Include»
+	«EXPAND include»
+«ENDDEFINE»
+
+«DEFINE member FOR ModelMember»
+	«REM» ignore others «ENDREM»
+«ENDDEFINE»
+
+
+«DEFINE classifier FOR OOPClassifier»
+«parseCodeBlocks(getGlobalVar("outputPath").toString() + "/" + this.sourceFileName())»
+«EXPAND operations»
+«storeGlobalVar("roundtrip",null)»
+«ENDDEFINE»
+
+«DEFINE classifier FOR ModelMember»
+«ENDDEFINE»
+
+«DEFINE include FOR Include»
+«this.roundtripInclude("FILENAME-DUMMY.INCLUDE.TXT")»
+«ENDDEFINE»
+
+
+«DEFINE operations FOR OOPClassifier»
+	«FOREACH this.operations AS op»
+		«op.roundtripCode()»
+	«ENDFOREACH»
+«ENDDEFINE»

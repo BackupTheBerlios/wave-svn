@@ -1,0 +1,32 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION common»
+«EXTENSION zend::commonZend»
+«EXTENSION sql::sql»
+
+«REM»
+------------------------------------------------------------------------------
+--- Interface
+------------------------------------------------------------------------------
+«ENDREM»
+
+«DEFINE interface FOR Interface»
+<?php
+/**
+ * Interface: "«this.codeName()»"
+ *
+ «EXPAND model::commentHeader» */
+
+«EXPAND oop::modifiers» interface «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ENDIF» {
+«EXPAND oop::operations»
+} // end of interface «this.name»
+?>
+«ENDDEFINE»

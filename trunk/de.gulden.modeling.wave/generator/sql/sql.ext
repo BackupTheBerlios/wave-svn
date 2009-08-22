@@ -1,0 +1,36 @@
+/*
+ * WAVE - Web Application Visual Environment
+ * A Graphical Modeling Framework (GMF) Plugin for Eclipse
+ * Copyright Jens Gulden, 2009, mail@jensgulden.de
+ * Licensed under the GNU General Public License (GPL)
+ */
+import wave;
+
+extension common; 
+
+String sqlType( String this ) :
+	( this.isEnumerationType() ? "VARCHAR(50)" : 
+	( (this.toLowerCase() == "text") ? "TEXT" : 
+	( (this.toLowerCase() == "date") ? "DATE" : 
+	( (this.toLowerCase() == "datetime") ? "DATETIME" : 
+	( (this.toLowerCase() == "string") ? "VARCHAR(255)" : 
+	this.toUpperCase() ) ) ) ) );
+
+String dbTable( String this ) : this.toLowerCase();
+
+//String dbTable( AssociationRelationship this ) : this.isBidirectionalNToM() ? ( this.name.is() ? this.name : "relationship" )+"_"+this.a.name.toFirstLower()+"_"+this.b.name.toFirstLower() : null;
+String dbTable( AssociationRelationship this ) : "relationship" + this.name.toLowerCase();
+
+boolean sqlValueToBeQuoted( String this ) : (this.toLowerCase() == "string" 
+										  || this.toLowerCase() == "text" 
+										  || this.toLowerCase() == "date" 
+										  || this.toLowerCase() == "datetime" 
+										  || this.isEnumerationType());
+
+String sql( Attribute this ) :
+				((this.type==null) || this.type.sqlValueToBeQuoted()) ? ("'\".mysql_real_escape_string($this->"+this.name+").\"'") :
+					(this.type.isIntegerType() ? ("\".intval($this->"+this.name+").\"") :
+						(this.type.isFloatType() ? ("\".floatval($this->"+this.name+").\"") :				
+							(this.type.isPrimitiveType() ? ("\".$this->"+this.name+".\"") : 
+								("\".intval($this->"+this.name+"->id).\""))));
+	 

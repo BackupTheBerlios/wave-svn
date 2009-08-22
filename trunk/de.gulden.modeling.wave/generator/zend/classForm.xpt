@@ -1,0 +1,738 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION common»
+«EXTENSION zend::commonZend»
+
+«REM»
+------------------------------------------------------------------------------
+--- Additional functions included into class if persistency is activated
+------------------------------------------------------------------------------
+«ENDREM»
+
+«DEFINE class FOR Class»
+
+	«IF this.generateForm || this.forms.has()»
+	public static function createForm($mode="EDIT", $object=null)
+	{
+		$cls = "«this.formName()»".ucfirst(strtolower($mode));
+		$form = new $cls($object);
+		return $form;
+	}
+	
+	«REM»
+	public static function createListForm($elements, $referenceName="", $formName="LIST", $prefix="«this.name.toLowerCase()»")
+	{
+		$f = new «this.formName()»Base();
+		foreach ($elements as $o)
+		{
+			$subform= $o->getForm($formName)->asSubForm();
+			$f->addSubForm($subform, $prefix.$o->getId());
+		}
+		return $f;
+	}
+	
+	/*public function populateFormAttribute($form)
+	{
+		$arr = get_object_vars($this);
+		$form->populate($arr);
+	}*/
+	«ENDREM»
+	
+	public function populateForm($form)
+	{
+		$form->setObject($this);
+	}
+	
+	public static function parseForm($id, $form, $post)
+	{
+		$object = self::find($id);
+		if ( ! is_a($form, "«this.formName()»Base"))
+		{
+			return;
+		}		
+		$form->setObject($object);
+		if ($form->isValid($post))
+		{
+			$form->parse($object, $post);
+			return $object;
+		}
+		else
+		{
+			return null;
+		}
+	}
+	
+	public function getForm($mode="Edit")
+	{
+		$form = self::createForm($mode, $this);
+		return $form;
+	}
+	«ENDIF»
+
+«ENDDEFINE»
+
+
+«DEFINE helper FOR Class»
+
+<?php
+/**
+ * Form Helper Class for: "«this.codeName()»"
+ *
+ «EXPAND model::commentHeader» */
+class «this.formName()»Helper
+{
+    public function addReferenceListElements($form, $entries, $mode)
+    {
+    	
+    }
+}
+«ENDDEFINE»
+
+
+«DEFINE form(String formName) FOR Class»
+<?php
+/**
+ * Form '«formName.toLowerCase().toFirstUpper()»' for class '«this.codeName()»'
+ *
+ «EXPAND model::commentHeader» */
+class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.formName()»Base
+{
+	function «this.formName()»«formName.toLowerCase().toFirstUpper()»($object = null)
+	{
+		$this->_object = $object;
+		parent::__construct();
+	}
+	
+    public function init()
+    {
+    	$this->_initElements();
+	}
+	
+    protected function _initElements()
+    {
+    	$this->addElement('hidden', 'id');
+    
+    
+    «FOREACH this.allAttributes() AS attr»
+    
+        «LET this.getWidget(attr, formName) AS widget»
+        
+        «IF ! widget.ignore»
+        
+        $this->addElement('«widget.toWidgetType(attr.type)»', '«attr.name»', array(
+            'label'      => «attr.labelCode()»,
+            «IF widget.required»
+            'required'   => true,
+            «ENDIF»
+            «IF (attr.type == "string") && (widget.widgetType != EnumWidgetType::SELECT)»
+            'size' => 60,
+            «ELSEIF (widget.widgetType == EnumWidgetType::SELECT) && widget.multiLine»
+            'size' => 10,
+            «ELSEIF attr.type=="int"»
+            'size' => 5,
+            «ELSEIF attr.type=="date"»
+            'size' => 10,
+            «ELSEIF attr.type=="datetime"»
+            'size' => 16,
+            «ENDIF»
+            «IF (widget.widgetType == EnumWidgetType::SELECT) 
+             || (widget.widgetType == EnumWidgetType::RADIOBUTTON)
+             || ((widget.widgetType == EnumWidgetType::CHECKBOX) && widget.multiChoice)»
+            'multiOptions' => array(
+            	«FOREACH widget.options AS opt»
+            		"«opt.value»" => «opt.labelCode()»,
+            	«ENDFOREACH»
+            ),
+            «ENDIF»
+            «IF widget.readOnly»
+            'readonly'   => true,
+            'disableLoadDefaultDecorators' => true,
+            «ENDIF»
+            «IF widget.filters.has()»
+            'filters'    => array(
+            	«FOREACH widget.filters AS filter»
+            	array('filter'=>'«filter.name»', 'options' => array(
+            		«FOREACH filter.options AS option»
+            			'«option.name»' => '«option.value»',
+            		«ENDFOREACH»
+            		)
+            	),
+            	«ENDFOREACH»
+            ),
+            «ENDIF»
+            'validators'    => array(
+            «FOREACH widget.validators AS validator»
+            	array( 'validator' => '«validator.name»', «EXPAND options FOR validator.options» ),
+            «ENDFOREACH»
+            «IF ! widget.validators.has()» «REM» none given, use defaults «ENDREM»
+            	«IF attr.type == "int"»
+            		array('validator' => 'Int'),
+            	«ELSEIF attr.type == "date"»
+            		array('validator' => 'Date'),
+            	«ENDIF»
+            «ENDIF»
+            ),
+            «widget.widgetHint» «REM»arbitrary source code«ENDREM»
+        ));
+
+        «IF widget.readOnly»
+    	$el = $this->getElement("«attr.name»");
+    	//$el->removeDecorator("ViewHelper");
+    	$dec = new «this.formName()»DecoratorReadOnly();
+    	$dec->setClassname("«this.name.toLowerCase()»");
+    	$dec->setMode("«formName.toLowerCase()»");
+    	$el->addDecorator($dec);
+        «ENDIF»
+        
+        «ENDIF»
+
+    	«ENDLET»
+    «ENDFOREACH»
+    
+    if ($this->getObject() != null)
+    {    
+    	$this->populateAttributes($this->getObject());
+    }
+   
+   	«IF formName.toUpperCase() != "LIST"»
+   
+    «FOREACH this.allOutgoingAssociations() AS assoc»
+    	«IF this.isNavigable(assoc)»
+    
+        	«LET assoc.getWidget(this, formName) AS widget»
+        
+	        «IF ! widget.ignore»
+        
+        			$this->addElement( new FormLabel(«IF widget.label.is()»«widget.labelCode()»«ELSE»«assoc.labelCode()»«ENDIF»), "label_«assoc.name»" );
+        			
+				«IF this.isOutgoingMulti(assoc)»
+					
+					$prefix = "«assoc.outgoingName(this)»";
+					$entries = ($this->getObject() != null) ? $this->getObject()->«assoc.outgoingName(this).getter()»() : null;
+					$formName = "«IF widget.elementFormName.is()»«widget.elementFormName»«ELSE»«formName»«ENDIF»";
+					$referenceName = "«assoc.outgoingName(this).toFirstUpper()»";
+					
+    				if ($entries)
+    				{
+    					$lastInnerForm = null;
+						foreach ($entries as $child)
+						{
+   							$innerForm = $child->getForm($formName)->asSubForm();
+
+							«FOREACH ((WidgetAssociation)widget).elementsMenuActions AS action»
+					
+								$innerForm->addDecorator( array ( '«action.name.without("Action")»' => 
+									new DecoratorMenuAction(«action.labelCode().without(" Action")», «((Controller)action.eContainer).name.without("Controller").toLowerCase()», «action.name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
+								  )
+								);
+					
+							«ENDFOREACH»
+							
+   							$this->addSubForm( $innerForm, $prefix.$child->getId() );
+   							
+    						$lastInnerForm = $innerForm;
+						}
+					} 
+					else 
+					{
+						$lastInnerForm = new Zend_Form_SubForm(); // dummy for empty list 
+						$this->addSubForm( $lastInnerForm, $prefix );
+					}
+					
+					«FOREACH widget.menuActions AS action»
+			
+						$lastInnerForm->addDecorator( array ( '«action.name.without("Action")»' => 
+							new DecoratorMenuAction(«action.labelCode().without(" Action")», «((Controller)action.eContainer).name.without("Controller").toLowerCase()», «action.name.without("Action")», array( /*'id'=>($child ? $child->getId() : 0),*/ 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
+						  )
+						);
+					
+					«ENDFOREACH»
+							
+				«ELSE»
+					
+					$prefix = "«assoc.outgoingName(this)»";
+					$element = ($this->getObject() != null) ? $this->getObject()->«assoc.outgoingName(this).getter()»() : null;
+					$formName = "«IF widget.elementFormName.is()»«widget.elementFormName»«ELSE»«formName»«ENDIF»";  
+					$referenceName = "«assoc.outgoingName(this).toFirstUpper()»";
+					
+    				if ($element)
+    				{
+   						$innerForm = $element->getForm($mode)->asSubForm();
+   						$this->addSubForm( $innerForm, $prefix.$element->getId() );
+					}
+					else
+					{
+						$innerForm = new Zend_Form_SubForm(); // dummy for empty entry
+					}
+					
+					«FOREACH widget.menuActions AS action»
+					
+						$innerForm->addDecorator(
+							new DecoratorMenuAction(«action.labelCode().without(" Action")», «((Controller)action.eContainer).name.without("Controller").toLowerCase()», «action.name.without("Action")», array( /*'id'=>($child ? $child->getId() : 0),*/ 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
+						);
+					
+					«ENDFOREACH»
+					
+					$this->addSubForm( $innerForm, $prefix );
+					
+				«ENDIF»
+					    
+			«ENDIF»
+    	
+			«ENDLET»
+		    
+		«ENDIF»    
+    «ENDFOREACH»
+    
+    «ENDIF»
+    
+    «REM»
+        // CSRF protection (?)
+        $this->addElement('hash', 'csrf', array(
+            'ignore' => true,
+        ));
+    «ENDREM»
+    }
+    
+    public function reinit()
+    {
+    	$this->clearElements();
+    	$this->clearSubForms();
+    	$this->_initElements();
+    }
+
+	protected $_object;
+
+	public function setObject($object)
+	{
+		$this->_object = $object;
+		$this->reinit();
+		$this->populateAttributes($object);
+	}
+
+	public function getObject()
+	{
+		return $this->_object;
+	}
+
+	public function populateAttributes($object)
+	{
+		«IF this.isPersistent»
+        $this->getElement("id")->setValue($object->getId());
+        «ENDIF»
+    «FOREACH this.allAttributes() AS attr»
+       	«LET this.getWidget(attr, formName) AS widget»
+	    «IF ! widget.ignore»
+        $this->getElement("«attr.name»")->setValue($object->«attr.name.getter()»());
+		«ENDIF»
+		«ENDLET»
+    «ENDFOREACH»
+	}
+	
+	public function parse($object, $post)
+	{
+		$this->_object = $object;
+		$this->parseAttributes($object);
+		$this->reinit();
+   		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
+   			«LET assoc.getWidget(this, formName) AS widget»
+	    		«IF ! widget.ignore»
+	    		$key = "«assoc.name»";
+	    		$sf = $this->getSubForm($key);
+	    		$oo = $object->«assoc.outgoingName(this).getter()»();
+	    		$o = «assoc.opposite(this).codeName()»::parseForm(($oo ? $oo->getId() : null), $sf, $post[$key]);
+	    		if (! $oo )
+	    		{
+	    			$object->«assoc.name.setter()»($o);
+	    		}
+				«ENDIF»
+			«ENDLET»
+    	«ENDFOREACH»
+   		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
+   			«LET assoc.getWidget(this, formName) AS widget»
+	    		«IF ! widget.ignore»
+	    		foreach ($object->«assoc.outgoingName(this).getter()»() as $child)
+	    		{
+	    			$childId = $child->getId();
+	    			$key = "«assoc.name»".$childId;
+	    			$sf = $this->getSubForm($key);
+	    			$o = «assoc.opposite(this).codeName()»::parseForm($childId, $sf, $post[$key]);
+	    		}
+				«ENDIF»
+			«ENDLET»
+    	«ENDFOREACH»
+	}
+
+	public function parseAttributes($object)
+	{
+   	«FOREACH this.allAttributes() AS attr»
+   		«LET this.getWidget(attr, formName) AS widget»
+	    	«IF ! widget.ignore»
+	    	$object->«attr.name.setter()»($this->getElement("«attr.name»")->getValue());
+			«ENDIF»
+		«ENDLET»
+    «ENDFOREACH»
+	}
+
+} // end of class 
+?>
+«ENDDEFINE»
+
+«DEFINE options FOR List»            	
+            	 'options' => array(
+            		«FOREACH this AS option»
+            			«IF ((WidgetOption)option).name.is()»
+            			'«((WidgetOption)option).name»' => «((WidgetOption)option).value»,
+            			«ELSE»
+            			«((WidgetOption)option).value»,
+            			«ENDIF»
+            		«ENDFOREACH»
+            		),
+«ENDDEFINE»            		
+
+
+
+
+«DEFINE XXXcontrollerSpecific(String formName) FOR Class»
+<?php
+/**
+ * Form-Controller '«formName.toLowerCase().toFirstUpper()»' for class '«this.codeName()»'
+ *
+ «EXPAND model::commentHeader» */
+class «this.name»«formName.toLowerCase().toFirstUpper()»FormController extends Zend_Controller_Action
+{
+
+} // end of class 
+?>
+«ENDDEFINE»
+
+
+
+
+«DEFINE controller FOR Class»
+<?php
+/**
+ * Form-Controller for class '«this.codeName()»'
+ *
+ «EXPAND model::commentHeader» */
+class «this.name»FormController extends Zend_Controller_Action
+{
+
+	public function submitAction()
+	{
+		$post = $this->getRequest()->getPost();
+	
+    «FOREACH this.allOutgoingAssociations() AS assoc»
+    	«IF this.isNavigable(assoc)»
+					«IF this.isOutgoingMulti(assoc)»
+
+						if ( $post->has("add«this.outgoingName(assoc)»") )
+						{
+							$this->_add«this.outgoingName(assoc)»();
+						}
+				
+						if ( $post->has("create«this.outgoingName(assoc)»") )
+						{
+							$this->_create«this.outgoingName(assoc)»();
+						}
+				
+						if ( $post->has("remove«this.outgoingName(assoc)»") )
+						{
+							$id = $post->get("remove«this.outgoingName(assoc)»Id");
+							$this->_remove«this.outgoingName(assoc)»($id);
+						}
+				
+					«ELSE»
+				
+						if ( $post->has("set«this.outgoingName(assoc)»") )
+						{
+							$id = $post->get("set«this.outgoingName(assoc)»Id");
+							$this->_set«this.outgoingName(assoc)»($id);
+						}
+				
+					«ENDIF»
+        «ENDIF»
+    «ENDFOREACH»
+	}
+
+
+    «FOREACH this.allOutgoingAssociations() AS assoc»
+    	«IF this.isNavigable(assoc)»
+
+					«IF this.isOutgoingMulti(assoc)»
+
+						public function add«this.outgoingName(assoc)»Action()
+						{
+						}
+				
+						public function create«this.outgoingName(assoc)»Action()
+						{
+						}
+				
+						public function remove«this.outgoingName(assoc)»Action()
+						{
+							$id = $this->getParam("id");
+						}
+				
+					«ELSE»
+				
+						public function set«this.outgoingName(assoc)»Action()
+						{
+							$id = $this->getParam("id");
+						}
+				
+					«ENDIF»
+
+        «ENDIF»
+    «ENDFOREACH»
+} // end of class 
+?>
+«ENDDEFINE»
+
+
+
+
+«DEFINE baseForm FOR Class»
+<?php
+/**
+ * Form Base Class
+ *
+ «EXPAND model::commentHeader» */
+
+class «this.formName()»Base extends Zend_Form_SubForm
+{
+	protected $_subForm = false;
+
+	public function addButton($label, $type="submit") 
+	{
+        $this->addElement($type, $label, array(
+            'ignore'   => true,
+            'label'    => $label?$label:'Submit',
+        ));
+	}
+	
+    public function loadDefaultDecorators()
+    {
+    	if ($this->_subForm)
+    	{
+    		parent::loadDefaultDecorators();
+    	}
+    	else
+    	{
+    		Zend_Form::loadDefaultDecorators();
+    	}
+    }
+	
+	public function asSubForm()
+	{
+		$this->_subForm = true;
+		$this->clearDecorators();
+		$this->loadDefaultDecorators();
+		return $this;
+		/*
+		$sf = new Zend_Form_SubForm();
+		foreach ($this->getElements() as $elem)
+		{
+			$sf->addElement($elem);
+		}
+		foreach ($this->getSubForms() as $elem)
+		{
+			$sf->addSubForm($elem, $elem->getName());
+		}
+		return $sf;
+		*/
+	}
+
+	«REM»
+    public function XXXaddReferenceListElements($prefix, $entries, $mode, $referenceName)
+    {
+    	if ($entries)
+    	{
+    		$lastInnerForm = null;
+			foreach ($entries as $child)
+			{
+   				$innerForm = $child->getForm($mode)->asSubForm();
+				//$innerForm->addDecorator(new «this.formName()»DecoratorReferenceListElement($referenceName, $child->getId()));
+				$innerForm->addDecorator(new DecoratorMenuAction("Edit...", $referenceName, $child->getId()));
+   				$this->addSubForm( $innerForm, $prefix.$child->getId() );
+				//$this->_createWidgetElementEdit($referenceName, $child->getId());
+				//$this->_createWidgetElementRemove($referenceName, $child->getId());
+    			$lastInnerForm = $innerForm;
+			}
+		} 
+		else 
+		{
+			$lastInnerForm = new Zend_Form_SubForm(); // dummy for empty list 
+			$this->addSubForm( $lastInnerForm, $prefix );
+		}
+		$lastInnerForm->addDecorator(new «this.formName()»DecoratorReferenceList($referenceName));
+		//$this->_createWidgetElementAdd($referenceName);
+		//$this->_createWidgetElementCreate($referenceName);
+	}
+    
+    public function XXXaddReferenceSingleElement($prefix, $element, $mode, $referenceName)
+    {
+    	if ($element)
+    	{
+   			$innerForm = $element->getForm($mode)->asSubForm();
+   			$this->addSubForm( $innerForm, $prefix.$element->getId() );
+		}
+		else
+		{
+			$innerForm = new Zend_Form_SubForm(); // dummy for empty entry
+		}
+		$innerForm->addDecorator(new «this.formName()»DecoratorReferenceSingle($referenceName, ($element ? $element->getId() : 0)));
+		$this->addSubForm( $innerForm, $prefix );
+		//$this->_createWidgetElementSet($referenceName);
+		//$this->_createWidgetElementRemove($referenceName, ($element ? $element->getId() : 0) );
+	}
+	«ENDREM»
+	
+	
+	protected function _createWidgetElementSet($relationName)
+	{
+		// TODO select-box
+	
+		$this->addElement('submit', 'set'.$relationName, array(
+			'label'=>'Set...',
+		));
+	}
+    
+	protected function _createWidgetElementEdit($relationName, $id)
+	{
+		$this->addElement('submit', 'edit'.$relationName.$id, array(
+			'label'=>'Edit...',
+		));
+	}
+    
+	protected function _createWidgetElementAdd($relationName)
+	{
+		// TODO select-list
+		
+		$this->addElement('submit', 'add'.$relationName, array(
+			'label'=>'Add...',
+		));
+	}
+    
+	protected function _createWidgetElementCreate($relationName)
+	{
+		$this->addElement('submit', 'create'.$relationName, array(
+			'label'=>'Create...',
+		));
+	}
+    
+	protected function _createWidgetElementRemove($relationName, $id)
+	{
+		// TODO select-list
+		
+		$this->addElement('submit', 'remove'.$relationName, array(
+			'label'=>'Remove',
+		));
+	}
+    
+} // end of class 
+
+class «this.formName()»DecoratorReadOnly extends Zend_Form_Decorator_Abstract 
+{
+	protected $_classname;
+	protected $_mode;
+	
+	public function setClassname($classname)
+	{
+		$this->_classname = $classname;
+	}
+
+	public function setMode($mode)
+	{
+		$this->_mode = $mode;
+	}
+
+	public function render($content)
+	{
+		return $content . "<div class='formelement ".$this->_classname." ".$this->getElement()->getName()." ".$this->_mode."'>".$this->getElement()->getValue()."</div>";
+	}
+
+} // end of class 
+
+class «this.formName()»DecoratorReferenceAbstract extends Zend_Form_Decorator_Abstract 
+{
+	//protected $_controllerName;
+	protected $_referenceName;
+	protected $_elementId;
+	protected $_editUrl;
+	
+	public function «this.formName()»DecoratorReferenceAbstract(/*$controllerName,*/ $referenceName, $elementId = 0, $editUrl=null)
+	{
+		//parent::__construct();
+		//$this->_controllerName = $controllerName;
+		$this->_referenceName = $referenceName;
+		$this->_elementId = $elementId;
+		$this->_editUrl = $editUrl;
+	}
+	
+	/*public function setControllerName($name)
+	{
+		$this->_controllerName = $name;
+	}
+
+	public function setReferenceName($name)
+	{
+		$this->_referenceName = $name;
+	}*/
+
+	public function render($content)
+	{
+		die("abstract");
+	}
+
+} // end of class 
+
+
+class «this.formName()»DecoratorReferenceListElement extends «this.formName()»DecoratorReferenceAbstract 
+{
+	public function render($content)
+	{
+		return $content . "<div class=''>" // TODO
+		       ."<a href='" . $this->getElement()->getView()->url( array('controller' => '«this.name.toFirstLower()»Form', 'action' => 'edit'.$this->_referenceName, 'id' => $this->_elementId ), 'default', false)."'>Edit...</a>"
+		       ."&nbsp;" 
+		       ."<a href='" . $this->getElement()->getView()->url( array('controller' => '«this.name.toFirstLower()»Form', 'action' => 'remove'.$this->_referenceName, 'id' => $this->_elementId ), 'default', false)."'>Remove...</a>" 
+		       ."</div>";
+	}
+
+} // end of class 
+
+class «this.formName()»DecoratorReferenceList extends «this.formName()»DecoratorReferenceAbstract 
+{
+	public function render($content)
+	{	
+		return $content . "<div class=''>" // TODO
+		       ."<a href='" . $this->getElement()->getView()->url( array('controller' => '«this.name.toFirstLower()»Form', 'action' => 'addTo'.$this->_referenceName), 'default', false)."'>Add...</a>" 
+		       ."&nbsp;" 
+		       ."<a href='" . $this->getElement()->getView()->url( array('controller' => '«this.name.toFirstLower()»Form', 'action' => 'createTo'.$this->_referenceName), 'default', false)."'>Create...</a>" 
+		       ."</div>";
+	}
+
+} // end of class 
+
+class «this.formName()»DecoratorReferenceSingle extends «this.formName()»DecoratorReferenceAbstract 
+{
+	public function render($content)
+	{
+		return $content . "<div class=''>" // TODO
+		       ."<a href='" . $this->getElement()->getView()->url( array('controller' => '«this.name.toFirstLower()»Form', 'action' => 'set'.$this->_referenceName), 'default', false)."'>Set...</a>" 
+		       ."&nbsp;" 
+		       ."<a href='" . $this->getElement()->getView()->url( array('controller' => '«this.name.toFirstLower()»Form', 'action' => 'remove'.$this->_referenceName, 'id' => $this->_elementId ), 'default', false)."'>Remove</a>" 
+		       ."</div>";
+	}
+
+} // end of class 
+
+?>
+«ENDDEFINE»

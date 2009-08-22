@@ -1,0 +1,150 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«IMPORT zend»
+
+«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION common»
+«EXTENSION zend::commonZend»
+
+«REM»
+------------------------------------------------------------------------------
+--- Controller
+------------------------------------------------------------------------------
+«ENDREM»
+
+«DEFINE controller FOR Controller»<?php
+class «this.name» extends Zend_Controller_Action
+{
+	«EXPAND oop::operations»
+
+	«EXPAND actions»
+}
+«ENDDEFINE»
+
+«DEFINE actions FOR Controller»«FOREACH this.actions AS action»
+/**
+ * Action '«action.name»'
+ */
+function «action.name.without("Action").toLowerCase()»Action()
+{
+«FOREACH action.operation.parameters AS param»
+$«param.name» = $this->_getParam("«param.name»"«IF param.defaultValue.is()», "«param.defaultValue»"«ENDIF»);
+«ENDFOREACH»
+
+«REM»«EXPAND authentication FOR action»«ENDREM»
+«REM»«EXPAND model::parametersFromHttp FOR action.operation»«ENDREM»
+«action.operation.code.prepareCode()»
+	if (false) ;
+«FOREACH action.outgoingFlows() AS flow»
+	elseif («flow.condition()») // flow «flow.name»
+	{
+		//$this->«flow.target.name.without("Action").toLowerCase()»Action(«FOREACH action.operation.parameters AS param SEPARATOR ", "»$«param.name»«ENDFOREACH»);
+		$this->_forward("«flow.target.name.without("Action")»");
+	}
+«ENDFOREACH»
+	$this->view->params = $this->_getAllParams();
+}
+«ENDFOREACH»
+«ENDDEFINE»
+
+«REM» called from model.xpt «ENDREM»
+«DEFINE viewPart FOR View» 
+<!--
+ View part '«this.name»'
+ -->
+<?php
+
+global $_view;
+$_view = $this;
+
+«FOREACH this.operation.parameters AS param»
+$«param.name» = $this->params["«param.name»"];
+«IF param.defaultValue.is()»
+if (!$«param.name»)
+{
+	$«param.name» = "«param.defaultValue»";
+}
+«ENDIF»
+«ENDFOREACH»
+
+«FOREACH this.outgoingFlows() AS flow»
+	«IF flow.target.isAction()»
+	
+		function link«flow.target.name.without("Action").toFirstUpper()»($content)
+		{
+			global $_view;
+			return "<a href='".$_view->«((Action)flow.target).urlCode()»."'>".( $content ? $content : «flow.target.labelCode()» )."</a>";
+		}
+		
+		function button«flow.target.name.without("Action").toFirstUpper()»($label = null, $params = array())
+		{
+			global $_view;
+			if (!$label)
+			{
+				$label = «flow.target.labelCode().without(" Action")»;
+			}
+			$b = new Zend_Form_Element_Button(array(
+				"name" => "button«flow.target.name.toFirstUpper()»",
+				"value" => $label,
+				"label" => $label,
+				"type" => "button",
+				"onclick" => "window.location='".$_view->«((Action)flow.target).urlCode("$params")»."';"
+			));
+			//$b->setLabel($label);
+			return $b; 
+		}
+		
+		function formAction«flow.target.name.without("Action").toFirstUpper()»($form, $submitButtonLabel = null)
+		{
+			global $_view;
+			$form->setAction($_view->«((Action)flow.target).urlCode()»);
+			if ( $submitButtonLabel )
+			{
+				$form->addButton($submitButtonLabel, "submit"); // addButton(..) provided by form class XxxBase
+			}
+			
+		}
+		
+	«ENDIF»
+«ENDFOREACH»
+
+?>
+
+«this.operation.code»
+«ENDDEFINE»
+
+«REM» called from model.xpt «ENDREM»
+«DEFINE view FOR Action»<?php
+/*
+ View for Action '«this.name»'
+ */
+
+if (false) ;
+
+«FOREACH this.outgoingTransitions() AS trans»
+«IF trans.condition.is()»
+elseif («trans.condition()»)
+{
+	include(dirname(__FILE__)."/parts/«trans.target.name».phtml");
+}
+«ENDIF»
+«ENDFOREACH»
+
+«FOREACH this.outgoingTransitions() AS trans»
+«IF ! trans.condition.is()» «REM» at most 1 «ENDREM»
+else
+{
+	include(dirname(__FILE__)."/parts/«trans.target.name».phtml");
+}
+«ENDIF»
+«ENDFOREACH»
+
+«ENDDEFINE»
+

@@ -1,0 +1,19 @@
+import wave;
+
+extension common;
+
+context Controller
+	ERROR "Controller name '"+this.name+"' must end with ...Controller." :
+	this.name.endsWith("Controller");
+	
+context Action
+	ERROR "Action name '"+this.name+"' must end with '...Action'." :
+	this.name.endsWith("Action");
+
+context Action
+	ERROR "Action '"+this.name+"' must be connected to one or more Views via Transitions, or must be connected to one or more other Actions via Flows" :
+	this.outgoingTransitions().has() || this.outgoingFlows().has();
+
+context View
+	ERROR "View name '"+this.name+"' must end with '...View'." :
+	this.name.endsWith("View");

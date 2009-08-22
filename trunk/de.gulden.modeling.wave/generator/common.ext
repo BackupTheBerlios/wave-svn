@@ -1,0 +1,369 @@
+/*
+ * WAVE - Web Application Visual Environment
+ * A Graphical Modeling Framework (GMF) Plugin for Eclipse
+ * Copyright Jens Gulden, 2009, mail@jensgulden.de
+ * Licensed under the GNU General Public License (GPL)
+ */
+import wave;
+
+extension org::openarchitectureware::util::stdlib::globalvar;
+
+Model model( ModelMember this ) :
+	this.isModel() ? this : ((ModelMember)this.eContainer).model();
+
+// abstract, to be implemented by target language extension
+String sourceFileName( ModelMember this ) :
+	null;
+
+// abstract, to be implemented by target language extension
+String sourceBaseFolder( ModelMember this ):
+	null;
+
+// abstract/extendable, to be extended by target language extension
+String codeName( Classifier this ) : this.name; 
+
+String langstringsPath( Model this ) : 
+				this.sourceBaseFolder() + "/lang/langstrings.inc.php";
+
+int countArrayDimensions( String this ) : JAVA de.gulden.modeling.wave.util.WaveUtil.countArrayDimensions(java.lang.String);
+
+boolean isArrayType( String this ) : this.countArrayDimensions() > 0;
+
+String typeCastFunction( String this ) : (this == "integer") ? "intval" : (
+								 (this == "boolean") ? "boolval" : ( 
+								 (this == "float") ? "floatval" : ( 
+								 (this == "double") ? "douleval" : 
+								 "" ) ) ); 
+
+String prepareCode( String this ) : JAVA de.gulden.modeling.wave.util.WaveUtil.prepareCode(java.lang.String);
+
+String prepareCode( Operation this ) : JAVA de.gulden.modeling.wave.util.WaveUtil.prepareCode(de.gulden.modeling.wave.Operation);
+
+String prepareCode( Void this ) : "";
+
+String translateType( String this ) : ((this == "Text") ? "String" : this);
+
+Package package( ModelMember this ) :
+				(Package)this.eContainer;
+
+String qualifiedName( Classifier this ) : (this.package().isModel()) ? this.name : (this.package().qualifiedName() + "." +this.name); 
+
+String qualifiedName( Package this ) : (this.package().isModel()) ? this.name : (this.package().qualifiedName() + "." +this.name); 
+
+String qualifiedName( Void this ) : ""; 
+
+String qualify( Classifier this, Classifier q ) : 
+				(this.package() == q.package()) ? q.name : q.qualifiedName();
+
+String path( Package this ) : this.is() ? this.qualifiedName().replaceAll("[.]", "/") : "";
+
+String getter( String this ) : "get"+this.toFirstUpper();
+
+String getter( Attribute this ) : this.name.getter();
+
+String setter( String this ) : "set"+this.toFirstUpper();
+
+String setter( Attribute this ) : this.name.setter();
+
+boolean isPrimitiveType( String this ) : ((this == "integer") || (this == "string") || (this == "boolean") || (this == "text") || (this == "float") || (this == "double"));
+
+boolean isIntegerType( String this ) : ((this == "integer") || (this == "boolean"));
+
+boolean isFloatType( String this ) : ((this == "float") || (this == "double"));
+
+boolean is( String this ) : 
+				((this != null) && ( this != "" ));
+
+boolean is( Object this ) : 
+				((this != null) && ( this.toString().is() ));
+
+boolean has( Collection this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.has(java.util.Collection);
+
+String concat(String this, String delim, String other) : 
+				(! this.is()) ? other : ( (! other.is()) ? this : ( this + delim + other ) );
+
+String without(String this, String remove) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.without(java.lang.String,java.lang.String);
+
+//String ownerPackageName( ModelMember this ) : ( this.ownerPackage() != null ) ? this.ownerPackage().name : "";
+
+String visibility( OOPClassifier this ) : 
+				this.visibility.toString().toLowerCase(); // TODO cleaner
+				 
+String visibility( ClassifierMember this ) : 
+				this.visibility.toString().toLowerCase();
+
+//String package( ModelMember this ) :
+//				((Model)this.eContainer).basePackage.concat(".", this.ownerPackageName());				
+
+cached Collection[Classifier] extends( Classifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getExtended(de.gulden.modeling.wave.Classifier);
+
+cached Collection[Classifier] implements( Classifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getImplemented(de.gulden.modeling.wave.Classifier);
+
+cached Collection[AssociationRelationship] associations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[Actor] associatedActors( Usecase this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAssociatiatedActors(de.gulden.modeling.wave.Usecase);
+
+cached Collection[ModelMember] depends( ModelMember this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getDepends(de.gulden.modeling.wave.ModelMember);
+
+cached Collection[Attribute] allAttributes( Classifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAllAttributes(de.gulden.modeling.wave.Classifier);
+
+cached Collection[AssociationRelationship] allAssociations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAllAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[AssociationRelationship] allBidirectionalNtoMAssociations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getBidirectionalNtoMAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[AssociationRelationship] allOutgoingSinglevalAssociations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAllOutgoingSinglevalAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[AssociationRelationship] allIngoingMultivalAssociations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAllIngoingMultivalAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[AssociationRelationship] allOutgoingMultivalAssociations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAllOutgoingMultivalAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[AssociationRelationship] allOutgoingAssociations( OOPClassifier this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getAllOutgoingAssociations(de.gulden.modeling.wave.OOPClassifier);
+
+cached Collection[ActionToViewTransition] outgoingTransitions( Action this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getOutgoingTransitions(de.gulden.modeling.wave.Action);
+
+cached Collection[ViewTransition] outgoingFlows( ControllerMemberExecutable this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getOutgoingFlows(de.gulden.modeling.wave.ControllerMemberExecutable);
+
+//cached Collection[ModelMember] packageMembers( Package this ) : 
+//				JAVA de.gulden.modeling.wave.util.WaveUtil.getPackageMembers(de.gulden.modeling.wave.Package);
+
+cached Collection[StyleSheet] styleSheets( Model this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getStyleSheets(de.gulden.modeling.wave.Model);
+
+cached Collection[UsecaseSubsystem] usecaseSubsystems( Model this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getUsecaseSubsystems(de.gulden.modeling.wave.Model);
+
+Collection[Enumeration] enumerations( Model this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getEnumerations(de.gulden.modeling.wave.Model);
+
+cached Collection[ViewTransition] incomingFlows( ControllerMember this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getIncomingFlows(de.gulden.modeling.wave.ControllerMember);
+
+boolean contains( String this, String pattern ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.contains(java.lang.String, java.lang.String);
+
+boolean isNavigable( OOPClassifier this, AssociationRelationship assoc ) : 
+				assoc.isBidirectional() 
+				|| ( this.isOppositeEndA(assoc) && assoc.direction.toString() == "<--") // TODO cleaner
+				|| ( this.isOppositeEndB(assoc) && assoc.direction.toString() == "-->");
+
+boolean isOppositeEndA( OOPClassifier this, AssociationRelationship assoc ) : 
+				(assoc.b == this) ? true : false;
+
+boolean isOppositeEndB( OOPClassifier this, AssociationRelationship assoc ) : 
+				(assoc.a == this) ? true : false;
+
+OOPClassifier opposite( AssociationRelationship this, OOPClassifier cls ) :
+				 cls.isOppositeEndA(this) ? this.a : this.b;
+
+boolean isBidirectional( AssociationRelationship assoc ) : 
+				(assoc.direction.toString() == "<-->"); // TODO cleaner
+
+boolean isBidirectionalNToM( AssociationRelationship this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.isBidirectionalNToM(de.gulden.modeling.wave.AssociationRelationship);
+				//(this.isBidirectional() && this.multiplicityA.toString().contains("*") && this.multiplicityB.toString().contains("*")); // TODO cleaner 
+
+cached String outgoingName( AssociationRelationship assoc, OOPClassifier this ) : 
+				(assoc.name + 
+				( ( (assoc.name == null) || (assoc.name == "") || (assoc.isBidirectional() && ( this == assoc.b ) ) )
+					? ( ( ( this.isOppositeEndA(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
+					: "" 
+				)).toFirstLower(); 
+
+String outgoingName( OOPClassifier this, AssociationRelationship assoc ) : assoc.outgoingName(this); // legacy
+ 
+cached String ingoingName( OOPClassifier this, AssociationRelationship assoc ) : 
+				(assoc.name + 
+				( ( (assoc.name == null) || (assoc.name == "") || assoc.isBidirectional() )
+					? ( ( ( this.isOppositeEndB(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
+					: "" 
+				)).toFirstLower(); 
+
+OOPClassifier outgoingType( OOPClassifier this, AssociationRelationship assoc ) : 
+				this.isOppositeEndA(assoc) ? assoc.a : assoc.b;
+
+String outgoingMultiplicity( OOPClassifier this, AssociationRelationship assoc ) : 
+				(this.isOppositeEndA(assoc) ? assoc.multiplicityA : assoc.multiplicityB).toString();
+
+boolean isOutgoingMulti( OOPClassifier this, AssociationRelationship assoc ) : 
+				this.outgoingMultiplicity(assoc).contains("*"); // TODO cleaner
+
+String ingoingMultiplicity( OOPClassifier this, AssociationRelationship assoc ) : 
+				(this.isOppositeEndA(assoc) ? assoc.multiplicityB : assoc.multiplicityA).toString();
+
+boolean isIngoingMulti( OOPClassifier this, AssociationRelationship assoc ) : 
+				this.ingoingMultiplicity(assoc).contains("*"); // TODO cleaner
+
+String taggedValue( ModelMember this, String key ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getTaggedValue(de.gulden.modeling.wave.ModelMember, java.lang.String);
+
+Collection[String] taggedValues( ModelMember this, String key ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getTaggedValues(de.gulden.modeling.wave.ModelMember, java.lang.String);
+
+String setTaggedValue( ModelMember this, String key, String value ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.setTaggedValue(de.gulden.modeling.wave.ModelMember, java.lang.String, java.lang.String);
+
+boolean definesOperation( Classifier this, String name ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.definesOperation(de.gulden.modeling.wave.Classifier, java.lang.String);
+
+String removePluralS( String this ) : 
+				//this; // deactivated 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.removePluralS(java.lang.String);
+
+boolean isPersistent( AssociationRelationship this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.isPersistent(de.gulden.modeling.wave.AssociationRelationship);
+
+Include getLayoutTemplateInclude( Controller this) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getLayoutTemplateInclude(de.gulden.modeling.wave.Controller);
+
+String layoutTemplate( Controller this ) : 
+				/*this.relUrl() + */( (this.getLayoutTemplateInclude() != null) ? this.getLayoutTemplateInclude().urlPath() : getGlobalVar("layoutTemplate") );
+
+String urlPath( Include this ) :
+				this.urlPath.is() ? this.urlPath : ("/"+this.sourceFileName());
+
+String relUrl( Classifier this ) :
+				getGlobalVar("basePackage").toString().relUrl() + ((this.package() != null) ? (getGlobalVar("basePackage").toString().relUrl().is() ? "/" : "")+this.package().name.relUrl() : "");
+
+String relUrl( String this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.relUrl(java.lang.String);
+				
+String relUrl( Void this ) : "";
+				
+String orNull( String this ) :
+				this.is() ? this : "null";
+				
+String orNull( Object this ) :
+				(this != null) ? this : "null";
+				
+String ifEmpty( Object this, String alt ) :
+				this.is() ? this : alt;
+				
+String noNull( Object this ) :
+				this.ifEmpty("");
+				
+//String label( EnumerationLiteral this ) :
+//				this.label.is() ? this.label : this.name;
+
+String labelCode( ModelMember this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.labelCode(de.gulden.modeling.wave.ModelMember);
+				
+String descriptionCode( ModelMember this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.descriptionCode(de.gulden.modeling.wave.ModelMember);
+				
+String guessName( ModelMember this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.guessName(java.lang.Object);
+				
+Object guessValue( Object this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.guessValue(java.lang.Object);
+
+int labelIndex( Label this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.labelIndex(de.gulden.modeling.wave.Label);
+				
+String condition( Transition this ) :
+				this.condition.is() ? this.condition : "true";
+
+boolean isEnumerationType( String this ) : ((Collection)getGlobalVar("allEnumerations")).contains(this);
+
+List join( List this, List other ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.join(java.util.List,java.util.List);
+
+Collection sort( List this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.sort(java.util.List);
+
+boolean hasHint( ModelMember this, String hintTag, String hintValue ) :
+				this.taggedValues(hintTag).contains(hintValue);
+				
+//boolean hasTypeHint( ModelMember this, String hintValue ) :
+//				this.hasHint("typeHint", hintValue);
+				
+//boolean hasWidgetHint( ModelMember this, String hintValue ) :
+//				this.hasHint("widgetHint", hintValue);
+
+List enumConstants( String this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.listEnumConstants(java.lang.String);
+
+boolean isModel( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.ModelImpl";
+
+boolean isController( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.ControllerImpl";
+
+boolean isOOPClassifier( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.OOPClassifierImpl";
+
+boolean isEnumeration( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.EnumerationImpl";
+
+boolean isClass( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.ClassImpl";
+
+boolean isInterface( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.InterfaceImpl";
+
+boolean isAction( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.ActionImpl";
+
+boolean isView( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.ViewImpl";
+
+boolean isPackage( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.PackageImpl";
+
+String metaclass( ModelMember this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.getClassname(java.lang.Object);
+				
+String flowName( ViewTransition this ) :
+				(this.name.is() ? this.name : ("to"+this.target.name.toFirstUpper()));
+				//(this.source.name.toFirstLower() + (this.name.is() ? this.name.toFirstUpper() : "To"+this.target.name.toFirstUpper()));
+				
+String flowLabelCode( ViewTransition this ) :
+				(( ! this.name.is() ) && ( this.label == null )) ? this.target.labelCode() : this.labelCode();
+				
+View defaultView( Controller this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.defaultView(de.gulden.modeling.wave.Controller);
+
+boolean useSecurity( Model this ) : this.usecaseSubsystems().has();
+
+String untilFirstBlank( String this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.untilFirstBlank(java.lang.String);
+				
+String camelCaseToDashSeperated( String this ) :				
+				JAVA de.gulden.modeling.wave.util.WaveUtil.camelCaseToDashSeperated(java.lang.String);
+ 				
+boolean hasView ( Controller this, String name ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.hasView(de.gulden.modeling.wave.Controller, java.lang.String);
+				
+cached String signatureID( Operation this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.buildSignatureID(de.gulden.modeling.wave.Operation);
+
+boolean parseCodeBlocks( String this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.parseCodeBlocks(java.lang.String);
+
+boolean roundtripCode( Operation this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.roundtripCode(de.gulden.modeling.wave.Operation);
+
+boolean roundtripInclude( Include this, String filename ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.roundtripInclude(de.gulden.modeling.wave.Include,java.lang.String);
+
+boolean log( String this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.log(java.lang.String);
+
+boolean fileExists( String this ) :
+				JAVA de.gulden.modeling.wave.util.WaveUtil.fileExists(java.lang.String);
+  

@@ -1,0 +1,128 @@
+/*
+ * WAVE - Web Application Visual Environment
+ * A Graphical Modeling Framework (GMF) Plugin for Eclipse
+ * Copyright Jens Gulden, 2009, mail@jensgulden.de
+ * Licensed under the GNU General Public License (GPL)
+ */
+import wave;
+
+extension common;
+
+String sourceFileSuffix( ModelMember this ) : "php";
+
+//@Overwrite
+String sourceFileName( Controller this ) :
+	this.sourceBaseFolder() + "/controllers/" + this.name + ".php";
+	
+//@Overwrite
+String sourceFileName( OOPClassifier this ) :
+	this.sourceBaseFolder() + "/packages/" + this.package().path().concat("/", "models/") + this.name + ".php";
+	
+//@Overwrite
+String sourceFileName( Enumeration this ) :
+	this.sourceBaseFolder() + "/packages/" + this.package().path().concat("/", "models/") + this.name + ".php";
+	
+//@Overwrite
+String sourceFileName( View this ) :
+	this.sourceBaseFolder() + "/views/scripts/" + ((Controller)this.eContainer).name.toLowerCase() + "/" + this.name + ".php";
+
+//@Overwrite
+String sourceFileName( Include this ) :
+	this.sourceBaseFolder() + "/packages/" + this.package().path().concat("/", this.name);
+	
+//@Overwrite
+String sourceFileName( StyleSheet this ) :
+	this.model().name + "/public/styles/" + this.name;
+	
+
+//@Overwrite
+String sourceBaseFolder( ModelMember this ) :
+	this.model().name + "/application";
+
+
+//@Overwrite
+String codeName( OOPClassifier this ) : this.codeNameBase()+this.name; 
+
+String codeNameBase( OOPClassifier this ) : this.package().name.toFirstUpper()+"_Model_"; 
+
+String dbtableName( Class this ) : this.codeNameBase()+"DbTable_"+this.name;
+
+String mapperName( OOPClassifier this ) : this.codeNameBase()+"DbTable_"+this.name+"Mapper";
+
+String formName( Class this ) : this.formBaseName()+this.name; 
+
+String formBaseName( Class this ) : this.package().name.toFirstUpper()+"_Form_"; 
+
+Widget getWidget( Class this, Attribute attr, String mode ) :
+	//mode.is() ? ( this.findWidget(mode).is() ? this.findWidget(mode) : this.defaultWidget() ) : ( this.widgets.has() ? this.widgets.first() : this.defaultWidget());  
+	mode.is() ? ( this.findWidget(attr, mode).is() ? this.findWidget(attr, mode) : attr.defaultWidget(mode) ) : attr.defaultWidget(mode);  
+
+create WidgetAttribute defaultWidget( Attribute attr, String mode ) :
+	this.setWidgetType(EnumWidgetType::DEFAULT) ->  
+	(mode.toUpperCase() == "VIEW" || mode.toUpperCase()=="LIST") ? this.setReadOnly(true) : this;
+
+Widget findWidget( Class this, Attribute attr, String mode ) :
+	JAVA de.gulden.modeling.wave.util.WaveUtil.findWidget(de.gulden.modeling.wave.Class,de.gulden.modeling.wave.Attribute,java.lang.String);
+	
+
+String widgetTypeToZendFormElementType(Widget this) :
+	(
+		(this.widgetType == EnumWidgetType::SELECT) ? (
+			this.multiChoice ? "multiselect"
+							 : "select"
+		) : 
+		(
+			(this.widgetType == EnumWidgetType::CHECKBOX) ? (
+				this.multiChoice ? "multiCheckbox"
+								 : "checkbox"
+			) :
+			(
+				(this.widgetType == EnumWidgetType::RADIOBUTTON) ? (
+					"radio"
+				) :
+				( 
+					(this.widgetType == EnumWidgetType::TEXT) ? (
+						this.multiLine ? "textarea"
+									   : "text"
+					) : 
+					this.widgetType.toString().toLowerCase()
+				)
+			)
+		)
+	);
+		
+String toWidgetType(Widget this, String type) :
+	((!this.widgetType.is()) || (this.widgetType==EnumWidgetType::DEFAULT)) 
+	? this.defaultWidgetType(type) 
+	: this.widgetTypeToZendFormElementType();
+	
+String defaultWidgetType(Widget this, String type) : 
+	(type == "string") ? (this.multiLine ? "textarea" : "text")
+  : ((type == "boolean") ? "checkbox"
+  : ((type == "int") ? "text"
+  : ((type.isEnumerationType()) ? "select" 
+  : "text")));
+  
+Widget getWidget( AssociationRelationship this, Class cls, String mode ) :
+	mode.is() ? 
+	( this.findAssocWidget(cls, mode).is() ? 
+		  this.findAssocWidget(cls, mode) 
+		: this.defaultAssocWidget(cls, mode) 
+	) 
+	: this.defaultAssocWidget(cls, mode);  
+
+create WidgetAssociation defaultAssocWidget( AssociationRelationship assoc, Class cls, String mode ) :
+	//this.setResolveDisplayMode("list") ->
+	(mode.toUpperCase() == "VIEW" || mode.toUpperCase()=="LIST") ? this.setReadOnly(true) : this;
+
+Widget findAssocWidget( AssociationRelationship this, Class cls, String mode ) :
+	JAVA de.gulden.modeling.wave.util.WaveUtil.findAssocWidget(de.gulden.modeling.wave.AssociationRelationship,de.gulden.modeling.wave.Class,java.lang.String);
+	
+String urlCode( Action this ) :
+	urlCode(this, "array()");
+				
+String urlCode( Action this, String paramsCode ) :
+	"url( array_merge( array('controller' => '"+((Controller)this.eContainer).name.without("Controller").toLowerCase()+"', 'action' => '"+this.name.without("Action").toFirstLower()+"'), "+paramsCode+" ) )";
+				
+
+   

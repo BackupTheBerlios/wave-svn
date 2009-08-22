@@ -1,0 +1,7 @@
+# Tracing options for the de.gulden.modeling.wave plug-in
+
+# Common issues
+de.gulden.modeling.wave/debug=false
+
+# Visual IDs
+de.gulden.modeling.wave/debug/visualID=false
