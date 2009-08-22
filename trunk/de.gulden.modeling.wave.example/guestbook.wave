@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wave="http://jensgulden.de/modeling/wave" name="Guestbook" sourceFolder="/workspace-php/de.gulden.modeling.wave.example/htdocs">
+  <members xsi:type="wave:Controller" name="GuestbookController">
+    <actions name="adminGuestbookAction">
+      <operation name="action_adminGuestbookAction" returnType="String" code="&lt;?php&#xA;{&#xD;&#xA;&#x9;$post = $this->getRequest()->getPost();&#xD;&#xA;    $form = Guestbook_Model_Guestbook::createForm(&quot;EDIT&quot;);&#xD;&#xA;&#x9;if ( $post )&#xD;&#xA;&#x9;{&#xD;&#xA;        $q = Guestbook_Model_Guestbook::parseForm($id, $form, $post);&#xD;&#xA;&#x9;&#x9;if ( $q )&#xD;&#xA;    &#x9;{&#xD;&#xA;&#x9;        $q->save(true);&#xD;&#xA;    &#x9;} &#xD;&#xA;    &#x9;else &#xD;&#xA;    &#x9;{&#xD;&#xA;    &#x9;&#x9;//die(&quot;error parsing form&quot;);&#xD;&#xA;    &#x9;}&#xD;&#xA;&#x9;} &#xD;&#xA;&#x9;else // not coming from submit (initial invokation from user), get object from db&#xD;&#xA;&#x9;{&#xD;&#xA;&#x9;&#x9;if ($post[&quot;adminPassword&quot;])&#xD;&#xA;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;$password = $post[&quot;adminPassword&quot;];&#xD;&#xA;&#x9;&#x9;&#x9;$q = Guestbook_Model_Guestbook::find(&quot;adminPassword=PASSWORD('&quot;+$password+&quot;')&quot;);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;if ($q)&#xD;&#xA;&#x9;&#x9;{&#xD;&#xA;&#x9;&#x9;&#x9;$q->populateForm($form);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;$this->view->form = $form;&#xD;&#xA;&#xD;&#xA;&#x9;//echo(&quot;&lt;h2>EDIT:&quot;.$q->getId().&quot;&lt;/h2>&quot;);&#xD;&#xA;}&#xA;">
+        <parameters name="id" visibility="PROTECTED" type="int"/>
+      </operation>
+    </actions>
+    <actions name="showGuestbookAction">
+      <operation name="action_showGuestbookAction" returnType="String">
+        <parameters name="id" visibility="PROTECTED" type="int"/>
+      </operation>
+    </actions>
+    <actions name="signGuestbookAction">
+      <operation name="action_signGuestbookAction" returnType="String">
+        <parameters name="id" visibility="PROTECTED" type="int"/>
+      </operation>
+    </actions>
+    <actions name="removeEntryAction">
+      <operation name="action_removeEntryAction" returnType="String">
+        <parameters name="id" visibility="PROTECTED" type="int"/>
+        <parameters name="parent" visibility="PROTECTED" type="int"/>
+      </operation>
+    </actions>
+    <actions name="indexAction">
+      <operation/>
+    </actions>
+    <views name="adminGuestbookView">
+      <operation/>
+    </views>
+    <views name="showGuestbookView">
+      <operation/>
+    </views>
+    <views name="editGuestbookEntryView">
+      <operation/>
+    </views>
+    <transitionsActionToView target="//@members.0/@views.0" source="//@members.0/@actions.0"/>
+    <transitionsActionToView target="//@members.0/@views.0" source="//@members.0/@actions.3"/>
+    <transitionsActionToView target="//@members.0/@views.1" source="//@members.0/@actions.1"/>
+    <transitionsActionToView target="//@members.0/@views.2" source="//@members.0/@actions.2"/>
+    <transitionsActionToView condition="$done" target="//@members.0/@views.1" source="//@members.0/@actions.2"/>
+    <transitionsView source="//@members.0/@actions.4" target="//@members.0/@actions.0"/>
+    <transitionsView source="//@members.0/@views.0" target="//@members.0/@actions.0"/>
+  </members>
+  <members xsi:type="wave:Package" name="guestbook">
+    <members xsi:type="wave:Class" name="Guestbook">
+      <attributes name="adminPassword" visibility="PROTECTED" type="password"/>
+      <attributes name="welcomeText" visibility="PROTECTED"/>
+    </members>
+    <members xsi:type="wave:AssociationRelationship" name="entries" multiplicityA="1" multiplicityB="*" a="//@members.1/@members.0" b="//@members.1/@members.2"/>
+    <members xsi:type="wave:Class" name="GuestbookEntry">
+      <attributes name="signerName" visibility="PROTECTED"/>
+      <attributes name="when" visibility="PROTECTED" type="datetime"/>
+      <attributes name="text" visibility="PROTECTED"/>
+    </members>
+  </members>
+</wave:Model>
