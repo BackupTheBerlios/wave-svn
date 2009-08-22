@@ -29,8 +29,8 @@ Currently, you may download and run WAVE via SVN:
 		Install the <b>openArchitectureWare</b> plugins from <a href='http://www.openarchitectureware.org/staticpages/index.php/download?menu=Download' target='_blank'>here</a>. 
 	</li>
 	<li>
-		Install the <b>PHP Development Tools (PDT)</b> plugins as described <a href='http://wiki.eclipse.org/PDT/Installation#Eclipse_3.4_.2F_Ganymede_.2F_PDT_1.0.5.2B' target='_blank'>here</a>. 
-		Make sure to follow the instructions for the Ganymede 3.4 release, according to the initially chosen Modeling Tools distribution package.
+		Install the <b>PHP Development Tools (PDT)</b> plugins from their update site as described <a href='http://wiki.eclipse.org/PDT/Installation#From_Update_Site' target='_blank'>here</a>. 
+		Make sure to follow the instructions for the Ganymede 3.4 release, according to the initially chosen Modeling Tools distribution package. Pick the PDT 2.0.1 version (rather than 2.1.1) to make it work.
 	</li>
 	<li>
 		Compilation errors should all disappear now. If not, invoke "Project/Clean.../Clean all projects", or restart Eclipse with the "-clean" option. (Bugs have been reported that the PDT component requires regular re-initialization using this option.)   
