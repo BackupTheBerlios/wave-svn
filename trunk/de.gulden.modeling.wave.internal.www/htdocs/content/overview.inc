@@ -10,11 +10,8 @@ Raise your level of abstraction:
 </p>
 
 <div>
-<!--<img class='picleft' src='img/screenshot_wave_01a.png'/>
-<img class='picdiv' src='img/arrow1.png'/>
-<img class='picright' src='img/screenshot_wave_02a.png'/>-->
 <center>
-<img class='pic' src='img/wave-overview.png'/>
+<img class='pic' src='img/screenshot_wave_03a.png'/>
 </center>
 </div>
 

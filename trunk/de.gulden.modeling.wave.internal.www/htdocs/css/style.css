@@ -140,9 +140,13 @@ div.doc {
 }
 
 div.downloadbox {
-	width: 200px;
+	width: 250px;
 	background: #ffffef;
 	float: float;
 	border: 2px ridge #bbbbff;
 	padding: 10px;
+}
+
+img.pic {
+	margin-bottom: 1.5em;
 }
