@@ -14,8 +14,15 @@ Currently, you may download and run WAVE via SVN:
 		<a href='http://subclipse.tigris.org/servlets/ProjectProcess?pageID=p4wYuA' target='_blank'>here</a>.
 	</li>
 	<li>
-		Restart Eclipse, open the SVN Repository Exploring perspective, add the repository svn://svn.berlios.de/wave/ and <b>check out
-		trunk/de.gulden.modeling.wave</b> as a project into the workspace.
+		Restart Eclipse, open the SVN Repository Exploring perspective, add the <b>repository</b> 
+		<pre>
+		svn://svn.berlios.de/wave/
+		</pre>
+		and <b>check out</b>
+		<pre>
+		trunk/de.gulden.modeling.wave
+		</pre> 
+		as a project into the workspace.
 		The first build after checking out the project will fail, because additionally required packages (openArchitectureWare and PHP Development Tools) are still missing.
 	</li>
 	<li>

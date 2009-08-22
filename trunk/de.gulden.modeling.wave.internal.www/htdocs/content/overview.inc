@@ -9,6 +9,15 @@ Raise your level of abstraction:
 </dl>
 </p>
 
+<div>
+<!--<img class='picleft' src='img/screenshot_wave_01a.png'/>
+<img class='picdiv' src='img/arrow1.png'/>
+<img class='picright' src='img/screenshot_wave_02a.png'/>-->
+<center>
+<img class='pic' src='img/wave-overview.png'/>
+</center>
+</div>
+
 <center>
 <div class='downloadbox'>
 <a href='?page=install'><img class='download' src='img/download.png' width='32' height='32' border='0'/></a>
