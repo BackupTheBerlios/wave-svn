@@ -239,6 +239,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
    							
     						$lastInnerForm = $innerForm;
 						}
+						$lastInnerForm->addDecorator( array ( 'menuSeparator' => new DecoratorMenuSeparator() ) );
 					} 
 					else 
 					{

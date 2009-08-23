@@ -1268,11 +1268,11 @@ public class WaveUtil { // <<utility>>
 		Label t = m.getLabel();
 		if (t != null) {
 			String icon = t.getIcon();
-			if (icon != null) {
+			if (is(icon)) {
 				Model model = getModel(m);
 				icon = (model.getBaseUrl() != null ? model.getBaseUrl() : "" ) + model.getIconPrefix() + icon;
 			}
-			return "Wave::msg("+labelIndex(t)+", '"+icon+"')/*"+t.getText()+"*/";
+			return "Wave::msg("+labelIndex(t)+ ( (icon != null) ? (", '"+icon+"'") : "" ) +/*"+t.getText()+"*/")";
 		} else {
 			return "\""+firstToUpper(unCamelCase(guessName(m)))+"\"";
 		}

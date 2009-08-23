@@ -31,7 +31,7 @@ class Wave
 		return ""; // use default
 	}
 	
-	public static function msg($id, $icon)
+	public static function msg($id, $icon = null)
 	{
 		global $_text; // from langstring.inc.php
 		global $DEFAULT_LANG;
@@ -70,7 +70,7 @@ class FormLabel extends Zend_Form_Element
 	
 	public function render()
 	{
-		return "<dt class=''><br/><i>".$this->_label."</i></dt>"; // TODO better
+		return "<dt class='formlabel'>".$this->_label."</dt>";
 	}
 
 } // end of class 
@@ -96,6 +96,19 @@ class DecoratorMenuAction extends Zend_Form_Decorator_Abstract
 		return $content . "<div class='menuaction ".$this->_params["controller"]." ".$this->_params["action"]."'>" // TODO
 		       ."<a href='" . $this->getElement()->getView()->url($this->_params, "default", false) ."'>".$this->_label."</a>"
 		       ."</div>";
+	}
+
+} // end of class
+
+class DecoratorMenuSeparator extends Zend_Form_Decorator_Abstract 
+{
+	public function DecoratorMenuSeparator()
+	{
+	} 
+	
+	public function render($content)
+	{
+		return $content . "<div class='menuseparator'> </div>";
 	}
 
 } // end of class
