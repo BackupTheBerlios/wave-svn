@@ -279,6 +279,10 @@
         <element xmi:type="ecore:EAttribute" href="wave.ecore#//Model/baseUrl"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_GFx2wY5ZEd6fStw0cC2S-g"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_Qp65EJAIEd6wF46HZ0itbg" type="3001">
+        <element xmi:type="ecore:EAttribute" href="wave.ecore#//Model/iconPrefix"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_Qp65EZAIEd6wF46HZ0itbg"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_WdzO2fc2EdyOMYsixQtkmw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_WdzO2vc2EdyOMYsixQtkmw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_WdzO2_c2EdyOMYsixQtkmw"/>

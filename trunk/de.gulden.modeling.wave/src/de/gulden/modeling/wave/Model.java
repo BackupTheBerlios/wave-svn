@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.gulden.modeling.wave.Model#getFactoryClass <em>Factory Class</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Model#getLayoutTemplate <em>Layout Template</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Model#getBaseUrl <em>Base Url</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.Model#getIconPrefix <em>Icon Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -340,5 +341,31 @@ public interface Model extends de.gulden.modeling.wave.Package {
 	 * @generated
 	 */
 	void setBaseUrl(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Icon Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Icon Prefix</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Icon Prefix</em>' attribute.
+	 * @see #setIconPrefix(String)
+	 * @see de.gulden.modeling.wave.WavePackage#getModel_IconPrefix()
+	 * @model
+	 * @generated
+	 */
+	String getIconPrefix();
+
+	/**
+	 * Sets the value of the '{@link de.gulden.modeling.wave.Model#getIconPrefix <em>Icon Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Icon Prefix</em>' attribute.
+	 * @see #getIconPrefix()
+	 * @generated
+	 */
+	void setIconPrefix(String value);
 
 } // Model

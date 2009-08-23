@@ -1270,7 +1270,7 @@ public class WaveUtil { // <<utility>>
 			String icon = t.getIcon();
 			if (icon != null) {
 				Model model = getModel(m);
-				icon = (model.getBaseUrl() != null ? model.getBaseUrl() : "" ) + "/icon/" + icon;
+				icon = (model.getBaseUrl() != null ? model.getBaseUrl() : "" ) + model.getIconPrefix() + icon;
 			}
 			return "Wave::msg("+labelIndex(t)+", '"+icon+"')/*"+t.getText()+"*/";
 		} else {

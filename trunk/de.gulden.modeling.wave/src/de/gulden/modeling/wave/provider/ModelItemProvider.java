@@ -76,6 +76,7 @@ public class ModelItemProvider
 			addFactoryClassPropertyDescriptor(object);
 			addLayoutTemplatePropertyDescriptor(object);
 			addBaseUrlPropertyDescriptor(object);
+			addIconPrefixPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -301,6 +302,28 @@ public class ModelItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Icon Prefix feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addIconPrefixPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Model_iconPrefix_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Model_iconPrefix_feature", "_UI_Model_type"),
+				 WavePackage.Literals.MODEL__ICON_PREFIX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -378,6 +401,7 @@ public class ModelItemProvider
 			case WavePackage.MODEL__FACTORY_CLASS:
 			case WavePackage.MODEL__LAYOUT_TEMPLATE:
 			case WavePackage.MODEL__BASE_URL:
+			case WavePackage.MODEL__ICON_PREFIX:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case WavePackage.MODEL__DICTIONARY:

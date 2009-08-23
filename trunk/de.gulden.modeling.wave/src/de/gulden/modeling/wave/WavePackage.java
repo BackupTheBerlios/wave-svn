@@ -1880,13 +1880,22 @@ public interface WavePackage extends EPackage {
 	int MODEL__BASE_URL = PACKAGE_FEATURE_COUNT + 11;
 
 	/**
+	 * The feature id for the '<em><b>Icon Prefix</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__ICON_PREFIX = PACKAGE_FEATURE_COUNT + 12;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 12;
+	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.DependencyRelationshipImpl <em>Dependency Relationship</em>}' class.
@@ -5330,6 +5339,17 @@ public interface WavePackage extends EPackage {
 	EAttribute getModel_BaseUrl();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Model#getIconPrefix <em>Icon Prefix</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Icon Prefix</em>'.
+	 * @see de.gulden.modeling.wave.Model#getIconPrefix()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EAttribute getModel_IconPrefix();
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.ModelMember <em>Model Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7110,6 +7130,14 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MODEL__BASE_URL = eINSTANCE.getModel_BaseUrl();
+
+		/**
+		 * The meta object literal for the '<em><b>Icon Prefix</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__ICON_PREFIX = eINSTANCE.getModel_IconPrefix();
 
 		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.ModelMemberImpl <em>Model Member</em>}' class.

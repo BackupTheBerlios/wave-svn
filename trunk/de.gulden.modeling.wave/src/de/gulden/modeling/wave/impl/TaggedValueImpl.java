@@ -91,8 +91,8 @@ public class TaggedValueImpl extends EObjectImpl implements TaggedValue {
     		this.setValue(value);
     	
 	}
-
-	/**
+    		
+    	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

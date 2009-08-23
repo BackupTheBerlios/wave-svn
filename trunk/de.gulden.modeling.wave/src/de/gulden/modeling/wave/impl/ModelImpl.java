@@ -48,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getFactoryClass <em>Factory Class</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getLayoutTemplate <em>Layout Template</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getBaseUrl <em>Base Url</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getIconPrefix <em>Icon Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -263,6 +264,26 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @ordered
 	 */
 	protected String baseUrl = BASE_URL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIconPrefix() <em>Icon Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIconPrefix()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ICON_PREFIX_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIconPrefix() <em>Icon Prefix</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIconPrefix()
+	 * @generated
+	 * @ordered
+	 */
+	protected String iconPrefix = ICON_PREFIX_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -570,6 +591,27 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getIconPrefix() {
+		return iconPrefix;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIconPrefix(String newIconPrefix) {
+		String oldIconPrefix = iconPrefix;
+		iconPrefix = newIconPrefix;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.MODEL__ICON_PREFIX, oldIconPrefix, iconPrefix));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -614,6 +656,8 @@ public class ModelImpl extends PackageImpl implements Model {
 				return basicGetLayoutTemplate();
 			case WavePackage.MODEL__BASE_URL:
 				return getBaseUrl();
+			case WavePackage.MODEL__ICON_PREFIX:
+				return getIconPrefix();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -664,6 +708,9 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__BASE_URL:
 				setBaseUrl((String)newValue);
 				return;
+			case WavePackage.MODEL__ICON_PREFIX:
+				setIconPrefix((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -712,6 +759,9 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__BASE_URL:
 				setBaseUrl(BASE_URL_EDEFAULT);
 				return;
+			case WavePackage.MODEL__ICON_PREFIX:
+				setIconPrefix(ICON_PREFIX_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -748,6 +798,8 @@ public class ModelImpl extends PackageImpl implements Model {
 				return layoutTemplate != null;
 			case WavePackage.MODEL__BASE_URL:
 				return BASE_URL_EDEFAULT == null ? baseUrl != null : !BASE_URL_EDEFAULT.equals(baseUrl);
+			case WavePackage.MODEL__ICON_PREFIX:
+				return ICON_PREFIX_EDEFAULT == null ? iconPrefix != null : !ICON_PREFIX_EDEFAULT.equals(iconPrefix);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -780,6 +832,8 @@ public class ModelImpl extends PackageImpl implements Model {
 		result.append(factoryClass);
 		result.append(", baseUrl: ");
 		result.append(baseUrl);
+		result.append(", iconPrefix: ");
+		result.append(iconPrefix);
 		result.append(')');
 		return result.toString();
 	}

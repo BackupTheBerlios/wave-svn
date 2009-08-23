@@ -31,7 +31,7 @@
 	     DB-Schema
 	---------------- 
 	«IF (getGlobalVar("generateDBSchema") != null)»
-		«FILE getGlobalVar("basePackage").noNull().replaceAll("[.]", "/") + "/" + "dbschema.sql"»
+		«FILE getGlobalVar("basePackage").noNull().replaceAll("[.]", "/") + "/" + this.name + "/database/" + "dbschema.sql"»
 			«EXPAND sql::dbschema::model»
 		«ENDFILE»
 	«ENDIF»
