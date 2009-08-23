@@ -31,6 +31,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.gulden.modeling.wave.Model#getLayoutTemplate <em>Layout Template</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Model#getBaseUrl <em>Base Url</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Model#getIconPrefix <em>Icon Prefix</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.Model#getTestdataSQL <em>Testdata SQL</em>}</li>
  * </ul>
  * </p>
  *
@@ -367,5 +368,31 @@ public interface Model extends de.gulden.modeling.wave.Package {
 	 * @generated
 	 */
 	void setIconPrefix(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Testdata SQL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Testdata SQL</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Testdata SQL</em>' attribute.
+	 * @see #setTestdataSQL(String)
+	 * @see de.gulden.modeling.wave.WavePackage#getModel_TestdataSQL()
+	 * @model
+	 * @generated
+	 */
+	String getTestdataSQL();
+
+	/**
+	 * Sets the value of the '{@link de.gulden.modeling.wave.Model#getTestdataSQL <em>Testdata SQL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Testdata SQL</em>' attribute.
+	 * @see #getTestdataSQL()
+	 * @generated
+	 */
+	void setTestdataSQL(String value);
 
 } // Model

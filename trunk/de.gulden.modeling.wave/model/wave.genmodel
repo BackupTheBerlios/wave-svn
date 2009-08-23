@@ -123,6 +123,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EReference wave.ecore#//Model/layoutTemplate"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/baseUrl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/iconPrefix"/>
+      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Model/testdataSQL"/>
     </genClasses>
     <genClasses image="false" ecoreClass="wave.ecore#//ModelMember">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//ModelMember/taggedValue"/>

@@ -989,6 +989,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getModel_TestdataSQL() {
+		return (EAttribute)modelEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getModelMember() {
 		return modelMemberEClass;
 	}
@@ -2198,6 +2207,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		createEReference(modelEClass, MODEL__LAYOUT_TEMPLATE);
 		createEAttribute(modelEClass, MODEL__BASE_URL);
 		createEAttribute(modelEClass, MODEL__ICON_PREFIX);
+		createEAttribute(modelEClass, MODEL__TESTDATA_SQL);
 
 		modelMemberEClass = createEClass(MODEL_MEMBER);
 		createEReference(modelMemberEClass, MODEL_MEMBER__TAGGED_VALUE);
@@ -2490,6 +2500,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEReference(getModel_LayoutTemplate(), this.getInclude(), null, "layoutTemplate", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_BaseUrl(), ecorePackage.getEString(), "baseUrl", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_IconPrefix(), ecorePackage.getEString(), "iconPrefix", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModel_TestdataSQL(), ecorePackage.getEString(), "testdataSQL", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelMemberEClass, ModelMember.class, "ModelMember", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelMember_TaggedValue(), this.getTaggedValue(), null, "taggedValue", null, 0, -1, ModelMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

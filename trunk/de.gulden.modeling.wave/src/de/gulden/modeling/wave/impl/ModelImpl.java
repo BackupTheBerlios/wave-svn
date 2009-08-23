@@ -49,6 +49,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getLayoutTemplate <em>Layout Template</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getBaseUrl <em>Base Url</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getIconPrefix <em>Icon Prefix</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getTestdataSQL <em>Testdata SQL</em>}</li>
  * </ul>
  * </p>
  *
@@ -284,6 +285,26 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @ordered
 	 */
 	protected String iconPrefix = ICON_PREFIX_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTestdataSQL() <em>Testdata SQL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTestdataSQL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TESTDATA_SQL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTestdataSQL() <em>Testdata SQL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTestdataSQL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String testdataSQL = TESTDATA_SQL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -612,6 +633,27 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTestdataSQL() {
+		return testdataSQL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTestdataSQL(String newTestdataSQL) {
+		String oldTestdataSQL = testdataSQL;
+		testdataSQL = newTestdataSQL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.MODEL__TESTDATA_SQL, oldTestdataSQL, testdataSQL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -658,6 +700,8 @@ public class ModelImpl extends PackageImpl implements Model {
 				return getBaseUrl();
 			case WavePackage.MODEL__ICON_PREFIX:
 				return getIconPrefix();
+			case WavePackage.MODEL__TESTDATA_SQL:
+				return getTestdataSQL();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -711,6 +755,9 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__ICON_PREFIX:
 				setIconPrefix((String)newValue);
 				return;
+			case WavePackage.MODEL__TESTDATA_SQL:
+				setTestdataSQL((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -762,6 +809,9 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__ICON_PREFIX:
 				setIconPrefix(ICON_PREFIX_EDEFAULT);
 				return;
+			case WavePackage.MODEL__TESTDATA_SQL:
+				setTestdataSQL(TESTDATA_SQL_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -800,6 +850,8 @@ public class ModelImpl extends PackageImpl implements Model {
 				return BASE_URL_EDEFAULT == null ? baseUrl != null : !BASE_URL_EDEFAULT.equals(baseUrl);
 			case WavePackage.MODEL__ICON_PREFIX:
 				return ICON_PREFIX_EDEFAULT == null ? iconPrefix != null : !ICON_PREFIX_EDEFAULT.equals(iconPrefix);
+			case WavePackage.MODEL__TESTDATA_SQL:
+				return TESTDATA_SQL_EDEFAULT == null ? testdataSQL != null : !TESTDATA_SQL_EDEFAULT.equals(testdataSQL);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -834,6 +886,8 @@ public class ModelImpl extends PackageImpl implements Model {
 		result.append(baseUrl);
 		result.append(", iconPrefix: ");
 		result.append(iconPrefix);
+		result.append(", testdataSQL: ");
+		result.append(testdataSQL);
 		result.append(')');
 		return result.toString();
 	}

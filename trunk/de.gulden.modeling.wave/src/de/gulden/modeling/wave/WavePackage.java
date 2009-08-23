@@ -1889,13 +1889,22 @@ public interface WavePackage extends EPackage {
 	int MODEL__ICON_PREFIX = PACKAGE_FEATURE_COUNT + 12;
 
 	/**
+	 * The feature id for the '<em><b>Testdata SQL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__TESTDATA_SQL = PACKAGE_FEATURE_COUNT + 13;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 13;
+	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 14;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.DependencyRelationshipImpl <em>Dependency Relationship</em>}' class.
@@ -5350,6 +5359,17 @@ public interface WavePackage extends EPackage {
 	EAttribute getModel_IconPrefix();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Model#getTestdataSQL <em>Testdata SQL</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Testdata SQL</em>'.
+	 * @see de.gulden.modeling.wave.Model#getTestdataSQL()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EAttribute getModel_TestdataSQL();
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.ModelMember <em>Model Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7138,6 +7158,14 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MODEL__ICON_PREFIX = eINSTANCE.getModel_IconPrefix();
+
+		/**
+		 * The meta object literal for the '<em><b>Testdata SQL</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__TESTDATA_SQL = eINSTANCE.getModel_TestdataSQL();
 
 		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.ModelMemberImpl <em>Model Member</em>}' class.
