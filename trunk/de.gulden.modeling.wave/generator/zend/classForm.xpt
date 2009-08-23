@@ -131,7 +131,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
             «IF widget.required»
             'required'   => true,
             «ENDIF»
-            «IF (attr.type == "string") && (widget.widgetType != EnumWidgetType::SELECT)»
+            «IF (attr.type == "string") && (widget.widgetType != EnumWidgetType::SELECT) && (!widget.multiLine)»
             'size' => 60,
             «ELSEIF (widget.widgetType == EnumWidgetType::SELECT) && widget.multiLine»
             'size' => 10,
