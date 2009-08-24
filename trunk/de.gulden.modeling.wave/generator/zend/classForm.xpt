@@ -269,7 +269,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					
     				if ($element)
     				{
-   						$innerForm = $element->getForm($mode)->asSubForm();
+   						$innerForm = $element->getForm($formName)->asSubForm();
    						$this->addSubForm( $innerForm, $prefix.$element->getId() );
 					}
 					else

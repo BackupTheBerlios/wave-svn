@@ -49,6 +49,27 @@ $«param.name» = $this->_getParam("«param.name»"«IF param.defaultValue.is()», "«p
 		$this->_forward("«flow.target.name.without("Action")»");
 	}
 «ENDFOREACH»
+
+if (false) ;
+«FOREACH action.outgoingTransitions() AS trans»
+«IF trans.condition.is()»
+elseif («trans.condition()»)
+{
+	$this->view->part = "«trans.target.name»";
+	//include(dirname(__FILE__)."/parts/«trans.target.name».phtml");
+}
+«ENDIF»
+«ENDFOREACH»
+«FOREACH action.outgoingTransitions() AS trans»
+«IF ! trans.condition.is()» «REM» at most 1 «ENDREM»
+else
+{
+	$this->view->part = "«trans.target.name»";
+	//include(dirname(__FILE__)."/parts/«trans.target.name».phtml");
+}
+«ENDIF»
+«ENDFOREACH»
+
 	$this->view->params = $this->_getAllParams();
 }
 «ENDFOREACH»
@@ -77,10 +98,10 @@ if (!$«param.name»)
 «FOREACH this.outgoingFlows() AS flow»
 	«IF flow.target.isAction()»
 	
-		function link«flow.target.name.without("Action").toFirstUpper()»($content)
+		function link«flow.target.name.without("Action").toFirstUpper()»($content, $options = array())
 		{
 			global $_view;
-			return "<a href='".$_view->«((Action)flow.target).urlCode()»."'>".( $content ? $content : «flow.target.labelCode()» )."</a>";
+			return "<a href='".$_view->«((Action)flow.target).urlCode("$options")»."'>".( $content ? $content : «flow.target.labelCode()» )."</a>";
 		}
 		
 		function button«flow.target.name.without("Action").toFirstUpper()»($label = null, $params = array())
@@ -126,6 +147,7 @@ if (!$«param.name»)
  View for Action '«this.name»'
  */
 
+/*
 if (false) ;
 
 «FOREACH this.outgoingTransitions() AS trans»
@@ -145,6 +167,7 @@ else
 }
 «ENDIF»
 «ENDFOREACH»
-
+*/
+include(dirname(__FILE__)."/parts/".$this->part.".phtml");
 «ENDDEFINE»
 

@@ -122,7 +122,7 @@ String urlCode( Action this ) :
 	urlCode(this, "array()");
 				
 String urlCode( Action this, String paramsCode ) :
-	"url( array_merge( array('controller' => '"+((Controller)this.eContainer).name.without("Controller").toLowerCase()+"', 'action' => '"+this.name.without("Action").toFirstLower()+"'), "+paramsCode+" ) )";
+	"url( array_merge( array('controller' => '"+((Controller)this.eContainer).name.without("Controller").toLowerCase()+"', 'action' => '"+this.name.without("Action").toFirstLower()+"'), "+paramsCode+" ), 'default', true )";
 				
 
    

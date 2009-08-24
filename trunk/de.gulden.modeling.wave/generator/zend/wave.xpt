@@ -96,7 +96,7 @@ class DecoratorMenuAction extends Zend_Form_Decorator_Abstract
 	public function render($content)
 	{
 		return $content . "<div class='menuaction ".$this->_params["controller"]." ".$this->_params["action"]."'>" // TODO
-		       ."<a href='" . $this->getElement()->getView()->url($this->_params, "default", false) ."'>".$this->_label."</a>"
+		       ."<a href='" . $this->getElement()->getView()->url($this->_params, "default", true) ."'>".$this->_label."</a>"
 		       ."</div>";
 	}
 
@@ -126,7 +126,7 @@ class DecoratorFormElement extends Zend_Form_Decorator_Abstract
 	
 	public function render($content)
 	{
-		return "<div class='form-element ".$this->_id."'>" . $content . "</div>";
+		return "<div class='formelement ".$this->_id."'>" . $content . "</div>";
 	}
 
 } // end of class
