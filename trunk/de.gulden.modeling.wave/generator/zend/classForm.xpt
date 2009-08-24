@@ -182,8 +182,9 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
             «widget.widgetHint» «REM»arbitrary source code«ENDREM»
         ));
 
-        «IF widget.readOnly»
     	$el = $this->getElement("«attr.name»");
+    	$el->addDecorator(new DecoratorFormElement("«attr.name»"));
+        «IF widget.readOnly»
     	//$el->removeDecorator("ViewHelper");
     	$dec = new «this.formName()»DecoratorReadOnly();
     	$dec->setClassname("«this.name.toLowerCase()»");
@@ -210,7 +211,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
         
 	        «IF ! widget.ignore»
         
-        			$this->addElement( new FormLabel(«IF widget.label.is()»«widget.labelCode()»«ELSE»«assoc.labelCode()»«ENDIF»), "label_«assoc.name»" );
+        			$this->addElement( new FormLabel(«IF widget.label.is()»«widget.labelCode()»«ELSE»«assoc.labelCode()»«ENDIF», "«assoc.name»"), "label_«assoc.name»" );
         			
 				«IF this.isOutgoingMulti(assoc)»
 					
@@ -225,8 +226,9 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 						foreach ($entries as $child)
 						{
    							$innerForm = $child->getForm($formName)->asSubForm();
-
-							«FOREACH ((WidgetAssociation)widget).elementsMenuActions AS action»
+   							$innerForm->getDecorator('fieldset')->setOption('class' ,'«assoc.name»');
+   							
+							«FOREACH ((WidgetAssociation)widget).elementsMenuActions.reverse() AS action»
 					
 								$innerForm->addDecorator( array ( '«action.name.without("Action")»' => 
 									new DecoratorMenuAction(«action.labelCode().without(" Action")», «((Controller)action.eContainer).name.without("Controller").toLowerCase()», «action.name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
@@ -247,7 +249,9 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 						$this->addSubForm( $lastInnerForm, $prefix );
 					}
 					
-					«FOREACH widget.menuActions AS action»
+					$lastInnerForm->addDecorator( array ( 'menuSeparator' => new DecoratorMenuSeparator() ) );
+					
+					«FOREACH widget.menuActions.reverse() AS action»
 			
 						$lastInnerForm->addDecorator( array ( '«action.name.without("Action")»' => 
 							new DecoratorMenuAction(«action.labelCode().without(" Action")», «((Controller)action.eContainer).name.without("Controller").toLowerCase()», «action.name.without("Action")», array( /*'id'=>($child ? $child->getId() : 0),*/ 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
@@ -273,7 +277,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 						$innerForm = new Zend_Form_SubForm(); // dummy for empty entry
 					}
 					
-					«FOREACH widget.menuActions AS action»
+					«FOREACH widget.menuActions.reverse() AS action»
 					
 						$innerForm->addDecorator(
 							new DecoratorMenuAction(«action.labelCode().without(" Action")», «((Controller)action.eContainer).name.without("Controller").toLowerCase()», «action.name.without("Action")», array( /*'id'=>($child ? $child->getId() : 0),*/ 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )

@@ -62,15 +62,17 @@ class Wave
 class FormLabel extends Zend_Form_Element 
 {
 	protected $_label;
+	protected $_id;
 	
-	public function FormLabel($label)
+	public function FormLabel($label, $id = null)
 	{
 		$this->_label = $label;
+		$this->_id = $id;
 	}
 	
 	public function render()
 	{
-		return "<dt class='formlabel'>".$this->_label."</dt>";
+		return "<dt class='formlabel ".$this->_id."'>".$this->_label."</dt>";
 	}
 
 } // end of class 
@@ -109,6 +111,22 @@ class DecoratorMenuSeparator extends Zend_Form_Decorator_Abstract
 	public function render($content)
 	{
 		return $content . "<div class='menuseparator'> </div>";
+	}
+
+} // end of class
+
+class DecoratorFormElement extends Zend_Form_Decorator_Abstract 
+{
+	protected $_id;
+	
+	public function DecoratorFormElement($id)
+	{
+		$this->_id = $id;
+	} 
+	
+	public function render($content)
+	{
+		return "<div class='form-element ".$this->_id."'>" . $content . "</div>";
 	}
 
 } // end of class

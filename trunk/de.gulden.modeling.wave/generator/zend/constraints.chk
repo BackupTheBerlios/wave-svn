@@ -17,3 +17,7 @@ context Action
 context View
 	ERROR "View name '"+this.name+"' must end with '...View'." :
 	this.name.endsWith("View");
+
+context AssociationRelationship
+	ERROR "Name is missing for associations between classes." :
+	this.name.is();
