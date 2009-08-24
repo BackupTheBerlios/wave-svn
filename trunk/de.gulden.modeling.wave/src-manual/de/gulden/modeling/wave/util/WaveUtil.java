@@ -1822,5 +1822,13 @@ workaroundMissingWriteTransactionHasBeenPrinted = true;
 		}
 		return ( name != null ? name + "." : "" ) + attr.getName();
 	}
+	
+	public static Collection flip(Collection c) {
+		ArrayList l = new ArrayList();
+		for (Object o : c) {
+			l.add(0, o);
+		}
+		return l;
+	}
 
 }

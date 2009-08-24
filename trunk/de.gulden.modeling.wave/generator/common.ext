@@ -367,3 +367,6 @@ boolean log( String this ) :
 boolean fileExists( String this ) :
 				JAVA de.gulden.modeling.wave.util.WaveUtil.fileExists(java.lang.String);
   
+Collection flip( Collection this ) : 
+				JAVA de.gulden.modeling.wave.util.WaveUtil.flip(java.util.Collection);
+  
