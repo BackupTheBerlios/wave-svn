@@ -19,10 +19,10 @@
 «DEFINE class FOR Class»
 
 	«IF this.generateForm || this.forms.has()»
-	public static function createForm($mode="EDIT", $object=null)
+	public static function createForm($mode="EDIT", $object=null, $parent=null)
 	{
 		$cls = "«this.formName()»".ucfirst(strtolower($mode));
-		$form = new $cls($object);
+		$form = new $cls($object, $parent);
 		return $form;
 	}
 	
@@ -69,9 +69,10 @@
 		}
 	}
 	
-	public function getForm($mode="Edit")
+	public function getForm($mode="Edit", $parent=null)
 	{
 		$form = self::createForm($mode, $this);
+		$form->setParentForm($parent);
 		return $form;
 	}
 	«ENDIF»
@@ -104,10 +105,23 @@ class «this.formName()»Helper
  «EXPAND model::commentHeader» */
 class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.formName()»Base
 {
+	protected $_object = null;
+	protected $_parentForm = null;
+
 	function «this.formName()»«formName.toLowerCase().toFirstUpper()»($object = null)
 	{
 		$this->_object = $object;
 		parent::__construct();
+	}
+	
+	public function setParentForm($parentForm)
+	{
+		$this->_parentForm = $parentForm;
+	}
+	
+	public function getParentForm()
+	{
+		return $this->_parentForm;
 	}
 	
     public function init()
@@ -225,16 +239,14 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
     					$lastInnerForm = null;
 						foreach ($entries as $child)
 						{
-   							$innerForm = $child->getForm($formName)->asSubForm();
+   							$innerForm = $child->getForm($formName, $this)->asSubForm();
    							$innerForm->getDecorator('fieldset')->setOption('class' ,'«assoc.name»');
    							
 							«FOREACH ((WidgetAssociation)widget).elementsMenuActions.flip() AS action»
-					
 								$innerForm->addDecorator( array ( '«((Action)action).name.without("Action")»' => 
-									new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
+									new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 'root' => $this->getRootObjectId() ) )
 								  )
 								);
-					
 							«ENDFOREACH»
 							
    							$this->addSubForm( $innerForm, $prefix.$child->getId() );
@@ -254,7 +266,15 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					«FOREACH widget.menuActions.flip() AS action»
 			
 						$lastInnerForm->addDecorator( array ( '«((Action)action).name.without("Action")»' => 
-							new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( /*'id'=>($child ? $child->getId() : 0),*/ 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
+							new DecoratorMenuAction(
+								«((Action)action).labelCode().without(" Action")», 
+								«((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», 
+								«((Action)action).name.without("Action")», 
+								array( /*'id'=>($child ? $child->getId() : 0),*/ 
+									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
+									'root' => $this->getRootObjectId() 
+								)
+							)
 						  )
 						);
 					
@@ -269,7 +289,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					
     				if ($element)
     				{
-   						$innerForm = $element->getForm($formName)->asSubForm();
+   						$innerForm = $element->getForm($formName, $this)->asSubForm();
    						$this->addSubForm( $innerForm, $prefix.$element->getId() );
 					}
 					else
@@ -280,7 +300,15 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					«FOREACH widget.menuActions.flip() AS action»
 					
 						$innerForm->addDecorator(
-							new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( /*'id'=>($child ? $child->getId() : 0),*/ 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null) ) )
+							new DecoratorMenuAction(
+								«((Action)action).labelCode().without(" Action")», 
+								«((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», 
+								«((Action)action).name.without("Action")», 
+								array( /*'id'=>($child ? $child->getId() : 0),*/ 
+									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
+									'root' => $this->getRootObjectId() 
+								)
+							)
 						);
 					
 					«ENDFOREACH»
@@ -303,6 +331,24 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
         $this->addElement('hash', 'csrf', array('ignore' => true));
     «ENDREM»
     }
+
+    protected function getRootObjectId()
+    {
+    	$f = $this;
+    	while ($f->getParentForm())
+    	{
+    		$f = $f->getParentForm();
+    	}
+    	$o = $f->getObject();
+    	if ($o)
+    	{
+    		return $o->getId();
+    	}
+    	else
+    	{
+    		return null;
+    	}
+    }
     
     public function reinit()
     {
@@ -310,8 +356,6 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
     	$this->clearSubForms();
     	$this->_initElements();
     }
-
-	protected $_object;
 
 	public function setObject($object)
 	{

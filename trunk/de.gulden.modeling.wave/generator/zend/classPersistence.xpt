@@ -297,6 +297,7 @@ class «EXPAND mapperClassName»
                       
 		«FOREACH this.allBidirectionalNtoMAssociations() AS assoc»
 			«IF this.isNavigable(assoc)-»
+			$children = $object->«this.outgoingName(assoc).getter()»();
 			$relTable = new «this.package().name.toFirstUpper()»_Model_DbTable_Relationship«assoc.name.toFirstUpper()»();
 			// TODO not perfectly clean, should be atomic
 			//if (!$inserted)
@@ -306,7 +307,6 @@ class «EXPAND mapperClassName»
 				$relTable->delete($where);
 			//}
 			// set new
-			$children = $object->«this.outgoingName(assoc).getter()»();
 			if ($children)
 			{
 				foreach ($children as $ref)

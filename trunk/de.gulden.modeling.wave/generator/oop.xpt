@@ -122,7 +122,7 @@ public function set«this.outgoingName(assoc).toFirstUpper()»(Array $values) {
 public function /*void*/ set«this.outgoingName(assoc).toFirstUpper()»(«EXPAND className FOR this.outgoingType(assoc)» $«this.outgoingName(assoc)»=null) {
 	$this->«this.outgoingName(assoc)»=$«this.outgoingName(assoc)»;
 						«IF assoc.isBidirectional()-»«REM» bi-drectional 1:1 «ENDREM»
-	if (($«this.outgoingName(assoc)» != null) && ($«this.outgoingName(assoc)» != $this->$«this.outgoingName(assoc)»)) {
+	if (($«this.outgoingName(assoc)» != null) && ($«this.outgoingName(assoc)» != $this->«this.outgoingName(assoc)»)) {
 							«IF ! this.isIngoingMulti(assoc)-»
 		$«this.outgoingName(assoc)»->set«this.ingoingName(assoc).toFirstUpper()»($this); // set back-reference
 							«ELSE-» 
@@ -145,7 +145,7 @@ public function /*void*/ add«this.outgoingName(assoc).toFirstUpper().removePlura
 		$this->«this.outgoingName(assoc)»[] = $«this.outgoingName(assoc).removePluralS()»;
 							«IF assoc.isBidirectional()-»«REM» bi-drectional 1:m «ENDREM»
 								«IF ! this.isIngoingMulti(assoc)-»
-		$«this.outgoingName(assoc)»->set«this.ingoingName(assoc).toFirstUpper()»($this); // set back-reference
+		$«this.outgoingName(assoc).removePluralS()»->set«this.ingoingName(assoc).toFirstUpper()»($this); // set back-reference
 								«ELSE-» 
 		$«this.outgoingName(assoc)»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»($this); // add back-reference
 								«ENDIF-» 
@@ -166,15 +166,29 @@ public function /*void*/ remove«this.outgoingName(assoc).toFirstUpper().removePl
 						«IF (!this.isInterface()) && this.isPersistent-» 
 	$this->get«this.outgoingName(assoc).toFirstUpper()»(); // make sure is initialized
 						«ENDIF-» 
-	if ( in_array( $«this.outgoingName(assoc).removePluralS()», $this->«this.outgoingName(assoc)» ) ) {
-		unset( $this->«this.outgoingName(assoc)»[$«this.outgoingName(assoc).removePluralS()»->_id] );
-							«IF assoc.isBidirectional()-»«REM» bi-drectional 1:m «ENDREM»
+	if ( in_array( $«this.outgoingName(assoc).removePluralS()», $this->«this.outgoingName(assoc)» ) )
+	{
+		$found = -1;
+		for ($i = 0; $i < count($this->«this.outgoingName(assoc)»); $i++)
+		{
+			if ($«this.outgoingName(assoc).removePluralS()» == $this->«this.outgoingName(assoc)»[$i])
+			{
+				$found = $i;
+			}
+		}
+		unset( $this->«this.outgoingName(assoc)»[$found] );
+		
+		«REM» TODO
+		
+							«IF assoc.isBidirectional()-»«xREM» bi-drectional 1:m «xENDREM»
 								«IF ! this.isIngoingMulti(assoc)-»
 		$«this.outgoingName(assoc)»->set«this.ingoingName(assoc).toFirstUpper()»(null); // remove back-reference
 								«ELSE-»
-		$«this.outgoingName(assoc)»->remove«this.ingoingName(assoc).toFirstUpper()»($this); // remove back-reference
+		$«this.outgoingName(assoc).removePluralS()»->remove«this.ingoingName(assoc).toFirstUpper()»($this); // remove back-reference
 								«ENDIF-»
 							«ENDIF-»
+							
+		«ENDREM»
 	} 
 } 
 			«ENDIF-» 
