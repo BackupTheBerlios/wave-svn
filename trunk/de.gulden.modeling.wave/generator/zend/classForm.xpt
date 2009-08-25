@@ -32,7 +32,7 @@
 		$f = new «this.formName()»Base();
 		foreach ($elements as $o)
 		{
-			$subform= $o->getForm($formName)->asSubForm();
+			$subform= $o->getForm($formName, $this)->asSubForm();
 			$f->addSubForm($subform, $prefix.$o->getId());
 		}
 		return $f;
@@ -71,8 +71,7 @@
 	
 	public function getForm($mode="Edit", $parent=null)
 	{
-		$form = self::createForm($mode, $this);
-		$form->setParentForm($parent);
+		$form = self::createForm($mode, $this, $parent);
 		return $form;
 	}
 	«ENDIF»
@@ -106,22 +105,11 @@ class «this.formName()»Helper
 class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.formName()»Base
 {
 	protected $_object = null;
-	protected $_parentForm = null;
-
-	function «this.formName()»«formName.toLowerCase().toFirstUpper()»($object = null)
+	function «this.formName()»«formName.toLowerCase().toFirstUpper()»($object = null, $parent = null)
 	{
 		$this->_object = $object;
+		$this->_parentForm = $parent;
 		parent::__construct();
-	}
-	
-	public function setParentForm($parentForm)
-	{
-		$this->_parentForm = $parentForm;
-	}
-	
-	public function getParentForm()
-	{
-		return $this->_parentForm;
 	}
 	
     public function init()
@@ -131,9 +119,10 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 	
     protected function _initElements()
     {
+    	$rootId = $this->getRootObjectId();
+    
     	$this->addElement('hidden', 'id');
-    
-    
+    	
     «FOREACH this.allAttributes() AS attr»
     
         «LET this.getWidget(attr, formName) AS widget»
@@ -244,7 +233,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
    							
 							«FOREACH ((WidgetAssociation)widget).elementsMenuActions.flip() AS action»
 								$innerForm->addDecorator( array ( '«((Action)action).name.without("Action")»' => 
-									new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 'root' => $this->getRootObjectId() ) )
+									new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 'root' => $rootId ) )
 								  )
 								);
 							«ENDFOREACH»
@@ -257,7 +246,9 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					} 
 					else 
 					{
-						$lastInnerForm = new Zend_Form_SubForm(); // dummy for empty list 
+						$lastInnerForm = new «this.formName()»Base(); //Zend_Form_SubForm(); // dummy for empty list
+						$lastInnerForm = $lastInnerForm->asSubForm();
+						$lastInnerForm->setParentForm( $this ); 
 						$this->addSubForm( $lastInnerForm, $prefix );
 					}
 					
@@ -272,7 +263,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 								«((Action)action).name.without("Action")», 
 								array( /*'id'=>($child ? $child->getId() : 0),*/ 
 									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
-									'root' => $this->getRootObjectId() 
+									'root' => $rootId 
 								)
 							)
 						  )
@@ -410,7 +401,11 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 	    			$childId = $child->getId();
 	    			$key = "«assoc.name»".$childId;
 	    			$sf = $this->getSubForm($key);
-	    			$o = «assoc.opposite(this).codeName()»::parseForm($childId, $sf, $post[$key]);
+	    			$pp = $post[$key];
+	    			if ($sf && $pp)
+	    			{
+	    				$o = «assoc.opposite(this).codeName()»::parseForm($childId, $sf, $pp);
+	    			}
 	    		}
 				«ENDIF»
 			«ENDLET»
@@ -557,6 +552,18 @@ class «this.formName()»Base extends Zend_Form_SubForm
 {
 	protected $_subForm = false;
 
+	protected $_parentForm = null;
+
+	public function setParentForm($parentForm)
+	{
+		$this->_parentForm = $parentForm;
+	}
+	
+	public function getParentForm()
+	{
+		return $this->_parentForm;
+	}
+	
 	public function addButton($label, $type="submit") 
 	{
         $this->addElement($type, $label, array(

@@ -274,23 +274,23 @@ class «EXPAND mapperClassName»
 			$children = $object->«this.outgoingName(assoc).getter()»();
 			if ($children)
 			{
+				if ( $deep )
+				{
+					foreach ($children as $ref) {
+						if ($ref)
+						{
+							$ref->save(true);
+						}
+					}
+				}
 				foreach ($children as $ref) {
-					if ($ref)
+					if ($ref && $ref->getId())
 					{
 						$where .= " OR (id=".$ref->getId().")";
 					}
 				}
 			}
 			$dbTable->update($data, $where);
-			if ( $children && $deep )
-			{
-				foreach ($children as $ref) {
-					if ($ref)
-					{
-						$ref->save(true);
-					}
-				}
-			}
 			«ENDIF»
 		«ENDFOREACH»
 
@@ -311,7 +311,7 @@ class «EXPAND mapperClassName»
 			{
 				foreach ($children as $ref)
 				{
-					if ($ref)
+					if ($ref && $ref->getId())
 					{
 						//$where .= " OR («assoc.opposite(this).name.toFirstLower()»=".$ref->getId().")";
 						$data = array(
