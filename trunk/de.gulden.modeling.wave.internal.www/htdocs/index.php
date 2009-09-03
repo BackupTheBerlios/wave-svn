@@ -16,9 +16,8 @@
 
 $menu = array(
 	"overview"	=> array("label"=>"Overview"),
-	"example"	=> array("label"=>"Examples"),
-	"install"	=> array("label"=>"Installation"),
 	"doc"		=> array("label"=>"Documentation"),
+	"install"	=> array("label"=>"Installation"),
 	"project"	=> array("label"=>"Project Site", "url"=>"http://developer.berlios.de/projects/wave/")
 );
 
