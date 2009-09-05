@@ -29,6 +29,7 @@ import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
 import de.gulden.modeling.wave.EnumDocumentationAudienceType;
 import de.gulden.modeling.wave.EnumMultiplicity;
+import de.gulden.modeling.wave.EnumProjectLayout;
 import de.gulden.modeling.wave.EnumTargetModes;
 import de.gulden.modeling.wave.EnumVisibility;
 import de.gulden.modeling.wave.EnumWidgetType;
@@ -447,6 +448,13 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * @generated
 	 */
 	private EEnum enumWidgetTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum enumProjectLayoutEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -991,6 +999,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 */
 	public EAttribute getModel_TestdataSQL() {
 		return (EAttribute)modelEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getModel_ProjectLayout() {
+		return (EAttribute)modelEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -2123,6 +2140,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getEnumProjectLayout() {
+		return enumProjectLayoutEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public WaveFactory getWaveFactory() {
 		return (WaveFactory)getEFactoryInstance();
 	}
@@ -2208,6 +2234,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		createEAttribute(modelEClass, MODEL__BASE_URL);
 		createEAttribute(modelEClass, MODEL__ICON_PREFIX);
 		createEAttribute(modelEClass, MODEL__TESTDATA_SQL);
+		createEAttribute(modelEClass, MODEL__PROJECT_LAYOUT);
 
 		modelMemberEClass = createEClass(MODEL_MEMBER);
 		createEReference(modelMemberEClass, MODEL_MEMBER__TAGGED_VALUE);
@@ -2370,6 +2397,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		enumDirectionEEnum = createEEnum(ENUM_DIRECTION);
 		enumDisplayModeEEnum = createEEnum(ENUM_DISPLAY_MODE);
 		enumWidgetTypeEEnum = createEEnum(ENUM_WIDGET_TYPE);
+		enumProjectLayoutEEnum = createEEnum(ENUM_PROJECT_LAYOUT);
 	}
 
 	/**
@@ -2501,6 +2529,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEAttribute(getModel_BaseUrl(), ecorePackage.getEString(), "baseUrl", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_IconPrefix(), ecorePackage.getEString(), "iconPrefix", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_TestdataSQL(), ecorePackage.getEString(), "testdataSQL", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModel_ProjectLayout(), this.getEnumProjectLayout(), "projectLayout", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelMemberEClass, ModelMember.class, "ModelMember", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelMember_TaggedValue(), this.getTaggedValue(), null, "taggedValue", null, 0, -1, ModelMember.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2707,6 +2736,10 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		addEEnumLiteral(enumWidgetTypeEEnum, EnumWidgetType.PASSWORD);
 		addEEnumLiteral(enumWidgetTypeEEnum, EnumWidgetType.LABEL);
 		addEEnumLiteral(enumWidgetTypeEEnum, EnumWidgetType.SPINNER);
+
+		initEEnum(enumProjectLayoutEEnum, EnumProjectLayout.class, "EnumProjectLayout");
+		addEEnumLiteral(enumProjectLayoutEEnum, EnumProjectLayout.APPLICATION);
+		addEEnumLiteral(enumProjectLayoutEEnum, EnumProjectLayout.MODULE);
 
 		// Create resource
 		createResource(eNS_URI);

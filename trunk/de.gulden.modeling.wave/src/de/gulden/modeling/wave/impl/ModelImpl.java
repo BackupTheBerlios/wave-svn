@@ -10,6 +10,7 @@ package de.gulden.modeling.wave.impl;
 
 import de.gulden.modeling.wave.Dictionary;
 import de.gulden.modeling.wave.Documentation;
+import de.gulden.modeling.wave.EnumProjectLayout;
 import de.gulden.modeling.wave.Include;
 import de.gulden.modeling.wave.Model;
 import de.gulden.modeling.wave.WavePackage;
@@ -50,6 +51,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getBaseUrl <em>Base Url</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getIconPrefix <em>Icon Prefix</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getTestdataSQL <em>Testdata SQL</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.impl.ModelImpl#getProjectLayout <em>Project Layout</em>}</li>
  * </ul>
  * </p>
  *
@@ -305,6 +307,26 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @ordered
 	 */
 	protected String testdataSQL = TESTDATA_SQL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getProjectLayout() <em>Project Layout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProjectLayout()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EnumProjectLayout PROJECT_LAYOUT_EDEFAULT = EnumProjectLayout.APPLICATION;
+
+	/**
+	 * The cached value of the '{@link #getProjectLayout() <em>Project Layout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProjectLayout()
+	 * @generated
+	 * @ordered
+	 */
+	protected EnumProjectLayout projectLayout = PROJECT_LAYOUT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -654,6 +676,27 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EnumProjectLayout getProjectLayout() {
+		return projectLayout;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProjectLayout(EnumProjectLayout newProjectLayout) {
+		EnumProjectLayout oldProjectLayout = projectLayout;
+		projectLayout = newProjectLayout == null ? PROJECT_LAYOUT_EDEFAULT : newProjectLayout;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.MODEL__PROJECT_LAYOUT, oldProjectLayout, projectLayout));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -702,6 +745,8 @@ public class ModelImpl extends PackageImpl implements Model {
 				return getIconPrefix();
 			case WavePackage.MODEL__TESTDATA_SQL:
 				return getTestdataSQL();
+			case WavePackage.MODEL__PROJECT_LAYOUT:
+				return getProjectLayout();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -758,6 +803,9 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__TESTDATA_SQL:
 				setTestdataSQL((String)newValue);
 				return;
+			case WavePackage.MODEL__PROJECT_LAYOUT:
+				setProjectLayout((EnumProjectLayout)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -812,6 +860,9 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__TESTDATA_SQL:
 				setTestdataSQL(TESTDATA_SQL_EDEFAULT);
 				return;
+			case WavePackage.MODEL__PROJECT_LAYOUT:
+				setProjectLayout(PROJECT_LAYOUT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -852,6 +903,8 @@ public class ModelImpl extends PackageImpl implements Model {
 				return ICON_PREFIX_EDEFAULT == null ? iconPrefix != null : !ICON_PREFIX_EDEFAULT.equals(iconPrefix);
 			case WavePackage.MODEL__TESTDATA_SQL:
 				return TESTDATA_SQL_EDEFAULT == null ? testdataSQL != null : !TESTDATA_SQL_EDEFAULT.equals(testdataSQL);
+			case WavePackage.MODEL__PROJECT_LAYOUT:
+				return projectLayout != PROJECT_LAYOUT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -888,6 +941,8 @@ public class ModelImpl extends PackageImpl implements Model {
 		result.append(iconPrefix);
 		result.append(", testdataSQL: ");
 		result.append(testdataSQL);
+		result.append(", projectLayout: ");
+		result.append(projectLayout);
 		result.append(')');
 		return result.toString();
 	}

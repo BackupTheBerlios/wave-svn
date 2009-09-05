@@ -99,6 +99,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="baseUrl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iconPrefix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="testdataSQL" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectLayout" eType="#//EnumProjectLayout"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelMember" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="taggedValue" upperBound="-1"
@@ -314,5 +315,9 @@
         eType="#//AssociationRelationship"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementsMenuActions" upperBound="-1"
         eType="#//Action"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumProjectLayout">
+    <eLiterals name="APPLICATION"/>
+    <eLiterals name="MODULE"/>
   </eClassifiers>
 </ecore:EPackage>

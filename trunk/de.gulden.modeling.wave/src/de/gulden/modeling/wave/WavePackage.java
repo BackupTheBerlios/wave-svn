@@ -1898,13 +1898,22 @@ public interface WavePackage extends EPackage {
 	int MODEL__TESTDATA_SQL = PACKAGE_FEATURE_COUNT + 13;
 
 	/**
+	 * The feature id for the '<em><b>Project Layout</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL__PROJECT_LAYOUT = PACKAGE_FEATURE_COUNT + 14;
+
+	/**
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 14;
+	int MODEL_FEATURE_COUNT = PACKAGE_FEATURE_COUNT + 15;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.DependencyRelationshipImpl <em>Dependency Relationship</em>}' class.
@@ -4797,6 +4806,17 @@ public interface WavePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.gulden.modeling.wave.EnumProjectLayout <em>Enum Project Layout</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.gulden.modeling.wave.EnumProjectLayout
+	 * @see de.gulden.modeling.wave.impl.WavePackageImpl#getEnumProjectLayout()
+	 * @generated
+	 */
+	int ENUM_PROJECT_LAYOUT = 53;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.Classifier <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5368,6 +5388,17 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getModel_TestdataSQL();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Model#getProjectLayout <em>Project Layout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Project Layout</em>'.
+	 * @see de.gulden.modeling.wave.Model#getProjectLayout()
+	 * @see #getModel()
+	 * @generated
+	 */
+	EAttribute getModel_ProjectLayout();
 
 	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.ModelMember <em>Model Member</em>}'.
@@ -6702,6 +6733,16 @@ public interface WavePackage extends EPackage {
 	EEnum getEnumWidgetType();
 
 	/**
+	 * Returns the meta object for enum '{@link de.gulden.modeling.wave.EnumProjectLayout <em>Enum Project Layout</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Enum Project Layout</em>'.
+	 * @see de.gulden.modeling.wave.EnumProjectLayout
+	 * @generated
+	 */
+	EEnum getEnumProjectLayout();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7166,6 +7207,14 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MODEL__TESTDATA_SQL = eINSTANCE.getModel_TestdataSQL();
+
+		/**
+		 * The meta object literal for the '<em><b>Project Layout</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL__PROJECT_LAYOUT = eINSTANCE.getModel_ProjectLayout();
 
 		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.ModelMemberImpl <em>Model Member</em>}' class.
@@ -8252,6 +8301,16 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ENUM_WIDGET_TYPE = eINSTANCE.getEnumWidgetType();
+
+		/**
+		 * The meta object literal for the '{@link de.gulden.modeling.wave.EnumProjectLayout <em>Enum Project Layout</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.gulden.modeling.wave.EnumProjectLayout
+		 * @see de.gulden.modeling.wave.impl.WavePackageImpl#getEnumProjectLayout()
+		 * @generated
+		 */
+		EEnum ENUM_PROJECT_LAYOUT = eINSTANCE.getEnumProjectLayout();
 
 	}
 

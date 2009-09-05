@@ -62,6 +62,10 @@
       <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/LABEL"/>
       <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumWidgetType/SPINNER"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumProjectLayout">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumProjectLayout/APPLICATION"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumProjectLayout/MODULE"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="wave.ecore#//Classifier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Classifier/operations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Classifier/name"/>
@@ -124,6 +128,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/baseUrl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/iconPrefix"/>
       <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute wave.ecore#//Model/testdataSQL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Model/projectLayout"/>
     </genClasses>
     <genClasses image="false" ecoreClass="wave.ecore#//ModelMember">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//ModelMember/taggedValue"/>

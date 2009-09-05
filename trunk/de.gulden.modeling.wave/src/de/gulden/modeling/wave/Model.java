@@ -32,6 +32,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link de.gulden.modeling.wave.Model#getBaseUrl <em>Base Url</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Model#getIconPrefix <em>Icon Prefix</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Model#getTestdataSQL <em>Testdata SQL</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.Model#getProjectLayout <em>Project Layout</em>}</li>
  * </ul>
  * </p>
  *
@@ -394,5 +395,34 @@ public interface Model extends de.gulden.modeling.wave.Package {
 	 * @generated
 	 */
 	void setTestdataSQL(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Project Layout</b></em>' attribute.
+	 * The literals are from the enumeration {@link de.gulden.modeling.wave.EnumProjectLayout}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Project Layout</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Project Layout</em>' attribute.
+	 * @see de.gulden.modeling.wave.EnumProjectLayout
+	 * @see #setProjectLayout(EnumProjectLayout)
+	 * @see de.gulden.modeling.wave.WavePackage#getModel_ProjectLayout()
+	 * @model
+	 * @generated
+	 */
+	EnumProjectLayout getProjectLayout();
+
+	/**
+	 * Sets the value of the '{@link de.gulden.modeling.wave.Model#getProjectLayout <em>Project Layout</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Project Layout</em>' attribute.
+	 * @see de.gulden.modeling.wave.EnumProjectLayout
+	 * @see #getProjectLayout()
+	 * @generated
+	 */
+	void setProjectLayout(EnumProjectLayout value);
 
 } // Model

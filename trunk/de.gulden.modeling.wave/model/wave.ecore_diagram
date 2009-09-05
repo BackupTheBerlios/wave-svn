@@ -287,6 +287,10 @@
         <element xmi:type="ecore:EAttribute" href="wave.ecore#//Model/testdataSQL"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_ytIbkZAPEd6wF46HZ0itbg"/>
       </children>
+      <children xmi:type="notation:Node" xmi:id="_7JBP4JotEd6k0-sK2poupw" type="3001">
+        <element xmi:type="ecore:EAttribute" href="wave.ecore#//Model/projectLayout"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_7JBP4ZotEd6k0-sK2poupw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_WdzO2fc2EdyOMYsixQtkmw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_WdzO2vc2EdyOMYsixQtkmw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_WdzO2_c2EdyOMYsixQtkmw"/>
@@ -386,7 +390,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_Wd3gRfc2EdyOMYsixQtkmw" fontName="Sans"/>
     <element xmi:type="ecore:EEnum" href="wave.ecore#//EnumDocumentationAudienceType"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Wd3gRvc2EdyOMYsixQtkmw" x="2436" y="348"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Wd3gRvc2EdyOMYsixQtkmw" x="2436" y="348" width="274"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_oPei4PdFEdyxFN9JG-Wudw" type="2001">
     <children xmi:type="notation:Node" xmi:id="_oPgYEPdFEdyxFN9JG-Wudw" type="5001"/>
@@ -1412,6 +1416,30 @@
     <styles xmi:type="notation:ShapeStyle" xmi:id="_u6Y1AYQiEd6hctjtjALmbw"/>
     <element xmi:type="ecore:EClass" href="wave.ecore#//WidgetAssociation"/>
     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_u6Y1AoQiEd6hctjtjALmbw" x="1765" y="1020"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_vgjX8JotEd6k0-sK2poupw" type="2005">
+    <children xmi:type="notation:Node" xmi:id="_vgjX85otEd6k0-sK2poupw" type="5005"/>
+    <children xmi:type="notation:Node" xmi:id="_vgjX9JotEd6k0-sK2poupw" type="7011">
+      <children xmi:type="notation:Node" xmi:id="_xEZJQJotEd6k0-sK2poupw" type="3009">
+        <element xmi:type="ecore:EEnumLiteral" href="wave.ecore#//EnumProjectLayout/APPLICATION"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_xEZJQZotEd6k0-sK2poupw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_zBHUoJotEd6k0-sK2poupw" type="3009">
+        <element xmi:type="ecore:EEnumLiteral" href="wave.ecore#//EnumProjectLayout/MODULE"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_zBHUoZotEd6k0-sK2poupw"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_vgjX9ZotEd6k0-sK2poupw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_vgjX9potEd6k0-sK2poupw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_vgjX95otEd6k0-sK2poupw"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_vgtI8JotEd6k0-sK2poupw" type="7012">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_vgtI8ZotEd6k0-sK2poupw"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_vgtI8potEd6k0-sK2poupw"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_vgtI85otEd6k0-sK2poupw"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_vgjX8ZotEd6k0-sK2poupw"/>
+    <element xmi:type="ecore:EEnum" href="wave.ecore#//EnumProjectLayout"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_vgjX8potEd6k0-sK2poupw" x="2438" y="525" width="273"/>
   </children>
   <styles xmi:type="notation:DiagramStyle" xmi:id="_uYnwUO4OEdyJsJsNKEYsAw"/>
   <element xmi:type="ecore:EPackage" href="wave.ecore#/"/>
