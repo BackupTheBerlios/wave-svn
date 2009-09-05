@@ -20,7 +20,7 @@
 «ENDREM»
 
 «DEFINE controller FOR Controller»<?php
-class «this.name» extends Zend_Controller_Action
+class «IF (this.model().projectLayout == EnumProjectLayout::MODULE)»«this.model().name.toFirstUpper()»_«ENDIF»«this.name» extends Zend_Controller_Action
 {
 	«EXPAND oop::operations»
 

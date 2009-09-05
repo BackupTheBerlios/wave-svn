@@ -19,27 +19,29 @@
 
 	«EXPAND package» «REM» base package + recursion into subpackages «ENDREM»
 	
-	«IF ! (this.sourceFolder+"/"+this.name+"/application/Wave.php").fileExists()» «REM» only if not there, allows manual modification «ENDREM»
-		«FILE this.name+"/application/Wave.php"»«EXPAND wave::wave»«ENDFILE»
+	«IF ! (this.sourceFolder+"/"+this.basePrefix()+"/Wave.php").fileExists()» «REM» only if not there, allows manual modification «ENDREM»
+		«FILE this.basePrefix()+"/Wave.php"»«EXPAND wave::wave»«ENDFILE»
 	«ENDIF»
 
-	«FILE this.name+"/application/Bootstrap.php"»«EXPAND Bootstrap::Bootstrap»«ENDFILE»
-	
-	«FILE this.name+"/application/configs/application.ini"»«EXPAND config::config»«ENDFILE»
+	«FILE this.basePrefix()+"/configs/application.ini"»«EXPAND config::config»«ENDFILE»
 	
 	«IF this.dictionary.is()»
-		«FILE this.name+"/application/configs/langstrings.inc.php"»«EXPAND dictionary::dictionary FOR this.dictionary»«ENDFILE»
+		«FILE this.basePrefix()+"/configs/langstrings.inc.php"»«EXPAND dictionary::dictionary FOR this.dictionary»«ENDFILE»
 	«ENDIF»
 	
-	«FILE this.name+"/application/controllers/ErrorController.php"»«EXPAND ErrorController::ErrorController»«ENDFILE»
+	«FILE this.basePrefix()+"/controllers/ErrorController.php"»«EXPAND ErrorController::ErrorController»«ENDFILE»
 	
-	«FILE this.name+"/application/views/scripts/error/error.phtml"»«EXPAND ErrorController::ErrorControllerView»«ENDFILE»
+	«FILE this.basePrefix()+"/views/scripts/error/error.phtml"»«EXPAND ErrorController::ErrorControllerView»«ENDFILE»
 	
-	«FILE this.name+"/library/readme.txt"»Copy the Zend/ subfolder of the Zend Framework distribution package into this folder.«ENDFILE»
+	«IF this.projectLayout == EnumProjectLayout::APPLICATION»
+		«FILE this.basePrefix()+"/Bootstrap.php"»«EXPAND Bootstrap::Bootstrap»«ENDFILE»
 	
-	«FILE this.name+"/public/index.php"»«EXPAND index::index»«ENDFILE»
-	
-	«FILE this.name+"/public/.htaccess"»«EXPAND index::htaccess»«ENDFILE»
+		«IF ! (this.sourceFolder+"/"+this.name+"/public/index.php").fileExists()» «REM» only if not there, allows manual modification «ENDREM»
+			«FILE this.name+"/public/index.php"»«EXPAND index::index»«ENDFILE»
+		«ENDIF»
+		«FILE this.name+"/public/.htaccess"»«EXPAND index::htaccess»«ENDFILE»
+		«FILE this.name+"/library/readme.txt"»Copy the Zend/ subfolder of the Zend Framework distribution package into this folder.«ENDFILE»
+	«ENDIF»
 	
 «REM»
 	«EXPAND memberAll FOREACH members»
@@ -60,16 +62,25 @@
 			«EXPAND package FOR ((Package)member)» «REM» recursion «ENDREM»
 		«ELSE» «REM» generate member, if this not instanceof Model: should contain only classes and interfaces «ENDREM»
 			«LET member.sourceFileName() AS filename»
+«REM»
+«log("FILE: "+filename)»
+«ENDREM»			
 				«IF filename.is()»
-					«FILE filename»«EXPAND member FOR member»«ENDFILE»
+					«IF member.isClassifier()»
+						«IF ! ((Classifier)member).isExternal»
+							«FILE filename»«EXPAND member FOR member»«ENDFILE»
+						«ENDIF»
+					«ELSE»
+						«FILE filename»«EXPAND member FOR member»«ENDFILE»
+					«ENDIF»
 					«IF member.isController()»
 						«FOREACH ((Controller)member).actions AS action»
-							«FILE (this.model().name + "/application/views/scripts/" + ((Controller)member).name.without("Controller").toLowerCase() + "/" + action.name.without("Action").camelCaseToDashSeperated() + ".phtml")»
+							«FILE (this.model().basePrefix() + "/views/scripts/" + ((Controller)member).name.without("Controller").toLowerCase() + "/" + action.name.without("Action").camelCaseToDashSeperated() + ".phtml")»
 								«EXPAND controller::view FOR action» «REM» recursion «ENDREM»
 							«ENDFILE»
 						«ENDFOREACH»
 						«FOREACH ((Controller)member).views AS view»
-							«FILE (this.model().name + "/application/views/scripts/" + ((Controller)member).name.without("Controller").toLowerCase() + "/parts/" + view.name + ".phtml")»
+							«FILE (this.model().basePrefix() + "/views/scripts/" + ((Controller)member).name.without("Controller").toLowerCase() + "/parts/" + view.name + ".phtml")»
 								«EXPAND controller::viewPart FOR view» «REM» recursion «ENDREM»
 							«ENDFILE»
 						«ENDFOREACH»
@@ -77,29 +88,29 @@
 					«IF member.isClass()»
 						«LET ((Class)member) AS cls»
 							«IF cls.isPersistent»
-								«FILE this.model().name + "/application/packages/" + this.path().concat("/", "models/DbTable/") + cls.name + ".php"»«EXPAND classPersistence::classDbTable FOR cls»«ENDFILE»
-								«FILE this.model().name + "/application/packages/" + this.path().concat("/", "models/DbTable/") + cls.name + "Mapper.php"»«EXPAND classPersistence::classMapper FOR cls»«ENDFILE»
+								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "models/DbTable/")) + cls.name + ".php"»«EXPAND classPersistence::classDbTable FOR cls»«ENDFILE»
+								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "models/DbTable/")) + cls.name + "Mapper.php"»«EXPAND classPersistence::classMapper FOR cls»«ENDFILE»
 								«FOREACH cls.allBidirectionalNtoMAssociations() AS assoc»
 									«IF cls == assoc.a»
-										«FILE this.model().name + "/application/packages/" + this.path().concat("/", "models/DbTable/") + "Relationship" + assoc.name.toFirstUpper() + ".php"»«EXPAND classPersistence::classDbTableBidirectionalNToM FOR assoc»«ENDFILE»
+										«FILE this.model().classPrefix().concat("/", this.path().concat("/", "models/DbTable/")) + "Relationship" + assoc.name.toFirstUpper() + ".php"»«EXPAND classPersistence::classDbTableBidirectionalNToM FOR assoc»«ENDFILE»
 									«ENDIF»
 								«ENDFOREACH»
 							«ENDIF»
 							«REM» default forms «ENDREM»
 							«IF cls.generateForm || cls.forms.has()»
-								«FILE this.model().name + "/application/packages/" + this.path().concat("/", "forms/")+cls.name+"Base.php"»«EXPAND classForm::baseForm FOR cls»«ENDFILE»
+								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/"))+cls.name+"Base.php"»«EXPAND classForm::baseForm FOR cls»«ENDFILE»
 								«REM»«FILE this.model().name + "/application/controllers/" + cls.name + "FormController.php"»«EXPAND classForm::controller FOR cls»«ENDFILE»«ENDREM»
 							«ENDIF»
 							«IF cls.generateForm»
 								«FOREACH {"Edit", "View", "List", "Admin"} AS formName»
-									«FILE this.model().name + "/application/packages/" + this.path().concat("/", "forms/") + cls.name + formName + ".php"»«EXPAND classForm::form(formName) FOR cls»«ENDFILE»
-									«REM»«FILE this.model().name + "/application/controllers/Form" + cls.name + formName + "Controller.php"»«EXPAND classForm::controller(formName) FOR cls»«ENDFILE»«ENDREM»
+									«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/")) + cls.name + formName + ".php"»«EXPAND classForm::form(formName) FOR cls»«ENDFILE»
+									«REM»«FILE this.model().basePrefix() + "/controllers/Form" + cls.name + formName + "Controller.php"»«EXPAND classForm::controller(formName) FOR cls»«ENDFILE»«ENDREM»
 								«ENDFOREACH»
 							«ENDIF»
 							«REM» user-specified forms (may overwrite default ones) «ENDREM»
 							«FOREACH cls.forms AS form»
-								«FILE this.model().name + "/application/packages/" + this.path().concat("/", "forms/") + cls.name + form.name.toLowerCase().toFirstUpper() + ".php"»«EXPAND classForm::form(form.name) FOR cls»«ENDFILE»
-								«REM»«FILE this.model().name + "/application/controllers/Form" + cls.name + form.name + "Controller.php"»«EXPAND classForm::controller(form.name) FOR cls»«ENDFILE»«ENDREM»
+								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/")) + cls.name + form.name.toLowerCase().toFirstUpper() + ".php"»«EXPAND classForm::form(form.name) FOR cls»«ENDFILE»
+								«REM»«FILE this.model().basePrefix() + "/controllers/Form" + cls.name + form.name + "Controller.php"»«EXPAND classForm::controller(form.name) FOR cls»«ENDFILE»«ENDREM»
 							«ENDFOREACH»
 						«ENDLET»
 					«ENDIF»

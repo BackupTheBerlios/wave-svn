@@ -11,6 +11,12 @@ extension org::openarchitectureware::util::stdlib::globalvar;
 Model model( ModelMember this ) :
 	this.isModel() ? this : ((ModelMember)this.eContainer).model();
 
+cached String basePrefix( Model this ) :
+	(this.projectLayout == EnumProjectLayout::APPLICATION) ? (this.name + "/application") : this.name ;
+
+cached String classPrefix( Model this ) :
+	(this.projectLayout == EnumProjectLayout::APPLICATION) ? (this.basePrefix() + "/packages") : "" ;
+
 // abstract, to be implemented by target language extension
 String sourceFileName( ModelMember this ) :
 	null;
@@ -312,6 +318,15 @@ boolean isEnumeration( ModelMember this ) :
 
 boolean isClass( ModelMember this ) :
 				this.metaclass() == "de.gulden.modeling.wave.impl.ClassImpl";
+
+boolean isInclude( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.IncludeImpl";
+
+boolean isStyleSheet( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.StyleSheetImpl";
+
+boolean isClassifier( ModelMember this ) :
+				this.isController() || this.isClass() || this.isInterface() || this.isInclude() || this.isStyleSheet();
 
 boolean isInterface( ModelMember this ) :
 				this.metaclass() == "de.gulden.modeling.wave.impl.InterfaceImpl";
