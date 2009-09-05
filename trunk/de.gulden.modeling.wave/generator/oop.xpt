@@ -147,7 +147,7 @@ public function /*void*/ add«this.outgoingName(assoc).toFirstUpper().removePlura
 								«IF ! this.isIngoingMulti(assoc)-»
 		$«this.outgoingName(assoc).removePluralS()»->set«this.ingoingName(assoc).toFirstUpper()»($this); // set back-reference
 								«ELSE-» 
-		$«this.outgoingName(assoc)»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»($this); // add back-reference
+		$«this.outgoingName(assoc).removePluralS()»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»($this); // add back-reference (!!)
 								«ENDIF-» 
 							«ENDIF-» 
 	}

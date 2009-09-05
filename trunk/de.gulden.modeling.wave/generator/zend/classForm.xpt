@@ -233,7 +233,15 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
    							
 							«FOREACH ((WidgetAssociation)widget).elementsMenuActions.flip() AS action»
 								$innerForm->addDecorator( array ( '«((Action)action).name.without("Action")»' => 
-									new DecoratorMenuAction(«((Action)action).labelCode().without(" Action")», «((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», «((Action)action).name.without("Action")», array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 'root' => $rootId ) )
+									new DecoratorMenuAction(
+										«((Action)action).labelCode().without(" Action")», 
+										«((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», 
+										«((Action)action).name.without("Action")», 
+										array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 'root' => $rootId ) )
+										«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO»
+										,
+										$innerForm->getId()
+										«ENDIF»
 								  )
 								);
 							«ENDFOREACH»
@@ -265,6 +273,10 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
 									'root' => $rootId 
 								)
+								«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO»
+								,
+								$lastInnerForm->getId()
+								«ENDIF»
 							)
 						  )
 						);
@@ -299,6 +311,10 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
 									'root' => $this->getRootObjectId() 
 								)
+								«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO»
+								,
+								$innerForm->getId()
+								«ENDIF»
 							)
 						);
 					
@@ -439,8 +455,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
             		),
 «ENDDEFINE»            		
 
-
-
+«REM»
 
 «DEFINE XXXcontrollerSpecific(String formName) FOR Class»
 <?php
@@ -455,8 +470,9 @@ class «this.name»«formName.toLowerCase().toFirstUpper()»FormController extends Z
 ?>
 «ENDDEFINE»
 
+«ENDREM»
 
-
+«REM»
 
 «DEFINE controller FOR Class»
 <?php
@@ -538,7 +554,7 @@ class «this.name»FormController extends Zend_Controller_Action
 ?>
 «ENDDEFINE»
 
-
+«ENDREM»
 
 
 «DEFINE baseForm FOR Class»
@@ -649,7 +665,7 @@ class «this.formName()»Base extends Zend_Form_SubForm
 	}
 	«ENDREM»
 	
-	
+	«REM»	
 	protected function _createWidgetElementSet($relationName)
 	{
 		// TODO select-box
@@ -690,6 +706,7 @@ class «this.formName()»Base extends Zend_Form_SubForm
 			'label'=>'Remove',
 		));
 	}
+	«ENDREM»
     
 } // end of class 
 
@@ -714,6 +731,8 @@ class «this.formName()»DecoratorReadOnly extends Zend_Form_Decorator_Abstract
 	}
 
 } // end of class 
+
+«REM»
 
 class «this.formName()»DecoratorReferenceAbstract extends Zend_Form_Decorator_Abstract 
 {
@@ -747,7 +766,6 @@ class «this.formName()»DecoratorReferenceAbstract extends Zend_Form_Decorator_Ab
 	}
 
 } // end of class 
-
 
 class «this.formName()»DecoratorReferenceListElement extends «this.formName()»DecoratorReferenceAbstract 
 {
@@ -786,7 +804,9 @@ class «this.formName()»DecoratorReferenceSingle extends «this.formName()»Decorat
 		       ."</div>";
 	}
 
-} // end of class 
+} // end of class
+ 
+«ENDREM»
 
 ?>
 «ENDDEFINE»

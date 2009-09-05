@@ -195,7 +195,7 @@ String outgoingName( OOPClassifier this, AssociationRelationship assoc ) : assoc
  
 cached String ingoingName( OOPClassifier this, AssociationRelationship assoc ) : 
 				(assoc.name + 
-				( ( (assoc.name == null) || (assoc.name == "") || assoc.isBidirectional() )
+				( ( (assoc.name == null) || (assoc.name == "") || (assoc.isBidirectional() && ( this == assoc.a ) ) )
 					? ( ( ( this.isOppositeEndB(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
 					: "" 
 				)).toFirstLower(); 

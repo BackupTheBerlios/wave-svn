@@ -83,20 +83,31 @@ class DecoratorMenuAction extends Zend_Form_Decorator_Abstract
 	protected $_label;
 	protected $_params;
 	//protected $_url;
+	protected $_ajaxTarget;
 
-	public function DecoratorMenuAction($label, $controllerName, $actionName, $params=array())
+	public function DecoratorMenuAction($label, $controllerName, $actionName, $params=array(), $ajaxTarget=null)
 	{
 		$params["controller"] = $controllerName;
 		$params["action"] = $actionName;
 		$this->_params = $params;
 		$this->_label = $label;
 		//$this->_url = $this->getElement()->getView()->url($params, "default", false);
+		$this->_ajaxTarget = $ajaxTarget;
 	} 
 	
 	public function render($content)
 	{
-		return $content . "<div class='menuaction ".$this->_params["controller"]." ".$this->_params["action"]."'>" // TODO
-		       ."<a href='" . $this->getElement()->getView()->url($this->_params, "default", true) ."'>".$this->_label."</a>"
+		$url = $this->getElement()->getView()->url($this->_params, "default", true);
+		if ($this->_ajaxTarget)
+		{
+			$onclick = " onclick='new Ajax.Updater(\"".$this->_ajaxTarget."\", \"".$url."\");return false;'";
+		} 
+		else
+		{
+			$onclick = "";
+		}
+		return $content . "<div class='menuaction ".$this->_params["controller"]." ".$this->_params["action"]."'>"
+		       ."<a href='".$url."'".$onclick.">".$this->_label."</a>"
 		       ."</div>";
 	}
 
