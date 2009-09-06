@@ -384,7 +384,13 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
     «FOREACH this.allAttributes() AS attr»
        	«LET this.getWidget(attr, formName) AS widget»
 	    «IF ! widget.ignore»
-        $this->getElement("«attr.name»")->setValue($object->«attr.name.getter()»());
+        $this->getElement("«attr.name»")->setValue(
+        	«IF widget.multiChoice»
+        		explode( "," , $object->«attr.name.getter()»() )
+        	«ELSE»
+        		$object->«attr.name.getter()»()
+        	«ENDIF»
+        );
 		«ENDIF»
 		«ENDLET»
     «ENDFOREACH»
@@ -433,7 +439,13 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
    	«FOREACH this.allAttributes() AS attr»
    		«LET this.getWidget(attr, formName) AS widget»
 	    	«IF ! widget.ignore»
-	    	$object->«attr.name.setter()»($this->getElement("«attr.name»")->getValue());
+	    	$object->«attr.name.setter()»(
+	    		«IF widget.multiChoice»
+	    			implode( "," , $this->getElement("«attr.name»")->getValue() )
+	    		«ELSE»
+	    			$this->getElement("«attr.name»")->getValue()
+	    		«ENDIF»
+	    	);
 			«ENDIF»
 		«ENDLET»
     «ENDFOREACH»
