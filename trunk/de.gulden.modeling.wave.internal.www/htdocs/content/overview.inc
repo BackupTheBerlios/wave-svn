@@ -23,7 +23,7 @@ Raise your level of abstraction:
 </center>
 
 <p>
-<i>WAVE</i> is a graphical modeling environment for developing web-based software based on the <a href='' target='_blank'>Zend Web-Application framework</a>.
+<i>WAVE</i> is a graphical modeling environment for developing web-based software based on the <a href='http://framework.zend.com/' target='_blank'>Zend Web-Application framework</a>.
 It has been created on top of the Eclipse <a href='http://www.eclipse.org/modeling/gmf/' target='_blank'>Graphical Modeling Framework (GMF)</a> and runs as
 a plugin inside the <a href='http://www.eclipse.org/' target='_blank'>Eclipse</a> integrated development environment. 
 </p>
