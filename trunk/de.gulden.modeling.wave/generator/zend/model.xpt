@@ -17,6 +17,10 @@
 «DEFINE model FOR Model»
 	«REM» generate Zend project structure «ENDREM»
 
+	«FILE this.basePrefix()+"/controllers/ErrorController.php"»«EXPAND ErrorController::ErrorController»«ENDFILE»
+	
+	«FILE this.basePrefix()+"/views/scripts/error/error.phtml"»«EXPAND ErrorController::ErrorControllerView»«ENDFILE»
+	
 	«EXPAND package» «REM» base package + recursion into subpackages «ENDREM»
 	
 	«IF ! (this.sourceFolder+"/"+this.basePrefix()+"/Wave.php").fileExists()» «REM» only if not there, allows manual modification «ENDREM»
@@ -28,10 +32,6 @@
 	«IF this.dictionary.is()»
 		«FILE this.basePrefix()+"/configs/langstrings.inc.php"»«EXPAND dictionary::dictionary FOR this.dictionary»«ENDFILE»
 	«ENDIF»
-	
-	«FILE this.basePrefix()+"/controllers/ErrorController.php"»«EXPAND ErrorController::ErrorController»«ENDFILE»
-	
-	«FILE this.basePrefix()+"/views/scripts/error/error.phtml"»«EXPAND ErrorController::ErrorControllerView»«ENDFILE»
 	
 	«IF this.projectLayout == EnumProjectLayout::APPLICATION»
 		«FILE this.basePrefix()+"/Bootstrap.php"»«EXPAND Bootstrap::Bootstrap»«ENDFILE»
