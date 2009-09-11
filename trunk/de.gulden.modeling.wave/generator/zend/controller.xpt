@@ -21,8 +21,13 @@
 
 «DEFINE controller FOR Controller»<?php
 
+«REM»may be needed«ENDREM»
+require_once 'Zend/Form/SubForm.php';
+require_once 'Zend/Db/Table/Abstract.php';
+
 «REM»include classes / packages to which a Dependency relationship exists«ENDREM»
 $_basepath = dirname(__FILE__)."/../../";
+require_once($_basepath."«this.model().basePrefix()»/Wave.php");
 «FOREACH this.depends() AS dep»
 	«IF dep.isPackage()»
 		«EXPAND import FOR (Package)dep»
@@ -184,32 +189,32 @@ else
 include(dirname(__FILE__)."/parts/".$this->part.".phtml");
 «ENDDEFINE»
 
-«DEFINE import FOR Class»
-	include_once($_basepath."«this.sourceFileName()»");
-	«IF this.forms.has()»
-	include_once($_basepath."«this.sourceFormFileName("Base")»");
-	«ENDIF»
-	«FOREACH this.forms AS f»
-	include_once($_basepath."«this.sourceFormFileName(f.name)»");
-	«ENDFOREACH»
-	«IF this.isPersistent»
-	include_once($_basepath."«this.sourceMapperFileName()»");
-	include_once($_basepath."«this.sourceDbtableFileName()»");
-	«ENDIF»
+«DEFINE import FOR Class-»
+	require_once($_basepath."«this.sourceFileName()»");
+	«IF this.forms.has()-»
+	require_once($_basepath."«this.sourceFormFileName("Base")»");
+	«ENDIF-»
+	«FOREACH this.forms AS f-»
+	require_once($_basepath."«this.sourceFormFileName(f.name)»");
+	«ENDFOREACH-»
+	«IF this.isPersistent-»
+	require_once($_basepath."«this.sourceMapperFileName()»");
+	require_once($_basepath."«this.sourceDbtableFileName()»");
+	«ENDIF-»
 «ENDDEFINE»
 
-«DEFINE import FOR Interface»
-	include_once($_basepath."«this.sourceFileName()»");
+«DEFINE import FOR Interface-»
+	require_once($_basepath."«this.sourceFileName()»");
 «ENDDEFINE»
 
-«DEFINE import FOR Package»
-	«FOREACH this.members AS m»
-		«IF m.isPackage()»
-			«EXPAND import FOR (Package)m»
-		«ELSEIF m.isClass()»
-			«EXPAND import FOR (Class)m»
-		«ELSEIF m.isInterface()»
-			«EXPAND import FOR (Interface)m»
-		«ENDIF»
-	«ENDFOREACH»
+«DEFINE import FOR Package-»
+	«FOREACH this.members AS m-»
+		«IF m.isPackage()-»
+			«EXPAND import FOR (Package)m-»
+		«ELSEIF m.isClass()-»
+			«EXPAND import FOR (Class)m-»
+		«ELSEIF m.isInterface()-»
+			«EXPAND import FOR (Interface)m-»
+		«ENDIF-»
+	«ENDFOREACH-»
 «ENDDEFINE»
