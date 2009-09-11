@@ -16,6 +16,15 @@ String sourceFileName( Controller this ) :
 String sourceFileName( OOPClassifier this ) :
 	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/")) + this.name + ".php";
 	
+String sourceFormFileName( Class this, String name ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "forms/")) + this.name + name.toLowerCase().toFirstUpper() + ".php";
+	
+String sourceMapperFileName( Class this ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/DbTable/")) + this.name + "Mapper.php";
+	
+String sourceDbtableFileName( Class this ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/DbTable/")) + this.name + ".php";
+	
 String sourceFileName( Enumeration this ) :
 	this.model().basePrefix().concat("/", this.package().path().concat("/", "models/")) + this.name + ".php";
 	
