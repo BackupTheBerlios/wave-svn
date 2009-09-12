@@ -119,7 +119,7 @@ if (!$«param.name»)
 «FOREACH this.outgoingFlows() AS flow»
 	«IF flow.target.isAction()»
 	
-		function link«flow.target.name.without("Action").toFirstUpper()»($content, $options = array())
+		function link«flow.target.name.without("Action").toFirstUpper()»($content = null, $options = array())
 		{
 			global $_view;
 			return "<a href='".$_view->«((Action)flow.target).urlCode("$options")»."'>".( $content ? $content : «flow.target.labelCode()» )."</a>";

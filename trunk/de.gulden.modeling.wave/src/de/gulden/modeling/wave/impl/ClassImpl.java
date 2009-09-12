@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link de.gulden.modeling.wave.impl.ClassImpl#isIsPersistent <em>Is Persistent</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ClassImpl#getTargetMode <em>Target Mode</em>}</li>
- *   <li>{@link de.gulden.modeling.wave.impl.ClassImpl#isGenerateForm <em>Generate Form</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ClassImpl#getForms <em>Forms</em>}</li>
  * </ul>
  * </p>
@@ -83,26 +82,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 	 * @ordered
 	 */
 	protected EnumTargetModes targetMode = TARGET_MODE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isGenerateForm() <em>Generate Form</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isGenerateForm()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean GENERATE_FORM_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isGenerateForm() <em>Generate Form</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isGenerateForm()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean generateForm = GENERATE_FORM_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getForms() <em>Forms</em>}' containment reference list.
@@ -180,27 +159,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isGenerateForm() {
-		return generateForm;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setGenerateForm(boolean newGenerateForm) {
-		boolean oldGenerateForm = generateForm;
-		generateForm = newGenerateForm;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.CLASS__GENERATE_FORM, oldGenerateForm, generateForm));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EList<Form> getForms() {
 		if (forms == null) {
 			forms = new EObjectContainmentEList<Form>(Form.class, this, WavePackage.CLASS__FORMS);
@@ -234,8 +192,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 				return isIsPersistent() ? Boolean.TRUE : Boolean.FALSE;
 			case WavePackage.CLASS__TARGET_MODE:
 				return getTargetMode();
-			case WavePackage.CLASS__GENERATE_FORM:
-				return isGenerateForm() ? Boolean.TRUE : Boolean.FALSE;
 			case WavePackage.CLASS__FORMS:
 				return getForms();
 		}
@@ -256,9 +212,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 				return;
 			case WavePackage.CLASS__TARGET_MODE:
 				setTargetMode((EnumTargetModes)newValue);
-				return;
-			case WavePackage.CLASS__GENERATE_FORM:
-				setGenerateForm(((Boolean)newValue).booleanValue());
 				return;
 			case WavePackage.CLASS__FORMS:
 				getForms().clear();
@@ -282,9 +235,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 			case WavePackage.CLASS__TARGET_MODE:
 				setTargetMode(TARGET_MODE_EDEFAULT);
 				return;
-			case WavePackage.CLASS__GENERATE_FORM:
-				setGenerateForm(GENERATE_FORM_EDEFAULT);
-				return;
 			case WavePackage.CLASS__FORMS:
 				getForms().clear();
 				return;
@@ -304,8 +254,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 				return isPersistent != IS_PERSISTENT_EDEFAULT;
 			case WavePackage.CLASS__TARGET_MODE:
 				return targetMode != TARGET_MODE_EDEFAULT;
-			case WavePackage.CLASS__GENERATE_FORM:
-				return generateForm != GENERATE_FORM_EDEFAULT;
 			case WavePackage.CLASS__FORMS:
 				return forms != null && !forms.isEmpty();
 		}
@@ -326,8 +274,6 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 		result.append(isPersistent);
 		result.append(", targetMode: ");
 		result.append(targetMode);
-		result.append(", generateForm: ");
-		result.append(generateForm);
 		result.append(')');
 		return result.toString();
 	}

@@ -18,7 +18,7 @@
 
 «DEFINE class FOR Class»
 
-	«IF this.generateForm || this.forms.has()»
+	«IF this.forms.has()»
 	public static function createForm($mode="EDIT", $object=null, $parent=null)
 	{
 		$cls = "«this.formName()»".ucfirst(strtolower($mode));

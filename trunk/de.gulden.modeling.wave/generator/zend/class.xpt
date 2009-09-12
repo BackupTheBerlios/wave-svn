@@ -25,9 +25,6 @@
  «EXPAND model::commentHeader» */
  
 «REM»«EXPAND oop::imports-»«ENDREM»
-«IF this.generateForm-»
-«REM» include_once("«this.name»Editor.class.php"); «ENDREM»
-«ENDIF»
 «EXPAND oop::modifiers»class «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF»«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«ELSEIF this.externalImplements.is()» extends «this.externalImplements»«ENDIF»
 { 	«REM» always provide id handling, also if not persistent «ENDREM»
  	protected $_id = null;
@@ -46,9 +43,6 @@
 «EXPAND oop::associations»
 «EXPAND oop::operations»
 «EXPAND classForm::class»
-«IF this.generateForm»
-«REM» TODO «ENDREM»
-«ENDIF»
 «IF this.isPersistent && (! this.isAbstract)»
 «storeGlobalVar("generateDBSchema", " ")-»
 «EXPAND classPersistence::class»

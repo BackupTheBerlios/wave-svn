@@ -67,7 +67,6 @@ public class ClassItemProvider
 
 			addIsPersistentPropertyDescriptor(object);
 			addTargetModePropertyDescriptor(object);
-			addGenerateFormPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -112,28 +111,6 @@ public class ClassItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Generate Form feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addGenerateFormPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Class_generateForm_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Class_generateForm_feature", "_UI_Class_type"),
-				 WavePackage.Literals.CLASS__GENERATE_FORM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -207,7 +184,6 @@ public class ClassItemProvider
 		switch (notification.getFeatureID(de.gulden.modeling.wave.Class.class)) {
 			case WavePackage.CLASS__IS_PERSISTENT:
 			case WavePackage.CLASS__TARGET_MODE:
-			case WavePackage.CLASS__GENERATE_FORM:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case WavePackage.CLASS__FORMS:

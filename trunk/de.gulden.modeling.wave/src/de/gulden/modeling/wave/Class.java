@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link de.gulden.modeling.wave.Class#isIsPersistent <em>Is Persistent</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Class#getTargetMode <em>Target Mode</em>}</li>
- *   <li>{@link de.gulden.modeling.wave.Class#isGenerateForm <em>Generate Form</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Class#getForms <em>Forms</em>}</li>
  * </ul>
  * </p>
@@ -84,33 +83,6 @@ public interface Class extends OOPClassifier {
 	 * @generated
 	 */
 	void setTargetMode(EnumTargetModes value);
-
-	/**
-	 * Returns the value of the '<em><b>Generate Form</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Generate Form</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Generate Form</em>' attribute.
-	 * @see #setGenerateForm(boolean)
-	 * @see de.gulden.modeling.wave.WavePackage#getClass_GenerateForm()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isGenerateForm();
-
-	/**
-	 * Sets the value of the '{@link de.gulden.modeling.wave.Class#isGenerateForm <em>Generate Form</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Generate Form</em>' attribute.
-	 * @see #isGenerateForm()
-	 * @generated
-	 */
-	void setGenerateForm(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Forms</b></em>' containment reference list.

@@ -2279,22 +2279,13 @@ public interface WavePackage extends EPackage {
 	int CLASS__TARGET_MODE = OOP_CLASSIFIER_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Generate Form</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CLASS__GENERATE_FORM = OOP_CLASSIFIER_FEATURE_COUNT + 2;
-
-	/**
 	 * The feature id for the '<em><b>Forms</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS__FORMS = OOP_CLASSIFIER_FEATURE_COUNT + 3;
+	int CLASS__FORMS = OOP_CLASSIFIER_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Class</em>' class.
@@ -2303,7 +2294,7 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CLASS_FEATURE_COUNT = OOP_CLASSIFIER_FEATURE_COUNT + 4;
+	int CLASS_FEATURE_COUNT = OOP_CLASSIFIER_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.InterfaceImpl <em>Interface</em>}' class.
@@ -5562,17 +5553,6 @@ public interface WavePackage extends EPackage {
 	EAttribute getClass_TargetMode();
 
 	/**
-	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Class#isGenerateForm <em>Generate Form</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Generate Form</em>'.
-	 * @see de.gulden.modeling.wave.Class#isGenerateForm()
-	 * @see #getClass_()
-	 * @generated
-	 */
-	EAttribute getClass_GenerateForm();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link de.gulden.modeling.wave.Class#getForms <em>Forms</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7343,14 +7323,6 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CLASS__TARGET_MODE = eINSTANCE.getClass_TargetMode();
-
-		/**
-		 * The meta object literal for the '<em><b>Generate Form</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CLASS__GENERATE_FORM = eINSTANCE.getClass_GenerateForm();
 
 		/**
 		 * The meta object literal for the '<em><b>Forms</b></em>' containment reference list feature.

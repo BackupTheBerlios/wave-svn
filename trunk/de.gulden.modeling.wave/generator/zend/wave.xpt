@@ -91,13 +91,12 @@ class DecoratorMenuAction extends Zend_Form_Decorator_Abstract
 		$params["action"] = $actionName;
 		$this->_params = $params;
 		$this->_label = $label;
-		//$this->_url = $this->getElement()->getView()->url($params, "default", false);
 		$this->_ajaxTarget = $ajaxTarget;
 	} 
 	
 	public function render($content)
 	{
-		$url = $this->getElement()->getView()->url($this->_params, "default", true);
+		$url = $this->getElement()->getView()->url($this->_params, "default", false);
 		if ($this->_ajaxTarget)
 		{
 			$onclick = " onclick='new Ajax.Updater(\"".$this->_ajaxTarget."\", \"".$url."\");return false;'";

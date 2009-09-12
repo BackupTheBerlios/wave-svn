@@ -1150,17 +1150,8 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getClass_GenerateForm() {
-		return (EAttribute)classEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getClass_Forms() {
-		return (EReference)classEClass.getEStructuralFeatures().get(3);
+		return (EReference)classEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -2254,7 +2245,6 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		classEClass = createEClass(CLASS);
 		createEAttribute(classEClass, CLASS__IS_PERSISTENT);
 		createEAttribute(classEClass, CLASS__TARGET_MODE);
-		createEAttribute(classEClass, CLASS__GENERATE_FORM);
 		createEReference(classEClass, CLASS__FORMS);
 
 		interfaceEClass = createEClass(INTERFACE);
@@ -2549,7 +2539,6 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEClass(classEClass, de.gulden.modeling.wave.Class.class, "Class", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClass_IsPersistent(), ecorePackage.getEBoolean(), "isPersistent", null, 0, 1, de.gulden.modeling.wave.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getClass_TargetMode(), this.getEnumTargetModes(), "targetMode", null, 0, 1, de.gulden.modeling.wave.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getClass_GenerateForm(), ecorePackage.getEBoolean(), "generateForm", "false", 0, 1, de.gulden.modeling.wave.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClass_Forms(), this.getForm(), null, "forms", null, 0, -1, de.gulden.modeling.wave.Class.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(interfaceEClass, Interface.class, "Interface", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

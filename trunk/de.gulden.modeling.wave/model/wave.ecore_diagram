@@ -403,10 +403,6 @@
         <element xmi:type="ecore:EAttribute" href="wave.ecore#//Class/targetMode"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_FP6RgToIEd2ZD4huR56txQ"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_g_R7kDoIEd2ZD4huR56txQ" type="3001">
-        <element xmi:type="ecore:EAttribute" href="wave.ecore#//Class/generateForm"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_g_R7kToIEd2ZD4huR56txQ"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_oPhmMfdFEdyxFN9JG-Wudw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_oPhmMvdFEdyxFN9JG-Wudw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_oPhmM_dFEdyxFN9JG-Wudw"/>
@@ -423,7 +419,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_oPei4fdFEdyxFN9JG-Wudw" fontName="Sans"/>
     <element xmi:type="ecore:EClass" href="wave.ecore#//Class"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oPei4vdFEdyxFN9JG-Wudw" x="276" y="624" height="97"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_oPei4vdFEdyxFN9JG-Wudw" x="276" y="624" height="77"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_o5GusPdFEdyxFN9JG-Wudw" type="2001">
     <children xmi:type="notation:Node" xmi:id="_o5HVwPdFEdyxFN9JG-Wudw" type="5001"/>

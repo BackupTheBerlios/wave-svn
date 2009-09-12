@@ -148,7 +148,6 @@
     <genClasses ecoreClass="wave.ecore#//Class">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Class/isPersistent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Class/targetMode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Class/generateForm"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Class/forms"/>
     </genClasses>
     <genClasses ecoreClass="wave.ecore#//Interface">

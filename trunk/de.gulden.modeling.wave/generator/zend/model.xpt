@@ -97,16 +97,15 @@
 								«ENDFOREACH»
 							«ENDIF»
 							«REM» default forms «ENDREM»
-							«IF cls.generateForm || cls.forms.has()»
+							«IF cls.forms.has()»
 								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/"))+cls.name+"Base.php"»«EXPAND classForm::baseForm FOR cls»«ENDFILE»
 								«REM»«FILE this.model().name + "/application/controllers/" + cls.name + "FormController.php"»«EXPAND classForm::controller FOR cls»«ENDFILE»«ENDREM»
 							«ENDIF»
-							«IF cls.generateForm»
+							«REM»«IF cls.generateForm»
 								«FOREACH {"Edit", "View", "List", "Admin"} AS formName»
 									«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/")) + cls.name + formName + ".php"»«EXPAND classForm::form(formName) FOR cls»«ENDFILE»
-									«REM»«FILE this.model().basePrefix() + "/controllers/Form" + cls.name + formName + "Controller.php"»«EXPAND classForm::controller(formName) FOR cls»«ENDFILE»«ENDREM»
 								«ENDFOREACH»
-							«ENDIF»
+							«ENDIF»«EDNREM»
 							«REM» user-specified forms (may overwrite default ones) «ENDREM»
 							«FOREACH cls.forms AS form»
 								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/")) + cls.name + form.name.toLowerCase().toFirstUpper() + ".php"»«EXPAND classForm::form(form.name) FOR cls»«ENDFILE»
