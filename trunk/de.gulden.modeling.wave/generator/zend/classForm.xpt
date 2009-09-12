@@ -138,7 +138,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
             'size' => 60,
             «ELSEIF (widget.widgetType == EnumWidgetType::SELECT) && widget.multiLine»
             'size' => 10,
-            «ELSEIF attr.type=="int"»
+            «ELSEIF attr.type=="int" && (widget.widgetType == EnumWidgetType::TEXT || widget.widgetType == EnumWidgetType::DEFAULT)»
             'size' => 5,
             «ELSEIF attr.type=="date"»
             'size' => 10,
