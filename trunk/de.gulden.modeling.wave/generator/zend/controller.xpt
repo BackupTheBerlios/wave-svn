@@ -194,6 +194,10 @@ include(dirname(__FILE__)."/parts/".$this->part.".phtml");
 	require_once($_basepath."«this.sourceFileName()»");
 «ENDDEFINE»
 
+«DEFINE import FOR AssociationRelationship-» «REM» bidirectional n-m «ENDREM»
+	require_once($_basepath."«this.sourceFileName()»");
+«ENDDEFINE»
+
 «DEFINE import FOR Package-»
 	«FOREACH this.members AS m-»
 		«IF m.isPackage()-»
@@ -202,6 +206,10 @@ include(dirname(__FILE__)."/parts/".$this->part.".phtml");
 			«EXPAND import FOR (Class)m-»
 		«ELSEIF m.isInterface()-»
 			«EXPAND import FOR (Interface)m-»
+		«ELSEIF m.isAssociationRelationship()-»
+			«IF ((AssociationRelationship)m).isBidirectionalNToM()-»
+				«EXPAND import FOR (AssociationRelationship)m-»
+			«ENDIF»
 		«ENDIF-»
 	«ENDFOREACH-»
 «ENDDEFINE»

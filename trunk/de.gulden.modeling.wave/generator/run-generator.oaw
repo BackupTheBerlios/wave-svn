@@ -9,9 +9,11 @@
 <!--
 openArchitectureWare workflow script for manually running code-generation  
  -->
- 
-	<property name="model" value="/workspace-php/polls/polls.wave"/>
-	<property name="sourceFolder" value="/workspace-php/polls/htdocs"/>
+
+	<!-- CHANGE PATHS TO YOUR CONFIGURATION  --> 
+	<property name="model" value="/path/to/model.wave"/>
+	<property name="sourceFolder" value="/path/to/htdocs"/>
+	<!-- - - - - - - - - - - - - - - - - - - --> 
 
 	<component class="oaw.emf.XmiReader">
 		<modelFile value="${model}"/>

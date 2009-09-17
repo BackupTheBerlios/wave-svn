@@ -92,7 +92,7 @@
 								«FILE this.model().classPrefix().concat("/", this.path().concat("/", "models/DbTable/")) + cls.name + "Mapper.php"»«EXPAND classPersistence::classMapper FOR cls»«ENDFILE»
 								«FOREACH cls.allBidirectionalNtoMAssociations() AS assoc»
 									«IF cls == assoc.a»
-										«FILE this.model().classPrefix().concat("/", this.path().concat("/", "models/DbTable/")) + "Relationship" + assoc.name.toFirstUpper() + ".php"»«EXPAND classPersistence::classDbTableBidirectionalNToM FOR assoc»«ENDFILE»
+										«FILE assoc.sourceFileName()»«EXPAND classPersistence::classDbTableBidirectionalNToM FOR assoc»«ENDFILE»
 									«ENDIF»
 								«ENDFOREACH»
 							«ENDIF»

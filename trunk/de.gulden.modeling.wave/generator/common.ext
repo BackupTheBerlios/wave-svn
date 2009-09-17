@@ -340,6 +340,9 @@ boolean isView( ModelMember this ) :
 boolean isPackage( ModelMember this ) :
 				this.metaclass() == "de.gulden.modeling.wave.impl.PackageImpl";
 
+boolean isAssociationRelationship( ModelMember this ) :
+				this.metaclass() == "de.gulden.modeling.wave.impl.AssociationRelationshipImpl";
+
 String metaclass( ModelMember this ) :
 				JAVA de.gulden.modeling.wave.util.WaveUtil.getClassname(java.lang.Object);
 				

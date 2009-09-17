@@ -37,6 +37,9 @@ String sourceFileName( Include this ) :
 String sourceFileName( StyleSheet this ) :
 	this.model().name + "/public/styles/" + this.name;
 	
+String sourceFileName( AssociationRelationship this ) : // bidirectional n-to-m
+	this.model().classPrefix().concat("/", this.a.package().path().concat("/", "models/DbTable/")) + "Relationship" + this.name.toFirstUpper() + ".php";
+	
 
 String codeName( OOPClassifier this ) : this.codeNameBase()+this.name; 
 
