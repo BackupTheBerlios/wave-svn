@@ -249,7 +249,8 @@ class «EXPAND mapperClassName»
             $inserted = true;
         } else {
             $data["modifiedBy"] = $_SERVER["PHP_AUTH_USER"];
-            $dbTable->update($data, array("id = ?" => $id));
+            //$dbTable->update($data, array("id = ?" => $id));
+            $dbTable->update($data, "id=".intval($id));
         }
 
 		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
