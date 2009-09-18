@@ -256,7 +256,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					{
 						$lastInnerForm = new «this.formName()»Base(); //Zend_Form_SubForm(); // dummy for empty list
 						$lastInnerForm = $lastInnerForm->asSubForm();
-						$lastInnerForm->setParentForm( $this ); 
+						$lastInnerForm->setParentForm( $this ); // TODO needed? 
 						$this->addSubForm( $lastInnerForm, $prefix );
 					}
 					
@@ -283,7 +283,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					
 					«ENDFOREACH»
 							
-				«ELSE»
+				«ELSE» «REM» outgoing singleval «ENDREM»
 					
 					$prefix = "«assoc.outgoingName(this)»";
 					$element = ($this->getObject() != null) ? $this->getObject()->«assoc.outgoingName(this).getter()»() : null;
@@ -298,6 +298,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 					else
 					{
 						$innerForm = new Zend_Form_SubForm(); // dummy for empty entry
+						$this->addSubForm( $innerForm, $prefix );
 					}
 					
 					«FOREACH widget.menuActions.flip() AS action»
@@ -319,8 +320,6 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 						);
 					
 					«ENDFOREACH»
-					
-					$this->addSubForm( $innerForm, $prefix );
 					
 				«ENDIF»
 					    

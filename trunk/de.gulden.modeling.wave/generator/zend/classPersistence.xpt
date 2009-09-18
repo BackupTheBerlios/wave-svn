@@ -249,7 +249,7 @@ class «EXPAND mapperClassName»
             $inserted = true;
         } else {
             $data["modifiedBy"] = $_SERVER["PHP_AUTH_USER"];
-            //$dbTable->update($data, array("id = ?" => $id));
+            //$dbTable->update($data, array("id = ?" => $id)); // Zend 1.8 only
             $dbTable->update($data, "id=".intval($id));
         }
 
