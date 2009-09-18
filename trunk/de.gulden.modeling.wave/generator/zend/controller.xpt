@@ -143,10 +143,10 @@ if (!$«param.name»)
 			return $b; 
 		}
 		
-		function formAction«flow.target.name.without("Action").toFirstUpper()»($form, $submitButtonLabel = null)
+		function formAction«flow.target.name.without("Action").toFirstUpper()»($form, $submitButtonLabel = null, $options = array())
 		{
 			global $_view;
-			$form->setAction($_view->«((Action)flow.target).urlCode()»);
+			$form->setAction($_view->«((Action)flow.target).urlCode("$options")»);
 			if ( $submitButtonLabel )
 			{
 				$form->addButton($submitButtonLabel, "submit"); // addButton(..) provided by form class XxxBase

@@ -96,7 +96,7 @@ class DecoratorMenuAction extends Zend_Form_Decorator_Abstract
 	
 	public function render($content)
 	{
-		$url = $this->getElement()->getView()->url($this->_params, "default", false);
+		$url = $this->getElement()->getView()->url($this->_params, "default", true);
 		if ($this->_ajaxTarget)
 		{
 			$onclick = " onclick='new Ajax.Updater(\"".$this->_ajaxTarget."\", \"".$url."\");return false;'";
