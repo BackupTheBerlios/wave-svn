@@ -252,8 +252,8 @@ public class WaveEditPartFactory implements EditPartFactory {
 			case ViewTransitionEditPart.VISUAL_ID:
 				return new ViewTransitionEditPart(view);
 
-			case ViewTransitionNameEditPart.VISUAL_ID:
-				return new ViewTransitionNameEditPart(view);
+			case ViewTransitionConditionEditPart.VISUAL_ID:
+				return new ViewTransitionConditionEditPart(view);
 
 			case DependencyRelationship2EditPart.VISUAL_ID:
 				return new DependencyRelationship2EditPart(view);

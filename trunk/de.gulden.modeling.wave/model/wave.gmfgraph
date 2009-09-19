@@ -396,7 +396,7 @@
       </actualFigure>
     </descriptors>
     <descriptors
-        name="ViewTransitionNameFigure">
+        name="ViewTransitionConditionFigure">
       <actualFigure
           xsi:type="gmfgraph:Label"
           name="ViewTransitionNameFigure"
@@ -719,7 +719,7 @@
       accessor="//@figures.0/@descriptors.20/@accessors.0"/>
   <labels
       name="ViewTransitionConditionLabel"
-      figure="ViewTransitionNameFigure"
+      figure="ViewTransitionConditionFigure"
       elementIcon="false">
     <facets
         xsi:type="gmfgraph:AlignmentFacet"

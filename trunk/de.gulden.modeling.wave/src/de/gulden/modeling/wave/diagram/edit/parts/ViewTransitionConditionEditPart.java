@@ -6,11 +6,11 @@
  */
 package de.gulden.modeling.wave.diagram.edit.parts;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Point;
@@ -19,11 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.gef.AccessibleEditPart;
 import org.eclipse.gef.EditPolicy;
-import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
-import org.eclipse.gef.handles.NonResizableHandleKit;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
@@ -31,9 +27,9 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.LabelDirectEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramColorRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
@@ -53,19 +49,20 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 
 import de.gulden.modeling.wave.diagram.edit.policies.WaveTextSelectionEditPolicy;
+import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 import de.gulden.modeling.wave.diagram.providers.WaveParserProvider;
 
 /**
  * @generated
  */
-public class ActorNameEditPart extends CompartmentEditPart implements
+public class ViewTransitionConditionEditPart extends LabelEditPart implements
 		ITextAwareEditPart {
 
 	/**
 	 * @generated
 	 */
-	public static final int VISUAL_ID = 5026;
+	public static final int VISUAL_ID = 6002;
 
 	/**
 	 * @generated
@@ -90,7 +87,17 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 	/**
 	 * @generated
 	 */
-	public ActorNameEditPart(View view) {
+	static {
+		registerSnapBackPosition(
+				WaveVisualIDRegistry
+						.getType(de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionConditionEditPart.VISUAL_ID),
+				new Point(0, 40));
+	}
+
+	/**
+	 * @generated
+	 */
+	public ViewTransitionConditionEditPart(View view) {
 		super(view);
 	}
 
@@ -101,24 +108,13 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
 				new LabelDirectEditPolicy());
-		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
-				new NonResizableEditPolicy() {
+	}
 
-					protected List createSelectionHandles() {
-						List handles = new ArrayList();
-						NonResizableHandleKit.addMoveHandle(
-								(GraphicalEditPart) getHost(), handles);
-						return handles;
-					}
-
-					public Command getCommand(Request request) {
-						return null;
-					}
-
-					public boolean understandsRequest(Request request) {
-						return false;
-					}
-				});
+	/**
+	 * @generated
+	 */
+	public int getKeyPoint() {
+		return ConnectionLocator.MIDDLE;
 	}
 
 	/**
@@ -168,7 +164,7 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 	/**
 	 * @generated
 	 */
-	public void setLabel(WrappingLabel figure) {
+	public void setLabel(IFigure figure) {
 		unregisterVisuals();
 		setFigure(figure);
 		defaultText = getLabelTextHelper(figure);
@@ -309,7 +305,8 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 		if (parser == null) {
 			String parserHint = ((View) getModel()).getType();
 			IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-					WaveElementTypes.Actor_2024, getParserElement(), parserHint);
+					WaveElementTypes.ViewTransition_4013, getParserElement(),
+					parserHint);
 			parser = ParserService.getInstance().getParser(hintAdapter);
 		}
 		return parser;
@@ -412,7 +409,7 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 	 * @generated
 	 */
 	protected void refreshLabel() {
-		setLabelTextHelper(getFigure(), getLabelText());
+		setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toCondition(getLabelText()));
 		setLabelIconHelper(getFigure(), getLabelIcon());
 		Object pdEditPolicy = getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
@@ -451,7 +448,7 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 				NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null) {
 			FontData fontData = new FontData(style.getFontName(), style
-					.getFontHeight(), (style.isBold() ? SWT.BOLD : SWT.NORMAL)
+					.getFontHeight()-2, (style.isBold() ? SWT.BOLD : SWT.NORMAL)
 					| (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
 			setFont(fontData);
 		}
@@ -519,22 +516,6 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 	/**
 	 * @generated
 	 */
-	protected void addNotationalListeners() {
-		super.addNotationalListeners();
-		addListenerFilter("PrimaryView", this, getPrimaryView()); //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void removeNotationalListeners() {
-		super.removeNotationalListeners();
-		removeListenerFilter("PrimaryView"); //$NON-NLS-1$
-	}
-
-	/**
-	 * @generated
-	 */
 	protected void handleNotificationEvent(Notification event) {
 		Object feature = event.getFeature();
 		if (NotationPackage.eINSTANCE.getFontStyle_FontColor().equals(feature)) {
@@ -579,8 +560,30 @@ public class ActorNameEditPart extends CompartmentEditPart implements
 	 * @generated
 	 */
 	protected IFigure createFigure() {
-		// Parent should assign one using setLabel() method
-		return null;
+		IFigure label = createFigurePrim();
+		defaultText = getLabelTextHelper(label);
+		return label;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected IFigure createFigurePrim() {
+		return new ViewTransitionConditionFigure();
+	}
+
+	/**
+	 * @generated
+	 */
+	public class ViewTransitionConditionFigure extends WrappingLabel {
+
+		/**
+		 * @generated
+		 */
+		public ViewTransitionConditionFigure() {
+			this.setText("");
+		}
+
 	}
 
 }

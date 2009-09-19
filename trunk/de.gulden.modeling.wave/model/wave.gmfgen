@@ -1449,15 +1449,15 @@
       </modelFacet>
       <labels
           visualID="6002"
-          editPartClassName="ViewTransitionNameEditPart"
-          itemSemanticEditPolicyClassName="ViewTransitionNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ViewTransitionNameViewFactory">
+          editPartClassName="ViewTransitionConditionEditPart"
+          itemSemanticEditPolicyClassName="ViewTransitionConditionItemSemanticEditPolicy"
+          notationViewFactoryClassName="ViewTransitionConditionViewFactory">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
             xsi:type="gmfgen:InnerClassViewmap"
-            className="ViewTransitionNameFigure"
-            classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ViewTransitionNameFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ViewTransitionNameFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+            className="ViewTransitionConditionFigure"
+            classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class ViewTransitionConditionFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public ViewTransitionConditionFigure() {&#xA;&#x9;&#x9;&#x9;&#x9;this.setText(&quot;&quot;);&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
           <attributes
               xsi:type="gmfgen:LabelOffsetAttributes"
               y="40"/>

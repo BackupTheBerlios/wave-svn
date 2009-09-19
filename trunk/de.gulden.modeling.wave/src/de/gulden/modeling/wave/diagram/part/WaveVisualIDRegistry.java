@@ -85,8 +85,8 @@ import de.gulden.modeling.wave.diagram.edit.parts.View2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewName2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewNameEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionConditionEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionEditPart;
-import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionNameEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartment2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewOperationCompartment2EditPart;
@@ -713,7 +713,7 @@ public class WaveVisualIDRegistry {
 			}
 			break;
 		case ViewTransitionEditPart.VISUAL_ID:
-			if (ViewTransitionNameEditPart.VISUAL_ID == nodeVisualID) {
+			if (ViewTransitionConditionEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
 			}
 			break;

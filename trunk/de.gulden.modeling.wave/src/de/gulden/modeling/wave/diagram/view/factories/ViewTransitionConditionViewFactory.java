@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.notation.View;
 /**
  * @generated
  */
-public class ActionToViewTransitionConditionViewFactory extends
+public class ViewTransitionConditionViewFactory extends
 		AbstractLabelViewFactory {
 
 	/**

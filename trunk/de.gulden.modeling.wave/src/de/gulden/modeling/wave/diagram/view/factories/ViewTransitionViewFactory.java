@@ -17,8 +17,8 @@ import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.View;
 
+import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionConditionEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionEditPart;
-import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionNameEditPart;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 
 /**
@@ -60,7 +60,7 @@ public class ViewTransitionViewFactory extends ConnectionViewFactory {
 				eObjectAdapter,
 				view,
 				WaveVisualIDRegistry
-						.getType(ViewTransitionNameEditPart.VISUAL_ID),
+						.getType(ViewTransitionConditionEditPart.VISUAL_ID),
 				ViewUtil.APPEND, true, getPreferencesHint());
 	}
 }

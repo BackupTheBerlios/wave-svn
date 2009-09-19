@@ -84,8 +84,8 @@ import de.gulden.modeling.wave.diagram.edit.parts.View2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewName2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewNameEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionConditionEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionEditPart;
-import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionNameEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartment2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewOperationCompartment2EditPart;
@@ -161,7 +161,7 @@ import de.gulden.modeling.wave.diagram.view.factories.UsecaseViewFactory;
 import de.gulden.modeling.wave.diagram.view.factories.View2ViewFactory;
 import de.gulden.modeling.wave.diagram.view.factories.ViewName2ViewFactory;
 import de.gulden.modeling.wave.diagram.view.factories.ViewNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewTransitionNameViewFactory;
+import de.gulden.modeling.wave.diagram.view.factories.ViewTransitionConditionViewFactory;
 import de.gulden.modeling.wave.diagram.view.factories.ViewTransitionViewFactory;
 import de.gulden.modeling.wave.diagram.view.factories.ViewViewAreaCompartment2ViewFactory;
 import de.gulden.modeling.wave.diagram.view.factories.ViewViewAreaCompartmentViewFactory;
@@ -429,7 +429,7 @@ public class WaveViewProvider extends AbstractViewProvider {
 						return null; // wrong container
 					}
 					break;
-				case ViewTransitionNameEditPart.VISUAL_ID:
+				case ViewTransitionConditionEditPart.VISUAL_ID:
 					if (ViewTransitionEditPart.VISUAL_ID != WaveVisualIDRegistry
 							.getVisualID(containerView)
 							|| containerView.getElement() != domainElement) {
@@ -595,8 +595,8 @@ public class WaveViewProvider extends AbstractViewProvider {
 			return AssociationRelationshipMultiplicityBViewFactory.class;
 		case ActionToViewTransitionConditionEditPart.VISUAL_ID:
 			return ActionToViewTransitionConditionViewFactory.class;
-		case ViewTransitionNameEditPart.VISUAL_ID:
-			return ViewTransitionNameViewFactory.class;
+		case ViewTransitionConditionEditPart.VISUAL_ID:
+			return ViewTransitionConditionViewFactory.class;
 		case DependencyRelationshipStereotype2EditPart.VISUAL_ID:
 			return DependencyRelationshipStereotype2ViewFactory.class;
 		case DependencyRelationshipStereotype3EditPart.VISUAL_ID:

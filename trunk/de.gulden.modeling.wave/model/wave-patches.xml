@@ -92,11 +92,16 @@ method code should be generated when changes to the metamodel have occurred.
     	     value="setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toCondition(getLabelText()));" 
     	     summary="yes" />
   	
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ViewTransitionConditionEditPart.java" 
+    	     token="setLabelTextHelper(getFigure(), getLabelText());" 
+    	     value="setLabelTextHelper(getFigure(), de.gulden.modeling.wave.util.WaveUtil.toCondition(getLabelText()));" 
+    	     summary="yes" />
+  	
     <replace file="de/gulden/modeling/wave/diagram/edit/parts/ActionToViewTransitionConditionEditPart.java" 
     	     token="getFontHeight()," 
     	     value="getFontHeight()-2," 
     	     summary="yes" /> 
-    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ViewTransitionNameEditPart.java" 
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ViewTransitionConditionEditPart.java" 
     	     token="getFontHeight()," 
     	     value="getFontHeight()-2," 
     	     summary="yes" />

@@ -50,7 +50,7 @@ import de.gulden.modeling.wave.diagram.edit.parts.UsecaseSubsystemNameEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.UsecaseTextEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewName2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewNameEditPart;
-import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionNameEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionConditionEditPart;
 import de.gulden.modeling.wave.diagram.parsers.MessageFormatParser;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 
@@ -923,7 +923,7 @@ public class WaveParserProvider extends AbstractProvider implements
 			return getAssociationRelationshipMultiplicityB_4010Parser();
 		case ActionToViewTransitionConditionEditPart.VISUAL_ID:
 			return getActionToViewTransitionCondition_4011Parser();
-		case ViewTransitionNameEditPart.VISUAL_ID:
+		case ViewTransitionConditionEditPart.VISUAL_ID:
 			return getViewTransitionCondition_6002Parser();
 		case DependencyRelationshipStereotype2EditPart.VISUAL_ID:
 			return getDependencyRelationshipStereotype_6004Parser();

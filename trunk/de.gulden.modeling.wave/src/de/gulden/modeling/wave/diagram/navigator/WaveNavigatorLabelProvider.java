@@ -83,8 +83,8 @@ import de.gulden.modeling.wave.diagram.edit.parts.View2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewName2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewNameEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionConditionEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionEditPart;
-import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionNameEditPart;
 import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
@@ -1020,7 +1020,7 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 				WaveElementTypes.ViewTransition_4013,
 				(view.getElement() != null ? view.getElement() : view),
 				WaveVisualIDRegistry
-						.getType(ViewTransitionNameEditPart.VISUAL_ID));
+						.getType(ViewTransitionConditionEditPart.VISUAL_ID));
 		IParser parser = ParserService.getInstance().getParser(hintAdapter);
 
 		if (parser != null) {
