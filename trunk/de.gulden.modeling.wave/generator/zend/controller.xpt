@@ -56,41 +56,47 @@ function «action.name.without("Action").toLowerCase()»Action()
 $«param.name» = $this->_getParam("«param.name»"«IF param.defaultValue.is()», "«param.defaultValue»"«ENDIF»);
 «ENDFOREACH»
 
-«REM»«EXPAND authentication FOR action»«ENDREM»
-«REM»«EXPAND model::parametersFromHttp FOR action.operation»«ENDREM»
 «action.operation.code.prepareCode()»
+
 	if (false) ;
-«FOREACH action.outgoingFlows() AS flow»
-	elseif («flow.condition()») // flow «flow.name»
-	{
-		//$this->«flow.target.name.without("Action").toLowerCase()»Action(«FOREACH action.operation.parameters AS param SEPARATOR ", "»$«param.name»«ENDFOREACH»);
-		$this->_forward("«flow.target.name.without("Action")»");
-	}
-«ENDFOREACH»
+	«FOREACH action.outgoingFlows() AS flow»
+		«IF flow.condition.is()»
+		elseif («flow.condition()») // flow «flow.name»
+		{
+			$this->_forward("«flow.target.name.without("Action")»");
+		}
+		«ENDIF»
+	«ENDFOREACH»
+	«FOREACH action.outgoingFlows() AS flow»
+		«IF ! flow.condition.is()»  «REM» TODO constraint, must be at most 1 «ENDREM»
+		elseif (true) // flow «flow.name»
+		{
+			$this->_forward("«flow.target.name.without("Action")»");
+		}
+		«ENDIF»
+	«ENDFOREACH»
 
 «IF action.outgoingTransitions().size == 1»
-«REM»fallthrough to single view«ENDREM»
+	«REM»fallthrough to single view«ENDREM»
 «ELSE»
+	«FOREACH action.outgoingTransitions() AS trans»
+		«IF trans.condition.is()»
+		elseif («trans.condition()») // transition «trans.name»
+		{
+			$this->view->part = "«trans.target.name»";
+		}
+		«ENDIF»
+	«ENDFOREACH»
+	«FOREACH action.outgoingTransitions() AS trans»
+		«IF ! trans.condition.is()» «REM» TODO constraint, must be at most 1 «ENDREM»
+		elseif (true) // transition «trans.name»
+		{
+			$this->view->part = "«trans.target.name»";
+		}
+		«ENDIF»
+	«ENDFOREACH»
+«ENDIF»
 
-if (false) ;
-«FOREACH action.outgoingTransitions() AS trans»
-«IF trans.condition.is()»
-elseif («trans.condition()»)
-{
-	$this->view->part = "«trans.target.name»";
-}
-«ENDIF»
-«ENDFOREACH»
-«FOREACH action.outgoingTransitions() AS trans»
-«IF ! trans.condition.is()» «REM» at most 1 «ENDREM»
-else
-{
-	$this->view->part = "«trans.target.name»";
-}
-«ENDIF»
-«ENDFOREACH»
-
-«ENDIF»
 	$this->view->params = $this->_getAllParams();
 }
 «ENDFOREACH»
