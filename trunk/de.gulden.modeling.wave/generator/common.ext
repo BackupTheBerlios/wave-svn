@@ -163,10 +163,10 @@ cached Collection[ViewTransition] incomingFlows( ControllerMember this ) :
 boolean contains( String this, String pattern ) : 
 				JAVA de.gulden.modeling.wave.util.WaveUtil.contains(java.lang.String, java.lang.String);
 
-boolean isNavigable( OOPClassifier this, AssociationRelationship assoc ) : 
-				assoc.isBidirectional() 
-				|| ( this.isOppositeEndA(assoc) && assoc.direction.toString() == "<--") // TODO cleaner
-				|| ( this.isOppositeEndB(assoc) && assoc.direction.toString() == "-->");
+boolean isNavigable( AssociationRelationship this, OOPClassifier cls ) : 
+				this.isBidirectional() 
+				|| ( cls.isOppositeEndA(this) && this.direction.toString() == "<--") // TODO cleaner
+				|| ( cls.isOppositeEndB(this) && this.direction.toString() == "-->");
 
 boolean isOppositeEndA( OOPClassifier this, AssociationRelationship assoc ) : 
 				(assoc.b == this) ? true : false;
@@ -184,21 +184,24 @@ boolean isBidirectionalNToM( AssociationRelationship this ) :
 				JAVA de.gulden.modeling.wave.util.WaveUtil.isBidirectionalNToM(de.gulden.modeling.wave.AssociationRelationship);
 				//(this.isBidirectional() && this.multiplicityA.toString().contains("*") && this.multiplicityB.toString().contains("*")); // TODO cleaner 
 
-cached String outgoingName( AssociationRelationship assoc, OOPClassifier this ) : 
-				(assoc.name + 
-				( ( (assoc.name == null) || (assoc.name == "") || (assoc.isBidirectional() && ( this == assoc.b ) ) )
-					? ( ( ( this.isOppositeEndA(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
-					: "" 
-				)).toFirstLower(); 
+cached String outgoingName( AssociationRelationship assoc, OOPClassifier this ) : // TODO constraint assoc.name != null, != "" 
+				assoc.name + 
+				( ( assoc.isBidirectional() && ( this == assoc.b ) ) ? "Reverse" : ""); 
+				//( ( (assoc.name == null) || (assoc.name == "") || (assoc.isBidirectional() && ( this == assoc.b ) ) )
+				//	? ( ( ( this.isOppositeEndA(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
+				//	: "" 
+				//)).toFirstLower(); 
 
 String outgoingName( OOPClassifier this, AssociationRelationship assoc ) : assoc.outgoingName(this); // legacy
  
 cached String ingoingName( OOPClassifier this, AssociationRelationship assoc ) : 
-				(assoc.name + 
-				( ( (assoc.name == null) || (assoc.name == "") || (assoc.isBidirectional() && ( this == assoc.a ) ) )
-					? ( ( ( this.isOppositeEndB(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
-					: "" 
-				)).toFirstLower(); 
+				assoc.name + 
+				( ( assoc.isBidirectional() && ( this == assoc.a ) ) ? "Reverse" : ""); 
+				//( ( (assoc.name == null) || (assoc.name == "") || (assoc.isBidirectional() && ( this == assoc.a ) ) )
+				//	? ( ( ( this.isOppositeEndB(assoc) ? assoc.a.name : assoc.b.name )).toFirstUpper() ) 
+				//
+				//	: "" 
+				//)).toFirstLower(); 
 
 OOPClassifier outgoingType( OOPClassifier this, AssociationRelationship assoc ) : 
 				this.isOppositeEndA(assoc) ? assoc.a : assoc.b;
@@ -209,11 +212,17 @@ String outgoingMultiplicity( OOPClassifier this, AssociationRelationship assoc )
 boolean isOutgoingMulti( OOPClassifier this, AssociationRelationship assoc ) : 
 				this.outgoingMultiplicity(assoc).contains("*"); // TODO cleaner
 
+boolean isOutgoingSingle( OOPClassifier this, AssociationRelationship assoc ) : 
+				! this.isOutgoingMulti(assoc);
+
 String ingoingMultiplicity( OOPClassifier this, AssociationRelationship assoc ) : 
 				(this.isOppositeEndA(assoc) ? assoc.multiplicityB : assoc.multiplicityA).toString();
 
-boolean isIngoingMulti( OOPClassifier this, AssociationRelationship assoc ) : 
-				this.ingoingMultiplicity(assoc).contains("*"); // TODO cleaner
+boolean isIngoingMulti( AssociationRelationship this, OOPClassifier cls ) : 
+				cls.ingoingMultiplicity(this).contains("*"); // TODO cleaner
+
+boolean isIngoingSingle( AssociationRelationship this,  OOPClassifier cls ) : 
+				! this.isIngoingMulti(cls);
 
 String taggedValue( ModelMember this, String key ) : 
 				JAVA de.gulden.modeling.wave.util.WaveUtil.getTaggedValue(de.gulden.modeling.wave.ModelMember, java.lang.String);

@@ -55,7 +55,7 @@ public function /*void*/ set«attr.name.toFirstUpper()»(/*«attr.type»*/$«attr.nam
 
 «DEFINE associations FOR Class-»
 	«FOREACH this.associations() AS assoc-»
-		«IF this.isNavigable(assoc)-»
+		«IF assoc.isNavigable(this)-»
 /**
  * Association '«assoc.name»'
  * «this.ingoingMultiplicity(assoc)» «IF (assoc.direction.toString() != "<-->")»-->«ELSE»--«ENDIF» «this.outgoingMultiplicity(assoc)»
@@ -67,8 +67,7 @@ protected /*«IF this.isOutgoingMulti(assoc)»array«ELSE»integer«ENDIF»*/ $«this.o
 /**
  * @generated
  */
-public function /*«this.outgoingType(assoc)»*/ get«this.outgoingName(assoc).toFirstUpper()»() {
-	//return «this.outgoingType(assoc)»::_get($this->«this.outgoingName(assoc)»);
+public function /*«this.outgoingType(assoc).name»*/ get«this.outgoingName(assoc).toFirstUpper()»() {
 	return $this->«this.outgoingName(assoc)»; 
 } 
 				«ELSE»
@@ -76,33 +75,6 @@ public function /*«this.outgoingType(assoc)»*/ get«this.outgoingName(assoc).toFi
  * @generated
  */
 public function /*Array*/ get«this.outgoingName(assoc).toFirstUpper()»() {
-«REM»
-						«IF this.isPersistent-» 
-	if ($this->«this.outgoingName(assoc)» == null) // lazy init
-	{
-(«("AT class "+this.name+" : "+ assoc.name +" : "+this.isNavigable(assoc)).log()»
-		/*
-		$ids = Array(); 
-						«IF this.isIngoingMulti(assoc)» «xREM» n:m relationship «xENDREM»
-		// from seperate db-table
-		$r = _sql("SELECT `«this.outgoingName(assoc)»` FROM `«assoc.dbTable()»` WHERE `«this.ingoingName(assoc)»`=".intval($this->_id));
-		while ($row = _row($r)) {
-			$ids[] = intval($row[0]); 
-		}
-						«ELSE-»
-		// from opposite db-table
-		$this->«this.outgoingName(assoc)» = Array(); 
-		$r = _sql("SELECT id FROM `«this.outgoingType(assoc)»` WHERE `«this.ingoingName(assoc)»`=".intval($this->_id));
-		while ($row = _row($r)) {
-			$ids[] = intval($row[0]); 
-		}
-						«ENDIF-»
-		$this->«this.outgoingName(assoc)» = «this.outgoingType(assoc)»::_getMulti($ids);
-		*/
-		$this->«this.outgoingName(assoc)» = Array();
-	}
-						«ENDIF-» 
-«ENDREM»
 	return $this->«this.outgoingName(assoc)»; 
 } 
 
@@ -123,7 +95,7 @@ public function /*void*/ set«this.outgoingName(assoc).toFirstUpper()»(«EXPAND cl
 	$this->«this.outgoingName(assoc)»=$«this.outgoingName(assoc)»;
 						«IF assoc.isBidirectional()-»«REM» bi-drectional 1:1 «ENDREM»
 	if (($«this.outgoingName(assoc)» != null) && ($«this.outgoingName(assoc)» != $this->«this.outgoingName(assoc)»)) {
-							«IF ! this.isIngoingMulti(assoc)-»
+							«IF ! assoc.isIngoingMulti(this)-»
 		$«this.outgoingName(assoc)»->set«this.ingoingName(assoc).toFirstUpper()»($this); // set back-reference
 							«ELSE-» 
 		$«this.outgoingName(assoc)»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»($this); // add back-reference
@@ -144,7 +116,7 @@ public function /*void*/ add«this.outgoingName(assoc).toFirstUpper().removePlura
 	if ( ! in_array( $«this.outgoingName(assoc).removePluralS()», $this->«this.outgoingName(assoc)» ) ) {
 		$this->«this.outgoingName(assoc)»[] = $«this.outgoingName(assoc).removePluralS()»;
 							«IF assoc.isBidirectional()-»«REM» bi-drectional 1:m «ENDREM»
-								«IF ! this.isIngoingMulti(assoc)-»
+								«IF ! assoc.isIngoingMulti(this)-»
 		$«this.outgoingName(assoc).removePluralS()»->set«this.ingoingName(assoc).toFirstUpper()»($this); // set back-reference
 								«ELSE-» 
 		$«this.outgoingName(assoc).removePluralS()»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»($this); // add back-reference (!!)

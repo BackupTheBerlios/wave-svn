@@ -48,10 +48,10 @@
 	CREATE TABLE `«this.name.dbTable()»` (
 		id INT NOT NULL AUTO_INCREMENT,«FOREACH this.allAttributes() AS attr»
         `«attr.name»` «attr.type.sqlType()»,«ENDFOREACH»
-«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»«IF this.isNavigable(assoc) && (!assoc.isBidirectional())»
-        `«assoc.outgoingName(this)»` INT,«ENDIF»«ENDFOREACH»
-«FOREACH this.allIngoingMultivalAssociations() AS assoc»«IF ! this.isNavigable(assoc)»
-        `«assoc.outgoingName(this)»Reverse` INT,«ENDIF»«ENDFOREACH»
+«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»«IF ! (assoc.isIngoingSingle(this) && (assoc.b == this) )»
+        `«assoc.outgoingName(this)»` INT,«REM»`«assoc.outgoingName(this)»` INT,«ENDREM»«ENDIF»«ENDFOREACH»
+«REM»«FOREACH this.allIngoingMultivalAssociations() AS assoc»«IF ! this.isOutgoingSingle(assoc)»
+        `«assoc.outgoingName(this)»` INT,«xREM»`«assoc.outgoingName(this)»Reverse` INT,«xENDREM»«ENDIF»«ENDFOREACH»«ENDREM»
         `createdBy` VARCHAR(50),
         `created` TIMESTAMP DEFAULT 0,
         `modifiedBy` VARCHAR(50),

@@ -127,18 +127,18 @@ class «this.codeNameBase()+"DbTable_"+this.name» extends Zend_Db_Table_Abstract
 
 	protected $_referenceMap = array(
 		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
-			«IF this.isNavigable(assoc)-»
+			«IF (!assoc.isIngoingMulti(this)) && assoc.isNavigable(this)-»
 			"«assoc.name»Ref" => array (
-				"columns"       => "«this.outgoingName(assoc)»",
+				"columns"       => "«assoc.outgoingName(this)»",
 				"refTableClass" => "«assoc.opposite(this).codeName()»"
 			),    
 			«ENDIF»
 		«ENDFOREACH»
 		«REM» opposite 1:m relationships «ENDREM»
 		«FOREACH this.allIngoingMultivalAssociations() AS assoc»
-			«IF ! this.isNavigable(assoc)-»
+			«IF ! this.isOutgoingMulti(assoc)-»
 			"«assoc.name»Ref" => array (
-				"columns"       => "«this.outgoingName(assoc)»Reverse",
+				"columns"       => "«assoc.outgoingName(this)»",
 				"refTableClass" => "«assoc.opposite(this).codeName()»"
 			),    
 			«ENDIF»
@@ -229,7 +229,7 @@ class «EXPAND mapperClassName»
 		«ENDFOREACH»
 		
 		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
-			«IF this.isNavigable(assoc)-»
+			«IF assoc.isNavigable(this) && ( ! ( assoc.isIngoingSingle(this) && (assoc.b == this) ) ) -»
 			$child = $object->«this.outgoingName(assoc).getter()»(); 
 			$data["«this.outgoingName(assoc)»"] = ( $child ? intval($child->getId()) : 0 );
 			if ( $child && $deep )
@@ -255,21 +255,20 @@ class «EXPAND mapperClassName»
 
 		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
             «REM» save back-references in other table «ENDREM»
-			«IF this.isNavigable(assoc) && (!assoc.isBidirectional())-»
-			//$reverse = new «assoc.opposite(this).codeName()»(); // prototype
+			«IF assoc.isNavigable(this) && (!assoc.isBidirectional())-»
 			$dbTable = «assoc.opposite(this).mapperName()»::getDbTable();
 			// TODO this is not perfectly clean, should be atomic
 			if (!$inserted) {
 				// remove old
 				$data = array(
-                	"«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF»" => "0"
+                	"«assoc.outgoingName(assoc.opposite(this))»«REM»«IF ! assoc.isBidirectional()»Reverse«ENDIF»«ENDREM»" => "0"
             	);
-            	$where = "«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF» = ".$object->getId();
+            	$where = "«assoc.outgoingName(assoc.opposite(this))»«REM»«IF ! assoc.isBidirectional()»Reverse«ENDIF»«ENDREM» = ".$object->getId();
 				$dbTable->update($data, $where);
 			}
 			// set new
 			$data = array(
-                "«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF»" => $id
+                "«assoc.outgoingName(assoc.opposite(this))»«REM»«IF ! assoc.isBidirectional()»Reverse«ENDIF»«ENDREM»" => $id
             );
 			$where = "(1=0)";
 			$children = $object->«this.outgoingName(assoc).getter()»();
@@ -297,7 +296,7 @@ class «EXPAND mapperClassName»
 
                       
 		«FOREACH this.allBidirectionalNtoMAssociations() AS assoc»
-			«IF this.isNavigable(assoc)-»
+			«IF assoc.isNavigable(this)-»
 			$children = $object->«this.outgoingName(assoc).getter()»();
 			$relTable = new «this.package().name.toFirstUpper()»_Model_DbTable_Relationship«assoc.name.toFirstUpper()»();
 			// TODO not perfectly clean, should be atomic
@@ -410,7 +409,7 @@ die();*/
 		$object->«attr.setter()»($row["«attr.name»"]);
 		«ENDFOREACH»
 		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
-			«IF this.isNavigable(assoc)-»
+			«IF assoc.isNavigable(this)-»
 			$ref = «assoc.opposite(this).codeName()»::find($row["«assoc.outgoingName(this)»"]);
 			$object->«assoc.outgoingName(this).setter()»($ref);
 			«ENDIF»
@@ -418,14 +417,14 @@ die();*/
 		if ( $object->getId() ) 
 		{
 		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
-			«IF this.isNavigable(assoc) && (!assoc.isBidirectional())-»
-			$sqlWhere = "«assoc.outgoingName(assoc.opposite(this))»«IF ! assoc.isBidirectional()»Reverse«ENDIF» = ".$object->getId();
+			«IF assoc.isNavigable(this) && (!assoc.isBidirectional())-»
+			$sqlWhere = "«assoc.outgoingName(assoc.opposite(this))»«REM»«IF ! assoc.isBidirectional()»Reverse«ENDIF»«ENDREM» = ".$object->getId();
 			$refs = «assoc.opposite(this).codeName()»::findAll($sqlWhere);
 		    $object->«assoc.outgoingName(this).setter()»($refs);
 			«ENDIF»
 		«ENDFOREACH»
 		«FOREACH this.allBidirectionalNtoMAssociations() AS assoc»
-			«IF this.isNavigable(assoc)-»
+			«IF assoc.isNavigable(this)-»
 			$rtab = new «this.package().name.toFirstUpper()»_Model_DbTable_Relationship«assoc.name.toFirstUpper()»();
 			$sqlWhere = "«this.name.toFirstLower()» = ".$object->getId();
             $resultSet = $rtab->fetchAll($sqlWhere);

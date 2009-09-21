@@ -208,7 +208,7 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
    	«IF formName.toUpperCase() != "LIST"»
    
     «FOREACH this.allOutgoingAssociations() AS assoc»
-    	«IF this.isNavigable(assoc)»
+    	«IF assoc.isNavigable(this)»
     
         	«LET assoc.getWidget(this, formName) AS widget»
         
@@ -401,35 +401,39 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 		$this->parseAttributes($object);
 		$this->reinit();
    		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
-   			«LET assoc.getWidget(this, formName) AS widget»
-	    		«IF ! widget.ignore»
-	    		$key = "«assoc.name»";
-	    		$sf = $this->getSubForm($key);
-	    		$oo = $object->«assoc.outgoingName(this).getter()»();
-	    		$o = «assoc.opposite(this).codeName()»::parseForm(($oo ? $oo->getId() : null), $sf, $post[$key]);
-	    		if (! $oo )
-	    		{
-	    			$object->«assoc.name.setter()»($o);
-	    		}
-				«ENDIF»
-			«ENDLET»
+   			«IF assoc.isNavigable(this)»
+   				«LET assoc.getWidget(this, formName) AS widget»
+	    			«IF ! widget.ignore»
+	    			$key = "«assoc.name»";
+	    			$sf = $this->getSubForm($key);
+	    			$oo = $object->«assoc.outgoingName(this).getter()»();
+	    			$o = «assoc.opposite(this).codeName()»::parseForm(($oo ? $oo->getId() : null), $sf, $post[$key]);
+	    			if (! $oo )
+	    			{
+	    				$object->«assoc.outgoingName(this).setter()»($o);
+	    			}
+					«ENDIF»
+				«ENDLET»
+			«ENDIF»
     	«ENDFOREACH»
    		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
-   			«LET assoc.getWidget(this, formName) AS widget»
-	    		«IF ! widget.ignore»
-	    		foreach ($object->«assoc.outgoingName(this).getter()»() as $child)
-	    		{
-	    			$childId = $child->getId();
-	    			$key = "«assoc.name»".$childId;
-	    			$sf = $this->getSubForm($key);
-	    			$pp = $post[$key];
-	    			if ($sf && $pp)
-	    			{
-	    				$o = «assoc.opposite(this).codeName()»::parseForm($childId, $sf, $pp);
+   			«IF assoc.isNavigable(this)»
+   				«LET assoc.getWidget(this, formName) AS widget»
+	    			«IF ! widget.ignore»
+		    		foreach ($object->«assoc.outgoingName(this).getter()»() as $child)
+		    		{
+	    				$childId = $child->getId();
+	    				$key = "«assoc.name»".$childId;
+	    				$sf = $this->getSubForm($key);
+		    			$pp = $post[$key];
+		    			if ($sf && $pp)
+	    				{
+	    					$o = «assoc.opposite(this).codeName()»::parseForm($childId, $sf, $pp);
+	    				}
 	    			}
-	    		}
-				«ENDIF»
-			«ENDLET»
+					«ENDIF»
+				«ENDLET»
+			«ENDIF»
     	«ENDFOREACH»
 	}
 
@@ -438,11 +442,12 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
    	«FOREACH this.allAttributes() AS attr»
    		«LET this.getWidget(attr, formName) AS widget»
 	    	«IF ! widget.ignore»
+	    	$_val = $this->getElement("«attr.name»")->getValue();
 	    	$object->«attr.name.setter()»(
 	    		«IF widget.multiChoice»
-	    			implode( "," , $this->getElement("«attr.name»")->getValue() )
+	    			( $_val ? implode( "," , $_val ) : null )
 	    		«ELSE»
-	    			$this->getElement("«attr.name»")->getValue()
+	    			$_val
 	    		«ENDIF»
 	    	);
 			«ENDIF»

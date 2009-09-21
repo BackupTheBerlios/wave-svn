@@ -831,8 +831,8 @@ public class WaveUtil { // <<utility>>
 		Model model = getModel(c);
 		Collection<AssociationRelationship> result = new ArrayList<AssociationRelationship>(); 
 		for (AssociationRelationship r : new Filter<AssociationRelationship>(AssociationRelationship.class, getAllMembers(model))) {
-			if ((r.getDirection()!=EnumDirection.BA) && (r.getA() == c) && (!isMultiple(r.getMultiplicityB())) 
-					|| ((r.getDirection()!=EnumDirection.AB) && (r.getB() == c) && (!isMultiple(r.getMultiplicityA())))
+			if (/*(r.getDirection()!=EnumDirection.BA) &&*/ (r.getA() == c) && (!isMultiple(r.getMultiplicityB())) 
+					|| (/*(r.getDirection()!=EnumDirection.AB) &&*/ (r.getB() == c) && (!isMultiple(r.getMultiplicityA())))
 						/*&& ( ! isBidirectional(r) )*/ ) {
 				result.add(r);
 			}
