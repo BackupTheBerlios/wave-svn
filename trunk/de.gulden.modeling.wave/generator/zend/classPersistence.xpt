@@ -229,7 +229,7 @@ class «EXPAND mapperClassName»
 		«ENDFOREACH»
 		
 		«FOREACH this.allOutgoingSinglevalAssociations() AS assoc»
-			«IF assoc.isNavigable(this) && ( ! ( assoc.isIngoingSingle(this) && (assoc.b == this) ) ) -»
+			«IF assoc.isNavigable(this) -» «REM»  && ( ! ( assoc.isIngoingSingle(this) && (assoc.b == this) ) ) «ENDREM» 
 			$child = $object->«this.outgoingName(assoc).getter()»(); 
 			$data["«this.outgoingName(assoc)»"] = ( $child ? intval($child->getId()) : 0 );
 			if ( $child && $deep )
@@ -255,7 +255,7 @@ class «EXPAND mapperClassName»
 
 		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
             «REM» save back-references in other table «ENDREM»
-			«IF assoc.isNavigable(this) && (!assoc.isBidirectional())-»
+			«IF assoc.isNavigable(this) && (!assoc.isBidirectionalNToM())-»
 			$dbTable = «assoc.opposite(this).mapperName()»::getDbTable();
 			// TODO this is not perfectly clean, should be atomic
 			if (!$inserted) {
@@ -417,7 +417,7 @@ die();*/
 		if ( $object->getId() ) 
 		{
 		«FOREACH this.allOutgoingMultivalAssociations() AS assoc»
-			«IF assoc.isNavigable(this) && (!assoc.isBidirectional())-»
+			«IF assoc.isNavigable(this) && (!assoc.isBidirectionalNToM())-»
 			$sqlWhere = "«assoc.outgoingName(assoc.opposite(this))»«REM»«IF ! assoc.isBidirectional()»Reverse«ENDIF»«ENDREM» = ".$object->getId();
 			$refs = «assoc.opposite(this).codeName()»::findAll($sqlWhere);
 		    $object->«assoc.outgoingName(this).setter()»($refs);
