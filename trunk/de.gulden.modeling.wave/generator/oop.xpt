@@ -22,12 +22,13 @@
 
 «REM» --- END language-specific templates --- «ENDREM»
 
-«DEFINE attributes FOR Classifier»«FOREACH this.attributes AS attr»
+«DEFINE attributes FOR Classifier»«FOREACH this.attributes AS attr»«IF attr.isFinal && attr.isStatic»
+const «attr.name» = «attr.defaultValue»;«ELSE»
 /**
  * Attribute '«attr.name»'
  */
 //«this.metaclass()»
-«attr.visibility()» «IF attr.type.is()»/*«attr.type.translateType()»*/ «ENDIF»«EXPAND attribute FOR attr»«IF (this.isClass()) && (attr.type == "array")» = array()«ENDIF»;«IF ! this.definesOperation("get"+attr.name.toFirstUpper())»
+«attr.visibility()»«IF attr.isStatic» static«ENDIF» «IF attr.type.is()»/*«attr.type.translateType()»*/ «ENDIF»«EXPAND attribute FOR attr»«IF (this.isClass()) && (attr.type == "array")» = array()«ENDIF»;«IF ! this.definesOperation("get"+attr.name.toFirstUpper())»
 /**
  * @generated
  */
@@ -41,7 +42,7 @@ public function /*«attr.type»*/ get«attr.name.toFirstUpper()»() {
 public function /*void*/ set«attr.name.toFirstUpper()»(/*«attr.type»*/$«attr.name») {
 	$this->«attr.name»=$«attr.name»;
 } 
-«ENDIF»«ENDFOREACH»«ENDDEFINE»
+«ENDIF»«ENDIF»«ENDFOREACH»«ENDDEFINE»
 
 «DEFINE operations FOR Classifier»«FOREACH this.operations AS op»
 «op.visibility()» «EXPAND modifiers FOR op»function /*«op.returnType.translateType()»*/ «op.name»(«EXPAND parameters FOR op»)«IF op.throws.is()» throws «op.throws»«ENDIF»«IF op.isAbstract || this.isInterface()»;«ELSE»
