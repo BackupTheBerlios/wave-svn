@@ -31,7 +31,7 @@ class Wave
 		return ""; // use default
 	}
 	
-	public static function msg($id, $icon = null)
+	public static function msg($id, $icon = null, $iconAndText = false)
 	{
 		global $_text; // from langstring.inc.php
 		global $DEFAULT_LANG;
@@ -48,11 +48,19 @@ class Wave
 		{
 			$lang = $DEFAULT_LANG;
 		}
-		$result = $_text[$id][$lang];
+		$content = $_text[$id][$lang];
 		
 		if ($icon)
 		{
-			$result = "<img src='".$icon."' border='0'/>&#160;" . $result;
+			$result = "<img src='".$icon."' border='0' title='".$content."'/>&#160;";
+			if ($iconAndText)
+			{
+				$result .= $content;
+			}
+		}
+		else
+		{
+			$result = $content;
 		}
 		
 		return $result;
@@ -68,6 +76,14 @@ class FormLabel extends Zend_Form_Element
 	{
 		$this->_label = $label;
 		$this->_id = $id;
+		if ($id)
+		{
+			$this->setName($id);
+		}
+		else
+		{
+			$this->setName($label);
+		}
 	}
 	
 	public function render()
@@ -85,25 +101,31 @@ class DecoratorMenuAction extends Zend_Form_Decorator_Abstract
 	//protected $_url;
 	protected $_ajaxTarget;
 
-	public function DecoratorMenuAction($label, $controllerName, $actionName, $params=array(), $ajaxTarget=null)
+	public function DecoratorMenuAction($label, $controllerName, $actionName, $params=array(), $ajaxTarget=null, $confirmExecute = false)
 	{
 		$params["controller"] = $controllerName;
 		$params["action"] = $actionName;
 		$this->_params = $params;
 		$this->_label = $label;
 		$this->_ajaxTarget = $ajaxTarget;
+		$this->_confirmExecute = $confirmExecute;
 	} 
 	
 	public function render($content)
 	{
 		$url = $this->getElement()->getView()->url($this->_params, "default", true);
+		$onclick = "";
 		if ($this->_ajaxTarget)
 		{
-			$onclick = " onclick='new Ajax.Updater(\"".$this->_ajaxTarget."\", \"".$url."\");return false;'";
+			$onclick = "new Ajax.Updater(\"".$this->_ajaxTarget."\", \"".$url."\");return false;";
 		} 
-		else
+		if ($this->_confirmExecute)
 		{
-			$onclick = "";
+			$onclick = "if (window.confirm(\"Are you sure?\")) { ".$onclick." } else {return false;}";
+		} 
+		if ($onclick)
+		{
+			$onclick = " onclick='".$onclick."'";
 		}
 		return $content . "<div class='menuaction ".$this->_params["controller"]." ".$this->_params["action"]."'>"
 		       ."<a href='".$url."'".$onclick.">".$this->_label."</a>"

@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link de.gulden.modeling.wave.Label#getText <em>Text</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Label#getLangstring <em>Langstring</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Label#getIcon <em>Icon</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.Label#getMode <em>Mode</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,5 +99,34 @@ public interface Label extends EObject {
 	 * @generated
 	 */
 	void setIcon(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Mode</b></em>' attribute.
+	 * The literals are from the enumeration {@link de.gulden.modeling.wave.EnumLabelMode}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mode</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mode</em>' attribute.
+	 * @see de.gulden.modeling.wave.EnumLabelMode
+	 * @see #setMode(EnumLabelMode)
+	 * @see de.gulden.modeling.wave.WavePackage#getLabel_Mode()
+	 * @model
+	 * @generated
+	 */
+	EnumLabelMode getMode();
+
+	/**
+	 * Sets the value of the '{@link de.gulden.modeling.wave.Label#getMode <em>Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mode</em>' attribute.
+	 * @see de.gulden.modeling.wave.EnumLabelMode
+	 * @see #getMode()
+	 * @generated
+	 */
+	void setMode(EnumLabelMode value);
 
 } // Label

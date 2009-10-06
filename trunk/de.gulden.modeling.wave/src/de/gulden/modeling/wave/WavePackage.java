@@ -1199,13 +1199,22 @@ public interface WavePackage extends EPackage {
 	int ACTION__AJAX_TARGET = CONTROLLER_MEMBER_EXECUTABLE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Confirm Execute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__CONFIRM_EXECUTE = CONTROLLER_MEMBER_EXECUTABLE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_FEATURE_COUNT = CONTROLLER_MEMBER_EXECUTABLE_FEATURE_COUNT + 2;
+	int ACTION_FEATURE_COUNT = CONTROLLER_MEMBER_EXECUTABLE_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.ViewImpl <em>View</em>}' class.
@@ -3272,13 +3281,22 @@ public interface WavePackage extends EPackage {
 	int LABEL__ICON = 2;
 
 	/**
+	 * The feature id for the '<em><b>Mode</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LABEL__MODE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Label</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LABEL_FEATURE_COUNT = 3;
+	int LABEL_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.LangstringImpl <em>Langstring</em>}' class.
@@ -4808,6 +4826,17 @@ public interface WavePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.gulden.modeling.wave.EnumLabelMode <em>Enum Label Mode</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.gulden.modeling.wave.EnumLabelMode
+	 * @see de.gulden.modeling.wave.impl.WavePackageImpl#getEnumLabelMode()
+	 * @generated
+	 */
+	int ENUM_LABEL_MODE = 54;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.Classifier <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5087,6 +5116,17 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getAction_AjaxTarget();
+
+	/**
+	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Action#isConfirmExecute <em>Confirm Execute</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Confirm Execute</em>'.
+	 * @see de.gulden.modeling.wave.Action#isConfirmExecute()
+	 * @see #getAction()
+	 * @generated
+	 */
+	EAttribute getAction_ConfirmExecute();
 
 	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.View <em>View</em>}'.
@@ -6098,6 +6138,17 @@ public interface WavePackage extends EPackage {
 	EAttribute getLabel_Icon();
 
 	/**
+	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Label#getMode <em>Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Mode</em>'.
+	 * @see de.gulden.modeling.wave.Label#getMode()
+	 * @see #getLabel()
+	 * @generated
+	 */
+	EAttribute getLabel_Mode();
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.Langstring <em>Langstring</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6723,6 +6774,16 @@ public interface WavePackage extends EPackage {
 	EEnum getEnumProjectLayout();
 
 	/**
+	 * Returns the meta object for enum '{@link de.gulden.modeling.wave.EnumLabelMode <em>Enum Label Mode</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Enum Label Mode</em>'.
+	 * @see de.gulden.modeling.wave.EnumLabelMode
+	 * @generated
+	 */
+	EEnum getEnumLabelMode();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6961,6 +7022,14 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ACTION__AJAX_TARGET = eINSTANCE.getAction_AjaxTarget();
+
+		/**
+		 * The meta object literal for the '<em><b>Confirm Execute</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ACTION__CONFIRM_EXECUTE = eINSTANCE.getAction_ConfirmExecute();
 
 		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.ViewImpl <em>View</em>}' class.
@@ -7765,6 +7834,14 @@ public interface WavePackage extends EPackage {
 		EAttribute LABEL__ICON = eINSTANCE.getLabel_Icon();
 
 		/**
+		 * The meta object literal for the '<em><b>Mode</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LABEL__MODE = eINSTANCE.getLabel_Mode();
+
+		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.LangstringImpl <em>Langstring</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -8283,6 +8360,16 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ENUM_PROJECT_LAYOUT = eINSTANCE.getEnumProjectLayout();
+
+		/**
+		 * The meta object literal for the '{@link de.gulden.modeling.wave.EnumLabelMode <em>Enum Label Mode</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.gulden.modeling.wave.EnumLabelMode
+		 * @see de.gulden.modeling.wave.impl.WavePackageImpl#getEnumLabelMode()
+		 * @generated
+		 */
+		EEnum ENUM_LABEL_MODE = eINSTANCE.getEnumLabelMode();
 
 	}
 

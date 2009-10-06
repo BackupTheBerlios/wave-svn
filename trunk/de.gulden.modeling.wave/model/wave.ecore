@@ -42,6 +42,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//ControllerMemberExecutable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ajaxMode" eType="#//EnumAjaxModes"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ajaxTarget" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="confirmExecute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="View" eSuperTypes="#//ControllerMemberExecutable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="areas" upperBound="-1"
@@ -214,6 +215,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="langstring" lowerBound="1"
         upperBound="-1" eType="#//Langstring" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="icon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mode" eType="#//EnumLabelMode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Langstring">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lang" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -317,5 +319,9 @@
   <eClassifiers xsi:type="ecore:EEnum" name="EnumProjectLayout">
     <eLiterals name="APPLICATION"/>
     <eLiterals name="MODULE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnumLabelMode">
+    <eLiterals name="ICON_OR_TEXT"/>
+    <eLiterals name="ICON_AND_TEXT" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -19,6 +19,7 @@ package de.gulden.modeling.wave;
  * <ul>
  *   <li>{@link de.gulden.modeling.wave.Action#getAjaxMode <em>Ajax Mode</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.Action#getAjaxTarget <em>Ajax Target</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.Action#isConfirmExecute <em>Confirm Execute</em>}</li>
  * </ul>
  * </p>
  *
@@ -81,5 +82,31 @@ public interface Action extends ControllerMemberExecutable {
 	 * @generated
 	 */
 	void setAjaxTarget(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Confirm Execute</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Confirm Execute</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Confirm Execute</em>' attribute.
+	 * @see #setConfirmExecute(boolean)
+	 * @see de.gulden.modeling.wave.WavePackage#getAction_ConfirmExecute()
+	 * @model
+	 * @generated
+	 */
+	boolean isConfirmExecute();
+
+	/**
+	 * Sets the value of the '{@link de.gulden.modeling.wave.Action#isConfirmExecute <em>Confirm Execute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Confirm Execute</em>' attribute.
+	 * @see #isConfirmExecute()
+	 * @generated
+	 */
+	void setConfirmExecute(boolean value);
 
 } // Action

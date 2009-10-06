@@ -65,6 +65,7 @@ public class ActionItemProvider
 
 			addAjaxModePropertyDescriptor(object);
 			addAjaxTargetPropertyDescriptor(object);
+			addConfirmExecutePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -114,6 +115,28 @@ public class ActionItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Confirm Execute feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addConfirmExecutePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Action_confirmExecute_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Action_confirmExecute_feature", "_UI_Action_type"),
+				 WavePackage.Literals.ACTION__CONFIRM_EXECUTE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Action.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -152,6 +175,7 @@ public class ActionItemProvider
 		switch (notification.getFeatureID(Action.class)) {
 			case WavePackage.ACTION__AJAX_MODE:
 			case WavePackage.ACTION__AJAX_TARGET:
+			case WavePackage.ACTION__CONFIRM_EXECUTE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

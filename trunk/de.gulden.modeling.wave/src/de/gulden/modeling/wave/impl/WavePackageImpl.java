@@ -28,6 +28,7 @@ import de.gulden.modeling.wave.EnumAjaxModes;
 import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
 import de.gulden.modeling.wave.EnumDocumentationAudienceType;
+import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.EnumMultiplicity;
 import de.gulden.modeling.wave.EnumProjectLayout;
 import de.gulden.modeling.wave.EnumTargetModes;
@@ -457,6 +458,13 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	private EEnum enumProjectLayoutEEnum = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum enumLabelModeEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -756,6 +764,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 */
 	public EAttribute getAction_AjaxTarget() {
 		return (EAttribute)actionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getAction_ConfirmExecute() {
+		return (EAttribute)actionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1609,6 +1626,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLabel_Mode() {
+		return (EAttribute)labelEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getLangstring() {
 		return langstringEClass;
 	}
@@ -2140,6 +2166,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getEnumLabelMode() {
+		return enumLabelModeEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public WaveFactory getWaveFactory() {
 		return (WaveFactory)getEFactoryInstance();
 	}
@@ -2193,6 +2228,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		actionEClass = createEClass(ACTION);
 		createEAttribute(actionEClass, ACTION__AJAX_MODE);
 		createEAttribute(actionEClass, ACTION__AJAX_TARGET);
+		createEAttribute(actionEClass, ACTION__CONFIRM_EXECUTE);
 
 		viewEClass = createEClass(VIEW);
 		createEReference(viewEClass, VIEW__AREAS);
@@ -2312,6 +2348,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		createEAttribute(labelEClass, LABEL__TEXT);
 		createEReference(labelEClass, LABEL__LANGSTRING);
 		createEAttribute(labelEClass, LABEL__ICON);
+		createEAttribute(labelEClass, LABEL__MODE);
 
 		langstringEClass = createEClass(LANGSTRING);
 		createEAttribute(langstringEClass, LANGSTRING__LANG);
@@ -2388,6 +2425,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		enumDisplayModeEEnum = createEEnum(ENUM_DISPLAY_MODE);
 		enumWidgetTypeEEnum = createEEnum(ENUM_WIDGET_TYPE);
 		enumProjectLayoutEEnum = createEEnum(ENUM_PROJECT_LAYOUT);
+		enumLabelModeEEnum = createEEnum(ENUM_LABEL_MODE);
 	}
 
 	/**
@@ -2487,6 +2525,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEClass(actionEClass, Action.class, "Action", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAction_AjaxMode(), this.getEnumAjaxModes(), "ajaxMode", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAction_AjaxTarget(), ecorePackage.getEString(), "ajaxTarget", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAction_ConfirmExecute(), ecorePackage.getEBoolean(), "confirmExecute", null, 0, 1, Action.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(viewEClass, View.class, "View", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getView_Areas(), this.getArea(), null, "areas", null, 0, -1, View.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2606,6 +2645,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEAttribute(getLabel_Text(), ecorePackage.getEString(), "text", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLabel_Langstring(), this.getLangstring(), null, "langstring", null, 1, -1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLabel_Icon(), ecorePackage.getEString(), "icon", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLabel_Mode(), this.getEnumLabelMode(), "mode", null, 0, 1, Label.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(langstringEClass, Langstring.class, "Langstring", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getLangstring_Lang(), ecorePackage.getEString(), "lang", null, 0, 1, Langstring.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2729,6 +2769,10 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEEnum(enumProjectLayoutEEnum, EnumProjectLayout.class, "EnumProjectLayout");
 		addEEnumLiteral(enumProjectLayoutEEnum, EnumProjectLayout.APPLICATION);
 		addEEnumLiteral(enumProjectLayoutEEnum, EnumProjectLayout.MODULE);
+
+		initEEnum(enumLabelModeEEnum, EnumLabelMode.class, "EnumLabelMode");
+		addEEnumLiteral(enumLabelModeEEnum, EnumLabelMode.ICON_OR_TEXT);
+		addEEnumLiteral(enumLabelModeEEnum, EnumLabelMode.ICON_AND_TEXT);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -25,6 +25,7 @@ import de.gulden.modeling.wave.EnumAjaxModes;
 import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
 import de.gulden.modeling.wave.EnumDocumentationAudienceType;
+import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.EnumMultiplicity;
 import de.gulden.modeling.wave.EnumProjectLayout;
 import de.gulden.modeling.wave.EnumTargetModes;
@@ -174,6 +175,8 @@ public class WaveFactoryImpl extends EFactoryImpl implements WaveFactory {
 				return createEnumWidgetTypeFromString(eDataType, initialValue);
 			case WavePackage.ENUM_PROJECT_LAYOUT:
 				return createEnumProjectLayoutFromString(eDataType, initialValue);
+			case WavePackage.ENUM_LABEL_MODE:
+				return createEnumLabelModeFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -205,6 +208,8 @@ public class WaveFactoryImpl extends EFactoryImpl implements WaveFactory {
 				return convertEnumWidgetTypeToString(eDataType, instanceValue);
 			case WavePackage.ENUM_PROJECT_LAYOUT:
 				return convertEnumProjectLayoutToString(eDataType, instanceValue);
+			case WavePackage.ENUM_LABEL_MODE:
+				return convertEnumLabelModeToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -747,6 +752,26 @@ public class WaveFactoryImpl extends EFactoryImpl implements WaveFactory {
 	 * @generated
 	 */
 	public String convertEnumProjectLayoutToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnumLabelMode createEnumLabelModeFromString(EDataType eDataType, String initialValue) {
+		EnumLabelMode result = EnumLabelMode.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEnumLabelModeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

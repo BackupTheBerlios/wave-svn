@@ -54,6 +54,7 @@ import de.gulden.modeling.wave.DependencyRelationship;
 import de.gulden.modeling.wave.Dictionary;
 import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
+import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.EnumMultiplicity;
 import de.gulden.modeling.wave.EnumVisibility;
 import de.gulden.modeling.wave.Enumeration;
@@ -1267,12 +1268,16 @@ public class WaveUtil { // <<utility>>
 	public static String labelCode(ModelMember m) {
 		Label t = m.getLabel();
 		if (t != null) {
+			boolean iconAndText = (t.getMode() == EnumLabelMode.ICON_AND_TEXT);
 			String icon = t.getIcon();
 			if (is(icon)) {
 				Model model = getModel(m);
 				icon = (model.getBaseUrl() != null ? model.getBaseUrl() : "" ) + model.getIconPrefix() + icon;
 			}
-			return "Wave::msg("+labelIndex(t)+ ( (icon != null) ? (", '"+icon+"'") : "" ) +/*"+t.getText()+"*/")";
+			return "Wave::msg(" + labelIndex(t) 
+								+ ( (icon != null) ? (", '"+icon+"'") : ", null" ) 
+								+ ( iconAndText ? (", true") : "" ) 
+								+/*"+t.getText()+"*/")";
 		} else {
 			return "\""+firstToUpper(unCamelCase(guessName(m)))+"\"";
 		}

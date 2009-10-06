@@ -66,6 +66,10 @@
       <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumProjectLayout/APPLICATION"/>
       <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumProjectLayout/MODULE"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumLabelMode">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumLabelMode/ICON_OR_TEXT"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumLabelMode/ICON_AND_TEXT"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="wave.ecore#//Classifier">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Classifier/operations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Classifier/name"/>
@@ -96,6 +100,7 @@
     <genClasses ecoreClass="wave.ecore#//Action">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Action/ajaxMode"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Action/ajaxTarget"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Action/confirmExecute"/>
     </genClasses>
     <genClasses ecoreClass="wave.ecore#//View">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//View/areas"/>
@@ -213,6 +218,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Label/text"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#//Label/langstring"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Label/icon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Label/mode"/>
     </genClasses>
     <genClasses ecoreClass="wave.ecore#//Langstring">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#//Langstring/lang"/>

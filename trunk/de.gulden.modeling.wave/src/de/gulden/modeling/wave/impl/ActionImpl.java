@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link de.gulden.modeling.wave.impl.ActionImpl#getAjaxMode <em>Ajax Mode</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.ActionImpl#getAjaxTarget <em>Ajax Target</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.impl.ActionImpl#isConfirmExecute <em>Confirm Execute</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +73,26 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 	 * @ordered
 	 */
 	protected String ajaxTarget = AJAX_TARGET_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isConfirmExecute() <em>Confirm Execute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isConfirmExecute()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean CONFIRM_EXECUTE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isConfirmExecute() <em>Confirm Execute</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isConfirmExecute()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean confirmExecute = CONFIRM_EXECUTE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,6 +160,27 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isConfirmExecute() {
+		return confirmExecute;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setConfirmExecute(boolean newConfirmExecute) {
+		boolean oldConfirmExecute = confirmExecute;
+		confirmExecute = newConfirmExecute;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.ACTION__CONFIRM_EXECUTE, oldConfirmExecute, confirmExecute));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -146,6 +188,8 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 				return getAjaxMode();
 			case WavePackage.ACTION__AJAX_TARGET:
 				return getAjaxTarget();
+			case WavePackage.ACTION__CONFIRM_EXECUTE:
+				return isConfirmExecute() ? Boolean.TRUE : Boolean.FALSE;
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -163,6 +207,9 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 				return;
 			case WavePackage.ACTION__AJAX_TARGET:
 				setAjaxTarget((String)newValue);
+				return;
+			case WavePackage.ACTION__CONFIRM_EXECUTE:
+				setConfirmExecute(((Boolean)newValue).booleanValue());
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -182,6 +229,9 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 			case WavePackage.ACTION__AJAX_TARGET:
 				setAjaxTarget(AJAX_TARGET_EDEFAULT);
 				return;
+			case WavePackage.ACTION__CONFIRM_EXECUTE:
+				setConfirmExecute(CONFIRM_EXECUTE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -198,6 +248,8 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 				return ajaxMode != AJAX_MODE_EDEFAULT;
 			case WavePackage.ACTION__AJAX_TARGET:
 				return AJAX_TARGET_EDEFAULT == null ? ajaxTarget != null : !AJAX_TARGET_EDEFAULT.equals(ajaxTarget);
+			case WavePackage.ACTION__CONFIRM_EXECUTE:
+				return confirmExecute != CONFIRM_EXECUTE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -216,6 +268,8 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 		result.append(ajaxMode);
 		result.append(", ajaxTarget: ");
 		result.append(ajaxTarget);
+		result.append(", confirmExecute: ");
+		result.append(confirmExecute);
 		result.append(')');
 		return result.toString();
 	}

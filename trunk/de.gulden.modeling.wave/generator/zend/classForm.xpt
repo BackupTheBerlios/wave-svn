@@ -213,8 +213,10 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
         	«LET assoc.getWidget(this, formName) AS widget»
         
 	        «IF ! widget.ignore»
-        
+
+				«IF widget.label.is() || assoc.label.is()»        
         			$this->addElement( new FormLabel(«IF widget.label.is()»«widget.labelCode()»«ELSE»«assoc.labelCode()»«ENDIF», "«assoc.name»"), "label_«assoc.name»" );
+        		«ENDIF»
         			
 				«IF this.isOutgoingMulti(assoc)»
 					
@@ -237,11 +239,14 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 										«((Action)action).labelCode().without(" Action")», 
 										«((Controller)((Action)action).eContainer).name.without("Controller").toLowerCase()», 
 										«((Action)action).name.without("Action")», 
-										array( 'id'=>($child ? $child->getId() : 0), 'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 'root' => $rootId ) )
-										«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO»
-										,
-										$innerForm->getId()
-										«ENDIF»
+										array( 'id'=>($child ? $child->getId() : 0), 
+											   'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
+											   'root' => $rootId, 
+											   'type' => ( $child ? get_class( $child ) : null ) 
+											 )
+										«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO», $innerForm->getId()«ELSE», null«ENDIF»
+										«IF ((Action)action).confirmExecute», true«ELSE», false«ENDIF»
+										)
 								  )
 								);
 							«ENDFOREACH»
@@ -273,10 +278,8 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
 									'root' => $rootId 
 								)
-								«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO»
-								,
-								$lastInnerForm->getId()
-								«ENDIF»
+								«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO», $innerForm->getId()«ELSE», null«ENDIF»
+								«IF ((Action)action).confirmExecute», true«ELSE», false«ENDIF»
 							)
 						  )
 						);
@@ -312,10 +315,8 @@ class «this.formName()»«formName.toLowerCase().toFirstUpper()» extends «this.for
 									'parent'=>( ($this->getObject() != null) ? $this->getObject()->getId() : null ), 
 									'root' => $this->getRootObjectId() 
 								)
-								«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO»
-								,
-								$innerForm->getId()
-								«ENDIF»
+								«IF ((Action)action).ajaxMode != EnumAjaxModes::AJAX_NO», $innerForm->getId()«ELSE», null«ENDIF»
+								«IF ((Action)action).confirmExecute», true«ELSE», false«ENDIF»
 							)
 						);
 					

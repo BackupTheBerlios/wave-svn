@@ -8,6 +8,7 @@
  */
 package de.gulden.modeling.wave.impl;
 
+import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.Label;
 import de.gulden.modeling.wave.Langstring;
 import de.gulden.modeling.wave.WavePackage;
@@ -38,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link de.gulden.modeling.wave.impl.LabelImpl#getText <em>Text</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.LabelImpl#getLangstring <em>Langstring</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.LabelImpl#getIcon <em>Icon</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.impl.LabelImpl#getMode <em>Mode</em>}</li>
  * </ul>
  * </p>
  *
@@ -93,6 +95,26 @@ public class LabelImpl extends EObjectImpl implements Label {
 	 * @ordered
 	 */
 	protected String icon = ICON_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final EnumLabelMode MODE_EDEFAULT = EnumLabelMode.ICON_OR_TEXT;
+
+	/**
+	 * The cached value of the '{@link #getMode() <em>Mode</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMode()
+	 * @generated
+	 * @ordered
+	 */
+	protected EnumLabelMode mode = MODE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -172,6 +194,27 @@ public class LabelImpl extends EObjectImpl implements Label {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EnumLabelMode getMode() {
+		return mode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMode(EnumLabelMode newMode) {
+		EnumLabelMode oldMode = mode;
+		mode = newMode == null ? MODE_EDEFAULT : newMode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.LABEL__MODE, oldMode, mode));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -195,6 +238,8 @@ public class LabelImpl extends EObjectImpl implements Label {
 				return getLangstring();
 			case WavePackage.LABEL__ICON:
 				return getIcon();
+			case WavePackage.LABEL__MODE:
+				return getMode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -218,6 +263,9 @@ public class LabelImpl extends EObjectImpl implements Label {
 			case WavePackage.LABEL__ICON:
 				setIcon((String)newValue);
 				return;
+			case WavePackage.LABEL__MODE:
+				setMode((EnumLabelMode)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -239,6 +287,9 @@ public class LabelImpl extends EObjectImpl implements Label {
 			case WavePackage.LABEL__ICON:
 				setIcon(ICON_EDEFAULT);
 				return;
+			case WavePackage.LABEL__MODE:
+				setMode(MODE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -257,6 +308,8 @@ public class LabelImpl extends EObjectImpl implements Label {
 				return langstring != null && !langstring.isEmpty();
 			case WavePackage.LABEL__ICON:
 				return ICON_EDEFAULT == null ? icon != null : !ICON_EDEFAULT.equals(icon);
+			case WavePackage.LABEL__MODE:
+				return mode != MODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -275,6 +328,8 @@ public class LabelImpl extends EObjectImpl implements Label {
 		result.append(text);
 		result.append(", icon: ");
 		result.append(icon);
+		result.append(", mode: ");
+		result.append(mode);
 		result.append(')');
 		return result.toString();
 	}

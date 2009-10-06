@@ -71,6 +71,7 @@ public class LabelItemProvider
 
 			addTextPropertyDescriptor(object);
 			addIconPropertyDescriptor(object);
+			addModePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -111,6 +112,28 @@ public class LabelItemProvider
 				 getString("_UI_Label_icon_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Label_icon_feature", "_UI_Label_type"),
 				 WavePackage.Literals.LABEL__ICON,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Mode feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addModePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Label_mode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Label_mode_feature", "_UI_Label_type"),
+				 WavePackage.Literals.LABEL__MODE,
 				 true,
 				 false,
 				 false,
@@ -188,6 +211,7 @@ public class LabelItemProvider
 		switch (notification.getFeatureID(Label.class)) {
 			case WavePackage.LABEL__TEXT:
 			case WavePackage.LABEL__ICON:
+			case WavePackage.LABEL__MODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case WavePackage.LABEL__LANGSTRING:
