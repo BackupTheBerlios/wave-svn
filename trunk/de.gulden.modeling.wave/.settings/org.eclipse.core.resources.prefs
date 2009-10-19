@@ -1,0 +1,21 @@
+#Mon Oct 19 16:12:52 CEST 2009
+eclipse.preferences.version=1
+encoding//generator/common.xpt=ISO-8859-1
+encoding//generator/main.xpt=ISO-8859-1
+encoding//generator/oop.xpt=ISO-8859-1
+encoding//generator/roundtrip/model_roundtrip.xpt=ISO-8859-1
+encoding//generator/sql/dbschema.xpt=ISO-8859-1
+encoding//generator/zend/Bootstrap.xpt=ISO-8859-1
+encoding//generator/zend/ErrorController.xpt=ISO-8859-1
+encoding//generator/zend/class.xpt=ISO-8859-1
+encoding//generator/zend/classForm.xpt=ISO-8859-1
+encoding//generator/zend/classPersistence.xpt=ISO-8859-1
+encoding//generator/zend/config.xpt=ISO-8859-1
+encoding//generator/zend/controller.xpt=ISO-8859-1
+encoding//generator/zend/dictionary.xpt=ISO-8859-1
+encoding//generator/zend/enumeration.xpt=ISO-8859-1
+encoding//generator/zend/include.xpt=ISO-8859-1
+encoding//generator/zend/index.xpt=ISO-8859-1
+encoding//generator/zend/interface.xpt=ISO-8859-1
+encoding//generator/zend/model.xpt=ISO-8859-1
+encoding//generator/zend/wave.xpt=ISO-8859-1
