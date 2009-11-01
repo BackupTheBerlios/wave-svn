@@ -8,7 +8,7 @@ package de.gulden.modeling.wave.diagram.sheet;
 
 import org.eclipse.emf.ecore.EObject;
 //import org.eclipse.php.internal.ui.editor.PHPSourceViewer;
-import org.eclipse.php.internal.ui.editor.PHPSourceViewer;
+//import org.eclipse.php.internal.ui.editor.PHPSourceViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.TextChangeListener;
 import org.eclipse.swt.custom.TextChangedEvent;
@@ -21,6 +21,7 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
@@ -33,6 +34,9 @@ import de.gulden.modeling.wave.Include;
 import de.gulden.modeling.wave.Operation;
 import de.gulden.modeling.wave.StyleSheet;
 import de.gulden.modeling.wave.View;
+import de.gulden.modeling.wave.diagram.sheet.sourceViewerAdapter.AbstractSourceViewerAdapter;
+import de.gulden.modeling.wave.diagram.sheet.sourceViewerAdapter.PHPSourceViewerAdapter;
+import de.gulden.modeling.wave.diagram.sheet.sourceViewerAdapter.TextSourceViewerAdapter;
 import de.gulden.modeling.wave.impl.OperationImpl;
 import de.gulden.modeling.wave.util.WaveUtil;
 
@@ -40,8 +44,8 @@ public class WavePropertySourceSectionManual extends WavePropertySourceSection {
 	
 	protected Form form;
 	//protected Text text;
-	protected PHPSourceViewer text;
-	//protected Composite text;
+	//protected PHPSourceViewer text;
+	protected AbstractSourceViewerAdapter text;	
 
 	@Override
 	public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
@@ -56,29 +60,14 @@ public class WavePropertySourceSectionManual extends WavePropertySourceSection {
 		
 		form.getBody().setLayout(new FillLayout());
 		
-		// plugin "org.eclipse.php.ui":
-		text = new PHPSourceViewer(form.getBody(), 0); //org.eclipse.php.internal.ui.editor.PHPSourceViewer //org.eclipse.php.internal.ui.editor.UnititledPHPEditor
+		//text = createSourceViewer(toolkit, form); // TODO user config which language
+		text = new PHPSourceViewerAdapter();
+		if ( ! text.isAvailable()) {
+			text = new TextSourceViewerAdapter();
+		}
+		text.init(toolkit, form);
 
-		//text = toolkit.createText(form.getBody(), "initializing...", SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-		//text.setTabs(4);
-		
-		//Font headfont = new Font(Display.getCurrent(), "Courier", 12, SWT.BOLD); 
-		Font font = new Font(Display.getCurrent(), "Courier", 12, SWT.NONE);
-		
-		//form.setFont(headfont);
-		text.setFont(font);
-		
-		form.getBody().addControlListener(new ControlListener() {
-			public void controlMoved(ControlEvent e) {
-				// nop
-			}
-			public void controlResized(ControlEvent e) {
-				Point size = form.getBody().getSize();
-				text.setSize(size.x, size.y);
-			}
-		});
-		
-		text.getTextWidget().getContent().addTextChangeListener(new TextChangeListener() {
+		text.addTextChangeListener(new TextChangeListener() {
 			//@Override
 			public void textChanged(TextChangedEvent event) {
 				EObject o = getEObject();
@@ -101,15 +90,28 @@ public class WavePropertySourceSectionManual extends WavePropertySourceSection {
 					WaveUtil.warnWorkaroundMissingWriteTransaction();
 				}
 			}
-
 			//@Override
 			public void textChanging(TextChangingEvent event) {
 				// nop
 			}
-
 			//@Override
 			public void textSet(TextChangedEvent event) {
 				// nop
+			}
+		});		
+		
+		//Font headfont = new Font(Display.getCurrent(), "Courier", 12, SWT.BOLD); 
+		Font font = new Font(Display.getCurrent(), "Courier", 12, SWT.NONE);
+		//form.setFont(headfont);
+		text.setFont(font);
+		
+		form.getBody().addControlListener(new ControlListener() {
+			public void controlMoved(ControlEvent e) {
+				// nop
+			}
+			public void controlResized(ControlEvent e) {
+				Point size = form.getBody().getSize();
+				text.setSize(size);
 			}
 		});
 		
