@@ -6,7 +6,7 @@
  */
 import wave;
 
-extension org::openarchitectureware::util::stdlib::globalvar;
+extension org::eclipse::xtend::util::stdlib::globalvar;
 
 Model model( ModelMember this ) :
 	this.isModel() ? this : ((ModelMember)this.eContainer).model();

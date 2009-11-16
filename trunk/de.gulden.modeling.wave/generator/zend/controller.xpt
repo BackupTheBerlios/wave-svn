@@ -9,7 +9,7 @@
 
 «IMPORT zend»
 
-«EXTENSION org::openarchitectureware::util::stdlib::globalvar»
+«EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
 «EXTENSION common»
 «EXTENSION zend::commonZend»
 

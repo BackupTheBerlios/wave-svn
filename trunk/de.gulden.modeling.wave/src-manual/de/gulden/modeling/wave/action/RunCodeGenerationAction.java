@@ -29,6 +29,12 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.mwe.core.WorkflowContext;
+import org.eclipse.emf.mwe.core.WorkflowContextDefaultImpl;
+import org.eclipse.emf.mwe.core.issues.Issues;
+import org.eclipse.emf.mwe.core.issues.IssuesImpl;
+import org.eclipse.emf.mwe.core.monitor.NullProgressMonitor;
+import org.eclipse.emf.mwe.utils.Reader;
 import org.eclipse.emf.transaction.impl.ResourceSetManager;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
@@ -39,13 +45,11 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentPro
 import org.eclipse.gmf.runtime.emf.core.internal.util.MetamodelManager;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.impl.DiagramImpl;
+import org.eclipse.internal.xtend.expression.ast.SyntaxElement;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
-import org.eclipse.m2t.type.emf.EmfRegistryMetaModel;
-import org.eclipse.mwe.emf.Reader;
-import org.eclipse.mwe.emf.StandaloneSetup;
 import org.eclipse.ui.IEditorActionDelegate;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -54,19 +58,11 @@ import org.eclipse.ui.internal.EditorPluginAction;
 import org.eclipse.ui.internal.handlers.CommandLegacyActionWrapper;
 import org.eclipse.ui.part.EditorPart;
 import org.eclipse.ui.part.FileEditorInput;
-import org.openarchitectureware.expression.ExceptionHandler;
-import org.openarchitectureware.expression.ExecutionContext;
-import org.openarchitectureware.expression.ast.SyntaxElement;
-import org.openarchitectureware.type.MetaModel;
-import org.openarchitectureware.type.emf.EmfMetaModel;
-import org.openarchitectureware.util.stdlib.GlobalVarExtensions;
-import org.openarchitectureware.workflow.WorkflowContext;
-import org.openarchitectureware.workflow.WorkflowContextDefaultImpl;
-import org.openarchitectureware.workflow.issues.Issues;
-import org.openarchitectureware.workflow.issues.IssuesImpl;
-import org.openarchitectureware.workflow.monitor.NullProgressMonitor;
-import org.openarchitectureware.workflow.monitor.ProgressMonitor;
-import org.openarchitectureware.xpand2.Generator;
+import org.eclipse.xpand2.Generator;
+import org.eclipse.xtend.expression.ExceptionHandler;
+import org.eclipse.xtend.expression.ExecutionContext;
+import org.eclipse.xtend.typesystem.emf.EmfMetaModel;
+import org.eclipse.xtend.util.stdlib.GlobalVarExtensions;
 
 //import runtime.WaveRuntimeLoader;
 
@@ -251,13 +247,15 @@ public class RunCodeGenerationAction implements IObjectActionDelegate, IEditorAc
 		Issues issues = new IssuesImpl();
 		
 		ExceptionHandler exceptionHandler = new ExceptionHandler() {
+
+			@Override
 			public void handleRuntimeException(RuntimeException ex,
 					SyntaxElement element, ExecutionContext ctx,
 					Map<String, Object> additionalContextInfo) {
 				System.err.println(ex.getMessage()); // TODO Eclipse error / Issues
 				ex.printStackTrace();
-				
 			}
+			
 		};
 		
 		if (modelURI != null) { // not given from active editor, load from file

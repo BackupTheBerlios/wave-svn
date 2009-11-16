@@ -56,6 +56,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gmf.codegen,
  org.eclipse.gmf.validate,
  org.eclipse.php.ui;resolution:=optional,
- org.openarchitectureware.dependencies
+ org.eclipse.xpand,
+ org.eclipse.xtend,
+ org.eclipse.xtend.util.stdlib,
+ org.eclipse.xtend.typesystem.emf,
+ org.eclipse.emf.mwe.utils;bundle-version="0.7.2",
+ com.ibm.icu;bundle-version="4.0.1"
 Eclipse-LazyStart: true
 Bundle-Activator: de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin

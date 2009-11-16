@@ -38,7 +38,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.FontData;
-import org.openarchitectureware.util.stdlib.GlobalVarExtensions;
+import org.eclipse.xtend.util.stdlib.GlobalVarExtensions;
 
 import de.gulden.modeling.wave.Action;
 import de.gulden.modeling.wave.ActionToViewTransition;
