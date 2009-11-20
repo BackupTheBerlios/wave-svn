@@ -38,7 +38,7 @@ import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 /**
  * @generated
  */
-public class ClassEditPart extends ShapeNodeEditPart {
+public class ClassEditPart extends de.gulden.modeling.wave.diagram.edit.parts.ClassEditPartBase {
 
 	/**
 	 * @generated
@@ -144,7 +144,9 @@ public class ClassEditPart extends ShapeNodeEditPart {
 	protected boolean addFixedChild(EditPart childEditPart) {
 		if (childEditPart instanceof ClassNameEditPart) {
 			((ClassNameEditPart) childEditPart).setLabel(getPrimaryShape()
-					.getFigureClassNameFigure());
+					.getFigureClassNameFigure()) ; 
+    	de.gulden.modeling.wave.util.WaveUtil.updateNameLabel(this);
+    	
 			return true;
 		}
 		return false;

@@ -14,15 +14,15 @@ import de.gulden.modeling.wave.diagram.edit.parts.Class2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ClassEditPart;
 import de.gulden.modeling.wave.util.WaveUtil;
 
-public abstract class Class2EditPartBase extends ShapeNodeEditPart {
+public abstract class ClassEditPartBase extends ShapeNodeEditPart {
 	
-	public Class2EditPartBase(View view) {
+	public ClassEditPartBase(View view) {
 		super(view);
 	}
 
 	protected void handleNotificationEvent(Notification notification) {
 		if (notification.getNotifier() instanceof de.gulden.modeling.wave.Class) {
-			WaveUtil.updateNameLabel((Class2EditPart)this);
+			WaveUtil.updateNameLabel(this);
 		}
 		super.handleNotificationEvent(notification);
 	}

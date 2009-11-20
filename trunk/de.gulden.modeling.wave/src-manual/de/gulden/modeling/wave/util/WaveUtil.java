@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
@@ -1801,22 +1802,31 @@ workaroundMissingWriteTransactionHasBeenPrinted = true;
 				assoc.getDirection() == EnumDirection.AB);
 	}
 
-	public static void updateNameLabel(Class2EditPart p) {
-		Object n = ((Node) p.getModel()).getElement();
-		de.gulden.modeling.wave.Class cl = (de.gulden.modeling.wave.Class) n;
-		WrappingLabel nameFigure = p.getPrimaryShape()
-				.getFigureClassNameFigure();
+	public static void updateNameLabel(WrappingLabel nameFigure, boolean italic) {
+		//Object n = ((Node) p.getModel()).getElement();
+		//de.gulden.modeling.wave.Class cl = (de.gulden.modeling.wave.Class) n;
+		//WrappingLabel nameFigure = p.getPrimaryShape().getFigureClassNameFigure();
 		if (nameFigure != null) {
 			Font font = nameFigure.getFont();
 			FontData[] fds = font.getFontData();
 			for (FontData fd : fds) {
-				fd.setStyle(cl.isIsAbstract() ? SWT.ITALIC : SWT.NONE);
+				fd.setStyle( italic ? SWT.ITALIC : SWT.NONE );
 			}
 			Font newFont = new Font(font.getDevice(), fds);
 			nameFigure.setFont(newFont);
 		}
 	}
 
+	public static void updateNameLabel(ShapeNodeEditPart p) {
+		if (p instanceof ClassEditPart) {
+			updateNameLabel(((ClassEditPart)p).getPrimaryShape().getFigureClassNameFigure(), ((de.gulden.modeling.wave.Class)((Node) ((ClassEditPart)p).getModel()).getElement()).isIsAbstract());
+		} else if (p instanceof Class2EditPart) {
+			updateNameLabel(((Class2EditPart)p).getPrimaryShape().getFigureClassNameFigure(), ((de.gulden.modeling.wave.Class)((Node) ((Class2EditPart)p).getModel()).getElement()).isIsAbstract());
+		} else  {
+			throw new IllegalArgumentException();
+		}
+	}
+	
 	public static String getAttributeLabel(Attribute attr) {
 		Object parent = attr.eContainer();
 		String name = null;

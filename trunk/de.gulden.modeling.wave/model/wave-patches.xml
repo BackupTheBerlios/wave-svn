@@ -259,6 +259,18 @@ method code should be generated when changes to the metamodel have occurred.
     		summary="yes"/>
      
   	
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ClassEditPart.java"
+    		token="extends ShapeNodeEditPart"
+    		value="extends de.gulden.modeling.wave.diagram.edit.parts.ClassEditPartBase"
+    		summary="yes"/>
+     
+    <replace file="de/gulden/modeling/wave/diagram/edit/parts/ClassEditPart.java" summary="yes">
+    	<replacetoken>.getFigureClassNameFigure());</replacetoken>
+    	<replacevalue>.getFigureClassNameFigure()) ; 
+    	de.gulden.modeling.wave.util.WaveUtil.updateNameLabel(this);
+    	</replacevalue>
+  	</replace>
+
     <replace file="de/gulden/modeling/wave/diagram/edit/parts/Class2EditPart.java"
     		token="extends ShapeNodeEditPart"
     		value="extends de.gulden.modeling.wave.diagram.edit.parts.Class2EditPartBase"

@@ -38,7 +38,7 @@ import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 /**
  * @generated
  */
-public class Class2EditPart extends de.gulden.modeling.wave.diagram.edit.parts.Class2EditPartBase {
+public class Class2EditPart extends de.gulden.modeling.wave.diagram.edit.parts.ClassEditPartBase {
 
 	/**
 	 * @generated
