@@ -16,7 +16,7 @@ method code should be generated when changes to the metamodel have occurred.
 	
 <!-- invoke oaW workflow:
 <target name='generate'>
-    <taskdef name="workflow" classname="org.openarchitectureware.workflow.ant.WorkflowAntTask"/>
+    <taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>
     <workflow file='path/workflow.oaw'>
         <param name='baseDir' value='/base/'/>
     </workflow>

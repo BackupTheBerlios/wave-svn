@@ -7,7 +7,7 @@
 <workflow>
 
 <!--
-openArchitectureWare workflow script for manually running code-generation  
+workflow script for manually running code-generation  
  -->
 
 	<!-- CHANGE PATHS TO YOUR CONFIGURATION  --> 
@@ -29,7 +29,7 @@ openArchitectureWare workflow script for manually running code-generation
 		<abortOnError value="true"/>
 	</component>
 	
-	<!--<component id="dirCleaner" class="org.openarchitectureware.workflow.common.DirectoryCleaner" skipOnErrors="false">
+	<!--<component id="dirCleaner" class="org.eclipse.emf.mwe.utils.DirectoryCleaner" skipOnErrors="false">
 		<directory value="${sourceFolder}" />
 	</component>-->
 		
