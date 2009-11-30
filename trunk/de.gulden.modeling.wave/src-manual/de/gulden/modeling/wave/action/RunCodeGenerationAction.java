@@ -170,7 +170,9 @@ public class RunCodeGenerationAction implements IObjectActionDelegate, IEditorAc
 		FileEditorInput input = ((FileEditorInput) editorPart.getEditorInput() ); 
 		IPath path = input.getPath();
 		this.modelFilename = path.toString();
-		this.modelFilename = this.modelFilename.substring(0, this.modelFilename.length()-8); // TODO hack, remove "_diagram" to get model file
+		if (this.modelFilename.endsWith("_diagram")) {
+			this.modelFilename = this.modelFilename.substring(0, this.modelFilename.length()-8); // TODO hack, remove "_diagram" to get model file
+		}
 		this.outputFolder = null; // force refresh
 	}
 	
