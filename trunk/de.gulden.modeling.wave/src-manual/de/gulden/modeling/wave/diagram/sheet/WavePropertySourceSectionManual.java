@@ -6,7 +6,11 @@
  */
 package de.gulden.modeling.wave.diagram.sheet;
 
+import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 //import org.eclipse.php.internal.ui.editor.PHPSourceViewer;
 //import org.eclipse.php.internal.ui.editor.PHPSourceViewer;
 import org.eclipse.swt.SWT;
@@ -34,6 +38,7 @@ import de.gulden.modeling.wave.Include;
 import de.gulden.modeling.wave.Operation;
 import de.gulden.modeling.wave.StyleSheet;
 import de.gulden.modeling.wave.View;
+import de.gulden.modeling.wave.WavePackage;
 import de.gulden.modeling.wave.diagram.sheet.sourceViewerAdapter.AbstractSourceViewerAdapter;
 import de.gulden.modeling.wave.diagram.sheet.sourceViewerAdapter.PHPSourceViewerAdapter;
 import de.gulden.modeling.wave.diagram.sheet.sourceViewerAdapter.TextSourceViewerAdapter;
@@ -45,7 +50,7 @@ public class WavePropertySourceSectionManual extends WavePropertySourceSection {
 	protected Form form;
 	//protected Text text;
 	//protected PHPSourceViewer text;
-	protected AbstractSourceViewerAdapter text;	
+	protected AbstractSourceViewerAdapter text;
 
 	@Override
 	public void createControls(Composite parent, TabbedPropertySheetPage tabbedPropertySheetPage) {
@@ -72,22 +77,45 @@ public class WavePropertySourceSectionManual extends WavePropertySourceSection {
 			public void textChanged(TextChangedEvent event) {
 				EObject o = getEObject();
 				String s = text.getText();
+				boolean deliverOld = o.eDeliver();
+				o.eSetDeliver(false);
+				EAttribute codeAtt = WavePackage.eINSTANCE.getOperation_Code();
+				SetRequest req = null;
 				try {
 					if (o instanceof Operation) {
-						((Operation)o).setCode(s);
-						//text.applyStyles(); // ???
+						if ( ! s.equals(((Operation)o).getCode()) ) {
+							req = new SetRequest(o, codeAtt, s);
+							//((Operation)o).setCode(s);
+							//text.applyStyles(); // ???
+						}
 					} else if (o instanceof Action) {
-						((Action)o).getOperation().setCode(s);
+						if ( ! s.equals(((Action)o).getOperation().getCode()) ) {
+							req = new SetRequest(((Action)o).getOperation(), codeAtt, s);
+							//((Action)o).getOperation().setCode(s);
+						}
 					} else if (o instanceof View) {
-						((View)o).getOperation().setCode(s);
+						if ( ! s.equals(((View)o).getOperation().getCode()) ) {
+							req = new SetRequest(((View)o).getOperation(), codeAtt, s);
+							//((View)o).getOperation().setCode(s);
+						}
 					} else if (o instanceof Include) {
-						((Include)o).setCode(s);
+						if ( ! s.equals(((Include)o).getCode()) ) {
+							req = new SetRequest(o, WavePackage.eINSTANCE.getInclude_Code(), s);
+						}
+						//((Include)o).setCode(s);
 					} else if (o instanceof StyleSheet) {
-						((StyleSheet)o).setCode(s);
+						if ( ! s.equals(((StyleSheet)o).getCode()) ) {
+							req = new SetRequest(o, WavePackage.eINSTANCE.getStyleSheet_Code(), s);
+						}
+						//((StyleSheet)o).setCode(s);
 					}
-				} catch (IllegalStateException ise) {
-					// TODO
-					WaveUtil.warnWorkaroundMissingWriteTransaction();
+					SetValueCommand cmd = new SetValueCommand(req);
+					cmd.execute(null, null);
+				} catch (ExecutionException ee) {
+					System.err.println(ee.getMessage());
+					ee.printStackTrace();
+				} finally {
+					o.eSetDeliver(deliverOld);
 				}
 			}
 			//@Override

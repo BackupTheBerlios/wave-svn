@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -34,6 +35,8 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.commands.SetValueCommand;
+import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.swt.SWT;
@@ -161,7 +164,6 @@ public class WaveUtil { // <<utility>>
 				}
 			}
 			*/
-			
 		}
 
 		public void setTarget(Notifier newTarget) {
@@ -209,6 +211,7 @@ public class WaveUtil { // <<utility>>
 
 	public static String normalizeCode(String s) {
 		s = noNull(s);
+		s = normalizeLF(s);
 		s = s.trim();
 		if (s.length() == 0) {
 			s = "\t// TODO";
@@ -234,6 +237,26 @@ public class WaveUtil { // <<utility>>
 		} else {
 			return s;
 		}
+	}
+	
+	private static String normalizeLF(String s) {
+		StringBuffer sb = new StringBuffer();
+		int oldPos = 0;
+		int pos = s.indexOf('\r');
+		if (pos == -1) return s;
+		while (pos != -1) {
+			sb.append( s.substring(oldPos, pos) );
+			oldPos = pos + 1;
+			if (oldPos < s.length()) {
+				pos = s.indexOf('\r', oldPos);
+			} else {
+				pos = -1;
+			}
+		}
+		if (oldPos < s.length()) {
+			sb.append(s.substring(oldPos));
+		}
+		return sb.toString();
 	}
 	
 	/**
@@ -1648,14 +1671,14 @@ public class WaveUtil { // <<utility>>
 		return sb.toString();
 	}*/
 
-	private static boolean workaroundMissingWriteTransactionHasBeenPrinted = false;
+	/*private static boolean workaroundMissingWriteTransactionHasBeenPrinted = false;
 	
-	public static void warnWorkaroundMissingWriteTransaction() {
+	public static void warnWorkaroundMissingWriteTransaction(String msg) {
 		if (!workaroundMissingWriteTransactionHasBeenPrinted) {
-			System.err.println("WORKAROUND: missing write transaction"); // TODO
+			System.err.println("WORKAROUND: " + msg); // TODO
 			workaroundMissingWriteTransactionHasBeenPrinted = true;
 		}
-	}
+	}*/
 	
 	public static void roundtripCode(Operation op) {
 		String code = prepareCode(op.getCode());
@@ -1666,18 +1689,17 @@ public class WaveUtil { // <<utility>>
 			String roundtrip = map.get(sig);
 			if (roundtrip != null) {
 				if (((code == null) || (! code.trim().equals(roundtrip.trim()))) && (!roundtrip.trim().equals("// TODO")) ) {
-if (code != null) System.out.println("ROUNDTRIP "+sig+" : "+roundtrip); // TODO confirm dialog					
-					//code = roundtrip;
+if (code != null) System.out.println("ROUNDTRIP "+sig+" : "+roundtrip); // TODO confirm dialog
 					code = "<?php\n{\n\t"+roundtrip+"\n}\n";
-// TODO - WRITE TRANSACTION
-try {
-	
-						op.setCode(code);
-						
-} catch (IllegalStateException ise) {
-// nop
-warnWorkaroundMissingWriteTransaction();
-}
+					try {
+						SetRequest req = new SetRequest(op, WavePackage.eINSTANCE.getOperation_Code(), code);
+						SetValueCommand cmd = new SetValueCommand(req);
+						cmd.execute(null, null);
+						//op.setCode(code);
+					} catch (ExecutionException ee) {
+						System.err.println(ee.getMessage());
+						ee.printStackTrace();
+					}
 				}
 			}
 		}
@@ -1690,18 +1712,15 @@ warnWorkaroundMissingWriteTransaction();
 //System.out.println("RT "+filename);					
 			if ((code == null) || (! code.trim().equals(roundtrip.trim()))) {
 if (code != null) System.out.println("ROUNDTRIP INCLUDE "+filename); // TODO confirm dialog					
-//TODO - WRITE TRANSACTION
-try {
-	
-					inc.setCode(roundtrip);
-					
-} catch (IllegalStateException ise) {
-// nop
-if (!workaroundMissingWriteTransactionHasBeenPrinted) {
-System.err.println("WORKAROUND: missing write transaction"); // TODO
-workaroundMissingWriteTransactionHasBeenPrinted = true;
-}
-}
+				try {
+					SetRequest req = new SetRequest(inc, WavePackage.eINSTANCE.getInclude_Code(), code);
+					SetValueCommand cmd = new SetValueCommand(req);
+					cmd.execute(null, null);
+					//inc.setCode(roundtrip);					
+				} catch (ExecutionException ee) {
+					System.err.println(ee.getMessage());
+					ee.printStackTrace();
+				}
 			}
 		}
 	}
