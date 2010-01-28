@@ -522,11 +522,11 @@ public abstract class WidgetImpl extends ModelMemberImpl implements Widget {
 			case WavePackage.WIDGET__WIDGET_HINT:
 				return getWidgetHint();
 			case WavePackage.WIDGET__READ_ONLY:
-				return isReadOnly() ? Boolean.TRUE : Boolean.FALSE;
+				return isReadOnly();
 			case WavePackage.WIDGET__REQUIRED:
-				return isRequired() ? Boolean.TRUE : Boolean.FALSE;
+				return isRequired();
 			case WavePackage.WIDGET__IGNORE:
-				return isIgnore() ? Boolean.TRUE : Boolean.FALSE;
+				return isIgnore();
 			case WavePackage.WIDGET__FILTERS:
 				return getFilters();
 			case WavePackage.WIDGET__VALIDATORS:
@@ -538,9 +538,9 @@ public abstract class WidgetImpl extends ModelMemberImpl implements Widget {
 			case WavePackage.WIDGET__ELEMENT_FORM_NAME:
 				return getElementFormName();
 			case WavePackage.WIDGET__MULTI_LINE:
-				return isMultiLine() ? Boolean.TRUE : Boolean.FALSE;
+				return isMultiLine();
 			case WavePackage.WIDGET__MULTI_CHOICE:
-				return isMultiChoice() ? Boolean.TRUE : Boolean.FALSE;
+				return isMultiChoice();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -561,13 +561,13 @@ public abstract class WidgetImpl extends ModelMemberImpl implements Widget {
 				setWidgetHint((String)newValue);
 				return;
 			case WavePackage.WIDGET__READ_ONLY:
-				setReadOnly(((Boolean)newValue).booleanValue());
+				setReadOnly((Boolean)newValue);
 				return;
 			case WavePackage.WIDGET__REQUIRED:
-				setRequired(((Boolean)newValue).booleanValue());
+				setRequired((Boolean)newValue);
 				return;
 			case WavePackage.WIDGET__IGNORE:
-				setIgnore(((Boolean)newValue).booleanValue());
+				setIgnore((Boolean)newValue);
 				return;
 			case WavePackage.WIDGET__FILTERS:
 				getFilters().clear();
@@ -589,10 +589,10 @@ public abstract class WidgetImpl extends ModelMemberImpl implements Widget {
 				setElementFormName((String)newValue);
 				return;
 			case WavePackage.WIDGET__MULTI_LINE:
-				setMultiLine(((Boolean)newValue).booleanValue());
+				setMultiLine((Boolean)newValue);
 				return;
 			case WavePackage.WIDGET__MULTI_CHOICE:
-				setMultiChoice(((Boolean)newValue).booleanValue());
+				setMultiChoice((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

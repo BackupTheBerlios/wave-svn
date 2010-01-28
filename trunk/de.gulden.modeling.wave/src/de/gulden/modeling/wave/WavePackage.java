@@ -4837,6 +4837,17 @@ public interface WavePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link de.gulden.modeling.wave.EnumGeneratorTarget <em>Enum Generator Target</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see de.gulden.modeling.wave.EnumGeneratorTarget
+	 * @see de.gulden.modeling.wave.impl.WavePackageImpl#getEnumGeneratorTarget()
+	 * @generated
+	 */
+	int ENUM_GENERATOR_TARGET = 55;
+
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.Classifier <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6784,6 +6795,16 @@ public interface WavePackage extends EPackage {
 	EEnum getEnumLabelMode();
 
 	/**
+	 * Returns the meta object for enum '{@link de.gulden.modeling.wave.EnumGeneratorTarget <em>Enum Generator Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Enum Generator Target</em>'.
+	 * @see de.gulden.modeling.wave.EnumGeneratorTarget
+	 * @generated
+	 */
+	EEnum getEnumGeneratorTarget();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8370,6 +8391,16 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EEnum ENUM_LABEL_MODE = eINSTANCE.getEnumLabelMode();
+
+		/**
+		 * The meta object literal for the '{@link de.gulden.modeling.wave.EnumGeneratorTarget <em>Enum Generator Target</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see de.gulden.modeling.wave.EnumGeneratorTarget
+		 * @see de.gulden.modeling.wave.impl.WavePackageImpl#getEnumGeneratorTarget()
+		 * @generated
+		 */
+		EEnum ENUM_GENERATOR_TARGET = eINSTANCE.getEnumGeneratorTarget();
 
 	}
 

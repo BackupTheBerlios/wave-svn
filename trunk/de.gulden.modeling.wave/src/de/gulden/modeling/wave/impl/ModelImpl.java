@@ -10,6 +10,7 @@ package de.gulden.modeling.wave.impl;
 
 import de.gulden.modeling.wave.Dictionary;
 import de.gulden.modeling.wave.Documentation;
+import de.gulden.modeling.wave.EnumGeneratorTarget;
 import de.gulden.modeling.wave.EnumProjectLayout;
 import de.gulden.modeling.wave.Include;
 import de.gulden.modeling.wave.Model;
@@ -146,7 +147,7 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String GENERATOR_TARGET_EDEFAULT = null;
+	protected static final EnumGeneratorTarget GENERATOR_TARGET_EDEFAULT = EnumGeneratorTarget.NONE;
 
 	/**
 	 * The cached value of the '{@link #getGeneratorTarget() <em>Generator Target</em>}' attribute.
@@ -156,7 +157,7 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * @generated
 	 * @ordered
 	 */
-	protected String generatorTarget = GENERATOR_TARGET_EDEFAULT;
+	protected EnumGeneratorTarget generatorTarget = GENERATOR_TARGET_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCopyright() <em>Copyright</em>}' attribute.
@@ -436,7 +437,7 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getGeneratorTarget() {
+	public EnumGeneratorTarget getGeneratorTarget() {
 		return generatorTarget;
 	}
 
@@ -445,9 +446,9 @@ public class ModelImpl extends PackageImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGeneratorTarget(String newGeneratorTarget) {
-		String oldGeneratorTarget = generatorTarget;
-		generatorTarget = newGeneratorTarget;
+	public void setGeneratorTarget(EnumGeneratorTarget newGeneratorTarget) {
+		EnumGeneratorTarget oldGeneratorTarget = generatorTarget;
+		generatorTarget = newGeneratorTarget == null ? GENERATOR_TARGET_EDEFAULT : newGeneratorTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.MODEL__GENERATOR_TARGET, oldGeneratorTarget, generatorTarget));
 	}
@@ -773,7 +774,7 @@ public class ModelImpl extends PackageImpl implements Model {
 				setSourceFolder((String)newValue);
 				return;
 			case WavePackage.MODEL__GENERATOR_TARGET:
-				setGeneratorTarget((String)newValue);
+				setGeneratorTarget((EnumGeneratorTarget)newValue);
 				return;
 			case WavePackage.MODEL__COPYRIGHT:
 				setCopyright((String)newValue);
@@ -884,7 +885,7 @@ public class ModelImpl extends PackageImpl implements Model {
 			case WavePackage.MODEL__SOURCE_FOLDER:
 				return SOURCE_FOLDER_EDEFAULT == null ? sourceFolder != null : !SOURCE_FOLDER_EDEFAULT.equals(sourceFolder);
 			case WavePackage.MODEL__GENERATOR_TARGET:
-				return GENERATOR_TARGET_EDEFAULT == null ? generatorTarget != null : !GENERATOR_TARGET_EDEFAULT.equals(generatorTarget);
+				return generatorTarget != GENERATOR_TARGET_EDEFAULT;
 			case WavePackage.MODEL__COPYRIGHT:
 				return COPYRIGHT_EDEFAULT == null ? copyright != null : !COPYRIGHT_EDEFAULT.equals(copyright);
 			case WavePackage.MODEL__PROVIDER:

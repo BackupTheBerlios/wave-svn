@@ -70,6 +70,12 @@
       <genEnumLiterals ecoreEnumLiteral="wave.ecore#_TD8nrOGuEd6cOJBz96zHHQ"/>
       <genEnumLiterals ecoreEnumLiteral="wave.ecore#_TD8nreGuEd6cOJBz96zHHQ"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="wave.ecore#//EnumGeneratorTarget">
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumGeneratorTarget/NONE"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumGeneratorTarget/JAVA"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumGeneratorTarget/PHP5"/>
+      <genEnumLiterals ecoreEnumLiteral="wave.ecore#//EnumGeneratorTarget/ZEND"/>
+    </genEnums>
     <genClasses image="false" ecoreClass="wave.ecore#_TD2hAeGuEd6cOJBz96zHHQ">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference wave.ecore#_TD2hAuGuEd6cOJBz96zHHQ"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>

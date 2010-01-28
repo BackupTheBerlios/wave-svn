@@ -188,7 +188,7 @@ public class AttributeImpl extends de.gulden.modeling.wave.impl.AttributeImplBas
 			case WavePackage.ATTRIBUTE__DEFAULT_VALUE:
 				return getDefaultValue();
 			case WavePackage.ATTRIBUTE__IS_MULTIPLE:
-				return isIsMultiple() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsMultiple();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -208,7 +208,7 @@ public class AttributeImpl extends de.gulden.modeling.wave.impl.AttributeImplBas
 				setDefaultValue((String)newValue);
 				return;
 			case WavePackage.ATTRIBUTE__IS_MULTIPLE:
-				setIsMultiple(((Boolean)newValue).booleanValue());
+				setIsMultiple((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

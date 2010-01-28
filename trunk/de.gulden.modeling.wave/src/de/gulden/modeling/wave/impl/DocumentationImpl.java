@@ -190,7 +190,7 @@ public class DocumentationImpl extends EObjectImpl implements Documentation {
 			case WavePackage.DOCUMENTATION__AUDIENCE:
 				return getAudience();
 			case WavePackage.DOCUMENTATION__DETAIL_LEVEL:
-				return new Integer(getDetailLevel());
+				return getDetailLevel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -210,7 +210,7 @@ public class DocumentationImpl extends EObjectImpl implements Documentation {
 				setAudience((EnumDocumentationAudienceType)newValue);
 				return;
 			case WavePackage.DOCUMENTATION__DETAIL_LEVEL:
-				setDetailLevel(((Integer)newValue).intValue());
+				setDetailLevel((Integer)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

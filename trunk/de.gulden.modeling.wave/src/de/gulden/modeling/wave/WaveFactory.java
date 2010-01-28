@@ -115,7 +115,7 @@ public interface WaveFactory extends EFactory {
 	 * @return a new object of class '<em>Package</em>'.
 	 * @generated
 	 */
-	de.gulden.modeling.wave.Package createPackage();
+	Package createPackage();
 
 	/**
 	 * Returns a new object of class '<em>Dependency Relationship</em>'.
@@ -133,7 +133,7 @@ public interface WaveFactory extends EFactory {
 	 * @return a new object of class '<em>Class</em>'.
 	 * @generated
 	 */
-	de.gulden.modeling.wave.Class createClass();
+	Class createClass();
 
 	/**
 	 * Returns a new object of class '<em>Interface</em>'.

@@ -227,7 +227,7 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case WavePackage.OOP_CLASSIFIER__IS_ABSTRACT:
-				return isIsAbstract() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsAbstract();
 			case WavePackage.OOP_CLASSIFIER__VISIBILITY:
 				return getVisibility();
 			case WavePackage.OOP_CLASSIFIER__EXTERNAL_EXTENDS:
@@ -247,7 +247,7 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case WavePackage.OOP_CLASSIFIER__IS_ABSTRACT:
-				setIsAbstract(((Boolean)newValue).booleanValue());
+				setIsAbstract((Boolean)newValue);
 				return;
 			case WavePackage.OOP_CLASSIFIER__VISIBILITY:
 				setVisibility((EnumVisibility)newValue);

@@ -189,7 +189,7 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 			case WavePackage.ACTION__AJAX_TARGET:
 				return getAjaxTarget();
 			case WavePackage.ACTION__CONFIRM_EXECUTE:
-				return isConfirmExecute() ? Boolean.TRUE : Boolean.FALSE;
+				return isConfirmExecute();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,7 +209,7 @@ public class ActionImpl extends de.gulden.modeling.wave.impl.ActionImplBase impl
 				setAjaxTarget((String)newValue);
 				return;
 			case WavePackage.ACTION__CONFIRM_EXECUTE:
-				setConfirmExecute(((Boolean)newValue).booleanValue());
+				setConfirmExecute((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

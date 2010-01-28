@@ -275,7 +275,7 @@ public class OperationImpl extends de.gulden.modeling.wave.impl.OperationImplBas
 			case WavePackage.OPERATION__RETURN_TYPE:
 				return getReturnType();
 			case WavePackage.OPERATION__IS_ABSTRACT:
-				return isIsAbstract() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsAbstract();
 			case WavePackage.OPERATION__CODE:
 				return getCode();
 			case WavePackage.OPERATION__THROWS:
@@ -299,7 +299,7 @@ public class OperationImpl extends de.gulden.modeling.wave.impl.OperationImplBas
 				setReturnType((String)newValue);
 				return;
 			case WavePackage.OPERATION__IS_ABSTRACT:
-				setIsAbstract(((Boolean)newValue).booleanValue());
+				setIsAbstract((Boolean)newValue);
 				return;
 			case WavePackage.OPERATION__CODE:
 				setCode((String)newValue);

@@ -147,6 +147,7 @@ public interface Model extends de.gulden.modeling.wave.Package {
 
 	/**
 	 * Returns the value of the '<em><b>Generator Target</b></em>' attribute.
+	 * The literals are from the enumeration {@link de.gulden.modeling.wave.EnumGeneratorTarget}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Generator Target</em>' attribute isn't clear,
@@ -154,22 +155,24 @@ public interface Model extends de.gulden.modeling.wave.Package {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Generator Target</em>' attribute.
-	 * @see #setGeneratorTarget(String)
+	 * @see de.gulden.modeling.wave.EnumGeneratorTarget
+	 * @see #setGeneratorTarget(EnumGeneratorTarget)
 	 * @see de.gulden.modeling.wave.WavePackage#getModel_GeneratorTarget()
 	 * @model
 	 * @generated
 	 */
-	String getGeneratorTarget();
+	EnumGeneratorTarget getGeneratorTarget();
 
 	/**
 	 * Sets the value of the '{@link de.gulden.modeling.wave.Model#getGeneratorTarget <em>Generator Target</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Generator Target</em>' attribute.
+	 * @see de.gulden.modeling.wave.EnumGeneratorTarget
 	 * @see #getGeneratorTarget()
 	 * @generated
 	 */
-	void setGeneratorTarget(String value);
+	void setGeneratorTarget(EnumGeneratorTarget value);
 
 	/**
 	 * Returns the value of the '<em><b>Copyright</b></em>' attribute.

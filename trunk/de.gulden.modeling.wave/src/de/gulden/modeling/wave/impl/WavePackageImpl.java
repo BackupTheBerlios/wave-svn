@@ -28,6 +28,7 @@ import de.gulden.modeling.wave.EnumAjaxModes;
 import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
 import de.gulden.modeling.wave.EnumDocumentationAudienceType;
+import de.gulden.modeling.wave.EnumGeneratorTarget;
 import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.EnumMultiplicity;
 import de.gulden.modeling.wave.EnumProjectLayout;
@@ -465,6 +466,13 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	private EEnum enumLabelModeEEnum = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum enumGeneratorTargetEEnum = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -491,20 +499,10 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this
-	 * model, and for any others upon which it depends.  Simple
-	 * dependencies are satisfied by calling this method on all
-	 * dependent packages before doing anything else.  This method drives
-	 * initialization for interdependent packages directly, in parallel
-	 * with this package, itself.
-	 * <p>Of this package and its interdependencies, all packages which
-	 * have not yet been registered by their URI values are first created
-	 * and registered.  The packages are then initialized in two steps:
-	 * meta-model objects for all of the packages are created before any
-	 * are initialized, since one package's meta-model objects may refer to
-	 * those of another.
-	 * <p>Invocation of this method will not affect any packages that have
-	 * already been initialized.
+	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * 
+	 * <p>This method is used to initialize {@link WavePackage#eINSTANCE} when that field is accessed.
+	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #eNS_URI
@@ -516,7 +514,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		if (isInited) return (WavePackage)EPackage.Registry.INSTANCE.getEPackage(WavePackage.eNS_URI);
 
 		// Obtain or create and register package
-		WavePackageImpl theWavePackage = (WavePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof WavePackageImpl ? EPackage.Registry.INSTANCE.getEPackage(eNS_URI) : new WavePackageImpl());
+		WavePackageImpl theWavePackage = (WavePackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof WavePackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new WavePackageImpl());
 
 		isInited = true;
 
@@ -529,6 +527,9 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		// Mark meta-data to indicate it can't be changed
 		theWavePackage.freeze();
 
+  
+		// Update the registry and return the package
+		EPackage.Registry.INSTANCE.put(WavePackage.eNS_URI, theWavePackage);
 		return theWavePackage;
 	}
 
@@ -2175,6 +2176,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EEnum getEnumGeneratorTarget() {
+		return enumGeneratorTargetEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public WaveFactory getWaveFactory() {
 		return (WaveFactory)getEFactoryInstance();
 	}
@@ -2426,6 +2436,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		enumWidgetTypeEEnum = createEEnum(ENUM_WIDGET_TYPE);
 		enumProjectLayoutEEnum = createEEnum(ENUM_PROJECT_LAYOUT);
 		enumLabelModeEEnum = createEEnum(ENUM_LABEL_MODE);
+		enumGeneratorTargetEEnum = createEEnum(ENUM_GENERATOR_TARGET);
 	}
 
 	/**
@@ -2548,7 +2559,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEAttribute(getModel_Version(), ecorePackage.getEString(), "version", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_BasePackage(), ecorePackage.getEString(), "basePackage", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_SourceFolder(), ecorePackage.getEString(), "sourceFolder", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModel_GeneratorTarget(), ecorePackage.getEString(), "generatorTarget", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getModel_GeneratorTarget(), this.getEnumGeneratorTarget(), "generatorTarget", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_Copyright(), ecorePackage.getEString(), "copyright", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModel_Provider(), ecorePackage.getEString(), "provider", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getModel_Dictionary(), this.getDictionary(), null, "dictionary", null, 0, 1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2773,6 +2784,12 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEEnum(enumLabelModeEEnum, EnumLabelMode.class, "EnumLabelMode");
 		addEEnumLiteral(enumLabelModeEEnum, EnumLabelMode.ICON_OR_TEXT);
 		addEEnumLiteral(enumLabelModeEEnum, EnumLabelMode.ICON_AND_TEXT);
+
+		initEEnum(enumGeneratorTargetEEnum, EnumGeneratorTarget.class, "EnumGeneratorTarget");
+		addEEnumLiteral(enumGeneratorTargetEEnum, EnumGeneratorTarget.NONE);
+		addEEnumLiteral(enumGeneratorTargetEEnum, EnumGeneratorTarget.JAVA);
+		addEEnumLiteral(enumGeneratorTargetEEnum, EnumGeneratorTarget.PHP5);
+		addEEnumLiteral(enumGeneratorTargetEEnum, EnumGeneratorTarget.ZEND);
 
 		// Create resource
 		createResource(eNS_URI);

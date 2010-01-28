@@ -318,9 +318,9 @@ public class ClassifierMemberImpl extends ModelMemberImpl implements ClassifierM
 			case WavePackage.CLASSIFIER_MEMBER__VISIBILITY:
 				return getVisibility();
 			case WavePackage.CLASSIFIER_MEMBER__IS_STATIC:
-				return isIsStatic() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsStatic();
 			case WavePackage.CLASSIFIER_MEMBER__IS_FINAL:
-				return isIsFinal() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsFinal();
 			case WavePackage.CLASSIFIER_MEMBER__TARGET_MODE:
 				return getTargetMode();
 		}
@@ -345,10 +345,10 @@ public class ClassifierMemberImpl extends ModelMemberImpl implements ClassifierM
 				setVisibility((EnumVisibility)newValue);
 				return;
 			case WavePackage.CLASSIFIER_MEMBER__IS_STATIC:
-				setIsStatic(((Boolean)newValue).booleanValue());
+				setIsStatic((Boolean)newValue);
 				return;
 			case WavePackage.CLASSIFIER_MEMBER__IS_FINAL:
-				setIsFinal(((Boolean)newValue).booleanValue());
+				setIsFinal((Boolean)newValue);
 				return;
 			case WavePackage.CLASSIFIER_MEMBER__TARGET_MODE:
 				setTargetMode((EnumTargetModes)newValue);

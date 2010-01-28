@@ -189,7 +189,7 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case WavePackage.CLASS__IS_PERSISTENT:
-				return isIsPersistent() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsPersistent();
 			case WavePackage.CLASS__TARGET_MODE:
 				return getTargetMode();
 			case WavePackage.CLASS__FORMS:
@@ -208,7 +208,7 @@ public class ClassImpl extends OOPClassifierImpl implements de.gulden.modeling.w
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case WavePackage.CLASS__IS_PERSISTENT:
-				setIsPersistent(((Boolean)newValue).booleanValue());
+				setIsPersistent((Boolean)newValue);
 				return;
 			case WavePackage.CLASS__TARGET_MODE:
 				setTargetMode((EnumTargetModes)newValue);

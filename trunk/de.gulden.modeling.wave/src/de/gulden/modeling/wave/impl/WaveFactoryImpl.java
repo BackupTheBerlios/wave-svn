@@ -25,6 +25,7 @@ import de.gulden.modeling.wave.EnumAjaxModes;
 import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
 import de.gulden.modeling.wave.EnumDocumentationAudienceType;
+import de.gulden.modeling.wave.EnumGeneratorTarget;
 import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.EnumMultiplicity;
 import de.gulden.modeling.wave.EnumProjectLayout;
@@ -177,6 +178,8 @@ public class WaveFactoryImpl extends EFactoryImpl implements WaveFactory {
 				return createEnumProjectLayoutFromString(eDataType, initialValue);
 			case WavePackage.ENUM_LABEL_MODE:
 				return createEnumLabelModeFromString(eDataType, initialValue);
+			case WavePackage.ENUM_GENERATOR_TARGET:
+				return createEnumGeneratorTargetFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -210,6 +213,8 @@ public class WaveFactoryImpl extends EFactoryImpl implements WaveFactory {
 				return convertEnumProjectLayoutToString(eDataType, instanceValue);
 			case WavePackage.ENUM_LABEL_MODE:
 				return convertEnumLabelModeToString(eDataType, instanceValue);
+			case WavePackage.ENUM_GENERATOR_TARGET:
+				return convertEnumGeneratorTargetToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -772,6 +777,26 @@ public class WaveFactoryImpl extends EFactoryImpl implements WaveFactory {
 	 * @generated
 	 */
 	public String convertEnumLabelModeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EnumGeneratorTarget createEnumGeneratorTargetFromString(EDataType eDataType, String initialValue) {
+		EnumGeneratorTarget result = EnumGeneratorTarget.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEnumGeneratorTargetToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

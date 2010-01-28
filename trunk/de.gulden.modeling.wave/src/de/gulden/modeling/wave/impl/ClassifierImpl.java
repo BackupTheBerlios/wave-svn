@@ -221,7 +221,7 @@ public abstract class ClassifierImpl extends TopLevelModelMemberImpl implements 
 			case WavePackage.CLASSIFIER__ATTRIBUTES:
 				return getAttributes();
 			case WavePackage.CLASSIFIER__IS_EXTERNAL:
-				return isIsExternal() ? Boolean.TRUE : Boolean.FALSE;
+				return isIsExternal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -247,7 +247,7 @@ public abstract class ClassifierImpl extends TopLevelModelMemberImpl implements 
 				getAttributes().addAll((Collection<? extends Attribute>)newValue);
 				return;
 			case WavePackage.CLASSIFIER__IS_EXTERNAL:
-				setIsExternal(((Boolean)newValue).booleanValue());
+				setIsExternal((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
