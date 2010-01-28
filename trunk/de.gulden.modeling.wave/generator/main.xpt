@@ -10,7 +10,7 @@
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
 «EXTENSION common»
 
-«DEFINE generator FOR Model»
+«DEFINE generator FOR wave::Model»
 
 	«storeGlobalVar("authorName", this.author)»
 	«storeGlobalVar("versionName", this.version)»
@@ -23,9 +23,11 @@
 	---------------- 
 	     Code
 	----------------
-	«REM»«IF (this.generatorTarget == "zend")»«ENDREM»
-	«EXPAND zend::model::model»
-	«REM»«ENDIF»«ENDREM»
+	«IF (this.generatorTarget == EnumGeneratorTarget::ZEND)»
+		«EXPAND zend::model::model»
+	«ELSEIF (this.generatorTarget == EnumGeneratorTarget::JAVA)»
+		«EXPAND java::model::model»
+	«ENDIF»
 	
 	---------------- 
 	     DB-Schema

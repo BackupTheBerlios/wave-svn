@@ -1,0 +1,100 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«IMPORT java»
+
+«EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+«EXTENSION common»
+«EXTENSION java::commonJava»
+«REM»«EXTENSION zend::commonZend»«ENDREM»
+
+
+«DEFINE model FOR Model»
+	«EXPAND package» «REM» base package + recursion into subpackages «ENDREM»
+	
+	«REM»
+	«IF (this.dictionary != null)»
+		«EXPAND common::dictionary FOR dictionary»
+	«ENDIF»
+	«ENDREM»
+
+«ENDDEFINE»
+
+
+«DEFINE package FOR Package»
+	«FOREACH members AS member»
+		«IF member.isPackage()»
+			«EXPAND package FOR ((Package)member)» «REM» recursion «ENDREM»
+		«ELSE» «REM» generate member, if this not instanceof Model: should contain only classes and interfaces «ENDREM»
+			«LET member.sourceFileName() AS filename»
+«log("FILE: "+filename)»
+				«IF filename.is()»
+					«IF member.isClassifier()»
+						«IF ! ((Classifier)member).isExternal»
+							«FILE filename»«EXPAND member FOR member»«ENDFILE»
+						«ENDIF»
+					«ELSE»
+						«FILE filename»«EXPAND member FOR member»«ENDFILE»
+					«ENDIF»
+					«IF member.isClass()»
+						«LET ((Class)member) AS cls»
+							«IF cls.isPersistent»
+							«ENDIF»
+							«REM» default forms «ENDREM»
+							«IF cls.forms.has()»
+							«ENDIF»
+							«REM»«IF cls.generateForm»
+								«FOREACH {"Edit", "View", "List", "Admin"} AS formName»
+									«FILE this.model().classPrefix().concat("/", this.path().concat("/", "forms/")) + cls.name + formName + ".php"»«EXPAND classForm::form(formName) FOR cls»«ENDFILE»
+								«ENDFOREACH»
+							«ENDIF»«EDNREM»
+							«REM» user-specified forms (may overwrite default ones) «ENDREM»
+							«FOREACH cls.forms AS form»
+							«ENDFOREACH»
+						«ENDLET»
+					«ENDIF»
+				«ENDIF»
+			«ENDLET»
+		«ENDIF»
+	«ENDFOREACH»
+«ENDDEFINE»
+
+«DEFINE memberAll FOR Classifier»
+	«IF (! this.isExternal)»
+		«EXPAND member»
+	«ENDIF»
+«ENDDEFINE»
+
+«DEFINE memberAll FOR Enumeration»
+	«EXPAND member»
+«ENDDEFINE»
+
+«DEFINE memberAll FOR TopLevelModelMember»
+	«REM» nop «ENDREM»
+«ENDDEFINE»
+
+«DEFINE member FOR Class»«EXPAND class::class»«ENDDEFINE»
+
+«DEFINE member FOR Interface»«EXPAND interface::interface»«ENDDEFINE»
+
+«DEFINE member FOR Enumeration»«EXPAND enumeration::enumeration»«ENDDEFINE»
+
+«DEFINE member FOR Include»«EXPAND include::include»«ENDDEFINE»
+
+«DEFINE member FOR ModelMember»
+	«REM» ignore others «ENDREM»
+«ENDDEFINE»
+
+«DEFINE commentHeader FOR TopLevelModelMember»* File:      «this.sourceFileName()» 
+«IF is(getGlobalVar("authorName"))» * Author:    «getGlobalVar("authorName")»
+«ENDIF»«IF is(getGlobalVar("versionName"))» * Version:   «getGlobalVar("versionName")»
+«ENDIF»«REM»«IF is(getGlobalVar("currentDate"))» * Date:      «getGlobalVar("currentDate")»
+«ENDIF»«ENDREM»«ENDDEFINE»
+

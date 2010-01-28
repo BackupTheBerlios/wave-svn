@@ -11,8 +11,8 @@ workflow script for manually running code-generation
  -->
 
 	<!-- CHANGE PATHS TO YOUR CONFIGURATION  --> 
-	<property name="model" value="/home/models/runtime-EclipseApplication/de.gulden.modeling.wave.example/guestbook.wave"/>
-	<property name="sourceFolder" value="/tmp/htdocs"/>
+	<property name="model" value="/home/models/runtime-wave/testwave/MeinTest.wave"/>
+	<property name="sourceFolder" value="/home/models/runtime-wave/testwave/src"/>
 	<!-- - - - - - - - - - - - - - - - - - - --> 
 
 	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
@@ -20,6 +20,7 @@ workflow script for manually running code-generation
 		<outputSlot value="model"/>
 	</component>
 		
+	<!--
 	<component class="org.eclipse.xtend.check.CheckComponent">
 		<metaModel class="org.eclipse.xtend.typesystem.emf.EmfMetaModel">
 			<metaModelPackage value="de.gulden.modeling.wave.WavePackage"/>
@@ -28,6 +29,7 @@ workflow script for manually running code-generation
 		<emfAllChildrenSlot value="model" />
 		<abortOnError value="true"/>
 	</component>
+	-->
 	
 	<!--<component id="dirCleaner" class="org.eclipse.emf.mwe.utils.DirectoryCleaner" skipOnErrors="false">
 		<directory value="${sourceFolder}" />

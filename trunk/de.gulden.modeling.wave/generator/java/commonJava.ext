@@ -1,0 +1,16 @@
+/*
+ * WAVE - Web Application Visual Environment
+ * A Graphical Modeling Framework (GMF) Plugin for Eclipse
+ * Copyright Jens Gulden, 2009, mail@jensgulden.de
+ * Licensed under the GNU General Public License (GPL)
+ */
+import wave;
+
+extension common;
+
+String sourceFileSuffix( ModelMember this ) : "java";
+
+String sourceFileName( OOPClassifier this ) :
+	this.package().path() + "/" + this.name + "." + this.sourceFileSuffix();
+	
+   

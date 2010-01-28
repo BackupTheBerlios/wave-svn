@@ -54,7 +54,7 @@ Package package( ModelMember this ) :
 
 String qualifiedName( Classifier this ) : (this.package().isModel()) ? this.name : (this.package().qualifiedName() + "." +this.name); 
 
-String qualifiedName( Package this ) : (this.package().isModel()) ? this.name : (this.package().qualifiedName() + "." +this.name); 
+String qualifiedName( Package this ) : (this.isModel()) ? this.name : (this.package().qualifiedName() + "." +this.name); 
 
 String qualifiedName( Void this ) : ""; 
 
@@ -396,4 +396,110 @@ boolean fileExists( String this ) :
   
 Collection flip( Collection this ) : 
 				JAVA de.gulden.modeling.wave.util.WaveUtil.flip(java.util.Collection);
-  
+
+EnumGeneratorTarget generatorTarget( ModelMember this ) :
+				( this == null ) ? EnumGeneratorTarget::NONE : this.model().generatorTarget ;
+
+boolean isVoid( String this ) :
+				(this.trim().toLowerCase() == "void");
+
+String defaultReturnValue( String this ) :
+				switch ( this.trim().toLowerCase() ) {
+					case "boolean": "false"
+					case "int": "0"
+					case "integer": "0"
+					case "float": "0.0"
+					case "double": "0.0"
+					case "long": "0"
+					default: "null"
+				};
+
+// --- OOP ---
+
+String oopType( OOPClassifier this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*"+this.name.translateType()+"*/"
+					default:
+						this.name.translateType() 
+				};
+
+String oopType( Attribute this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*"+this.type.translateType()+"*/"
+					default:
+						this.type.translateType() 
+				};
+
+String oopType( Operation this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*"+this.returnType.translateType()+"*/"
+					default:
+						this.returnType.translateType() 
+				};
+
+String oopType( String this, ModelMember m ) :				
+				switch ( m.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*"+this+"*/"
+					default:
+						this 
+				};
+
+String oopVar( Attribute this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"$"+this.name
+					default:
+						this.name 
+				};
+
+String oopVar( String this, ModelMember m ) :
+				switch ( m.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"$"+this
+					default:
+						this 
+				};
+
+String oopArray( ModelMember this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*Array*/"
+					default:
+						"List"
+				};
+				
+String oopVoid( ModelMember this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*void*/"
+					default:
+						"void"
+				};
+
+String oopFunction( ModelMember this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"function "
+					default:
+						""
+				};
+
+String oopThis( ModelMember this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"$this"
+					default:
+						"this"
+				};
+
+String oopThisRef( ModelMember this ) :
+				switch ( this.generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"$this->"
+					default:
+						"this."
+				};

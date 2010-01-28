@@ -1,0 +1,41 @@
+«REM»
+    WAVE - Web Application Visual Environment
+    A Graphical Modeling Framework (GMF) Plugin for Eclipse
+    Copyright Jens Gulden, 2009, mail@jensgulden.de
+    Licensed under the GNU General Public License (GPL)
+«ENDREM»
+
+«IMPORT wave»
+
+«EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
+«EXTENSION common»
+«EXTENSION sql::sql»
+
+«REM»
+------------------------------------------------------------------------------
+--- Class
+------------------------------------------------------------------------------
+«ENDREM»
+
+«DEFINE class FOR Class»
+/**
+ * Class:     "«this.codeName()»"
+ *
+ «EXPAND model::commentHeader» */
+
+//«this.package().isModel()»
+
+package «this.package().qualifiedName()»; 
+«REM»«EXPAND oop::imports-»«ENDREM»
+«EXPAND oop::modifiers»class «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF»«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«ELSEIF this.externalImplements.is()» extends «this.externalImplements»«ENDIF» {
+	
+«EXPAND oop::attributes»
+«EXPAND oop::associations»
+«EXPAND oop::operations»
+«IF this.isPersistent && (! this.isAbstract)»
+«storeGlobalVar("generateDBSchema", " ")-»
+«REM»«EXPAND classPersistence::class»«ENDREM»
+«ENDIF-»
+} // end of class «this.codeName()»
+«ENDDEFINE»
+«ENDDEFINE»
