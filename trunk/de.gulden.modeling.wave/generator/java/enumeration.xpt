@@ -24,7 +24,9 @@
  *
  «EXPAND model::commentHeader» */
 
-enum «this.name» {
+«EXPAND class::packageAndImports»
+
+«this.visibility()»enum «this.name» {
 	«FOREACH this.literals AS literal SEPARATOR ", "»
 	«literal.name»
 	«ENDFOREACH»

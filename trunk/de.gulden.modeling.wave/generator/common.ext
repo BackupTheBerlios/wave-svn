@@ -17,16 +17,66 @@ cached String basePrefix( Model this ) :
 cached String classPrefix( Model this ) :
 	(this.projectLayout == EnumProjectLayout::APPLICATION) ? (this.basePrefix() + "/packages") : "" ;
 
-// abstract, to be implemented by target language extension
 String sourceFileName( ModelMember this ) :
-	null;
+	null; // fallback for types to ignore
 
 // abstract, to be implemented by target language extension
 String sourceBaseFolder( ModelMember this ):
 	null;
 
 // abstract/extendable, to be extended by target language extension
-String codeName( Classifier this ) : this.name; 
+//String codeName( Classifier this ) : this.name; 
+
+String codeName( Classifier this ) :
+	targetPHP() ? 
+	(this.codeNameBase() + this.name)
+	:
+	this.name;
+
+String codeNameBase( Classifier this ) : this.package().name.toFirstUpper()+"_Model_"; 
+
+String sourceFileSuffix( ModelMember this ) :
+	targetPHP() ? 
+	"php" 
+	: 
+	"java";
+
+String sourceFileName( OOPClassifier this ) :
+	targetPHP() ?
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/")) + this.name + ".php"
+	:
+	( this.model().basePackage.concat( ".", this.package().qualifiedName()) ).replaceAll("[.]", "/") + "/" + this.name + "." + this.sourceFileSuffix();
+
+//String sourceFileName( Enumeration this ) :
+//	this.model().basePrefix().concat("/", this.package().path().concat("/", "models/")) + this.name + ".php";
+
+String sourceFileName( Controller this ) :
+	this.model().basePrefix() + "/controllers/" + this.name + ".php";
+
+String sourceFileName( View this ) :
+	this.model().basePrefix() + "/views/scripts/" + ((Controller)this.eContainer).name.toLowerCase() + "/" + this.name + ".php";
+
+String sourceFileName( Include this ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", this.name));
+	
+String sourceFileName( StyleSheet this ) :
+	this.model().name + "/public/styles/" + this.name;
+	
+String sourceFileName( AssociationRelationship this ) : // bidirectional n-to-m
+	targetPHP() ?
+	this.model().classPrefix().concat("/", this.a.package().path().concat("/", "models/DbTable/")) + "Relationship" + this.name.toFirstUpper() + ".php"
+	:
+	null;
+	
+//String sourceFileName( Enumeration this ) :
+//	( this.model().basePackage.concat( ".", this.package().qualifiedName()) ).replaceAll("[.]", "/") + "/" + this.name + "." + this.sourceFileSuffix();
+
+// overwrite previous declaration	
+Package package( ModelMember this ) :
+				targetPHP() ?
+				( (Package)this.eContainer )
+				:
+				( ( this.eContainer.metaType == Model ) ? null : ((Package)this.eContainer) );
 
 String langstringsPath( Model this ) : 
 				this.sourceBaseFolder() + "/lang/langstrings.inc.php";
@@ -48,9 +98,6 @@ String prepareCode( Operation this ) : JAVA de.gulden.modeling.wave.util.WaveUti
 String prepareCode( Void this ) : "";
 
 String translateType( String this ) : ((this == "Text") ? "String" : this);
-
-Package package( ModelMember this ) :
-				(Package)this.eContainer;
 
 String qualifiedName( Classifier this ) : (this.package().isModel()) ? this.name : (this.package().qualifiedName() + "." +this.name); 
 
@@ -95,10 +142,17 @@ String without(String this, String remove) :
 //String ownerPackageName( ModelMember this ) : ( this.ownerPackage() != null ) ? this.ownerPackage().name : "";
 
 String visibility( OOPClassifier this ) : 
-				this.visibility.toString().toLowerCase(); // TODO cleaner
+	targetPHP() ?
+	""
+	:
+	(this.visibility.toString().toLowerCase()+" ");
+	
 				 
-String visibility( ClassifierMember this ) : 
-				this.visibility.toString().toLowerCase();
+String visibility( ClassifierMember this ) :
+	targetPHP() ?
+	""
+	: 
+	(this.visibility.toString().toLowerCase()+" ");
 
 //String package( ModelMember this ) :
 //				((Model)this.eContainer).basePackage.concat(".", this.ownerPackageName());				
@@ -420,6 +474,97 @@ EnumGeneratorTarget generatorTarget( ) :
 boolean targetPHP( ) :
 				let g = generatorTarget():
 				(g == EnumGeneratorTarget::PHP5) || (g == EnumGeneratorTarget::ZEND);
+
+// --- PHP ---
+
+String sourceFormFileName( Class this, String name ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "forms/")) + this.name + name.toLowerCase().toFirstUpper() + ".php";
+	
+String sourceMapperFileName( Class this ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/DbTable/")) + this.name + "Mapper.php";
+	
+String sourceDbtableFileName( Class this ) :
+	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/DbTable/")) + this.name + ".php";
+	
+
+String dbtableName( Class this ) : this.codeNameBase()+"DbTable_"+this.name;
+
+String mapperName( OOPClassifier this ) : this.codeNameBase()+"DbTable_"+this.name+"Mapper";
+
+String formName( Class this ) : this.formBaseName()+this.name; 
+
+String formBaseName( Class this ) : this.package().name.toFirstUpper()+"_Form_"; 
+
+Widget getWidget( Class this, Attribute attr, String mode ) :
+	//mode.is() ? ( this.findWidget(mode).is() ? this.findWidget(mode) : this.defaultWidget() ) : ( this.widgets.has() ? this.widgets.first() : this.defaultWidget());  
+	mode.is() ? ( this.findWidget(attr, mode).is() ? this.findWidget(attr, mode) : attr.defaultWidget(mode) ) : attr.defaultWidget(mode);  
+
+create WidgetAttribute defaultWidget( Attribute attr, String mode ) :
+	this.setWidgetType(EnumWidgetType::DEFAULT) ->  
+	(mode.toUpperCase() == "VIEW" || mode.toUpperCase()=="LIST") ? this.setReadOnly(true) : this;
+
+Widget findWidget( Class this, Attribute attr, String mode ) :
+	JAVA de.gulden.modeling.wave.util.WaveUtil.findWidget(de.gulden.modeling.wave.Class,de.gulden.modeling.wave.Attribute,java.lang.String);
+	
+
+String widgetTypeToZendFormElementType(Widget this) :
+	(
+		(this.widgetType == EnumWidgetType::SELECT) ? (
+			this.multiChoice ? "multiselect"
+							 : "select"
+		) : 
+		(
+			(this.widgetType == EnumWidgetType::CHECKBOX) ? (
+				this.multiChoice ? "multiCheckbox"
+								 : "checkbox"
+			) :
+			(
+				(this.widgetType == EnumWidgetType::RADIOBUTTON) ? (
+					"radio"
+				) :
+				( 
+					(this.widgetType == EnumWidgetType::TEXT) ? (
+						this.multiLine ? "textarea"
+									   : "text"
+					) : 
+					this.widgetType.toString().toLowerCase()
+				)
+			)
+		)
+	);
+		
+String toWidgetType(Widget this, String type) :
+	((!this.widgetType.is()) || (this.widgetType==EnumWidgetType::DEFAULT)) 
+	? this.defaultWidgetType(type) 
+	: this.widgetTypeToZendFormElementType();
+	
+String defaultWidgetType(Widget this, String type) : 
+	(type == "string") ? (this.multiLine ? "textarea" : "text")
+  : ((type == "boolean") ? "checkbox"
+  : ((type == "int") ? "text"
+  : ((type.isEnumerationType()) ? "select" 
+  : "text")));
+  
+Widget getWidget( AssociationRelationship this, Class cls, String mode ) :
+	mode.is() ? 
+	( this.findAssocWidget(cls, mode).is() ? 
+		  this.findAssocWidget(cls, mode) 
+		: this.defaultAssocWidget(cls, mode) 
+	) 
+	: this.defaultAssocWidget(cls, mode);  
+
+create WidgetAssociation defaultAssocWidget( AssociationRelationship assoc, Class cls, String mode ) :
+	//this.setResolveDisplayMode("list") ->
+	(mode.toUpperCase() == "VIEW" || mode.toUpperCase()=="LIST") ? this.setReadOnly(true) : this;
+
+Widget findAssocWidget( AssociationRelationship this, Class cls, String mode ) :
+	JAVA de.gulden.modeling.wave.util.WaveUtil.findAssocWidget(de.gulden.modeling.wave.AssociationRelationship,de.gulden.modeling.wave.Class,java.lang.String);
+	
+String urlCode( Action this ) :
+	urlCode(this, "array()");
+				
+String urlCode( Action this, String paramsCode ) :
+	"url( array_merge( array('controller' => '"+((Controller)this.eContainer).name.without("Controller").toLowerCase()+"', 'action' => '"+this.name.without("Action").toFirstLower()+"'), "+paramsCode+" ), 'default', true )";
 
 // --- OOP ---
 

@@ -11,8 +11,8 @@ workflow script for manually running code-generation
  -->
 
 	<!-- CHANGE PATHS TO YOUR CONFIGURATION  --> 
-	<property name="model" value="d:/runtime-memocenter/de.gulden.modeling.emdsd.api/src/de/gulden/modeling/emdsd/api/workflow/workflow.wave"/>
-	<property name="sourceFolder" value="d:/runtime-memocenter/de.gulden.modeling.emdsd.api/src"/>
+	<property name="model" value="/home/models/runtime-memocenter/de.gulden.modeling.emdsd.api/src/de/gulden/modeling/emdsd/api/workflow/workflow.wave"/>
+	<property name="sourceFolder" value="/home/models/runtime-memocenter/de.gulden.modeling.emdsd.api/src"/>
 	<!-- - - - - - - - - - - - - - - - - - - --> 
 
 	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">

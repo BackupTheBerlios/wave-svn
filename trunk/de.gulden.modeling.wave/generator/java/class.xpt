@@ -17,21 +17,27 @@
 ------------------------------------------------------------------------------
 «ENDREM»
 
+«DEFINE packageAndImports FOR OOPClassifier»
+package «this.model().basePackage.concat( ".", this.package().qualifiedName() )»;
+
+import java.util.*; 
+«ENDDEFINE»
+
 «DEFINE class FOR Class»
 /**
  * Class:     "«this.codeName()»"
  *
  «EXPAND model::commentHeader» */
 
-package «this.model().basePackage.concat( ".", this.package().qualifiedName() )»;
-
-import java.util.*; 
+«EXPAND packageAndImports»
 «REM»«EXPAND oop::imports-»«ENDREM»
 «EXPAND classBody»
 «ENDDEFINE»
 
 «DEFINE classBody FOR Class»
-«EXPAND oop::modifiers»class «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF»«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«ELSEIF this.externalImplements.is()» extends «this.externalImplements»«ENDIF» {
+«this.visibility()»«EXPAND oop::modifiers»class «this.codeName()-»
+«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«IF this.externalExtends.is()», «this.externalExtends»«ENDIF»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF-»
+«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«IF this.externalImplements.is()», «this.externalImplements»«ENDIF»«ELSEIF this.externalImplements.is()» implements «this.externalImplements»«ENDIF» {
 	
 «EXPAND oop::attributes»
 «EXPAND oop::associations»

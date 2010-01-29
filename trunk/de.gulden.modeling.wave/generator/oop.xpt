@@ -11,9 +11,9 @@
 «EXTENSION common»
 «EXTENSION sql::sql»
 
-«REM»«IF targetPHP()»«ENDREM»
-«EXTENSION zend::commonZend» «REM»TODO remove and make language freely configurable (maybe via AROUND-templates on Xpand-level, not via Xtend)«ENDREM»
-«REM»«ENDIF»«ENDREM»
+«REM»
+«EXTENSION zend::commonZend»
+«ENDREM»
 
 «REM» ---   language-specific templates   --- «ENDREM»
 
@@ -95,7 +95,7 @@ public «this.oopFunction()»set«this.outgoingName(assoc).toFirstUpper()»(«this.oo
 /**
  * @generated
  */
-public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(XXX TODO XXX«EXPAND className FOR this.outgoingType(assoc)» «this.outgoingName(assoc).oopVar()»«IF targetPHP()»=null«ENDIF») {
+public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(«EXPAND className FOR this.outgoingType(assoc)» «this.outgoingName(assoc).oopVar()»«IF targetPHP()»=null«ENDIF») {
 	«this.oopThisRef()»«this.outgoingName(assoc)» = «this.outgoingName(assoc).oopVar()»;
 						«IF assoc.isBidirectional()-»«REM» bi-drectional 1:1 «ENDREM»
 	if ((«this.outgoingName(assoc).oopVar()» != null) && («this.outgoingName(assoc).oopVar()» != «this.oopThisRef()»«this.outgoingName(assoc)»)) {
