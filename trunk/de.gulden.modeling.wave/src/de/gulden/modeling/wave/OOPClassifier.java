@@ -8,6 +8,8 @@
  */
 package de.gulden.modeling.wave;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -21,6 +23,7 @@ package de.gulden.modeling.wave;
  *   <li>{@link de.gulden.modeling.wave.OOPClassifier#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.OOPClassifier#getExternalExtends <em>External Extends</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.OOPClassifier#getExternalImplements <em>External Implements</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.OOPClassifier#getInner <em>Inner</em>}</li>
  * </ul>
  * </p>
  *
@@ -135,5 +138,21 @@ public interface OOPClassifier extends Classifier {
 	 * @generated
 	 */
 	void setExternalImplements(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Inner</b></em>' containment reference list.
+	 * The list contents are of type {@link de.gulden.modeling.wave.OOPClassifier}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Inner</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Inner</em>' containment reference list.
+	 * @see de.gulden.modeling.wave.WavePackage#getOOPClassifier_Inner()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<OOPClassifier> getInner();
 
 } // OOPClassifier

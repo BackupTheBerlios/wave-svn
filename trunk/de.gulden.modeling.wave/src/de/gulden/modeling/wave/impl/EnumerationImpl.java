@@ -35,13 +35,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link de.gulden.modeling.wave.impl.EnumerationImpl#getLiterals <em>Literals</em>}</li>
- *   <li>{@link de.gulden.modeling.wave.impl.EnumerationImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumeration {
+public class EnumerationImpl extends OOPClassifierImpl implements Enumeration {
 	/**
 	 * The cached value of the '{@link #getLiterals() <em>Literals</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -51,26 +50,6 @@ public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumerat
 	 * @ordered
 	 */
 	protected EList<EnumerationLiteral> literals;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,27 +87,6 @@ public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumerat
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, WavePackage.ENUMERATION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -148,8 +106,6 @@ public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumerat
 		switch (featureID) {
 			case WavePackage.ENUMERATION__LITERALS:
 				return getLiterals();
-			case WavePackage.ENUMERATION__NAME:
-				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -167,9 +123,6 @@ public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumerat
 				getLiterals().clear();
 				getLiterals().addAll((Collection<? extends EnumerationLiteral>)newValue);
 				return;
-			case WavePackage.ENUMERATION__NAME:
-				setName((String)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -185,9 +138,6 @@ public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumerat
 			case WavePackage.ENUMERATION__LITERALS:
 				getLiterals().clear();
 				return;
-			case WavePackage.ENUMERATION__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -202,26 +152,8 @@ public class EnumerationImpl extends TopLevelModelMemberImpl implements Enumerat
 		switch (featureID) {
 			case WavePackage.ENUMERATION__LITERALS:
 				return literals != null && !literals.isEmpty();
-			case WavePackage.ENUMERATION__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //EnumerationImpl

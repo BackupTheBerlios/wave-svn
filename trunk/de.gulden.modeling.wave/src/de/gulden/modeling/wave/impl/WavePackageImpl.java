@@ -1339,6 +1339,15 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getOOPClassifier_Inner() {
+		return (EReference)oopClassifierEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getClassifierMember() {
 		return classifierMemberEClass;
 	}
@@ -1521,15 +1530,6 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 	 */
 	public EReference getEnumeration_Literals() {
 		return (EReference)enumerationEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getEnumeration_Name() {
-		return (EAttribute)enumerationEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -2316,6 +2316,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		createEAttribute(oopClassifierEClass, OOP_CLASSIFIER__VISIBILITY);
 		createEAttribute(oopClassifierEClass, OOP_CLASSIFIER__EXTERNAL_EXTENDS);
 		createEAttribute(oopClassifierEClass, OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS);
+		createEReference(oopClassifierEClass, OOP_CLASSIFIER__INNER);
 
 		classifierMemberEClass = createEClass(CLASSIFIER_MEMBER);
 		createEAttribute(classifierMemberEClass, CLASSIFIER_MEMBER__SIGNATURE);
@@ -2344,7 +2345,6 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 
 		enumerationEClass = createEClass(ENUMERATION);
 		createEReference(enumerationEClass, ENUMERATION__LITERALS);
-		createEAttribute(enumerationEClass, ENUMERATION__NAME);
 
 		enumerationLiteralEClass = createEClass(ENUMERATION_LITERAL);
 		createEAttribute(enumerationLiteralEClass, ENUMERATION_LITERAL__NAME);
@@ -2490,7 +2490,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		styleSheetEClass.getESuperTypes().add(this.getArtifactClassifier());
 		viewTransitionEClass.getESuperTypes().add(this.getTransition());
 		controllerMemberEClass.getESuperTypes().add(this.getModelMember());
-		enumerationEClass.getESuperTypes().add(this.getTopLevelModelMember());
+		enumerationEClass.getESuperTypes().add(this.getOOPClassifier());
 		enumerationLiteralEClass.getESuperTypes().add(this.getModelMember());
 		databaseTableEClass.getESuperTypes().add(this.getTopLevelModelMember());
 		widgetEClass.getESuperTypes().add(this.getModelMember());
@@ -2614,6 +2614,7 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 		initEAttribute(getOOPClassifier_Visibility(), this.getEnumVisibility(), "visibility", null, 0, 1, OOPClassifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOOPClassifier_ExternalExtends(), ecorePackage.getEString(), "externalExtends", null, 0, 1, OOPClassifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOOPClassifier_ExternalImplements(), ecorePackage.getEString(), "externalImplements", null, 0, 1, OOPClassifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOOPClassifier_Inner(), this.getOOPClassifier(), null, "inner", null, 0, -1, OOPClassifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(classifierMemberEClass, ClassifierMember.class, "ClassifierMember", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getClassifierMember_Signature(), ecorePackage.getEString(), "signature", null, 0, 1, ClassifierMember.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -2642,7 +2643,6 @@ public class WavePackageImpl extends EPackageImpl implements WavePackage {
 
 		initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEnumeration_Literals(), this.getEnumerationLiteral(), null, "literals", null, 0, -1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getEnumeration_Name(), ecorePackage.getEString(), "name", null, 0, 1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(enumerationLiteralEClass, EnumerationLiteral.class, "EnumerationLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getEnumerationLiteral_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumerationLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

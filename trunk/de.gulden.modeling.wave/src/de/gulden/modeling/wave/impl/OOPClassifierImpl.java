@@ -12,11 +12,18 @@ import de.gulden.modeling.wave.EnumVisibility;
 import de.gulden.modeling.wave.OOPClassifier;
 import de.gulden.modeling.wave.WavePackage;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link de.gulden.modeling.wave.impl.OOPClassifierImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.OOPClassifierImpl#getExternalExtends <em>External Extends</em>}</li>
  *   <li>{@link de.gulden.modeling.wave.impl.OOPClassifierImpl#getExternalImplements <em>External Implements</em>}</li>
+ *   <li>{@link de.gulden.modeling.wave.impl.OOPClassifierImpl#getInner <em>Inner</em>}</li>
  * </ul>
  * </p>
  *
@@ -114,6 +122,16 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 	 * @ordered
 	 */
 	protected String externalImplements = EXTERNAL_IMPLEMENTS_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInner() <em>Inner</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInner()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<OOPClassifier> inner;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,6 +241,32 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<OOPClassifier> getInner() {
+		if (inner == null) {
+			inner = new EObjectContainmentEList<OOPClassifier>(OOPClassifier.class, this, WavePackage.OOP_CLASSIFIER__INNER);
+		}
+		return inner;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case WavePackage.OOP_CLASSIFIER__INNER:
+				return ((InternalEList<?>)getInner()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -234,6 +278,8 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 				return getExternalExtends();
 			case WavePackage.OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS:
 				return getExternalImplements();
+			case WavePackage.OOP_CLASSIFIER__INNER:
+				return getInner();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -243,6 +289,7 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -257,6 +304,10 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 				return;
 			case WavePackage.OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS:
 				setExternalImplements((String)newValue);
+				return;
+			case WavePackage.OOP_CLASSIFIER__INNER:
+				getInner().clear();
+				getInner().addAll((Collection<? extends OOPClassifier>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -282,6 +333,9 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 			case WavePackage.OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS:
 				setExternalImplements(EXTERNAL_IMPLEMENTS_EDEFAULT);
 				return;
+			case WavePackage.OOP_CLASSIFIER__INNER:
+				getInner().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -302,6 +356,8 @@ public abstract class OOPClassifierImpl extends ClassifierImpl implements OOPCla
 				return EXTERNAL_EXTENDS_EDEFAULT == null ? externalExtends != null : !EXTERNAL_EXTENDS_EDEFAULT.equals(externalExtends);
 			case WavePackage.OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS:
 				return EXTERNAL_IMPLEMENTS_EDEFAULT == null ? externalImplements != null : !EXTERNAL_IMPLEMENTS_EDEFAULT.equals(externalImplements);
+			case WavePackage.OOP_CLASSIFIER__INNER:
+				return inner != null && !inner.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

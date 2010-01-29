@@ -229,6 +229,8 @@
         name="externalExtends" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_TD49VuGuEd6cOJBz96zHHQ"
         name="externalImplements" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inner" upperBound="-1"
+        eType="#_TD49TuGuEd6cOJBz96zHHQ" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" xmi:id="_TD49WOGuEd6cOJBz96zHHQ" name="ClassifierMember"
       eSuperTypes="#_TD4WMeGuEd6cOJBz96zHHQ">
@@ -280,11 +282,9 @@
         name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" xmi:id="_TD5kXuGuEd6cOJBz96zHHQ" name="Enumeration"
-      eSuperTypes="#_TD4WS-GuEd6cOJBz96zHHQ">
+      eSuperTypes="#_TD49TuGuEd6cOJBz96zHHQ">
     <eStructuralFeatures xsi:type="ecore:EReference" xmi:id="_TD5kYOGuEd6cOJBz96zHHQ"
         name="literals" upperBound="-1" eType="#_TD5kY-GuEd6cOJBz96zHHQ" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" xmi:id="_TD5kYeGuEd6cOJBz96zHHQ"
-        name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" xmi:id="_TD5kY-GuEd6cOJBz96zHHQ" name="EnumerationLiteral"
       eSuperTypes="#_TD4WMeGuEd6cOJBz96zHHQ">

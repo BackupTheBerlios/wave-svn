@@ -2134,13 +2134,22 @@ public interface WavePackage extends EPackage {
 	int OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS = CLASSIFIER_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OOP_CLASSIFIER__INNER = CLASSIFIER_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>OOP Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OOP_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 4;
+	int OOP_CLASSIFIER_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.ClassImpl <em>Class</em>}' class.
@@ -2268,6 +2277,15 @@ public interface WavePackage extends EPackage {
 	 * @ordered
 	 */
 	int CLASS__EXTERNAL_IMPLEMENTS = OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLASS__INNER = OOP_CLASSIFIER__INNER;
 
 	/**
 	 * The feature id for the '<em><b>Is Persistent</b></em>' attribute.
@@ -2431,6 +2449,15 @@ public interface WavePackage extends EPackage {
 	 * @ordered
 	 */
 	int INTERFACE__EXTERNAL_IMPLEMENTS = OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE__INNER = OOP_CLASSIFIER__INNER;
 
 	/**
 	 * The feature id for the '<em><b>Target Mode</b></em>' attribute.
@@ -3059,7 +3086,7 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__TAGGED_VALUE = TOP_LEVEL_MODEL_MEMBER__TAGGED_VALUE;
+	int ENUMERATION__TAGGED_VALUE = OOP_CLASSIFIER__TAGGED_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Label</b></em>' reference.
@@ -3068,7 +3095,7 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__LABEL = TOP_LEVEL_MODEL_MEMBER__LABEL;
+	int ENUMERATION__LABEL = OOP_CLASSIFIER__LABEL;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' reference.
@@ -3077,7 +3104,7 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__DESCRIPTION = TOP_LEVEL_MODEL_MEMBER__DESCRIPTION;
+	int ENUMERATION__DESCRIPTION = OOP_CLASSIFIER__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Docs</b></em>' reference list.
@@ -3086,7 +3113,7 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__DOCS = TOP_LEVEL_MODEL_MEMBER__DOCS;
+	int ENUMERATION__DOCS = OOP_CLASSIFIER__DOCS;
 
 	/**
 	 * The feature id for the '<em><b>Stereotype</b></em>' attribute.
@@ -3095,16 +3122,16 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__STEREOTYPE = TOP_LEVEL_MODEL_MEMBER__STEREOTYPE;
+	int ENUMERATION__STEREOTYPE = OOP_CLASSIFIER__STEREOTYPE;
 
 	/**
-	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__LITERALS = TOP_LEVEL_MODEL_MEMBER_FEATURE_COUNT + 0;
+	int ENUMERATION__OPERATIONS = OOP_CLASSIFIER__OPERATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3113,7 +3140,79 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION__NAME = TOP_LEVEL_MODEL_MEMBER_FEATURE_COUNT + 1;
+	int ENUMERATION__NAME = OOP_CLASSIFIER__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Attributes</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__ATTRIBUTES = OOP_CLASSIFIER__ATTRIBUTES;
+
+	/**
+	 * The feature id for the '<em><b>Is External</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__IS_EXTERNAL = OOP_CLASSIFIER__IS_EXTERNAL;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__IS_ABSTRACT = OOP_CLASSIFIER__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Visibility</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__VISIBILITY = OOP_CLASSIFIER__VISIBILITY;
+
+	/**
+	 * The feature id for the '<em><b>External Extends</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__EXTERNAL_EXTENDS = OOP_CLASSIFIER__EXTERNAL_EXTENDS;
+
+	/**
+	 * The feature id for the '<em><b>External Implements</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__EXTERNAL_IMPLEMENTS = OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__INNER = OOP_CLASSIFIER__INNER;
+
+	/**
+	 * The feature id for the '<em><b>Literals</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENUMERATION__LITERALS = OOP_CLASSIFIER_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Enumeration</em>' class.
@@ -3122,7 +3221,7 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ENUMERATION_FEATURE_COUNT = TOP_LEVEL_MODEL_MEMBER_FEATURE_COUNT + 2;
+	int ENUMERATION_FEATURE_COUNT = OOP_CLASSIFIER_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.
@@ -3799,6 +3898,15 @@ public interface WavePackage extends EPackage {
 	int USECASE_CLASSIFIER__EXTERNAL_IMPLEMENTS = OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS;
 
 	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USECASE_CLASSIFIER__INNER = OOP_CLASSIFIER__INNER;
+
+	/**
 	 * The number of structural features of the '<em>Usecase Classifier</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3933,6 +4041,15 @@ public interface WavePackage extends EPackage {
 	 * @ordered
 	 */
 	int USECASE__EXTERNAL_IMPLEMENTS = USECASE_CLASSIFIER__EXTERNAL_IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USECASE__INNER = USECASE_CLASSIFIER__INNER;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -4078,6 +4195,15 @@ public interface WavePackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR__EXTERNAL_IMPLEMENTS = USECASE_CLASSIFIER__EXTERNAL_IMPLEMENTS;
+
+	/**
+	 * The feature id for the '<em><b>Inner</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__INNER = USECASE_CLASSIFIER__INNER;
 
 	/**
 	 * The number of structural features of the '<em>Actor</em>' class.
@@ -5807,6 +5933,17 @@ public interface WavePackage extends EPackage {
 	EAttribute getOOPClassifier_ExternalImplements();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link de.gulden.modeling.wave.OOPClassifier#getInner <em>Inner</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Inner</em>'.
+	 * @see de.gulden.modeling.wave.OOPClassifier#getInner()
+	 * @see #getOOPClassifier()
+	 * @generated
+	 */
+	EReference getOOPClassifier_Inner();
+
+	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.ClassifierMember <em>Classifier Member</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6029,17 +6166,6 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getEnumeration_Literals();
-
-	/**
-	 * Returns the meta object for the attribute '{@link de.gulden.modeling.wave.Enumeration#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see de.gulden.modeling.wave.Enumeration#getName()
-	 * @see #getEnumeration()
-	 * @generated
-	 */
-	EAttribute getEnumeration_Name();
 
 	/**
 	 * Returns the meta object for class '{@link de.gulden.modeling.wave.EnumerationLiteral <em>Enumeration Literal</em>}'.
@@ -7579,6 +7705,14 @@ public interface WavePackage extends EPackage {
 		EAttribute OOP_CLASSIFIER__EXTERNAL_IMPLEMENTS = eINSTANCE.getOOPClassifier_ExternalImplements();
 
 		/**
+		 * The meta object literal for the '<em><b>Inner</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OOP_CLASSIFIER__INNER = eINSTANCE.getOOPClassifier_Inner();
+
+		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.ClassifierMemberImpl <em>Classifier Member</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -7759,14 +7893,6 @@ public interface WavePackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENUMERATION__LITERALS = eINSTANCE.getEnumeration_Literals();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ENUMERATION__NAME = eINSTANCE.getEnumeration_Name();
 
 		/**
 		 * The meta object literal for the '{@link de.gulden.modeling.wave.impl.EnumerationLiteralImpl <em>Enumeration Literal</em>}' class.

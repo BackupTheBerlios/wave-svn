@@ -349,6 +349,8 @@ public class WaveSwitch<T> {
 			case WavePackage.ENUMERATION: {
 				Enumeration enumeration = (Enumeration)theEObject;
 				T result = caseEnumeration(enumeration);
+				if (result == null) result = caseOOPClassifier(enumeration);
+				if (result == null) result = caseClassifier(enumeration);
 				if (result == null) result = caseTopLevelModelMember(enumeration);
 				if (result == null) result = caseModelMember(enumeration);
 				if (result == null) result = defaultCase(theEObject);
