@@ -58,6 +58,7 @@ import de.gulden.modeling.wave.DependencyRelationship;
 import de.gulden.modeling.wave.Dictionary;
 import de.gulden.modeling.wave.EnumDirection;
 import de.gulden.modeling.wave.EnumDisplayMode;
+import de.gulden.modeling.wave.EnumGeneratorTarget;
 import de.gulden.modeling.wave.EnumLabelMode;
 import de.gulden.modeling.wave.EnumMultiplicity;
 import de.gulden.modeling.wave.EnumVisibility;
@@ -210,14 +211,21 @@ public class WaveUtil { // <<utility>>
 	}
 
 	public static String normalizeCode(String s) {
+		EnumGeneratorTarget target = (EnumGeneratorTarget)GlobalVarExtensions.getGlobalVar("generatorTarget");
 		s = noNull(s);
 		s = normalizeLF(s);
 		s = s.trim();
 		if (s.length() == 0) {
 			s = "\t// TODO";
 		}
-		if ( ! s.startsWith("<?php\n{") ) {
-			s = "<?php\n{\n\t" + s.trim();
+		if (target == EnumGeneratorTarget.ZEND || target == EnumGeneratorTarget.PHP5) {
+			if ( ! s.startsWith("<?php\n{") ) {
+				s = "<?php\n{\n\t" + s.trim();
+			}
+		} else { // Java
+			if ( ! s.startsWith("{") ) {
+				s = "{\n\t" + s.trim();
+			}
 		}
 		if ( ! s.endsWith("}") ) {
 			s = s + "\n}";

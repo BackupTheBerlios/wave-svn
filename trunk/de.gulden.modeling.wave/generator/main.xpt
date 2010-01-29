@@ -25,7 +25,7 @@
 	----------------
 	«IF (this.generatorTarget == EnumGeneratorTarget::ZEND)»
 		«EXPAND zend::model::model»
-	«ELSEIF (this.generatorTarget == EnumGeneratorTarget::JAVA)»
+	«ELSE»
 		«EXPAND java::model::model»
 	«ENDIF»
 	

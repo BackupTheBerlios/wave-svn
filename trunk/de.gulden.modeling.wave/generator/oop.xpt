@@ -11,8 +11,9 @@
 «EXTENSION common»
 «EXTENSION sql::sql»
 
+«REM»«IF targetPHP()»«ENDREM»
 «EXTENSION zend::commonZend» «REM»TODO remove and make language freely configurable (maybe via AROUND-templates on Xpand-level, not via Xtend)«ENDREM»
-
+«REM»«ENDIF»«ENDREM»
 
 «REM» ---   language-specific templates   --- «ENDREM»
 
@@ -39,7 +40,7 @@ public «this.oopFunction()»«attr.oopType()» get«attr.name.toFirstUpper()»() {
 /**
  * @generated
  */
-public «this.oopFunction()»«"void".oopType(this)» set«attr.name.toFirstUpper()»(«attr.oopType()» «attr.oopVar()») {
+public «this.oopFunction()»«"void".oopType()» set«attr.name.toFirstUpper()»(«attr.oopType()» «attr.oopVar()») {
 	«this.oopThisRef()»«attr.name»=«attr.oopVar()»;
 } 
 «ENDIF»«ENDIF»«ENDFOREACH»«ENDDEFINE»
@@ -64,7 +65,7 @@ public «this.oopFunction()»«"void".oopType(this)» set«attr.name.toFirstUpper()»(
  * «this.ingoingMultiplicity(assoc)» «IF (assoc.direction.toString() != "<-->")»-->«ELSE»--«ENDIF» «this.outgoingMultiplicity(assoc)»
  * @generated
  */
-protected «IF this.isOutgoingMulti(assoc)»«"array".oopType(this)»«ELSE»«"integer".oopType(this)»«ENDIF» «this.outgoingName(assoc).oopVar(this)»«IF this.isOutgoingMulti(assoc)» = array()«REM»«IF this.isPersistent»null«ELSE»array()«ENDIF»«ENDREM»«ENDIF»;
+protected «IF this.isOutgoingMulti(assoc)»«this.oopArrayType()»«ELSE»«IF targetPHP()»«this.oopIntType()»«ELSE»«this.outgoingType(assoc).oopType()»«ENDIF»«ENDIF» «this.outgoingName(assoc).oopVar()»«IF this.isOutgoingMulti(assoc)» «this.oopArrayInitialValue()»«REM»«IF this.isPersistent»null«ELSE»array()«ENDIF»«ENDREM»«ENDIF»;
 			«IF ! this.definesOperation("get"+this.outgoingName(assoc).toFirstUpper())-»
 				«IF ! this.isOutgoingMulti(assoc)»
 /**
@@ -84,8 +85,8 @@ public «this.oopFunction()»«this.oopArray()» get«this.outgoingName(assoc).toFirs
 /**
  * @generated
  */
-public «this.oopFunction()»set«this.outgoingName(assoc).toFirstUpper()»(«this.oopArray()» «"values".oopVar(this)») {
-	«this.oopThisRef()»«this.outgoingName(assoc)» = «"values".oopVar(this)»; 
+public «this.oopFunction()»set«this.outgoingName(assoc).toFirstUpper()»(«this.oopArray()» «"values".oopVar()») {
+	«this.oopThisRef()»«this.outgoingName(assoc)» = «"values".oopVar()»; 
 } 
 				«ENDIF» 
 			«ENDIF-»
@@ -94,14 +95,14 @@ public «this.oopFunction()»set«this.outgoingName(assoc).toFirstUpper()»(«this.oo
 /**
  * @generated
  */
-public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(«EXPAND className FOR this.outgoingType(assoc)» $«this.outgoingName(assoc)»=null) {
-	«this.oopThisRef()»«this.outgoingName(assoc)»=$«this.outgoingName(assoc)»;
+public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(XXX TODO XXX«EXPAND className FOR this.outgoingType(assoc)» «this.outgoingName(assoc).oopVar()»«IF targetPHP()»=null«ENDIF») {
+	«this.oopThisRef()»«this.outgoingName(assoc)» = «this.outgoingName(assoc).oopVar()»;
 						«IF assoc.isBidirectional()-»«REM» bi-drectional 1:1 «ENDREM»
-	if (($«this.outgoingName(assoc)» != null) && ($«this.outgoingName(assoc)» != «this.oopThisRef()»«this.outgoingName(assoc)»)) {
+	if ((«this.outgoingName(assoc).oopVar()» != null) && («this.outgoingName(assoc).oopVar()» != «this.oopThisRef()»«this.outgoingName(assoc)»)) {
 							«IF ! assoc.isIngoingMulti(this)-»
-		$«this.outgoingName(assoc)»->set«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // set back-reference
+		«this.outgoingName(assoc).oopVarRef()»set«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // set back-reference
 							«ELSE-» 
-		$«this.outgoingName(assoc)»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»(«this.oopThis()»); // add back-reference
+		«this.outgoingName(assoc).oopVarRef()»add«this.ingoingName(assoc).toFirstUpper().removePluralS()»(«this.oopThis()»); // add back-reference
 							«ENDIF-» 
 	}
 						«ENDIF-» 
@@ -116,13 +117,13 @@ public «this.oopFunction()»«this.oopVoid()» add«this.outgoingName(assoc).toFirst
 						«IF this.isPersistent-» 
 	«this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»(); // make sure is initialized
 						«ENDIF-» 
-	if ( ! in_array( $«this.outgoingName(assoc).removePluralS()», «this.oopThisRef()»«this.outgoingName(assoc)» ) ) {
-		«this.oopThisRef()»«this.outgoingName(assoc)»[] = $«this.outgoingName(assoc).removePluralS()»;
+	if ( ! in_array( «this.outgoingName(assoc).removePluralS().oopVar()», «this.oopThisRef()»«this.outgoingName(assoc)» ) ) {
+		«this.oopThisRef()»«this.outgoingName(assoc)»[] = «this.outgoingName(assoc).removePluralS().oopVar()»;
 							«IF assoc.isBidirectional()-»«REM» bi-drectional 1:m «ENDREM»
 								«IF ! assoc.isIngoingMulti(this)-»
-		$«this.outgoingName(assoc).removePluralS()»->set«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // set back-reference
+		«this.outgoingName(assoc).removePluralS().oopVarRef()»set«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // set back-reference
 								«ELSE-» 
-		$«this.outgoingName(assoc).removePluralS()»->add«this.ingoingName(assoc).toFirstUpper().removePluralS()»(«this.oopThis()»); // add back-reference (!!)
+		«this.outgoingName(assoc).removePluralS().oopVarRef()»add«this.ingoingName(assoc).toFirstUpper().removePluralS()»(«this.oopThis()»); // add back-reference (!!)
 								«ENDIF-» 
 							«ENDIF-» 
 	}
@@ -137,11 +138,11 @@ public «this.oopFunction()»«this.oopVoid()» add«this.outgoingName(assoc).toFirst
 /**
  * @generated
  */
-public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFirstUpper().removePluralS()»(«EXPAND className FOR this.outgoingType(assoc)» $«this.outgoingName(assoc).removePluralS()») {
+public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFirstUpper().removePluralS()»(«EXPAND className FOR this.outgoingType(assoc)» «this.outgoingName(assoc).removePluralS().oopVar()») {
 						«IF (!this.isInterface()) && this.isPersistent-» 
 	«this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»(); // make sure is initialized
 						«ENDIF-» 
-	if ( in_array( $«this.outgoingName(assoc).removePluralS()», «this.oopThisRef()»«this.outgoingName(assoc)» ) )
+	if ( in_array( «this.outgoingName(assoc).removePluralS().oopVar()», «this.oopThisRef()»«this.outgoingName(assoc)» ) )
 	{
 		$found = -1;
 		for ($i = 0; $i < count(«this.oopThisRef()»«this.outgoingName(assoc)»); $i++)
@@ -157,9 +158,9 @@ public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFi
 		
 							«IF assoc.isBidirectional()-»«xREM» bi-drectional 1:m «xENDREM»
 								«IF ! this.isIngoingMulti(assoc)-»
-		$«this.outgoingName(assoc)»->set«this.ingoingName(assoc).toFirstUpper()»(null); // remove back-reference
+		«this.outgoingName(assoc).oopVarRef()»set«this.ingoingName(assoc).toFirstUpper()»(null); // remove back-reference
 								«ELSE-»
-		$«this.outgoingName(assoc).removePluralS()»->remove«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // remove back-reference
+		«this.outgoingName(assoc).removePluralS().oopVarRef()»remove«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // remove back-reference
 								«ENDIF-»
 							«ENDIF-»
 							
@@ -182,7 +183,7 @@ public «this.oopFunction()»«this.oopVoid()» removeAll«this.outgoingName(assoc).t
 	«ENDFOREACH»
 «ENDDEFINE»
 
-«DEFINE parameters FOR Operation»«FOREACH this.parameters AS param SEPARATOR ", "»«param.oopType()»«EXPAND attribute FOR param»«ENDFOREACH»«ENDDEFINE»
+«DEFINE parameters FOR Operation»«FOREACH this.parameters AS param SEPARATOR ", "»«param.oopType()» «EXPAND attribute FOR param»«ENDFOREACH»«ENDDEFINE»
 
 «DEFINE parametersFromHttp FOR Operation-»
 	// --- HTTP parameters ---

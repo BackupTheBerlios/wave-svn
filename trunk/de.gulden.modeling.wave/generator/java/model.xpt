@@ -34,8 +34,8 @@
 			«EXPAND package FOR ((Package)member)» «REM» recursion «ENDREM»
 		«ELSE» «REM» generate member, if this not instanceof Model: should contain only classes and interfaces «ENDREM»
 			«LET member.sourceFileName() AS filename»
-«log("FILE: "+filename)»
 				«IF filename.is()»
+«log("file: "+filename)»
 					«IF member.isClassifier()»
 						«IF ! ((Classifier)member).isExternal»
 							«FILE filename»«EXPAND member FOR member»«ENDFILE»

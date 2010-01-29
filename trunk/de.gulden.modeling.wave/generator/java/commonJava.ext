@@ -11,6 +11,13 @@ extension common;
 String sourceFileSuffix( ModelMember this ) : "java";
 
 String sourceFileName( OOPClassifier this ) :
-	this.package().path() + "/" + this.name + "." + this.sourceFileSuffix();
-	
+	( this.model().basePackage.concat( ".", this.package().qualifiedName()) ).replaceAll("[.]", "/") + "/" + this.name + "." + this.sourceFileSuffix();
+
+//String sourceFileName( Enumeration this ) :
+//	( this.model().basePackage.concat( ".", this.package().qualifiedName()) ).replaceAll("[.]", "/") + "/" + this.name + "." + this.sourceFileSuffix();
+
+// overwrite previous declaration	
+Package package( ModelMember this ) :
+				( this.eContainer.metaType == Model ) ? null : ((Package)this.eContainer);
+
    

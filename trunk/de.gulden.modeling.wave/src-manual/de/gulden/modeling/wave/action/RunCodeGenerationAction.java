@@ -318,6 +318,7 @@ public class RunCodeGenerationAction implements IObjectActionDelegate, IEditorAc
 		// TODO run constraint-check
 		
 		Generator g = new Generator();
+		g.setFileEncoding("iso-8859-1");
 		g.addMetaModel(metaModel);
 		g.setGenPath( outputPath ); // TODO use Outlet
 		g.setExpand("main::"+invoke+" FOR model");

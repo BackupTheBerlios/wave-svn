@@ -23,10 +23,14 @@
  *
  «EXPAND model::commentHeader» */
 
-//«this.package().isModel()»
+package «this.model().basePackage.concat( ".", this.package().qualifiedName() )»;
 
-package «this.package().qualifiedName()»; 
+import java.util.*; 
 «REM»«EXPAND oop::imports-»«ENDREM»
+«EXPAND classBody»
+«ENDDEFINE»
+
+«DEFINE classBody FOR Class»
 «EXPAND oop::modifiers»class «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF»«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«ELSEIF this.externalImplements.is()» extends «this.externalImplements»«ENDIF» {
 	
 «EXPAND oop::attributes»
@@ -36,6 +40,22 @@ package «this.package().qualifiedName()»;
 «storeGlobalVar("generateDBSchema", " ")-»
 «REM»«EXPAND classPersistence::class»«ENDREM»
 «ENDIF-»
+«EXPAND inner FOREACH inner»
 } // end of class «this.codeName()»
 «ENDDEFINE»
+
+«DEFINE inner FOR OOPClassifier»
 «ENDDEFINE»
+
+«DEFINE inner FOR Class»
+	«EXPAND classBody»
+«ENDDEFINE»
+
+«DEFINE inner FOR Interface»
+	«EXPAND interface::interface»
+«ENDDEFINE»
+
+«DEFINE inner FOR Enumeration»
+	«EXPAND enumeration::enumeration»
+«ENDDEFINE»
+
