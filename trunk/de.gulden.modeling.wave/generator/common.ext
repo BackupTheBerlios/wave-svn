@@ -624,14 +624,6 @@ String oopVarRef( String this ) :
 						this+"."
 				};
 
-String oopArray( ModelMember this ) :
-				switch ( generatorTarget() ) {
-					case EnumGeneratorTarget::PHP5: 
-						"/*Array*/"
-					default:
-						"List"
-				};
-				
 String oopVoid( ModelMember this ) :
 				switch ( generatorTarget() ) {
 					case EnumGeneratorTarget::PHP5: 
@@ -664,20 +656,28 @@ String oopThisRef( ModelMember this ) :
 						"this."
 				};
 
-String oopArrayType( ModelMember this ) :
+String oopArray( Classifier this ) :
+				switch ( generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"/*Array*/"
+					default:
+						"List<"+this.name+">"
+				};
+				
+String oopArrayType( Classifier this ) :
 				switch ( generatorTarget() ) {
 					case EnumGeneratorTarget::PHP5: 
 						"array"
 					default:
-						"List"
+						"List<"+this.name+">"
 				};
 
-String oopArrayInitialValue( ModelMember this ) :
+String oopArrayInitialValue( Classifier this ) :
 				switch ( generatorTarget() ) {
 					case EnumGeneratorTarget::PHP5: 
 						"= array()"
 					default:
-						"= new ArrayList()"
+						"= new ArrayList<"+this.name+">()"
 				};
 
 String oopIntType( ModelMember this ) :
@@ -687,4 +687,22 @@ String oopIntType( ModelMember this ) :
 					default:
 						"int"
 				};
+
+String oopInArrayCondition( String this, String localvar ) :
+				switch ( generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						"in_array("+localvar+", "+this+")"
+					default:
+						this+".contains("+localvar+")"
+				};
+				
+String oopAddToArray( String this, String localvar ) :
+				switch ( generatorTarget() ) {
+					case EnumGeneratorTarget::PHP5: 
+						this+"[] = "+localvar
+					default:
+						this+".add("+localvar+")"
+				};
+				
+
 

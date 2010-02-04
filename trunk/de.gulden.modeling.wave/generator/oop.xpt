@@ -65,7 +65,7 @@ public «this.oopFunction()»«"void".oopType()» set«attr.name.toFirstUpper()»(«att
  * «this.ingoingMultiplicity(assoc)» «IF (assoc.direction.toString() != "<-->")»-->«ELSE»--«ENDIF» «this.outgoingMultiplicity(assoc)»
  * @generated
  */
-protected «IF this.isOutgoingMulti(assoc)»«this.oopArrayType()»«ELSE»«IF targetPHP()»«this.oopIntType()»«ELSE»«this.outgoingType(assoc).oopType()»«ENDIF»«ENDIF» «this.outgoingName(assoc).oopVar()»«IF this.isOutgoingMulti(assoc)» «this.oopArrayInitialValue()»«REM»«IF this.isPersistent»null«ELSE»array()«ENDIF»«ENDREM»«ENDIF»;
+protected «IF this.isOutgoingMulti(assoc)»«this.outgoingType(assoc).oopArrayType()»«ELSE»«IF targetPHP()»«this.oopIntType()»«ELSE»«this.outgoingType(assoc).oopType()»«ENDIF»«ENDIF» «this.outgoingName(assoc).oopVar()»«IF this.isOutgoingMulti(assoc)» «this.outgoingType(assoc).oopArrayInitialValue()»«REM»«IF this.isPersistent»null«ELSE»array()«ENDIF»«ENDREM»«ENDIF»;
 			«IF ! this.definesOperation("get"+this.outgoingName(assoc).toFirstUpper())-»
 				«IF ! this.isOutgoingMulti(assoc)»
 /**
@@ -78,14 +78,14 @@ public «this.oopFunction()»«this.outgoingType(assoc).oopType()» get«this.outgoin
 /**
  * @generated
  */
-public «this.oopFunction()»«this.oopArray()» get«this.outgoingName(assoc).toFirstUpper()»() {
+public «this.oopFunction()»«this.outgoingType(assoc).oopArray()» get«this.outgoingName(assoc).toFirstUpper()»() {
 	return «this.oopThisRef()»«this.outgoingName(assoc)»; 
 } 
 
 /**
  * @generated
  */
-public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(«this.oopArray()» «"values".oopVar()») {
+public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(«this.outgoingType(assoc).oopArray()» «"values".oopVar()») {
 	«this.oopThisRef()»«this.outgoingName(assoc)» = «"values".oopVar()»; 
 } 
 				«ENDIF» 
@@ -117,8 +117,8 @@ public «this.oopFunction()»«this.oopVoid()» add«this.outgoingName(assoc).toFirst
 						«IF this.isPersistent-» 
 	«this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»(); // make sure is initialized
 						«ENDIF-» 
-	if ( ! in_array( «this.outgoingName(assoc).removePluralS().oopVar()», «this.oopThisRef()»«this.outgoingName(assoc)» ) ) {
-		«this.oopThisRef()»«this.outgoingName(assoc)»[] = «this.outgoingName(assoc).removePluralS().oopVar()»;
+	if ( ! «(this.oopThisRef()+this.outgoingName(assoc)).oopInArrayCondition( this.outgoingName(assoc).removePluralS().oopVar() )» ) {
+		«(this.oopThisRef()+this.outgoingName(assoc)).oopAddToArray( this.outgoingName(assoc).removePluralS().oopVar() )»;
 							«IF assoc.isBidirectional()-»«REM» bi-drectional 1:m «ENDREM»
 								«IF ! assoc.isIngoingMulti(this)-»
 		«this.outgoingName(assoc).removePluralS().oopVarRef()»set«this.ingoingName(assoc).toFirstUpper()»(«this.oopThis()»); // set back-reference
@@ -141,9 +141,9 @@ public «this.oopFunction()»«this.oopVoid()» add«this.outgoingName(assoc).toFirst
 public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFirstUpper().removePluralS()»(«EXPAND className FOR this.outgoingType(assoc)» «this.outgoingName(assoc).removePluralS().oopVar()») {
 						«IF (!this.isInterface()) && this.isPersistent-» 
 	«this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»(); // make sure is initialized
-						«ENDIF-» 
-	if ( in_array( «this.outgoingName(assoc).removePluralS().oopVar()», «this.oopThisRef()»«this.outgoingName(assoc)» ) )
-	{
+						«ENDIF-»
+	«IF targetPHP()» 
+	if ( in_array( «this.outgoingName(assoc).removePluralS().oopVar()», «this.oopThisRef()»«this.outgoingName(assoc)» ) ) {
 		$found = -1;
 		for ($i = 0; $i < count(«this.oopThisRef()»«this.outgoingName(assoc)»); $i++)
 		{
@@ -154,6 +154,9 @@ public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFi
 		}
 		unset( «this.oopThisRef()»«this.outgoingName(assoc)»[$found] );
 		
+	«ELSE»
+	«this.oopThisRef()»«this.outgoingName(assoc)».remove(«this.outgoingName(assoc).removePluralS().oopVar()»); 
+	«ENDIF» 
 		«REM» TODO
 		
 							«IF assoc.isBidirectional()-»«xREM» bi-drectional 1:m «xENDREM»
@@ -165,7 +168,9 @@ public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFi
 							«ENDIF-»
 							
 		«ENDREM»
-	} 
+	«IF targetPHP()» 
+	}
+	«ENDIF»
 } 
 			«ENDIF-» 
 			«IF ! this.definesOperation("removeAll"+this.outgoingName(assoc).toFirstUpper()+"s")-»
@@ -173,8 +178,12 @@ public «this.oopFunction()»«this.oopVoid()» remove«this.outgoingName(assoc).toFi
  * @generated
  */
 public «this.oopFunction()»«this.oopVoid()» removeAll«this.outgoingName(assoc).toFirstUpper()»() {
-	foreach («this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»() as $key=>$val) {
-		«this.oopThisRef()»remove«this.outgoingName(assoc).toFirstUpper().removePluralS()»($key);
+	«IF targetPHP()» 
+	foreach («this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»() as $del=>$val) {
+	«ELSE»
+	for («this.oopFunction()»«this.outgoingType(assoc).oopType()» del : Collections.unmodifiableList(«this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»()) ) {
+	«ENDIF»
+		«this.oopThisRef()»remove«this.outgoingName(assoc).toFirstUpper().removePluralS()»(«"del".oopVar()»);
 	}
 } 
 			«ENDIF-»
