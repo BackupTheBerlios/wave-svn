@@ -85,7 +85,7 @@ public «this.oopFunction()»«this.oopArray()» get«this.outgoingName(assoc).toFirs
 /**
  * @generated
  */
-public «this.oopFunction()»set«this.outgoingName(assoc).toFirstUpper()»(«this.oopArray()» «"values".oopVar()») {
+public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirstUpper()»(«this.oopArray()» «"values".oopVar()») {
 	«this.oopThisRef()»«this.outgoingName(assoc)» = «"values".oopVar()»; 
 } 
 				«ENDIF» 
@@ -113,7 +113,7 @@ public «this.oopFunction()»«this.oopVoid()» set«this.outgoingName(assoc).toFirst
 /**
  * @generated
  */
-public «this.oopFunction()»«this.oopVoid()» add«this.outgoingName(assoc).toFirstUpper().removePluralS()»(«EXPAND className FOR this.outgoingType(assoc)» $«this.outgoingName(assoc).removePluralS()») {
+public «this.oopFunction()»«this.oopVoid()» add«this.outgoingName(assoc).toFirstUpper().removePluralS()»(«EXPAND className FOR this.outgoingType(assoc)» «this.outgoingName(assoc).removePluralS().oopVar()») {
 						«IF this.isPersistent-» 
 	«this.oopThisRef()»get«this.outgoingName(assoc).toFirstUpper()»(); // make sure is initialized
 						«ENDIF-» 
