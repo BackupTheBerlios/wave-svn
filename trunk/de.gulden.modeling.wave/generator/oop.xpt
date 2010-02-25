@@ -46,7 +46,7 @@ public «this.oopFunction()»«"void".oopType()» set«attr.name.toFirstUpper()»(«att
 «ENDIF»«ENDIF»«ENDFOREACH»«ENDDEFINE»
 
 «DEFINE operations FOR Classifier»«FOREACH this.operations AS op»
-«op.visibility()» «EXPAND modifiers FOR op»«this.oopFunction()»«op.oopType()» «op.name»(«EXPAND parameters FOR op»)«IF op.throws.is()» throws «op.throws»«ENDIF»«IF op.isAbstract || this.isInterface()»;«ELSE»
+«op.visibility()» «EXPAND modifiers FOR op»«this.oopFunction()»«IF ! (op.name == ((OOPClassifier)op.eContainer).name)»«op.oopType()»«ELSE»/*constructor*/«ENDIF» «op.name»(«EXPAND parameters FOR op»)«IF op.throws.is()» throws «op.throws»«ENDIF»«IF op.isAbstract || this.isInterface()»;«ELSE»
 /*begin «op.signatureID()»*/
 {
 	«op.prepareCode()»«IF (( ! op.code.is()) && ( ! op.returnType.isVoid()))»
