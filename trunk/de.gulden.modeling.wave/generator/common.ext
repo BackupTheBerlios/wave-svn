@@ -142,17 +142,16 @@ String without(String this, String remove) :
 //String ownerPackageName( ModelMember this ) : ( this.ownerPackage() != null ) ? this.ownerPackage().name : "";
 
 String visibility( OOPClassifier this ) : 
-	targetPHP() ?
-	""
-	:
-	(this.visibility.toString().toLowerCase()+" ");
-	
+	visibility(this.visibility);
 				 
 String visibility( ClassifierMember this ) :
+	visibility(this.visibility);
+
+String visibility( EnumVisibility this ) :
 	targetPHP() ?
 	""
 	: 
-	(this.visibility.toString().toLowerCase()+" ");
+	( ( this == EnumVisibility::PACKAGE ) ? " " : this.toString().toLowerCase()+" ");
 
 //String package( ModelMember this ) :
 //				((Model)this.eContainer).basePackage.concat(".", this.ownerPackageName());				
