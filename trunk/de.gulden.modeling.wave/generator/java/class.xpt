@@ -20,7 +20,9 @@
 «DEFINE packageAndImports FOR OOPClassifier»
 package «this.model().basePackage.concat( ".", this.package().qualifiedName() )»;
 
-import java.util.*; 
+import java.util.*;
+«FOREACH this.taggedValues("import") AS tagValue»import «tagValue»;
+«ENDFOREACH» 
 «ENDDEFINE»
 
 «DEFINE class FOR Class»
