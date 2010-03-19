@@ -18,6 +18,7 @@
     <viewmap
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
+    <shortcutsProvidedFor>Process Control Flow</shortcutsProvidedFor>
     <domainDiagramElement
         href="wave.genmodel#//wave/Model"/>
     <childNodes

@@ -201,7 +201,8 @@ public class WaveVisualIDRegistry {
 		}
 		String containerModelID = de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry
 				.getModelID(containerView);
-		if (!ModelEditPart.MODEL_ID.equals(containerModelID)) {
+		if (!ModelEditPart.MODEL_ID.equals(containerModelID)
+				&& !"Process Control Flow".equals(containerModelID)) { //$NON-NLS-1$
 			return -1;
 		}
 		int containerVisualID;
@@ -400,7 +401,8 @@ public class WaveVisualIDRegistry {
 	public static boolean canCreateNode(View containerView, int nodeVisualID) {
 		String containerModelID = de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry
 				.getModelID(containerView);
-		if (!ModelEditPart.MODEL_ID.equals(containerModelID)) {
+		if (!ModelEditPart.MODEL_ID.equals(containerModelID)
+				&& !"Process Control Flow".equals(containerModelID)) { //$NON-NLS-1$
 			return false;
 		}
 		int containerVisualID;

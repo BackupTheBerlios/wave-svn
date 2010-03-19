@@ -256,6 +256,10 @@
       <?gmfgen generated="true"?>
       <viewProvider class="de.gulden.modeling.wave.diagram.providers.WaveViewProvider">
          <Priority name="Lowest"/>
+         <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
+            <method name="getType()" value="Process Control Flow"/>
+         </object>
+         <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Wave"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" semanticHints="2017,2018,2026,2020,2021,2013,2022,2023,2024,2025,2001,2002,2003,2004,13006,13008,13007,13009,13001,13002,2009,13003,13004,13005,13010"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Edge" semanticHints="3001,3002,3003,3004,3005,4015,4013,4016,4017"/>
@@ -743,11 +747,17 @@
         	      <test property="org.eclipse.core.resources.extension" value="wave_diagram"/>
                </and>
                <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="de.gulden.modeling.wave.isShortcut"/>
+           	   </adapt>
             </or>
          </triggerPoints>
          <possibleChildren>
             <or>
          	   <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="de.gulden.modeling.wave.isShortcut"/>
+           	   </adapt>
             </or>
          </possibleChildren>
          <commonSorter 
@@ -791,6 +801,9 @@
          <enablement>
             <or>
                <instanceof value="de.gulden.modeling.wave.diagram.navigator.WaveAbstractNavigatorItem"/>
+           	   <adapt type="org.eclipse.gmf.runtime.notation.View">
+           	      <test property="de.gulden.modeling.wave.isShortcut"/>
+           	   </adapt>
             </or>
          </enablement>
       </actionProvider>
@@ -1097,6 +1110,28 @@
 <extension point="org.eclipse.ui.handlers" id="menu-handlers">
       <?gmfgen generated="true"?>
    </extension>
+<extension point="org.eclipse.gmf.runtime.diagram.ui.decoratorProviders" id="decorator-provider">
+      <?gmfgen generated="true"?>
+      <decoratorProvider class="de.gulden.modeling.wave.diagram.providers.WaveShortcutsDecoratorProvider">
+         <Priority name="Lowest"/>
+         <object class="org.eclipse.gmf.runtime.notation.Node(org.eclipse.gmf.runtime.notation)" id="generated-top-nodes">
+            <method name="getType()" value="2017,2018,2026,2020,2021,2013,2022,2023,2024,2025"/>
+         </object>
+         <context decoratorTargets="generated-top-nodes"/>
+      </decoratorProvider>
+   </extension>
+
+<extension point="org.eclipse.core.expressions.propertyTesters" id="navigator-proptest.isShortcut">
+      <?gmfgen generated="true"?>
+       <propertyTester
+           id="de.gulden.modeling.wave.ShortcutPropertyTester"
+           type="org.eclipse.gmf.runtime.notation.View"
+           namespace="de.gulden.modeling.wave"
+           properties="isShortcut"
+           class="de.gulden.modeling.wave.diagram.part.WaveShortcutPropertyTester">
+       </propertyTester>
+   </extension>
+
 
 
 
