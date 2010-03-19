@@ -2,15 +2,13 @@
 <gmfgen:GenEditorGenerator xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgen="http://www.eclipse.org/gmf/2008/GenModel" copyrightText="WAVE - Web Application Visual Environment&#xD;&#xA;A Graphical Modeling Framework (GMF) Plugin for Eclipse&#xD;&#xA;Copyright Jens Gulden, 2009, mail@jensgulden.de&#xD;&#xA;Licensed under the GNU General Public License (GPL)">
+    xmlns:gmfgen="http://www.eclipse.org/gmf/2009/GenModel" copyrightText="WAVE - Web Application Visual Environment&#xD;&#xA;A Graphical Modeling Framework (GMF) Plugin for Eclipse&#xD;&#xA;Copyright Jens Gulden, 2009, mail@jensgulden.de&#xD;&#xA;Licensed under the GNU General Public License (GPL)">
   <diagram
       visualID="1000"
       editPartClassName="ModelEditPart"
       itemSemanticEditPolicyClassName="ModelItemSemanticEditPolicy"
-      notationViewFactoryClassName="ModelViewFactory"
       canonicalEditPolicyClassName="ModelCanonicalEditPolicy"
       iconProviderPriority="Low"
-      validationProviderPriority="Low"
       synchronized="false">
     <diagramRunTimeClass
         href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Diagram"/>
@@ -27,11 +25,10 @@
         visualID="2001"
         editPartClassName="AttributeEditPart"
         itemSemanticEditPolicyClassName="AttributeItemSemanticEditPolicy"
-        notationViewFactoryClassName="AttributeViewFactory"
         canonicalEditPolicyClassName="AttributeCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="AttributeGraphicalNodeEditPolicy"
         createCommandClassName="AttributeCreateCommand"
-        containers="//@diagram/@compartments.0 //@diagram/@compartments.13">
+        containers="//@diagram/@compartments.13 //@diagram/@compartments.0">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -51,7 +48,8 @@
             href="wave.genmodel#//wave/Classifier/attributes"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -61,7 +59,6 @@
         visualID="2002"
         editPartClassName="OperationEditPart"
         itemSemanticEditPolicyClassName="OperationItemSemanticEditPolicy"
-        notationViewFactoryClassName="OperationViewFactory"
         canonicalEditPolicyClassName="OperationCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="OperationGraphicalNodeEditPolicy"
         createCommandClassName="OperationCreateCommand"
@@ -85,7 +82,8 @@
             href="wave.genmodel#//wave/Classifier/operations"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -95,7 +93,6 @@
         visualID="2003"
         editPartClassName="Operation2EditPart"
         itemSemanticEditPolicyClassName="Operation2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Operation2ViewFactory"
         canonicalEditPolicyClassName="Operation2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Operation2GraphicalNodeEditPolicy"
         createCommandClassName="Operation2CreateCommand"
@@ -119,7 +116,8 @@
             href="wave.genmodel#//wave/Classifier/operations"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -129,7 +127,6 @@
         visualID="2004"
         editPartClassName="Attribute2EditPart"
         itemSemanticEditPolicyClassName="Attribute2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Attribute2ViewFactory"
         canonicalEditPolicyClassName="Attribute2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Attribute2GraphicalNodeEditPolicy"
         createCommandClassName="Attribute2CreateCommand"
@@ -153,7 +150,8 @@
             href="wave.genmodel#//wave/Classifier/attributes"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -162,7 +160,6 @@
         visualID="13006"
         editPartClassName="ActionEditPart"
         itemSemanticEditPolicyClassName="ActionItemSemanticEditPolicy"
-        notationViewFactoryClassName="ActionViewFactory"
         canonicalEditPolicyClassName="ActionCanonicalEditPolicy"
         compartments="//@diagram/@compartments.7"
         graphicalNodeEditPolicyClassName="ActionGraphicalNodeEditPolicy"
@@ -195,7 +192,6 @@
           visualID="5031"
           editPartClassName="ActionNameEditPart"
           itemSemanticEditPolicyClassName="ActionNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ActionNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -204,7 +200,8 @@
             getterName="getFigureActionNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/ControllerMember/name"/>
         </modelFacet>
@@ -215,7 +212,6 @@
         visualID="13008"
         editPartClassName="Operation3EditPart"
         itemSemanticEditPolicyClassName="Operation3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Operation3ViewFactory"
         canonicalEditPolicyClassName="Operation3CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Operation3GraphicalNodeEditPolicy"
         createCommandClassName="Operation3CreateCommand"
@@ -239,7 +235,8 @@
             href="wave.genmodel#//wave/ControllerMemberExecutable/operation"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -248,7 +245,6 @@
         visualID="13007"
         editPartClassName="ViewEditPart"
         itemSemanticEditPolicyClassName="ViewItemSemanticEditPolicy"
-        notationViewFactoryClassName="ViewViewFactory"
         canonicalEditPolicyClassName="ViewCanonicalEditPolicy"
         compartments="//@diagram/@compartments.8 //@diagram/@compartments.9"
         graphicalNodeEditPolicyClassName="ViewGraphicalNodeEditPolicy"
@@ -281,7 +277,6 @@
           visualID="5032"
           editPartClassName="ViewNameEditPart"
           itemSemanticEditPolicyClassName="ViewNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ViewNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -290,7 +285,8 @@
             getterName="getFigureViewNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/ControllerMember/name"/>
         </modelFacet>
@@ -301,7 +297,6 @@
         visualID="13009"
         editPartClassName="Operation4EditPart"
         itemSemanticEditPolicyClassName="Operation4ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Operation4ViewFactory"
         canonicalEditPolicyClassName="Operation4CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Operation4GraphicalNodeEditPolicy"
         createCommandClassName="Operation4CreateCommand"
@@ -325,7 +320,8 @@
             href="wave.genmodel#//wave/ControllerMemberExecutable/operation"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -334,7 +330,6 @@
         visualID="13001"
         editPartClassName="AreaEditPart"
         itemSemanticEditPolicyClassName="AreaItemSemanticEditPolicy"
-        notationViewFactoryClassName="AreaViewFactory"
         canonicalEditPolicyClassName="AreaCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.9"
         graphicalNodeEditPolicyClassName="AreaGraphicalNodeEditPolicy"
@@ -365,7 +360,6 @@
         visualID="13002"
         editPartClassName="View2EditPart"
         itemSemanticEditPolicyClassName="View2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="View2ViewFactory"
         canonicalEditPolicyClassName="View2CanonicalEditPolicy"
         compartments="//@diagram/@compartments.10 //@diagram/@compartments.11"
         graphicalNodeEditPolicyClassName="View2GraphicalNodeEditPolicy"
@@ -398,7 +392,6 @@
           visualID="5018"
           editPartClassName="ViewName2EditPart"
           itemSemanticEditPolicyClassName="ViewName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="ViewName2ViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -407,7 +400,8 @@
             getterName="getFigureViewNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/ControllerMember/name"/>
         </modelFacet>
@@ -418,7 +412,6 @@
         visualID="2009"
         editPartClassName="Operation5EditPart"
         itemSemanticEditPolicyClassName="Operation5ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Operation5ViewFactory"
         canonicalEditPolicyClassName="Operation5CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Operation5GraphicalNodeEditPolicy"
         createCommandClassName="Operation5CreateCommand"
@@ -442,7 +435,8 @@
             href="wave.genmodel#//wave/Classifier/operations"/>
       </modelFacet>
       <labelModelFacet
-          xsi:type="gmfgen:FeatureLabelModelFacet">
+          xsi:type="gmfgen:FeatureLabelModelFacet"
+          parser="//@labelParsers/@implementations.0">
         <metaFeatures
             href="wave.genmodel#//wave/ClassifierMember/signature"/>
       </labelModelFacet>
@@ -451,7 +445,6 @@
         visualID="13003"
         editPartClassName="Class2EditPart"
         itemSemanticEditPolicyClassName="Class2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Class2ViewFactory"
         canonicalEditPolicyClassName="Class2CanonicalEditPolicy"
         compartments="//@diagram/@compartments.13 //@diagram/@compartments.14"
         graphicalNodeEditPolicyClassName="Class2GraphicalNodeEditPolicy"
@@ -481,7 +474,6 @@
           visualID="5028"
           editPartClassName="ClassName2EditPart"
           itemSemanticEditPolicyClassName="ClassName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="ClassName2ViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -490,7 +482,8 @@
             getterName="getFigureClassNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -500,7 +493,6 @@
         visualID="13004"
         editPartClassName="Interface2EditPart"
         itemSemanticEditPolicyClassName="Interface2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Interface2ViewFactory"
         canonicalEditPolicyClassName="Interface2CanonicalEditPolicy"
         compartments="//@diagram/@compartments.15"
         graphicalNodeEditPolicyClassName="Interface2GraphicalNodeEditPolicy"
@@ -530,7 +522,6 @@
           visualID="5029"
           editPartClassName="InterfaceName2EditPart"
           itemSemanticEditPolicyClassName="InterfaceName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="InterfaceName2ViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -539,7 +530,8 @@
             getterName="getFigureInterfaceNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -549,12 +541,11 @@
         visualID="13005"
         editPartClassName="Package2EditPart"
         itemSemanticEditPolicyClassName="Package2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Package2ViewFactory"
         canonicalEditPolicyClassName="Package2CanonicalEditPolicy"
         compartments="//@diagram/@compartments.16"
         graphicalNodeEditPolicyClassName="Package2GraphicalNodeEditPolicy"
         createCommandClassName="Package2CreateCommand"
-        containers="//@diagram/@compartments.16 //@diagram/@compartments.12">
+        containers="//@diagram/@compartments.12 //@diagram/@compartments.16">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -579,7 +570,6 @@
           visualID="5030"
           editPartClassName="PackageName2EditPart"
           itemSemanticEditPolicyClassName="PackageName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="PackageName2ViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -588,7 +578,8 @@
             getterName="getFigurePackageNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Package/name"/>
         </modelFacet>
@@ -598,11 +589,10 @@
         visualID="13010"
         editPartClassName="Include2EditPart"
         itemSemanticEditPolicyClassName="Include2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="Include2ViewFactory"
         canonicalEditPolicyClassName="Include2CanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="Include2GraphicalNodeEditPolicy"
         createCommandClassName="Include2CreateCommand"
-        containers="//@diagram/@compartments.16 //@diagram/@compartments.12">
+        containers="//@diagram/@compartments.12 //@diagram/@compartments.16">
       <diagramRunTimeClass
           href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
       <elementType
@@ -627,7 +617,6 @@
           visualID="5034"
           editPartClassName="IncludeName2EditPart"
           itemSemanticEditPolicyClassName="IncludeName2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="IncludeName2ViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -636,7 +625,8 @@
             getterName="getFigureIncludeNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -646,7 +636,6 @@
         visualID="2017"
         editPartClassName="ClassEditPart"
         itemSemanticEditPolicyClassName="ClassItemSemanticEditPolicy"
-        notationViewFactoryClassName="ClassViewFactory"
         canonicalEditPolicyClassName="ClassCanonicalEditPolicy"
         compartments="//@diagram/@compartments.0 //@diagram/@compartments.1"
         graphicalNodeEditPolicyClassName="ClassGraphicalNodeEditPolicy"
@@ -675,7 +664,6 @@
           visualID="5019"
           editPartClassName="ClassNameEditPart"
           itemSemanticEditPolicyClassName="ClassNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ClassNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -684,7 +672,8 @@
             getterName="getFigureClassNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -694,7 +683,6 @@
         visualID="2018"
         editPartClassName="InterfaceEditPart"
         itemSemanticEditPolicyClassName="InterfaceItemSemanticEditPolicy"
-        notationViewFactoryClassName="InterfaceViewFactory"
         canonicalEditPolicyClassName="InterfaceCanonicalEditPolicy"
         compartments="//@diagram/@compartments.2"
         graphicalNodeEditPolicyClassName="InterfaceGraphicalNodeEditPolicy"
@@ -723,7 +711,6 @@
           visualID="5020"
           editPartClassName="InterfaceNameEditPart"
           itemSemanticEditPolicyClassName="InterfaceNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="InterfaceNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -732,7 +719,8 @@
             getterName="getFigureInterfaceNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -742,7 +730,6 @@
         visualID="2026"
         editPartClassName="ControllerEditPart"
         itemSemanticEditPolicyClassName="ControllerItemSemanticEditPolicy"
-        notationViewFactoryClassName="ControllerViewFactory"
         canonicalEditPolicyClassName="ControllerCanonicalEditPolicy"
         compartments="//@diagram/@compartments.3 //@diagram/@compartments.4 //@diagram/@compartments.5 //@diagram/@compartments.6"
         graphicalNodeEditPolicyClassName="ControllerGraphicalNodeEditPolicy"
@@ -771,7 +758,6 @@
           visualID="5033"
           editPartClassName="ControllerNameEditPart"
           itemSemanticEditPolicyClassName="ControllerNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ControllerNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -780,7 +766,8 @@
             getterName="getFigurePageNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -790,7 +777,6 @@
         visualID="2020"
         editPartClassName="IncludeEditPart"
         itemSemanticEditPolicyClassName="IncludeItemSemanticEditPolicy"
-        notationViewFactoryClassName="IncludeViewFactory"
         canonicalEditPolicyClassName="IncludeCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="IncludeGraphicalNodeEditPolicy"
         createCommandClassName="IncludeCreateCommand">
@@ -818,7 +804,6 @@
           visualID="5022"
           editPartClassName="IncludeNameEditPart"
           itemSemanticEditPolicyClassName="IncludeNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="IncludeNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -827,7 +812,8 @@
             getterName="getFigureIncludeNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -837,7 +823,6 @@
         visualID="2021"
         editPartClassName="PackageEditPart"
         itemSemanticEditPolicyClassName="PackageItemSemanticEditPolicy"
-        notationViewFactoryClassName="PackageViewFactory"
         canonicalEditPolicyClassName="PackageCanonicalEditPolicy"
         compartments="//@diagram/@compartments.12"
         graphicalNodeEditPolicyClassName="PackageGraphicalNodeEditPolicy"
@@ -866,7 +851,6 @@
           visualID="5023"
           editPartClassName="PackageNameEditPart"
           itemSemanticEditPolicyClassName="PackageNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="PackageNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -875,7 +859,8 @@
             getterName="getFigurePackageNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Package/name"/>
         </modelFacet>
@@ -885,7 +870,6 @@
         visualID="2013"
         editPartClassName="DocumentationEditPart"
         itemSemanticEditPolicyClassName="DocumentationItemSemanticEditPolicy"
-        notationViewFactoryClassName="DocumentationViewFactory"
         canonicalEditPolicyClassName="DocumentationCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="DocumentationGraphicalNodeEditPolicy"
         createCommandClassName="DocumentationCreateCommand">
@@ -915,8 +899,7 @@
       <labels
           visualID="5013"
           editPartClassName="DocumentationTextEditPart"
-          itemSemanticEditPolicyClassName="DocumentationTextItemSemanticEditPolicy"
-          notationViewFactoryClassName="DocumentationTextViewFactory">
+          itemSemanticEditPolicyClassName="DocumentationTextItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -924,7 +907,8 @@
             getterName="getFigureDocumentationTextFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Documentation/text"/>
         </modelFacet>
@@ -934,7 +918,6 @@
         visualID="2022"
         editPartClassName="StyleSheetEditPart"
         itemSemanticEditPolicyClassName="StyleSheetItemSemanticEditPolicy"
-        notationViewFactoryClassName="StyleSheetViewFactory"
         canonicalEditPolicyClassName="StyleSheetCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="StyleSheetGraphicalNodeEditPolicy"
         createCommandClassName="StyleSheetCreateCommand">
@@ -962,7 +945,6 @@
           visualID="5024"
           editPartClassName="StyleSheetNameEditPart"
           itemSemanticEditPolicyClassName="StyleSheetNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="StyleSheetNameViewFactory"
           elementIcon="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -971,7 +953,8 @@
             getterName="getFigureStyleSheetNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -981,7 +964,6 @@
         visualID="2023"
         editPartClassName="UsecaseSubsystemEditPart"
         itemSemanticEditPolicyClassName="UsecaseSubsystemItemSemanticEditPolicy"
-        notationViewFactoryClassName="UsecaseSubsystemViewFactory"
         canonicalEditPolicyClassName="UsecaseSubsystemCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="UsecaseSubsystemGraphicalNodeEditPolicy"
         createCommandClassName="UsecaseSubsystemCreateCommand">
@@ -1011,8 +993,7 @@
       <labels
           visualID="5025"
           editPartClassName="UsecaseSubsystemNameEditPart"
-          itemSemanticEditPolicyClassName="UsecaseSubsystemNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="UsecaseSubsystemNameViewFactory">
+          itemSemanticEditPolicyClassName="UsecaseSubsystemNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1020,7 +1001,8 @@
             getterName="getFigureUsecaseSubsystemNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/UsecaseSubsystem/name"/>
         </modelFacet>
@@ -1030,7 +1012,6 @@
         visualID="2024"
         editPartClassName="ActorEditPart"
         itemSemanticEditPolicyClassName="ActorItemSemanticEditPolicy"
-        notationViewFactoryClassName="ActorViewFactory"
         canonicalEditPolicyClassName="ActorCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="ActorGraphicalNodeEditPolicy"
         createCommandClassName="ActorCreateCommand">
@@ -1056,8 +1037,7 @@
       <labels
           visualID="5026"
           editPartClassName="ActorNameEditPart"
-          itemSemanticEditPolicyClassName="ActorNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="ActorNameViewFactory">
+          itemSemanticEditPolicyClassName="ActorNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1065,7 +1045,8 @@
             getterName="getFigureActorNameFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Classifier/name"/>
         </modelFacet>
@@ -1075,7 +1056,6 @@
         visualID="2025"
         editPartClassName="UsecaseEditPart"
         itemSemanticEditPolicyClassName="UsecaseItemSemanticEditPolicy"
-        notationViewFactoryClassName="UsecaseViewFactory"
         canonicalEditPolicyClassName="UsecaseCanonicalEditPolicy"
         graphicalNodeEditPolicyClassName="UsecaseGraphicalNodeEditPolicy"
         createCommandClassName="UsecaseCreateCommand">
@@ -1105,8 +1085,7 @@
       <labels
           visualID="5027"
           editPartClassName="UsecaseTextEditPart"
-          itemSemanticEditPolicyClassName="UsecaseTextItemSemanticEditPolicy"
-          notationViewFactoryClassName="UsecaseTextViewFactory">
+          itemSemanticEditPolicyClassName="UsecaseTextItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1114,7 +1093,8 @@
             getterName="getFigureUsecaseTextLabel"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Usecase/text"/>
         </modelFacet>
@@ -1124,7 +1104,6 @@
         visualID="3001"
         editPartClassName="DependencyRelationshipEditPart"
         itemSemanticEditPolicyClassName="DependencyRelationshipItemSemanticEditPolicy"
-        notationViewFactoryClassName="DependencyRelationshipViewFactory"
         createCommandClassName="DependencyRelationshipCreateCommand"
         reorientCommandClassName="DependencyRelationshipReorientCommand">
       <diagramRunTimeClass
@@ -1156,7 +1135,6 @@
           visualID="6003"
           editPartClassName="DependencyRelationshipStereotypeEditPart"
           itemSemanticEditPolicyClassName="DependencyRelationshipStereotypeItemSemanticEditPolicy"
-          notationViewFactoryClassName="DependencyRelationshipStereotypeViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1169,7 +1147,8 @@
               y="40"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/ModelMember/stereotype"/>
         </modelFacet>
@@ -1179,7 +1158,6 @@
         visualID="3002"
         editPartClassName="InheritanceRelationshipEditPart"
         itemSemanticEditPolicyClassName="InheritanceRelationshipItemSemanticEditPolicy"
-        notationViewFactoryClassName="InheritanceRelationshipViewFactory"
         createCommandClassName="InheritanceRelationshipCreateCommand"
         reorientCommandClassName="InheritanceRelationshipReorientCommand">
       <diagramRunTimeClass
@@ -1211,7 +1189,6 @@
         visualID="3003"
         editPartClassName="RealizationRelationshipEditPart"
         itemSemanticEditPolicyClassName="RealizationRelationshipItemSemanticEditPolicy"
-        notationViewFactoryClassName="RealizationRelationshipViewFactory"
         createCommandClassName="RealizationRelationshipCreateCommand"
         reorientCommandClassName="RealizationRelationshipReorientCommand">
       <diagramRunTimeClass
@@ -1243,7 +1220,6 @@
         visualID="3004"
         editPartClassName="AssociationRelationshipEditPart"
         itemSemanticEditPolicyClassName="AssociationRelationshipItemSemanticEditPolicy"
-        notationViewFactoryClassName="AssociationRelationshipViewFactory"
         createCommandClassName="AssociationRelationshipCreateCommand"
         reorientCommandClassName="AssociationRelationshipReorientCommand">
       <diagramRunTimeClass
@@ -1273,8 +1249,7 @@
       <labels
           visualID="4008"
           editPartClassName="AssociationRelationshipNameEditPart"
-          itemSemanticEditPolicyClassName="AssociationRelationshipNameItemSemanticEditPolicy"
-          notationViewFactoryClassName="AssociationRelationshipNameViewFactory">
+          itemSemanticEditPolicyClassName="AssociationRelationshipNameItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1286,7 +1261,8 @@
           <requiredPluginIDs>org.eclipse.gmf.runtime.draw2d.ui</requiredPluginIDs>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/AssociationRelationship/name"/>
         </modelFacet>
@@ -1295,7 +1271,6 @@
           visualID="4009"
           editPartClassName="AssociationRelationshipMultiplicityAEditPart"
           itemSemanticEditPolicyClassName="AssociationRelationshipMultiplicityAItemSemanticEditPolicy"
-          notationViewFactoryClassName="AssociationRelationshipMultiplicityAViewFactory"
           alignment="TARGET">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1310,6 +1285,7 @@
         </viewmap>
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0"
             viewPattern="">
           <metaFeatures
               href="wave.genmodel#//wave/AssociationRelationship/multiplicityA"/>
@@ -1319,7 +1295,6 @@
           visualID="4010"
           editPartClassName="AssociationRelationshipMultiplicityBEditPart"
           itemSemanticEditPolicyClassName="AssociationRelationshipMultiplicityBItemSemanticEditPolicy"
-          notationViewFactoryClassName="AssociationRelationshipMultiplicityBViewFactory"
           alignment="SOURCE">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1333,7 +1308,8 @@
           <requiredPluginIDs>org.eclipse.gmf.runtime.draw2d.ui</requiredPluginIDs>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/AssociationRelationship/multiplicityB"/>
         </modelFacet>
@@ -1343,7 +1319,6 @@
         visualID="3005"
         editPartClassName="ActionToViewTransitionEditPart"
         itemSemanticEditPolicyClassName="ActionToViewTransitionItemSemanticEditPolicy"
-        notationViewFactoryClassName="ActionToViewTransitionViewFactory"
         createCommandClassName="ActionToViewTransitionCreateCommand"
         reorientCommandClassName="ActionToViewTransitionReorientCommand">
       <diagramRunTimeClass
@@ -1373,8 +1348,7 @@
       <labels
           visualID="4011"
           editPartClassName="ActionToViewTransitionConditionEditPart"
-          itemSemanticEditPolicyClassName="ActionToViewTransitionConditionItemSemanticEditPolicy"
-          notationViewFactoryClassName="ActionToViewTransitionConditionViewFactory">
+          itemSemanticEditPolicyClassName="ActionToViewTransitionConditionItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1387,7 +1361,8 @@
           <requiredPluginIDs>org.eclipse.gmf.runtime.draw2d.ui</requiredPluginIDs>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Transition/condition"/>
         </modelFacet>
@@ -1397,7 +1372,6 @@
         visualID="4015"
         editPartClassName="ModelMemberDocsEditPart"
         itemSemanticEditPolicyClassName="ModelMemberDocsItemSemanticEditPolicy"
-        notationViewFactoryClassName="ModelMemberDocsViewFactory"
         createCommandClassName="ModelMemberDocsCreateCommand"
         reorientCommandClassName="ModelMemberDocsReorientCommand">
       <diagramRunTimeClass
@@ -1420,7 +1394,6 @@
         visualID="4013"
         editPartClassName="ViewTransitionEditPart"
         itemSemanticEditPolicyClassName="ViewTransitionItemSemanticEditPolicy"
-        notationViewFactoryClassName="ViewTransitionViewFactory"
         createCommandClassName="ViewTransitionCreateCommand"
         reorientCommandClassName="ViewTransitionReorientCommand">
       <diagramRunTimeClass
@@ -1450,8 +1423,7 @@
       <labels
           visualID="6002"
           editPartClassName="ViewTransitionConditionEditPart"
-          itemSemanticEditPolicyClassName="ViewTransitionConditionItemSemanticEditPolicy"
-          notationViewFactoryClassName="ViewTransitionConditionViewFactory">
+          itemSemanticEditPolicyClassName="ViewTransitionConditionItemSemanticEditPolicy">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
         <viewmap
@@ -1464,7 +1436,8 @@
           <requiredPluginIDs>org.eclipse.gmf.runtime.draw2d.ui</requiredPluginIDs>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/Transition/condition"/>
         </modelFacet>
@@ -1474,7 +1447,6 @@
         visualID="4016"
         editPartClassName="DependencyRelationship2EditPart"
         itemSemanticEditPolicyClassName="DependencyRelationship2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="DependencyRelationship2ViewFactory"
         createCommandClassName="DependencyRelationship2CreateCommand"
         reorientCommandClassName="DependencyRelationship2ReorientCommand">
       <diagramRunTimeClass
@@ -1515,7 +1487,6 @@
           visualID="6004"
           editPartClassName="DependencyRelationshipStereotype2EditPart"
           itemSemanticEditPolicyClassName="DependencyRelationshipStereotype2ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DependencyRelationshipStereotype2ViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1528,7 +1499,8 @@
               y="40"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/ModelMember/stereotype"/>
         </modelFacet>
@@ -1541,7 +1513,6 @@
         visualID="4017"
         editPartClassName="DependencyRelationship3EditPart"
         itemSemanticEditPolicyClassName="DependencyRelationship3ItemSemanticEditPolicy"
-        notationViewFactoryClassName="DependencyRelationship3ViewFactory"
         createCommandClassName="DependencyRelationship3CreateCommand"
         reorientCommandClassName="DependencyRelationship3ReorientCommand">
       <diagramRunTimeClass
@@ -1582,7 +1553,6 @@
           visualID="6005"
           editPartClassName="DependencyRelationshipStereotype3EditPart"
           itemSemanticEditPolicyClassName="DependencyRelationshipStereotype3ItemSemanticEditPolicy"
-          notationViewFactoryClassName="DependencyRelationshipStereotype3ViewFactory"
           readOnly="true">
         <diagramRunTimeClass
             href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
@@ -1595,7 +1565,8 @@
               y="40"/>
         </viewmap>
         <modelFacet
-            xsi:type="gmfgen:FeatureLabelModelFacet">
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
           <metaFeatures
               href="wave.genmodel#//wave/ModelMember/stereotype"/>
         </modelFacet>
@@ -1608,7 +1579,6 @@
         visualID="7004"
         editPartClassName="ClassClassAttributesCompartmentEditPart"
         itemSemanticEditPolicyClassName="ClassClassAttributesCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ClassClassAttributesCompartmentViewFactory"
         canonicalEditPolicyClassName="ClassClassAttributesCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.0"
         title="ClassAttributesCompartment"
@@ -1627,7 +1597,6 @@
         visualID="7005"
         editPartClassName="ClassClassOperationsCompartmentEditPart"
         itemSemanticEditPolicyClassName="ClassClassOperationsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ClassClassOperationsCompartmentViewFactory"
         canonicalEditPolicyClassName="ClassClassOperationsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.1"
         title="ClassOperationsCompartment"
@@ -1646,7 +1615,6 @@
         visualID="7006"
         editPartClassName="InterfaceInterfaceOperationsCompartmentEditPart"
         itemSemanticEditPolicyClassName="InterfaceInterfaceOperationsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="InterfaceInterfaceOperationsCompartmentViewFactory"
         canonicalEditPolicyClassName="InterfaceInterfaceOperationsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.2"
         title="InterfaceOperationsCompartment"
@@ -1665,7 +1633,6 @@
         visualID="7017"
         editPartClassName="ControllerPageParametersCompartmentEditPart"
         itemSemanticEditPolicyClassName="ControllerPageParametersCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ControllerPageParametersCompartmentViewFactory"
         canonicalEditPolicyClassName="ControllerPageParametersCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.3"
         title="PageParametersCompartment"
@@ -1684,7 +1651,6 @@
         visualID="7018"
         editPartClassName="ControllerPageActionsCompartmentEditPart"
         itemSemanticEditPolicyClassName="ControllerPageActionsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ControllerPageActionsCompartmentViewFactory"
         canonicalEditPolicyClassName="ControllerPageActionsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.4"
         title="PageActionsCompartment"
@@ -1704,7 +1670,6 @@
         visualID="7019"
         editPartClassName="ControllerPageViewsCompartmentEditPart"
         itemSemanticEditPolicyClassName="ControllerPageViewsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ControllerPageViewsCompartmentViewFactory"
         canonicalEditPolicyClassName="ControllerPageViewsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.6"
         title="PageViewsCompartment"
@@ -1724,7 +1689,6 @@
         visualID="7020"
         editPartClassName="ControllerPageFunctionsCompartmentEditPart"
         itemSemanticEditPolicyClassName="ControllerPageFunctionsCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ControllerPageFunctionsCompartmentViewFactory"
         canonicalEditPolicyClassName="ControllerPageFunctionsCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.10"
         title="PageFunctionsCompartment"
@@ -1743,7 +1707,6 @@
         visualID="7021"
         editPartClassName="ActionActionOperationCompartmentEditPart"
         itemSemanticEditPolicyClassName="ActionActionOperationCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ActionActionOperationCompartmentViewFactory"
         canonicalEditPolicyClassName="ActionActionOperationCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.5"
         title="ActionOperationCompartment"
@@ -1763,7 +1726,6 @@
         visualID="7022"
         editPartClassName="ViewViewOperationCompartmentEditPart"
         itemSemanticEditPolicyClassName="ViewViewOperationCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ViewViewOperationCompartmentViewFactory"
         canonicalEditPolicyClassName="ViewViewOperationCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.7"
         title="ViewOperationCompartment"
@@ -1783,7 +1745,6 @@
         visualID="7023"
         editPartClassName="ViewViewAreaCompartmentEditPart"
         itemSemanticEditPolicyClassName="ViewViewAreaCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="ViewViewAreaCompartmentViewFactory"
         canonicalEditPolicyClassName="ViewViewAreaCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.8"
         title="ViewAreaCompartment"
@@ -1803,7 +1764,6 @@
         visualID="7002"
         editPartClassName="ViewViewOperationCompartment2EditPart"
         itemSemanticEditPolicyClassName="ViewViewOperationCompartment2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="ViewViewOperationCompartment2ViewFactory"
         canonicalEditPolicyClassName="ViewViewOperationCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.7"
         title="ViewOperationCompartment"
@@ -1823,7 +1783,6 @@
         visualID="7003"
         editPartClassName="ViewViewAreaCompartment2EditPart"
         itemSemanticEditPolicyClassName="ViewViewAreaCompartment2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="ViewViewAreaCompartment2ViewFactory"
         canonicalEditPolicyClassName="ViewViewAreaCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.8"
         title="ViewAreaCompartment"
@@ -1843,7 +1802,6 @@
         visualID="7014"
         editPartClassName="PackagePackageCompartmentEditPart"
         itemSemanticEditPolicyClassName="PackagePackageCompartmentItemSemanticEditPolicy"
-        notationViewFactoryClassName="PackagePackageCompartmentViewFactory"
         canonicalEditPolicyClassName="PackagePackageCompartmentCanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.11 //@diagram/@childNodes.12 //@diagram/@childNodes.13 //@diagram/@childNodes.14"
         title="PackageCompartment"
@@ -1863,7 +1821,6 @@
         visualID="7012"
         editPartClassName="ClassClassAttributesCompartment2EditPart"
         itemSemanticEditPolicyClassName="ClassClassAttributesCompartment2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="ClassClassAttributesCompartment2ViewFactory"
         canonicalEditPolicyClassName="ClassClassAttributesCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.0"
         title="ClassAttributesCompartment"
@@ -1882,7 +1839,6 @@
         visualID="7013"
         editPartClassName="ClassClassOperationsCompartment2EditPart"
         itemSemanticEditPolicyClassName="ClassClassOperationsCompartment2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="ClassClassOperationsCompartment2ViewFactory"
         canonicalEditPolicyClassName="ClassClassOperationsCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.1"
         title="ClassOperationsCompartment"
@@ -1901,7 +1857,6 @@
         visualID="7015"
         editPartClassName="InterfaceInterfaceOperationsCompartment2EditPart"
         itemSemanticEditPolicyClassName="InterfaceInterfaceOperationsCompartment2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="InterfaceInterfaceOperationsCompartment2ViewFactory"
         canonicalEditPolicyClassName="InterfaceInterfaceOperationsCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.2"
         title="InterfaceOperationsCompartment"
@@ -1920,7 +1875,6 @@
         visualID="7016"
         editPartClassName="PackagePackageCompartment2EditPart"
         itemSemanticEditPolicyClassName="PackagePackageCompartment2ItemSemanticEditPolicy"
-        notationViewFactoryClassName="PackagePackageCompartment2ViewFactory"
         canonicalEditPolicyClassName="PackagePackageCompartment2CanonicalEditPolicy"
         childNodes="//@diagram/@childNodes.11 //@diagram/@childNodes.12 //@diagram/@childNodes.13 //@diagram/@childNodes.14"
         title="PackageCompartment"
@@ -4941,4 +4895,15 @@
           body="self.oclIsKindOf(Usecase)"/>
     </providers>
   </expressionProviders>
+  <labelParsers
+      extensibleViaService="true">
+    <implementations
+        xsi:type="gmfgen:PredefinedParser"
+        uses="//@diagram/@childNodes.0/@labelModelFacet //@diagram/@childNodes.1/@labelModelFacet //@diagram/@childNodes.2/@labelModelFacet //@diagram/@childNodes.3/@labelModelFacet //@diagram/@childNodes.5/@labelModelFacet //@diagram/@childNodes.7/@labelModelFacet //@diagram/@childNodes.10/@labelModelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.9/@labels.0/@modelFacet //@diagram/@childNodes.11/@labels.0/@modelFacet //@diagram/@childNodes.12/@labels.0/@modelFacet //@diagram/@childNodes.13/@labels.0/@modelFacet //@diagram/@childNodes.14/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet //@diagram/@topLevelNodes.1/@labels.0/@modelFacet //@diagram/@topLevelNodes.2/@labels.0/@modelFacet //@diagram/@topLevelNodes.3/@labels.0/@modelFacet //@diagram/@topLevelNodes.4/@labels.0/@modelFacet //@diagram/@topLevelNodes.5/@labels.0/@modelFacet //@diagram/@topLevelNodes.6/@labels.0/@modelFacet //@diagram/@topLevelNodes.7/@labels.0/@modelFacet //@diagram/@topLevelNodes.8/@labels.0/@modelFacet //@diagram/@topLevelNodes.9/@labels.0/@modelFacet //@diagram/@links.0/@labels.0/@modelFacet //@diagram/@links.3/@labels.0/@modelFacet //@diagram/@links.3/@labels.1/@modelFacet //@diagram/@links.3/@labels.2/@modelFacet //@diagram/@links.4/@labels.0/@modelFacet //@diagram/@links.6/@labels.0/@modelFacet //@diagram/@links.7/@labels.0/@modelFacet //@diagram/@links.8/@labels.0/@modelFacet"/>
+  </labelParsers>
+  <contextMenus
+      context="//@diagram">
+    <items
+        xsi:type="gmfgen:LoadResourceAction"/>
+  </contextMenus>
 </gmfgen:GenEditorGenerator>

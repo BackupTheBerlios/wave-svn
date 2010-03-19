@@ -6,8 +6,11 @@
  */
 package de.gulden.modeling.wave.diagram.edit.parts;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RoundedRectangle;
+import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -21,6 +24,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConstrainedToolbarLayoutE
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -29,6 +33,7 @@ import org.eclipse.swt.graphics.Color;
 import de.gulden.modeling.wave.diagram.edit.policies.DocumentationItemSemanticEditPolicy;
 import de.gulden.modeling.wave.diagram.edit.policies.WaveTextSelectionEditPolicy;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
+import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 
 /**
  * @generated
@@ -120,7 +125,9 @@ public class DocumentationEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected boolean removeFixedChild(EditPart childEditPart) {
-
+		if (childEditPart instanceof DocumentationTextEditPart) {
+			return true;
+		}
 		return false;
 	}
 
@@ -148,16 +155,14 @@ public class DocumentationEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure getContentPaneFor(IGraphicalEditPart editPart) {
-
-		return super.getContentPaneFor(editPart);
+		return getContentPane();
 	}
 
 	/**
 	 * @generated
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(getMapMode()
-				.DPtoLP(40), getMapMode().DPtoLP(40));
+		DefaultSizeNodeFigure result = new DefaultSizeNodeFigure(40, 40);
 		return result;
 	}
 
@@ -187,7 +192,7 @@ public class DocumentationEditPart extends ShapeNodeEditPart {
 	protected IFigure setupContentPane(IFigure nodeShape) {
 		if (nodeShape.getLayoutManager() == null) {
 			ConstrainedToolbarLayout layout = new ConstrainedToolbarLayout();
-			layout.setSpacing(getMapMode().DPtoLP(5));
+			layout.setSpacing(5);
 			nodeShape.setLayoutManager(layout);
 		}
 		return nodeShape; // use nodeShape itself as contentPane
@@ -206,9 +211,114 @@ public class DocumentationEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
+	protected void setForegroundColor(Color color) {
+		if (primaryShape != null) {
+			primaryShape.setForegroundColor(color);
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void setBackgroundColor(Color color) {
+		if (primaryShape != null) {
+			primaryShape.setBackgroundColor(color);
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void setLineWidth(int width) {
+		if (primaryShape instanceof Shape) {
+			((Shape) primaryShape).setLineWidth(width);
+		}
+	}
+
+	/**
+	 * @generated
+	 */
+	protected void setLineType(int style) {
+		if (primaryShape instanceof Shape) {
+			((Shape) primaryShape).setLineStyle(style);
+		}
+	}
+
+	/**
+	 * @generated
+	 */
 	public EditPart getPrimaryChildEditPart() {
 		return getChildBySemanticHint(WaveVisualIDRegistry
 				.getType(DocumentationTextEditPart.VISUAL_ID));
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnTarget() {
+		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+		types.add(WaveElementTypes.ModelMemberDocs_4015);
+		return types;
+	}
+
+	/**
+	 * @generated
+	 */
+	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMATypesForSource(
+			IElementType relationshipType) {
+		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Class_2017);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Interface_2018);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Controller_2026);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Include_2020);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Package_2021);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.StyleSheet_2022);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.UsecaseSubsystem_2023);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Actor_2024);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Usecase_2025);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Action_13006);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.View_13007);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Area_13001);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.View_13002);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Class_13003);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Interface_13004);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Package_13005);
+		}
+		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+			types.add(WaveElementTypes.Include_13010);
+		}
+		return types;
 	}
 
 	/**

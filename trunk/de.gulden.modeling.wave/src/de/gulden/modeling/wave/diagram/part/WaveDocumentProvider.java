@@ -890,6 +890,7 @@ public class WaveDocumentProvider extends AbstractDocumentProvider implements
 				Resource resource = (Resource) it.next();
 				resource.unload();
 			}
+			getEditingDomain().dispose();
 		}
 
 		/**

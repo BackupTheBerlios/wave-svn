@@ -19,7 +19,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.gef.AccessibleEditPart;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gef.tools.DirectEditManager;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
@@ -31,6 +33,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.LabelDirectEditPolicy;
+import org.eclipse.gmf.runtime.diagram.ui.editpolicies.NonResizableLabelEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramColorRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.diagram.ui.tools.TextDirectEditManager;
@@ -108,6 +111,18 @@ public class DependencyRelationshipStereotypeEditPart extends LabelEditPart
 		super.createDefaultEditPolicies();
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
 				new LabelDirectEditPolicy());
+		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
+				new WaveTextSelectionEditPolicy());
+		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
+				new NonResizableLabelEditPolicy() {
+
+					protected List createSelectionHandles() {
+						MoveHandle mh = new MoveHandle(
+								(GraphicalEditPart) getHost());
+						mh.setBorder(null);
+						return Collections.singletonList(mh);
+					}
+				});
 	}
 
 	/**
@@ -226,6 +241,10 @@ public class DependencyRelationshipStereotypeEditPart extends LabelEditPart
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
 			((WaveTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
 		}
+		Object sfEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);
+		if (sfEditPolicy instanceof WaveTextSelectionEditPolicy) {
+			((WaveTextSelectionEditPolicy) sfEditPolicy).refreshFeedback();
+		}
 	}
 
 	/**
@@ -303,11 +322,12 @@ public class DependencyRelationshipStereotypeEditPart extends LabelEditPart
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			String parserHint = ((View) getModel()).getType();
-			IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-					WaveElementTypes.DependencyRelationship_3001,
-					getParserElement(), parserHint);
-			parser = ParserService.getInstance().getParser(hintAdapter);
+			parser = WaveParserProvider
+					.getParser(
+							WaveElementTypes.DependencyRelationship_3001,
+							getParserElement(),
+							WaveVisualIDRegistry
+									.getType(de.gulden.modeling.wave.diagram.edit.parts.DependencyRelationshipStereotypeEditPart.VISUAL_ID));
 		}
 		return parser;
 	}
@@ -414,6 +434,10 @@ public class DependencyRelationshipStereotypeEditPart extends LabelEditPart
 		Object pdEditPolicy = getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
 			((WaveTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
+		}
+		Object sfEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);
+		if (sfEditPolicy instanceof WaveTextSelectionEditPolicy) {
+			((WaveTextSelectionEditPolicy) sfEditPolicy).refreshFeedback();
 		}
 	}
 

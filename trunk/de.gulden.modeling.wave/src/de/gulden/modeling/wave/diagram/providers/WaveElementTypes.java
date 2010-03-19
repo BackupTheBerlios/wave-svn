@@ -23,6 +23,41 @@ import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.swt.graphics.Image;
 
 import de.gulden.modeling.wave.WavePackage;
+import de.gulden.modeling.wave.diagram.edit.parts.ActionEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ActionToViewTransitionEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ActorEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.AreaEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.AssociationRelationshipEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Attribute2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.AttributeEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Class2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ClassEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ControllerEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.DependencyRelationship2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.DependencyRelationship3EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.DependencyRelationshipEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.DocumentationEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Include2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.IncludeEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.InheritanceRelationshipEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Interface2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.InterfaceEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ModelEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ModelMemberDocsEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Operation2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Operation3EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Operation4EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Operation5EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.OperationEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Package2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.PackageEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.RealizationRelationshipEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.StyleSheetEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.UsecaseEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.UsecaseSubsystemEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.View2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ViewEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ViewTransitionEditPart;
 import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
 
 /**
@@ -439,6 +474,85 @@ public class WaveElementTypes extends ElementInitializers {
 			KNOWN_ELEMENT_TYPES.add(DependencyRelationship_4017);
 		}
 		return KNOWN_ELEMENT_TYPES.contains(elementType);
+	}
+
+	/**
+	 * @generated
+	 */
+	public static IElementType getElementType(int visualID) {
+		switch (visualID) {
+		case ModelEditPart.VISUAL_ID:
+			return Model_1000;
+		case ClassEditPart.VISUAL_ID:
+			return Class_2017;
+		case InterfaceEditPart.VISUAL_ID:
+			return Interface_2018;
+		case ControllerEditPart.VISUAL_ID:
+			return Controller_2026;
+		case IncludeEditPart.VISUAL_ID:
+			return Include_2020;
+		case PackageEditPart.VISUAL_ID:
+			return Package_2021;
+		case DocumentationEditPart.VISUAL_ID:
+			return Documentation_2013;
+		case StyleSheetEditPart.VISUAL_ID:
+			return StyleSheet_2022;
+		case UsecaseSubsystemEditPart.VISUAL_ID:
+			return UsecaseSubsystem_2023;
+		case ActorEditPart.VISUAL_ID:
+			return Actor_2024;
+		case UsecaseEditPart.VISUAL_ID:
+			return Usecase_2025;
+		case AttributeEditPart.VISUAL_ID:
+			return Attribute_2001;
+		case OperationEditPart.VISUAL_ID:
+			return Operation_2002;
+		case Operation2EditPart.VISUAL_ID:
+			return Operation_2003;
+		case Attribute2EditPart.VISUAL_ID:
+			return Attribute_2004;
+		case ActionEditPart.VISUAL_ID:
+			return Action_13006;
+		case Operation3EditPart.VISUAL_ID:
+			return Operation_13008;
+		case ViewEditPart.VISUAL_ID:
+			return View_13007;
+		case Operation4EditPart.VISUAL_ID:
+			return Operation_13009;
+		case AreaEditPart.VISUAL_ID:
+			return Area_13001;
+		case View2EditPart.VISUAL_ID:
+			return View_13002;
+		case Operation5EditPart.VISUAL_ID:
+			return Operation_2009;
+		case Class2EditPart.VISUAL_ID:
+			return Class_13003;
+		case Interface2EditPart.VISUAL_ID:
+			return Interface_13004;
+		case Package2EditPart.VISUAL_ID:
+			return Package_13005;
+		case Include2EditPart.VISUAL_ID:
+			return Include_13010;
+		case DependencyRelationshipEditPart.VISUAL_ID:
+			return DependencyRelationship_3001;
+		case InheritanceRelationshipEditPart.VISUAL_ID:
+			return InheritanceRelationship_3002;
+		case RealizationRelationshipEditPart.VISUAL_ID:
+			return RealizationRelationship_3003;
+		case AssociationRelationshipEditPart.VISUAL_ID:
+			return AssociationRelationship_3004;
+		case ActionToViewTransitionEditPart.VISUAL_ID:
+			return ActionToViewTransition_3005;
+		case ModelMemberDocsEditPart.VISUAL_ID:
+			return ModelMemberDocs_4015;
+		case ViewTransitionEditPart.VISUAL_ID:
+			return ViewTransition_4013;
+		case DependencyRelationship2EditPart.VISUAL_ID:
+			return DependencyRelationship_4016;
+		case DependencyRelationship3EditPart.VISUAL_ID:
+			return DependencyRelationship_4017;
+		}
+		return null;
 	}
 
 }

@@ -36,6 +36,13 @@ public class RealizationRelationshipItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public RealizationRelationshipItemSemanticEditPolicy() {
+		super(WaveElementTypes.RealizationRelationship_3003);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		return getGEFWrapper(new DestroyElementCommand(req));
 	}

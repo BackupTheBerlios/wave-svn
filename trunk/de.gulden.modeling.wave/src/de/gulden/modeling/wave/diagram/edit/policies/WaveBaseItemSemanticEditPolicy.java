@@ -19,6 +19,7 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.gmf.runtime.common.core.command.ICompositeCommand;
 import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
@@ -62,6 +63,7 @@ import de.gulden.modeling.wave.diagram.expressions.WaveAbstractExpression;
 import de.gulden.modeling.wave.diagram.expressions.WaveOCLFactory;
 import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
+import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 
 /**
  * @generated
@@ -74,6 +76,18 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	 * @generated
 	 */
 	public static final String VISUAL_ID_KEY = "visual_id"; //$NON-NLS-1$
+
+	/**
+	 * @generated
+	 */
+	private final IElementType myElementType;
+
+	/**
+	 * @generated
+	 */
+	protected WaveBaseItemSemanticEditPolicy(IElementType elementType) {
+		myElementType = elementType;
+	}
 
 	/**
 	 * Extended request data key to hold editpart visual id.
@@ -112,60 +126,64 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	 */
 	protected Command getSemanticCommand(IEditCommandRequest request) {
 		IEditCommandRequest completedRequest = completeRequest(request);
-		Object editHelperContext = completedRequest.getEditHelperContext();
-		if (editHelperContext instanceof View
-				|| (editHelperContext instanceof IEditHelperContext && ((IEditHelperContext) editHelperContext)
-						.getEObject() instanceof View)) {
-			// no semantic commands are provided for pure design elements
-			return null;
-		}
-		if (editHelperContext == null) {
-			editHelperContext = ViewUtil
-					.resolveSemanticElement((View) getHost().getModel());
-		}
-		IElementType elementType = ElementTypeRegistry.getInstance()
-				.getElementType(editHelperContext);
-		if (elementType == ElementTypeRegistry.getInstance().getType(
-				"org.eclipse.gmf.runtime.emf.type.core.default")) { //$NON-NLS-1$ 
-			elementType = null;
-		}
 		Command semanticCommand = getSemanticCommandSwitch(completedRequest);
-		if (elementType != null) {
-			if (semanticCommand != null) {
-				ICommand command = semanticCommand instanceof ICommandProxy ? ((ICommandProxy) semanticCommand)
-						.getICommand()
-						: new CommandProxy(semanticCommand);
-				completedRequest.setParameter(
-						WaveBaseEditHelper.EDIT_POLICY_COMMAND, command);
-			}
-			ICommand command = elementType.getEditCommand(completedRequest);
-			if (command != null) {
-				if (!(command instanceof CompositeTransactionalCommand)) {
-					TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost())
-							.getEditingDomain();
-					command = new CompositeTransactionalCommand(editingDomain,
-							command.getLabel()).compose(command);
-				}
-				semanticCommand = new ICommandProxy(command);
-			}
-		}
-		boolean shouldProceed = true;
+		semanticCommand = getEditHelperCommand(completedRequest,
+				semanticCommand);
 		if (completedRequest instanceof DestroyRequest) {
-			shouldProceed = shouldProceed((DestroyRequest) completedRequest);
+			DestroyRequest destroyRequest = (DestroyRequest) completedRequest;
+			return shouldProceed(destroyRequest) ? addDeleteViewCommand(
+					semanticCommand, destroyRequest) : null;
 		}
-		if (shouldProceed) {
-			if (completedRequest instanceof DestroyRequest) {
-				TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost())
-						.getEditingDomain();
-				Command deleteViewCommand = new ICommandProxy(
-						new DeleteCommand(editingDomain, (View) getHost()
-								.getModel()));
-				semanticCommand = semanticCommand == null ? deleteViewCommand
-						: semanticCommand.chain(deleteViewCommand);
+		return semanticCommand;
+	}
+
+	/**
+	 * @generated
+	 */
+	protected Command addDeleteViewCommand(Command mainCommand,
+			DestroyRequest completedRequest) {
+		Command deleteViewCommand = getGEFWrapper(new DeleteCommand(
+				getEditingDomain(), (View) getHost().getModel()));
+		return mainCommand == null ? deleteViewCommand : mainCommand
+				.chain(deleteViewCommand);
+	}
+
+	/**
+	 * @generated
+	 */
+	private Command getEditHelperCommand(IEditCommandRequest request,
+			Command editPolicyCommand) {
+		if (editPolicyCommand != null) {
+			ICommand command = editPolicyCommand instanceof ICommandProxy ? ((ICommandProxy) editPolicyCommand)
+					.getICommand()
+					: new CommandProxy(editPolicyCommand);
+			request.setParameter(WaveBaseEditHelper.EDIT_POLICY_COMMAND,
+					command);
+		}
+		IElementType requestContextElementType = getContextElementType(request);
+		request.setParameter(WaveBaseEditHelper.CONTEXT_ELEMENT_TYPE,
+				requestContextElementType);
+		ICommand command = requestContextElementType.getEditCommand(request);
+		request.setParameter(WaveBaseEditHelper.EDIT_POLICY_COMMAND, null);
+		request.setParameter(WaveBaseEditHelper.CONTEXT_ELEMENT_TYPE, null);
+		if (command != null) {
+			if (!(command instanceof CompositeTransactionalCommand)) {
+				command = new CompositeTransactionalCommand(getEditingDomain(),
+						command.getLabel()).compose(command);
 			}
-			return semanticCommand;
+			return new ICommandProxy(command);
 		}
-		return null;
+		return editPolicyCommand;
+	}
+
+	/**
+	 * @generated
+	 */
+	private IElementType getContextElementType(IEditCommandRequest request) {
+		IElementType requestContextElementType = WaveElementTypes
+				.getElementType(getVisualID(request));
+		return requestContextElementType != null ? requestContextElementType
+				: myElementType;
 	}
 
 	/**
@@ -285,22 +303,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
-	 * @deprecated use getGEFWrapper() instead
-	 * @generated
-	 */
-	protected final Command getMSLWrapper(ICommand cmd) {
-		// XXX deprecated: use getGEFWrapper() instead
-		return getGEFWrapper(cmd);
-	}
-
-	/**
-	 * @generated
-	 */
-	protected EObject getSemanticElement() {
-		return ViewUtil.resolveSemanticElement((View) getHost().getModel());
-	}
-
-	/**
 	 * Returns editing domain from the host edit part.
 	 * 
 	 * @generated
@@ -310,51 +312,18 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	}
 
 	/**
-	 * Creates command to destroy the link.
-	 * 
+	 * Clean all shortcuts to the host element from the same diagram
 	 * @generated
 	 */
-	protected Command getDestroyElementCommand(View view) {
-		EditPart editPart = (EditPart) getHost().getViewer()
-				.getEditPartRegistry().get(view);
-		DestroyElementRequest request = new DestroyElementRequest(
-				getEditingDomain(), false);
-		return editPart.getCommand(new EditCommandRequestWrapper(request,
-				Collections.EMPTY_MAP));
-	}
-
-	/**
-	 * Creates commands to destroy all host incoming and outgoing links.
-	 * 
-	 * @generated
-	 */
-	protected CompoundCommand getDestroyEdgesCommand() {
-		CompoundCommand cmd = new CompoundCommand();
-		View view = (View) getHost().getModel();
-		for (Iterator it = view.getSourceEdges().iterator(); it.hasNext();) {
-			cmd.add(getDestroyElementCommand((Edge) it.next()));
-		}
-		for (Iterator it = view.getTargetEdges().iterator(); it.hasNext();) {
-			cmd.add(getDestroyElementCommand((Edge) it.next()));
-		}
-		return cmd;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected void addDestroyShortcutsCommand(CompoundCommand command) {
-		View view = (View) getHost().getModel();
-		if (view.getEAnnotation("Shortcut") != null) { //$NON-NLS-1$
-			return;
-		}
+	protected void addDestroyShortcutsCommand(ICompositeCommand cmd, View view) {
+		assert view.getEAnnotation("Shortcut") == null; //$NON-NLS-1$
 		for (Iterator it = view.getDiagram().getChildren().iterator(); it
 				.hasNext();) {
 			View nextView = (View) it.next();
 			if (nextView.getEAnnotation("Shortcut") == null || !nextView.isSetElement() || nextView.getElement() != view.getElement()) { //$NON-NLS-1$
 				continue;
 			}
-			command.add(getDestroyElementCommand(nextView));
+			cmd.add(new DeleteCommand(getEditingDomain(), nextView));
 		}
 	}
 
@@ -441,6 +410,7 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 					return false;
 				}
 			}
+
 			return canExistModelMemberDocs_4015(source, target);
 		}
 
@@ -476,7 +446,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 */
 		public static boolean canExistDependencyRelationship_3001(
 				Package container, ModelMember source, ModelMember target) {
-
 			return true;
 		}
 
@@ -485,7 +454,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 */
 		public static boolean canExistInheritanceRelationship_3002(
 				Package container, Classifier source, Classifier target) {
-
 			return true;
 		}
 
@@ -494,7 +462,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 */
 		public static boolean canExistRealizationRelationship_3003(
 				Package container, Class source, Interface target) {
-
 			return true;
 		}
 
@@ -503,7 +470,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 */
 		public static boolean canExistAssociationRelationship_3004(
 				Package container, OOPClassifier source, OOPClassifier target) {
-
 			return true;
 		}
 
@@ -513,7 +479,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		public static boolean canExistActionToViewTransition_3005(
 				Controller container, Action source,
 				de.gulden.modeling.wave.View target) {
-
 			return true;
 		}
 
@@ -522,7 +487,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		 */
 		public static boolean canExistModelMemberDocs_4015(ModelMember source,
 				Documentation target) {
-
 			return true;
 		}
 
@@ -532,7 +496,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		public static boolean canExistViewTransition_4013(Controller container,
 				ControllerMemberExecutable source,
 				ControllerMemberExecutable target) {
-
 			return true;
 		}
 

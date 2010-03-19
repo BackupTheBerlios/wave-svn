@@ -34,75 +34,42 @@ public class ModelItemSemanticEditPolicy extends WaveBaseItemSemanticEditPolicy 
 	/**
 	 * @generated
 	 */
+	public ModelItemSemanticEditPolicy() {
+		super(WaveElementTypes.Model_1000);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (WaveElementTypes.Class_2017 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new ClassCreateCommand(req));
 		}
 		if (WaveElementTypes.Interface_2018 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new InterfaceCreateCommand(req));
 		}
 		if (WaveElementTypes.Controller_2026 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new ControllerCreateCommand(req));
 		}
 		if (WaveElementTypes.Include_2020 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new IncludeCreateCommand(req));
 		}
 		if (WaveElementTypes.Package_2021 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new PackageCreateCommand(req));
 		}
 		if (WaveElementTypes.Documentation_2013 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getModel_Documentation());
-			}
 			return getGEFWrapper(new DocumentationCreateCommand(req));
 		}
 		if (WaveElementTypes.StyleSheet_2022 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new StyleSheetCreateCommand(req));
 		}
 		if (WaveElementTypes.UsecaseSubsystem_2023 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new UsecaseSubsystemCreateCommand(req));
 		}
 		if (WaveElementTypes.Actor_2024 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new ActorCreateCommand(req));
 		}
 		if (WaveElementTypes.Usecase_2025 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new UsecaseCreateCommand(req));
 		}
 		return super.getCreateCommand(req);

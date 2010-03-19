@@ -36,6 +36,13 @@ public class InheritanceRelationshipItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public InheritanceRelationshipItemSemanticEditPolicy() {
+		super(WaveElementTypes.InheritanceRelationship_3002);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		return getGEFWrapper(new DestroyElementCommand(req));
 	}

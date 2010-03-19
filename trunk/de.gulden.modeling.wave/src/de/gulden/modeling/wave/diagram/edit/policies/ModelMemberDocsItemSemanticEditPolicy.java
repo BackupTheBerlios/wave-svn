@@ -9,12 +9,20 @@ package de.gulden.modeling.wave.diagram.edit.policies;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyReferenceCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyReferenceRequest;
+import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 
 /**
  * @generated
  */
 public class ModelMemberDocsItemSemanticEditPolicy extends
 		WaveBaseItemSemanticEditPolicy {
+
+	/**
+	 * @generated
+	 */
+	public ModelMemberDocsItemSemanticEditPolicy() {
+		super(WaveElementTypes.ModelMemberDocs_4015);
+	}
 
 	/**
 	 * @generated

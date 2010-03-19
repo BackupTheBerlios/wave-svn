@@ -273,87 +273,99 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Model_1000_links,
 					"icons/linksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view), ClassEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					DocumentationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(DocumentationEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					RealizationRelationshipEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(RealizationRelationshipEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					ActionToViewTransitionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(ActionToViewTransitionEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
 			connectedViews = getDiagramLinksByType(Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			links
 					.addChildren(createNavigatorItems(connectedViews, links,
 							false));
@@ -372,76 +384,78 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Class_2017_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					ClassClassAttributesCompartmentEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassClassAttributesCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					ClassClassOperationsCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ClassClassOperationsCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					RealizationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(RealizationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -461,71 +475,72 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 			WaveNavigatorGroup outgoinglinks = new WaveNavigatorGroup(
 					Messages.NavigatorGroupName_Interface_2018_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					InterfaceInterfaceOperationsCompartmentEditPart.VISUAL_ID);
+			Collection connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(InterfaceInterfaceOperationsCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					RealizationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(RealizationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -545,74 +560,81 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 			WaveNavigatorGroup outgoinglinks = new WaveNavigatorGroup(
 					Messages.NavigatorGroupName_Controller_2026_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					ControllerPageParametersCompartmentEditPart.VISUAL_ID);
+			Collection connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ControllerPageParametersCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					ControllerPageActionsCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ControllerPageActionsCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					ControllerPageViewsCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ControllerPageViewsCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					ControllerPageFunctionsCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ControllerPageFunctionsCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -633,47 +655,48 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Include_2020_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -694,63 +717,69 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Package_2021_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					PackagePackageCompartmentEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(PackagePackageCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackagePackageCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(PackagePackageCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackagePackageCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(PackagePackageCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackagePackageCompartmentEditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(PackagePackageCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -768,7 +797,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Documentation_2013_incominglinks,
 					"icons/incomingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), ModelMemberDocsEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -786,47 +816,48 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_StyleSheet_2022_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -847,37 +878,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_UsecaseSubsystem_2023_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -898,57 +930,58 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Actor_2024_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -969,57 +1002,58 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Usecase_2025_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1040,37 +1074,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Attribute_2001_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1091,37 +1126,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Operation_2002_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1142,37 +1178,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Operation_2003_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1193,37 +1230,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Attribute_2004_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1243,61 +1281,62 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 			WaveNavigatorGroup outgoinglinks = new WaveNavigatorGroup(
 					Messages.NavigatorGroupName_Action_13006_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					ActionActionOperationCompartmentEditPart.VISUAL_ID);
+			Collection connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ActionActionOperationCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ActionToViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ActionToViewTransitionEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1318,37 +1357,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Operation_13008_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1369,66 +1409,67 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_View_13007_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					ViewViewOperationCompartmentEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ViewViewOperationCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getChildrenByType(Collections.singleton(view),
-					ViewViewAreaCompartmentEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(ViewViewAreaCompartmentEditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					ActionToViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ActionToViewTransitionEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1449,37 +1490,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Operation_13009_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1500,42 +1542,43 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Area_13001_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view), View2EditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(View2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1556,66 +1599,68 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_View_13002_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					ViewViewOperationCompartment2EditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ViewViewOperationCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					ViewViewAreaCompartment2EditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ViewViewAreaCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					ActionToViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ActionToViewTransitionEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ViewTransitionEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ViewTransitionEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1636,37 +1681,38 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Operation_2009_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1686,77 +1732,80 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 			WaveNavigatorGroup outgoinglinks = new WaveNavigatorGroup(
 					Messages.NavigatorGroupName_Class_13003_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					ClassClassAttributesCompartment2EditPart.VISUAL_ID);
+			Collection connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ClassClassAttributesCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					ClassClassOperationsCompartment2EditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(ClassClassOperationsCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					RealizationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(RealizationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1776,71 +1825,72 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 			WaveNavigatorGroup outgoinglinks = new WaveNavigatorGroup(
 					Messages.NavigatorGroupName_Interface_13004_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
-			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					InterfaceInterfaceOperationsCompartment2EditPart.VISUAL_ID);
+			Collection connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(InterfaceInterfaceOperationsCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					RealizationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(RealizationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					AssociationRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(AssociationRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1861,63 +1911,69 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Package_13005_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getChildrenByType(Collections
-					.singleton(view),
-					PackagePackageCompartment2EditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(PackagePackageCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackagePackageCompartment2EditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(PackagePackageCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackagePackageCompartment2EditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(PackagePackageCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
-			connectedViews = getChildrenByType(Collections.singleton(view),
-					PackagePackageCompartment2EditPart.VISUAL_ID);
+			connectedViews = getChildrenByType(
+					Collections.singleton(view),
+					WaveVisualIDRegistry
+							.getType(PackagePackageCompartment2EditPart.VISUAL_ID));
 			connectedViews = getChildrenByType(connectedViews,
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			result.addAll(createNavigatorItems(connectedViews, parentElement,
 					false));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1938,47 +1994,48 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_Include_13010_outgoinglinks,
 					"icons/outgoingLinksNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getIncomingLinksByType(Collections
-					.singleton(view), DependencyRelationshipEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					InheritanceRelationshipEditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(InheritanceRelationshipEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					ModelMemberDocsEditPart.VISUAL_ID);
-			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
-					outgoinglinks, true));
-			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
-			incominglinks.addChildren(createNavigatorItems(connectedViews,
-					incominglinks, true));
-			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship2EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(ModelMemberDocsEditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			connectedViews = getIncomingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
 			incominglinks.addChildren(createNavigatorItems(connectedViews,
 					incominglinks, true));
 			connectedViews = getOutgoingLinksByType(
-					Collections.singleton(view),
-					DependencyRelationship3EditPart.VISUAL_ID);
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship2EditPart.VISUAL_ID));
+			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
+					outgoinglinks, true));
+			connectedViews = getIncomingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
+			incominglinks.addChildren(createNavigatorItems(connectedViews,
+					incominglinks, true));
+			connectedViews = getOutgoingLinksByType(
+					Collections.singleton(view), WaveVisualIDRegistry
+							.getType(DependencyRelationship3EditPart.VISUAL_ID));
 			outgoinglinks.addChildren(createNavigatorItems(connectedViews,
 					outgoinglinks, true));
 			if (!incominglinks.isEmpty()) {
@@ -1999,195 +2056,198 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_DependencyRelationship_3001_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ClassEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2208,83 +2268,84 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_InheritanceRelationship_3002_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ClassEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2305,19 +2366,20 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_RealizationRelationship_3003_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), InterfaceEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(InterfaceEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2338,51 +2400,52 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_AssociationRelationship_3004_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ClassEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2403,15 +2466,16 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_ActionToViewTransition_3005_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ViewEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ViewEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2432,103 +2496,105 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_ModelMemberDocs_4015_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), DocumentationEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(DocumentationEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2549,27 +2615,28 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_ViewTransition_4013_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ActionEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ActionEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2590,195 +2657,198 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_DependencyRelationship_4016_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ClassEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -2799,195 +2869,198 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 					Messages.NavigatorGroupName_DependencyRelationship_4017_source,
 					"icons/linkSourceNavigatorGroup.gif", parentElement); //$NON-NLS-1$
 			Collection connectedViews = getLinksTargetByType(Collections
-					.singleton(view), ClassEditPart.VISUAL_ID);
+					.singleton(view), WaveVisualIDRegistry
+					.getType(ClassEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksTargetByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			target.addChildren(createNavigatorItems(connectedViews, target,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ClassEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ClassEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					InterfaceEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(InterfaceEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ControllerEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					IncludeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(IncludeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					PackageEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(PackageEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					StyleSheetEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseSubsystemEditPart.VISUAL_ID);
+					WaveVisualIDRegistry
+							.getType(UsecaseSubsystemEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActorEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActorEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					UsecaseEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(UsecaseEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AttributeEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					OperationEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Attribute2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ActionEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ActionEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation3EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					ViewEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(ViewEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation4EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					AreaEditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(AreaEditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					View2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(View2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Operation5EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Class2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Class2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Interface2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Package2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Package2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			connectedViews = getLinksSourceByType(Collections.singleton(view),
-					Include2EditPart.VISUAL_ID);
+					WaveVisualIDRegistry.getType(Include2EditPart.VISUAL_ID));
 			source.addChildren(createNavigatorItems(connectedViews, source,
 					true));
 			if (!target.isEmpty()) {
@@ -3005,9 +3078,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getLinksSourceByType(Collection edges, int visualID) {
+	private Collection getLinksSourceByType(Collection edges, String type) {
 		Collection result = new ArrayList();
-		String type = WaveVisualIDRegistry.getType(visualID);
 		for (Iterator it = edges.iterator(); it.hasNext();) {
 			Edge nextEdge = (Edge) it.next();
 			View nextEdgeSource = nextEdge.getSource();
@@ -3022,9 +3094,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getLinksTargetByType(Collection edges, int visualID) {
+	private Collection getLinksTargetByType(Collection edges, String type) {
 		Collection result = new ArrayList();
-		String type = WaveVisualIDRegistry.getType(visualID);
 		for (Iterator it = edges.iterator(); it.hasNext();) {
 			Edge nextEdge = (Edge) it.next();
 			View nextEdgeTarget = nextEdge.getTarget();
@@ -3039,9 +3110,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getOutgoingLinksByType(Collection nodes, int visualID) {
+	private Collection getOutgoingLinksByType(Collection nodes, String type) {
 		Collection result = new ArrayList();
-		String type = WaveVisualIDRegistry.getType(visualID);
 		for (Iterator it = nodes.iterator(); it.hasNext();) {
 			View nextNode = (View) it.next();
 			result.addAll(selectViewsByType(nextNode.getSourceEdges(), type));
@@ -3052,9 +3122,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getIncomingLinksByType(Collection nodes, int visualID) {
+	private Collection getIncomingLinksByType(Collection nodes, String type) {
 		Collection result = new ArrayList();
-		String type = WaveVisualIDRegistry.getType(visualID);
 		for (Iterator it = nodes.iterator(); it.hasNext();) {
 			View nextNode = (View) it.next();
 			result.addAll(selectViewsByType(nextNode.getTargetEdges(), type));
@@ -3065,9 +3134,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getChildrenByType(Collection nodes, int visualID) {
+	private Collection getChildrenByType(Collection nodes, String type) {
 		Collection result = new ArrayList();
-		String type = WaveVisualIDRegistry.getType(visualID);
 		for (Iterator it = nodes.iterator(); it.hasNext();) {
 			View nextNode = (View) it.next();
 			result.addAll(selectViewsByType(nextNode.getChildren(), type));
@@ -3078,9 +3146,8 @@ public class WaveNavigatorContentProvider implements ICommonContentProvider {
 	/**
 	 * @generated
 	 */
-	private Collection getDiagramLinksByType(Collection diagrams, int visualID) {
+	private Collection getDiagramLinksByType(Collection diagrams, String type) {
 		Collection result = new ArrayList();
-		String type = WaveVisualIDRegistry.getType(visualID);
 		for (Iterator it = diagrams.iterator(); it.hasNext();) {
 			Diagram nextDiagram = (Diagram) it.next();
 			result.addAll(selectViewsByType(nextDiagram.getEdges(), type));

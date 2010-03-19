@@ -55,6 +55,7 @@ import org.eclipse.swt.graphics.Image;
 import de.gulden.modeling.wave.diagram.edit.policies.AttributeItemSemanticEditPolicy;
 import de.gulden.modeling.wave.diagram.edit.policies.WaveTextNonResizableEditPolicy;
 import de.gulden.modeling.wave.diagram.edit.policies.WaveTextSelectionEditPolicy;
+import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 import de.gulden.modeling.wave.diagram.providers.WaveParserProvider;
 
@@ -231,6 +232,10 @@ public class AttributeEditPart extends ClassifierMemberEditPartBase implements
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
 			((WaveTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
 		}
+		Object sfEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);
+		if (sfEditPolicy instanceof WaveTextSelectionEditPolicy) {
+			((WaveTextSelectionEditPolicy) sfEditPolicy).refreshFeedback();
+		}
 	}
 
 	/**
@@ -308,11 +313,12 @@ public class AttributeEditPart extends ClassifierMemberEditPartBase implements
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			String parserHint = ((View) getModel()).getType();
-			IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-					WaveElementTypes.Attribute_2001, getParserElement(),
-					parserHint);
-			parser = ParserService.getInstance().getParser(hintAdapter);
+			parser = WaveParserProvider
+					.getParser(
+							WaveElementTypes.Attribute_2001,
+							getParserElement(),
+							WaveVisualIDRegistry
+									.getType(de.gulden.modeling.wave.diagram.edit.parts.AttributeEditPart.VISUAL_ID));
 		}
 		return parser;
 	}
@@ -419,6 +425,10 @@ public class AttributeEditPart extends ClassifierMemberEditPartBase implements
 		Object pdEditPolicy = getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
 			((WaveTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
+		}
+		Object sfEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);
+		if (sfEditPolicy instanceof WaveTextSelectionEditPolicy) {
+			((WaveTextSelectionEditPolicy) sfEditPolicy).refreshFeedback();
 		}
 	}
 

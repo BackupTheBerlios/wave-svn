@@ -10,6 +10,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
+import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -400,227 +401,206 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getClass_2017Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Class_2017, (view.getElement() != null ? view
-						.getElement() : view), WaveVisualIDRegistry
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Class_2017, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
 						.getType(ClassNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5019); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getInterface_2018Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Interface_2018,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(InterfaceNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5020); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getController_2026Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Controller_2026,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(ControllerNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5033); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getInclude_2020Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Include_2020,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry.getType(IncludeNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Include_2020, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
+						.getType(IncludeNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5022); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getPackage_2021Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Package_2021,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry.getType(PackageNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Package_2021, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
+						.getType(PackageNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5023); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getDocumentation_2013Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Documentation_2013,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry
 						.getType(DocumentationTextEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5013); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getStyleSheet_2022Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.StyleSheet_2022,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(StyleSheetNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5024); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getUsecaseSubsystem_2023Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.UsecaseSubsystem_2023,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry
 						.getType(UsecaseSubsystemNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5025); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getActor_2024Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Actor_2024, (view.getElement() != null ? view
-						.getElement() : view), WaveVisualIDRegistry
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Actor_2024, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
 						.getType(ActorNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5026); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getUsecase_2025Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Usecase_2025,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry.getType(UsecaseTextEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Usecase_2025, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
+						.getType(UsecaseTextEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5027); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getAttribute_2001Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Attribute_2001,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(AttributeEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 2001); //$NON-NLS-1$
@@ -632,15 +612,14 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getOperation_2002Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Operation_2002,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(OperationEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 2002); //$NON-NLS-1$
@@ -652,15 +631,14 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getOperation_2003Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Operation_2003,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 2003); //$NON-NLS-1$
@@ -672,15 +650,14 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAttribute_2004Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Attribute_2004,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 2004); //$NON-NLS-1$
@@ -692,36 +669,33 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAction_13006Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Action_13006,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry.getType(ActionNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Action_13006, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
+						.getType(ActionNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5031); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getOperation_13008Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Operation_13008,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 13008); //$NON-NLS-1$
@@ -733,36 +707,33 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getView_13007Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.View_13007, (view.getElement() != null ? view
-						.getElement() : view), WaveVisualIDRegistry
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.View_13007, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
 						.getType(ViewNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5032); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getOperation_13009Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Operation_13009,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 13009); //$NON-NLS-1$
@@ -788,36 +759,33 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getView_13002Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.View_13002, (view.getElement() != null ? view
-						.getElement() : view), WaveVisualIDRegistry
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.View_13002, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
 						.getType(ViewName2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5018); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getOperation_2009Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Operation_2009,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 2009); //$NON-NLS-1$
@@ -829,106 +797,97 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getClass_13003Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.Class_13003, (view.getElement() != null ? view
-						.getElement() : view), WaveVisualIDRegistry
+		IParser parser = WaveParserProvider.getParser(
+				WaveElementTypes.Class_13003, view.getElement() != null ? view
+						.getElement() : view, WaveVisualIDRegistry
 						.getType(ClassName2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5028); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getInterface_13004Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Interface_13004,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(InterfaceName2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5029); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getPackage_13005Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Package_13005,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(PackageName2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5030); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getInclude_13010Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.Include_13010,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry.getType(IncludeName2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 5034); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getDependencyRelationship_3001Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.DependencyRelationship_3001,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry
-						.getType(DependencyRelationshipStereotypeEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider
+				.getParser(
+						WaveElementTypes.DependencyRelationship_3001,
+						view.getElement() != null ? view.getElement() : view,
+						WaveVisualIDRegistry
+								.getType(DependencyRelationshipStereotypeEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 6003); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
@@ -965,44 +924,42 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getAssociationRelationship_3004Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.AssociationRelationship_3004, (view
-						.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry
-						.getType(AssociationRelationshipNameEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider
+				.getParser(
+						WaveElementTypes.AssociationRelationship_3004,
+						view.getElement() != null ? view.getElement() : view,
+						WaveVisualIDRegistry
+								.getType(AssociationRelationshipNameEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 4008); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getActionToViewTransition_3005Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.ActionToViewTransition_3005,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry
-						.getType(ActionToViewTransitionConditionEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider
+				.getParser(
+						WaveElementTypes.ActionToViewTransition_3005,
+						view.getElement() != null ? view.getElement() : view,
+						WaveVisualIDRegistry
+								.getType(ActionToViewTransitionConditionEditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 4011); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
@@ -1016,80 +973,76 @@ public class WaveNavigatorLabelProvider extends LabelProvider implements
 	 * @generated
 	 */
 	private String getViewTransition_4013Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
+		IParser parser = WaveParserProvider.getParser(
 				WaveElementTypes.ViewTransition_4013,
-				(view.getElement() != null ? view.getElement() : view),
+				view.getElement() != null ? view.getElement() : view,
 				WaveVisualIDRegistry
 						.getType(ViewTransitionConditionEditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 6002); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getDependencyRelationship_4016Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.DependencyRelationship_4016,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry
-						.getType(DependencyRelationshipStereotype2EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider
+				.getParser(
+						WaveElementTypes.DependencyRelationship_4016,
+						view.getElement() != null ? view.getElement() : view,
+						WaveVisualIDRegistry
+								.getType(DependencyRelationshipStereotype2EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 6004); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getDependencyRelationship_4017Text(View view) {
-		IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-				WaveElementTypes.DependencyRelationship_4017,
-				(view.getElement() != null ? view.getElement() : view),
-				WaveVisualIDRegistry
-						.getType(DependencyRelationshipStereotype3EditPart.VISUAL_ID));
-		IParser parser = ParserService.getInstance().getParser(hintAdapter);
-
+		IParser parser = WaveParserProvider
+				.getParser(
+						WaveElementTypes.DependencyRelationship_4017,
+						view.getElement() != null ? view.getElement() : view,
+						WaveVisualIDRegistry
+								.getType(DependencyRelationshipStereotype3EditPart.VISUAL_ID));
 		if (parser != null) {
-			return parser.getPrintString(hintAdapter, ParserOptions.NONE
-					.intValue());
+			return parser.getPrintString(new EObjectAdapter(
+					view.getElement() != null ? view.getElement() : view),
+					ParserOptions.NONE.intValue());
 		} else {
 			WaveDiagramEditorPlugin.getInstance().logError(
 					"Parser was not found for label " + 6005); //$NON-NLS-1$
 			return ""; //$NON-NLS-1$
 		}
-
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getUnknownElementText(View view) {
-		return "<UnknownElement Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$ //$NON-NLS-2$
+		return "<UnknownElement Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$  //$NON-NLS-2$
 	}
 
 	/**
 	 * @generated
 	 */
 	private String getUnresolvedDomainElementProxyText(View view) {
-		return "<Unresolved domain element Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$ //$NON-NLS-2$
+		return "<Unresolved domain element Visual_ID = " + view.getType() + ">"; //$NON-NLS-1$  //$NON-NLS-2$
 	}
 
 	/**

@@ -6,14 +6,18 @@
  */
 package de.gulden.modeling.wave.diagram.edit.policies;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
+import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
+import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 
+import org.eclipse.gmf.runtime.notation.View;
 import de.gulden.modeling.wave.diagram.edit.commands.DependencyRelationship2CreateCommand;
 import de.gulden.modeling.wave.diagram.edit.commands.DependencyRelationship2ReorientCommand;
 import de.gulden.modeling.wave.diagram.edit.commands.DependencyRelationship3CreateCommand;
@@ -37,108 +41,28 @@ public class OperationItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public OperationItemSemanticEditPolicy() {
+		super(WaveElementTypes.Operation_2002);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
-		CompoundCommand cc = getDestroyEdgesCommand();
-		addDestroyShortcutsCommand(cc);
-		cc.add(getGEFWrapper(new DestroyElementCommand(req)));
-		return cc.unwrap();
-	}
-
-	/**
-	 * @generated
-	 */
-	protected Command getCreateRelationshipCommand(CreateRelationshipRequest req) {
-		Command command = req.getTarget() == null ? getStartCreateRelationshipCommand(req)
-				: getCompleteCreateRelationshipCommand(req);
-		return command != null ? command : super
-				.getCreateRelationshipCommand(req);
-	}
-
-	/**
-	 * @generated
-	 */
-	protected Command getStartCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (WaveElementTypes.DependencyRelationship_3001 == req
-				.getElementType()) {
-			return getGEFWrapper(new DependencyRelationshipCreateCommand(req,
-					req.getSource(), req.getTarget()));
+		View view = (View) getHost().getModel();
+		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
+				getEditingDomain(), null);
+		cmd.setTransactionNestingEnabled(false);
+		EAnnotation annotation = view.getEAnnotation("Shortcut"); //$NON-NLS-1$
+		if (annotation == null) {
+			// there are indirectly referenced children, need extra commands: false
+			addDestroyShortcutsCommand(cmd, view);
+			// delete host element
+			cmd.add(new DestroyElementCommand(req));
+		} else {
+			cmd.add(new DeleteCommand(getEditingDomain(), view));
 		}
-		if (WaveElementTypes.ModelMemberDocs_4015 == req.getElementType()) {
-			return getGEFWrapper(new ModelMemberDocsCreateCommand(req, req
-					.getSource(), req.getTarget()));
-		}
-		if (WaveElementTypes.DependencyRelationship_4016 == req
-				.getElementType()) {
-			return getGEFWrapper(new DependencyRelationship2CreateCommand(req,
-					req.getSource(), req.getTarget()));
-		}
-		if (WaveElementTypes.DependencyRelationship_4017 == req
-				.getElementType()) {
-			return getGEFWrapper(new DependencyRelationship3CreateCommand(req,
-					req.getSource(), req.getTarget()));
-		}
-		return null;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected Command getCompleteCreateRelationshipCommand(
-			CreateRelationshipRequest req) {
-		if (WaveElementTypes.DependencyRelationship_3001 == req
-				.getElementType()) {
-			return getGEFWrapper(new DependencyRelationshipCreateCommand(req,
-					req.getSource(), req.getTarget()));
-		}
-		if (WaveElementTypes.ModelMemberDocs_4015 == req.getElementType()) {
-			return null;
-		}
-		if (WaveElementTypes.DependencyRelationship_4016 == req
-				.getElementType()) {
-			return getGEFWrapper(new DependencyRelationship2CreateCommand(req,
-					req.getSource(), req.getTarget()));
-		}
-		if (WaveElementTypes.DependencyRelationship_4017 == req
-				.getElementType()) {
-			return getGEFWrapper(new DependencyRelationship3CreateCommand(req,
-					req.getSource(), req.getTarget()));
-		}
-		return null;
-	}
-
-	/**
-	 * Returns command to reorient EClass based link. New link target or source
-	 * should be the domain model element associated with this node.
-	 * 
-	 * @generated
-	 */
-	protected Command getReorientRelationshipCommand(
-			ReorientRelationshipRequest req) {
-		switch (getVisualID(req)) {
-		case DependencyRelationshipEditPart.VISUAL_ID:
-			return getGEFWrapper(new DependencyRelationshipReorientCommand(req));
-		case DependencyRelationship2EditPart.VISUAL_ID:
-			return getGEFWrapper(new DependencyRelationship2ReorientCommand(req));
-		case DependencyRelationship3EditPart.VISUAL_ID:
-			return getGEFWrapper(new DependencyRelationship3ReorientCommand(req));
-		}
-		return super.getReorientRelationshipCommand(req);
-	}
-
-	/**
-	 * Returns command to reorient EReference based link. New link target or source
-	 * should be the domain model element associated with this node.
-	 * 
-	 * @generated
-	 */
-	protected Command getReorientReferenceRelationshipCommand(
-			ReorientReferenceRelationshipRequest req) {
-		switch (getVisualID(req)) {
-		case ModelMemberDocsEditPart.VISUAL_ID:
-			return getGEFWrapper(new ModelMemberDocsReorientCommand(req));
-		}
-		return super.getReorientReferenceRelationshipCommand(req);
+		return getGEFWrapper(cmd.reduce());
 	}
 
 }

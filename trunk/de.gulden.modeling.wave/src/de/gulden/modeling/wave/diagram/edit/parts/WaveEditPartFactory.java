@@ -266,6 +266,7 @@ public class WaveEditPartFactory implements EditPartFactory {
 
 			case DependencyRelationshipStereotype3EditPart.VISUAL_ID:
 				return new DependencyRelationshipStereotype3EditPart(view);
+
 			}
 		}
 		return createUnrecognizedEditPart(context, model);

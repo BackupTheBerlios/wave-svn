@@ -22,12 +22,15 @@ public class ViewViewOperationCompartmentItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public ViewViewOperationCompartmentItemSemanticEditPolicy() {
+		super(WaveElementTypes.View_13007);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (WaveElementTypes.Operation_13009 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getControllerMemberExecutable_Operation());
-			}
 			return getGEFWrapper(new Operation4CreateCommand(req));
 		}
 		return super.getCreateCommand(req);

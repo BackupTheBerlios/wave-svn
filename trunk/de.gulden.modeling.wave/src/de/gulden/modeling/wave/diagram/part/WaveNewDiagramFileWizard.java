@@ -75,7 +75,8 @@ public class WaveNewDiagramFileWizard extends Wizard {
 				Messages.WaveNewDiagramFileWizard_CreationPageDescription,
 				ModelEditPart.MODEL_ID));
 		IPath filePath;
-		String fileName = domainModelURI.trimFileExtension().lastSegment();
+		String fileName = URI.decode(domainModelURI.trimFileExtension()
+				.lastSegment());
 		if (domainModelURI.isPlatformResource()) {
 			filePath = new Path(domainModelURI.trimSegments(1)
 					.toPlatformString(true));

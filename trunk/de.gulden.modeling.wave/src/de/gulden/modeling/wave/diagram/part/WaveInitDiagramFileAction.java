@@ -88,17 +88,14 @@ public class WaveInitDiagramFileAction implements IObjectActionDelegate {
 					"Unable to load resource: " + domainModelURI, ex); //$NON-NLS-1$
 		}
 		if (diagramRoot == null) {
-			MessageDialog
-					.openError(
-							getShell(),
-							Messages.WaveInitDiagramFileAction_InitDiagramFileResourceErrorDialogTitle,
-							Messages.WaveInitDiagramFileAction_InitDiagramFileResourceErrorDialogMessage);
+			MessageDialog.openError(getShell(),
+					Messages.InitDiagramFile_ResourceErrorDialogTitle,
+					Messages.InitDiagramFile_ResourceErrorDialogMessage);
 			return;
 		}
 		Wizard wizard = new WaveNewDiagramFileWizard(domainModelURI,
 				diagramRoot, editingDomain);
-		wizard.setWindowTitle(NLS.bind(
-				Messages.WaveInitDiagramFileAction_InitDiagramFileWizardTitle,
+		wizard.setWindowTitle(NLS.bind(Messages.InitDiagramFile_WizardTitle,
 				ModelEditPart.MODEL_ID));
 		WaveDiagramEditorUtil.runWizard(getShell(), wizard, "InitDiagramFile"); //$NON-NLS-1$
 	}

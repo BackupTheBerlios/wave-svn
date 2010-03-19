@@ -22,12 +22,15 @@ public class InterfaceInterfaceOperationsCompartmentItemSemanticEditPolicy
 	/**
 	 * @generated
 	 */
+	public InterfaceInterfaceOperationsCompartmentItemSemanticEditPolicy() {
+		super(WaveElementTypes.Interface_2018);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (WaveElementTypes.Operation_2003 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getClassifier_Operations());
-			}
 			return getGEFWrapper(new Operation2CreateCommand(req));
 		}
 		return super.getCreateCommand(req);

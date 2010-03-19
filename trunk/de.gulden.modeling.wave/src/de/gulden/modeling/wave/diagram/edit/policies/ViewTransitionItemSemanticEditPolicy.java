@@ -36,6 +36,13 @@ public class ViewTransitionItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public ViewTransitionItemSemanticEditPolicy() {
+		super(WaveElementTypes.ViewTransition_4013);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		return getGEFWrapper(new DestroyElementCommand(req));
 	}

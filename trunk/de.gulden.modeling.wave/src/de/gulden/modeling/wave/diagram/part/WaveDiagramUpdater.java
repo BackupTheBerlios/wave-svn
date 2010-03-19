@@ -1589,80 +1589,28 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getAttribute_2001IncomingLinks(View view) {
-		Attribute modelElement = (Attribute) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List getOperation_2002IncomingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List getOperation_2003IncomingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List getAttribute_2004IncomingLinks(View view) {
-		Attribute modelElement = (Attribute) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -1691,20 +1639,7 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getOperation_13008IncomingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -1737,20 +1672,7 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getOperation_13009IncomingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -1803,20 +1725,7 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getOperation_2009IncomingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -2272,68 +2181,28 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getAttribute_2001OutgoingLinks(View view) {
-		Attribute modelElement = (Attribute) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List getOperation_2002OutgoingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List getOperation_2003OutgoingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
 	 * @generated
 	 */
 	public static List getAttribute_2004OutgoingLinks(View view) {
-		Attribute modelElement = (Attribute) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -2361,17 +2230,7 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getOperation_13008OutgoingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -2398,17 +2257,7 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getOperation_13009OutgoingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**
@@ -2452,17 +2301,7 @@ public class WaveDiagramUpdater {
 	 * @generated
 	 */
 	public static List getOperation_2009OutgoingLinks(View view) {
-		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
-		return result;
+		return Collections.EMPTY_LIST;
 	}
 
 	/**

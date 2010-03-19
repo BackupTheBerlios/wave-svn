@@ -602,8 +602,10 @@ public class WaveDiagramContentInitializer {
 	 * @generated
 	 */
 	private void createNode(View parentView, WaveNodeDescriptor nodeDescriptor) {
+		final String nodeType = WaveVisualIDRegistry.getType(nodeDescriptor
+				.getVisualID());
 		Node node = ViewService.createNode(parentView, nodeDescriptor
-				.getModelElement(), nodeDescriptor.getType(),
+				.getModelElement(), nodeType,
 				WaveDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 		switch (nodeDescriptor.getVisualID()) {
 		case ClassEditPart.VISUAL_ID:
@@ -700,9 +702,11 @@ public class WaveDiagramContentInitializer {
 								.getDestination())) {
 					continue;
 				}
-				Edge edge = (Edge) ViewService.getInstance().createEdge(
+				final String linkType = WaveVisualIDRegistry
+						.getType(nextLinkDescriptor.getVisualID());
+				Edge edge = ViewService.getInstance().createEdge(
 						nextLinkDescriptor.getSemanticAdapter(), diagram,
-						nextLinkDescriptor.getType(), ViewUtil.APPEND,
+						linkType, ViewUtil.APPEND, true,
 						WaveDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 				if (edge != null) {
 					edge.setSource((View) myDomain2NotationMap

@@ -14,6 +14,7 @@ import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.ui.services.parser.GetParserOperation;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParserProvider;
+import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.ui.services.parser.ParserHintAdapter;
 import org.eclipse.gmf.runtime.notation.View;
@@ -70,19 +71,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getClassName_5019Parser() {
 		if (className_5019Parser == null) {
-			className_5019Parser = createClassName_5019Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			className_5019Parser = parser;
 		}
 		return className_5019Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createClassName_5019Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -95,19 +89,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getInterfaceName_5020Parser() {
 		if (interfaceName_5020Parser == null) {
-			interfaceName_5020Parser = createInterfaceName_5020Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			interfaceName_5020Parser = parser;
 		}
 		return interfaceName_5020Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createInterfaceName_5020Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -120,19 +107,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getControllerName_5033Parser() {
 		if (controllerName_5033Parser == null) {
-			controllerName_5033Parser = createControllerName_5033Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			controllerName_5033Parser = parser;
 		}
 		return controllerName_5033Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createControllerName_5033Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -145,19 +125,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getIncludeName_5022Parser() {
 		if (includeName_5022Parser == null) {
-			includeName_5022Parser = createIncludeName_5022Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			includeName_5022Parser = parser;
 		}
 		return includeName_5022Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createIncludeName_5022Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -170,19 +143,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getPackageName_5023Parser() {
 		if (packageName_5023Parser == null) {
-			packageName_5023Parser = createPackageName_5023Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getPackage_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			packageName_5023Parser = parser;
 		}
 		return packageName_5023Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createPackageName_5023Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getPackage_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -195,19 +161,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getDocumentationText_5013Parser() {
 		if (documentationText_5013Parser == null) {
-			documentationText_5013Parser = createDocumentationText_5013Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getDocumentation_Text() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			documentationText_5013Parser = parser;
 		}
 		return documentationText_5013Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createDocumentationText_5013Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getDocumentation_Text(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -220,19 +179,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getStyleSheetName_5024Parser() {
 		if (styleSheetName_5024Parser == null) {
-			styleSheetName_5024Parser = createStyleSheetName_5024Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			styleSheetName_5024Parser = parser;
 		}
 		return styleSheetName_5024Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createStyleSheetName_5024Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -245,19 +197,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getUsecaseSubsystemName_5025Parser() {
 		if (usecaseSubsystemName_5025Parser == null) {
-			usecaseSubsystemName_5025Parser = createUsecaseSubsystemName_5025Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getUsecaseSubsystem_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			usecaseSubsystemName_5025Parser = parser;
 		}
 		return usecaseSubsystemName_5025Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createUsecaseSubsystemName_5025Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getUsecaseSubsystem_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -270,19 +215,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getActorName_5026Parser() {
 		if (actorName_5026Parser == null) {
-			actorName_5026Parser = createActorName_5026Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			actorName_5026Parser = parser;
 		}
 		return actorName_5026Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createActorName_5026Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -295,19 +233,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getUsecaseText_5027Parser() {
 		if (usecaseText_5027Parser == null) {
-			usecaseText_5027Parser = createUsecaseText_5027Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getUsecase_Text() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			usecaseText_5027Parser = parser;
 		}
 		return usecaseText_5027Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createUsecaseText_5027Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getUsecase_Text(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -320,19 +251,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAttribute_2001Parser() {
 		if (attribute_2001Parser == null) {
-			attribute_2001Parser = createAttribute_2001Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			attribute_2001Parser = parser;
 		}
 		return attribute_2001Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createAttribute_2001Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -345,19 +269,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getOperation_2002Parser() {
 		if (operation_2002Parser == null) {
-			operation_2002Parser = createOperation_2002Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			operation_2002Parser = parser;
 		}
 		return operation_2002Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createOperation_2002Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -370,19 +287,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getOperation_2003Parser() {
 		if (operation_2003Parser == null) {
-			operation_2003Parser = createOperation_2003Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			operation_2003Parser = parser;
 		}
 		return operation_2003Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createOperation_2003Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -395,19 +305,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAttribute_2004Parser() {
 		if (attribute_2004Parser == null) {
-			attribute_2004Parser = createAttribute_2004Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			attribute_2004Parser = parser;
 		}
 		return attribute_2004Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createAttribute_2004Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -420,19 +323,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getActionName_5031Parser() {
 		if (actionName_5031Parser == null) {
-			actionName_5031Parser = createActionName_5031Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getControllerMember_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			actionName_5031Parser = parser;
 		}
 		return actionName_5031Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createActionName_5031Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getControllerMember_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -445,19 +341,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getOperation_13008Parser() {
 		if (operation_13008Parser == null) {
-			operation_13008Parser = createOperation_13008Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			operation_13008Parser = parser;
 		}
 		return operation_13008Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createOperation_13008Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -470,19 +359,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getViewName_5032Parser() {
 		if (viewName_5032Parser == null) {
-			viewName_5032Parser = createViewName_5032Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getControllerMember_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			viewName_5032Parser = parser;
 		}
 		return viewName_5032Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createViewName_5032Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getControllerMember_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -495,19 +377,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getOperation_13009Parser() {
 		if (operation_13009Parser == null) {
-			operation_13009Parser = createOperation_13009Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			operation_13009Parser = parser;
 		}
 		return operation_13009Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createOperation_13009Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -520,19 +395,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getViewName_5018Parser() {
 		if (viewName_5018Parser == null) {
-			viewName_5018Parser = createViewName_5018Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getControllerMember_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			viewName_5018Parser = parser;
 		}
 		return viewName_5018Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createViewName_5018Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getControllerMember_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -545,19 +413,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getOperation_2009Parser() {
 		if (operation_2009Parser == null) {
-			operation_2009Parser = createOperation_2009Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifierMember_Signature() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			operation_2009Parser = parser;
 		}
 		return operation_2009Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createOperation_2009Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifierMember_Signature(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -570,19 +431,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getClassName_5028Parser() {
 		if (className_5028Parser == null) {
-			className_5028Parser = createClassName_5028Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			className_5028Parser = parser;
 		}
 		return className_5028Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createClassName_5028Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -595,19 +449,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getInterfaceName_5029Parser() {
 		if (interfaceName_5029Parser == null) {
-			interfaceName_5029Parser = createInterfaceName_5029Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			interfaceName_5029Parser = parser;
 		}
 		return interfaceName_5029Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createInterfaceName_5029Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -620,19 +467,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getPackageName_5030Parser() {
 		if (packageName_5030Parser == null) {
-			packageName_5030Parser = createPackageName_5030Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getPackage_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			packageName_5030Parser = parser;
 		}
 		return packageName_5030Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createPackageName_5030Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getPackage_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -645,19 +485,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getIncludeName_5034Parser() {
 		if (includeName_5034Parser == null) {
-			includeName_5034Parser = createIncludeName_5034Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getClassifier_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			includeName_5034Parser = parser;
 		}
 		return includeName_5034Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createIncludeName_5034Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getClassifier_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -670,19 +503,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getDependencyRelationshipStereotype_6003Parser() {
 		if (dependencyRelationshipStereotype_6003Parser == null) {
-			dependencyRelationshipStereotype_6003Parser = createDependencyRelationshipStereotype_6003Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getModelMember_Stereotype() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dependencyRelationshipStereotype_6003Parser = parser;
 		}
 		return dependencyRelationshipStereotype_6003Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createDependencyRelationshipStereotype_6003Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getModelMember_Stereotype(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -695,19 +521,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAssociationRelationshipName_4008Parser() {
 		if (associationRelationshipName_4008Parser == null) {
-			associationRelationshipName_4008Parser = createAssociationRelationshipName_4008Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getAssociationRelationship_Name() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			associationRelationshipName_4008Parser = parser;
 		}
 		return associationRelationshipName_4008Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createAssociationRelationshipName_4008Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getAssociationRelationship_Name(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -720,19 +539,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAssociationRelationshipMultiplicityA_4009Parser() {
 		if (associationRelationshipMultiplicityA_4009Parser == null) {
-			associationRelationshipMultiplicityA_4009Parser = createAssociationRelationshipMultiplicityA_4009Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getAssociationRelationship_MultiplicityA() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			associationRelationshipMultiplicityA_4009Parser = parser;
 		}
 		return associationRelationshipMultiplicityA_4009Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createAssociationRelationshipMultiplicityA_4009Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getAssociationRelationship_MultiplicityA(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -745,19 +557,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getAssociationRelationshipMultiplicityB_4010Parser() {
 		if (associationRelationshipMultiplicityB_4010Parser == null) {
-			associationRelationshipMultiplicityB_4010Parser = createAssociationRelationshipMultiplicityB_4010Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getAssociationRelationship_MultiplicityB() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			associationRelationshipMultiplicityB_4010Parser = parser;
 		}
 		return associationRelationshipMultiplicityB_4010Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createAssociationRelationshipMultiplicityB_4010Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getAssociationRelationship_MultiplicityB(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -770,19 +575,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getActionToViewTransitionCondition_4011Parser() {
 		if (actionToViewTransitionCondition_4011Parser == null) {
-			actionToViewTransitionCondition_4011Parser = createActionToViewTransitionCondition_4011Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getTransition_Condition() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			actionToViewTransitionCondition_4011Parser = parser;
 		}
 		return actionToViewTransitionCondition_4011Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createActionToViewTransitionCondition_4011Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getTransition_Condition(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -795,19 +593,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getViewTransitionCondition_6002Parser() {
 		if (viewTransitionCondition_6002Parser == null) {
-			viewTransitionCondition_6002Parser = createViewTransitionCondition_6002Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getTransition_Condition() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			viewTransitionCondition_6002Parser = parser;
 		}
 		return viewTransitionCondition_6002Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createViewTransitionCondition_6002Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getTransition_Condition(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -820,19 +611,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getDependencyRelationshipStereotype_6004Parser() {
 		if (dependencyRelationshipStereotype_6004Parser == null) {
-			dependencyRelationshipStereotype_6004Parser = createDependencyRelationshipStereotype_6004Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getModelMember_Stereotype() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dependencyRelationshipStereotype_6004Parser = parser;
 		}
 		return dependencyRelationshipStereotype_6004Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createDependencyRelationshipStereotype_6004Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getModelMember_Stereotype(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -845,19 +629,12 @@ public class WaveParserProvider extends AbstractProvider implements
 	 */
 	private IParser getDependencyRelationshipStereotype_6005Parser() {
 		if (dependencyRelationshipStereotype_6005Parser == null) {
-			dependencyRelationshipStereotype_6005Parser = createDependencyRelationshipStereotype_6005Parser();
+			EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
+					.getModelMember_Stereotype() };
+			MessageFormatParser parser = new MessageFormatParser(features);
+			dependencyRelationshipStereotype_6005Parser = parser;
 		}
 		return dependencyRelationshipStereotype_6005Parser;
-	}
-
-	/**
-	 * @generated
-	 */
-	protected IParser createDependencyRelationshipStereotype_6005Parser() {
-		EAttribute[] features = new EAttribute[] { WavePackage.eINSTANCE
-				.getModelMember_Stereotype(), };
-		MessageFormatParser parser = new MessageFormatParser(features);
-		return parser;
 	}
 
 	/**
@@ -934,6 +711,16 @@ public class WaveParserProvider extends AbstractProvider implements
 	}
 
 	/**
+	 * Utility method that consults ParserService
+	 * @generated
+	 */
+	public static IParser getParser(IElementType type, EObject object,
+			String parserHint) {
+		return ParserService.getInstance().getParser(
+				new HintAdapter(type, object, parserHint));
+	}
+
+	/**
 	 * @generated
 	 */
 	public IParser getParser(IAdaptable hint) {
@@ -965,7 +752,7 @@ public class WaveParserProvider extends AbstractProvider implements
 	/**
 	 * @generated
 	 */
-	public static class HintAdapter extends ParserHintAdapter {
+	private static class HintAdapter extends ParserHintAdapter {
 
 		/**
 		 * @generated

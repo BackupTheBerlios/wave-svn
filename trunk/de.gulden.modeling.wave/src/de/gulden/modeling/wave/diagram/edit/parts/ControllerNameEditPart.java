@@ -23,6 +23,7 @@ import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.editpolicies.NonResizableEditPolicy;
+import org.eclipse.gef.handles.MoveHandle;
 import org.eclipse.gef.handles.NonResizableHandleKit;
 import org.eclipse.gef.requests.DirectEditRequest;
 import org.eclipse.gef.tools.DirectEditManager;
@@ -53,6 +54,7 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 
 import de.gulden.modeling.wave.diagram.edit.policies.WaveTextSelectionEditPolicy;
+import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 import de.gulden.modeling.wave.diagram.providers.WaveParserProvider;
 
@@ -99,6 +101,8 @@ public class ControllerNameEditPart extends CompartmentEditPart implements
 	 */
 	protected void createDefaultEditPolicies() {
 		super.createDefaultEditPolicies();
+		installEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE,
+				new WaveTextSelectionEditPolicy());
 		installEditPolicy(EditPolicy.DIRECT_EDIT_ROLE,
 				new LabelDirectEditPolicy());
 		installEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE,
@@ -108,6 +112,7 @@ public class ControllerNameEditPart extends CompartmentEditPart implements
 						List handles = new ArrayList();
 						NonResizableHandleKit.addMoveHandle(
 								(GraphicalEditPart) getHost(), handles);
+						((MoveHandle) handles.get(0)).setBorder(null);
 						return handles;
 					}
 
@@ -234,6 +239,10 @@ public class ControllerNameEditPart extends CompartmentEditPart implements
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
 			((WaveTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
 		}
+		Object sfEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);
+		if (sfEditPolicy instanceof WaveTextSelectionEditPolicy) {
+			((WaveTextSelectionEditPolicy) sfEditPolicy).refreshFeedback();
+		}
 	}
 
 	/**
@@ -311,11 +320,12 @@ public class ControllerNameEditPart extends CompartmentEditPart implements
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			String parserHint = ((View) getModel()).getType();
-			IAdaptable hintAdapter = new WaveParserProvider.HintAdapter(
-					WaveElementTypes.Controller_2026, getParserElement(),
-					parserHint);
-			parser = ParserService.getInstance().getParser(hintAdapter);
+			parser = WaveParserProvider
+					.getParser(
+							WaveElementTypes.Controller_2026,
+							getParserElement(),
+							WaveVisualIDRegistry
+									.getType(de.gulden.modeling.wave.diagram.edit.parts.ControllerNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}
@@ -422,6 +432,10 @@ public class ControllerNameEditPart extends CompartmentEditPart implements
 		Object pdEditPolicy = getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 		if (pdEditPolicy instanceof WaveTextSelectionEditPolicy) {
 			((WaveTextSelectionEditPolicy) pdEditPolicy).refreshFeedback();
+		}
+		Object sfEditPolicy = getEditPolicy(EditPolicy.SELECTION_FEEDBACK_ROLE);
+		if (sfEditPolicy instanceof WaveTextSelectionEditPolicy) {
+			((WaveTextSelectionEditPolicy) sfEditPolicy).refreshFeedback();
 		}
 	}
 

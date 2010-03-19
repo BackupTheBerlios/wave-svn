@@ -62,6 +62,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtend.typesystem.emf,
  org.eclipse.emf.mwe.utils;bundle-version="0.7.2",
  com.ibm.icu;bundle-version="4.0.1",
- org.eclipse.xtext.log4j;resolution:=optional
+ org.eclipse.xtext.log4j;resolution:=optional,
+ de.gulden.modeling.wave;visibility:=reexport
 Eclipse-LazyStart: true
 Bundle-Activator: de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin

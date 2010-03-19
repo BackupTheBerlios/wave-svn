@@ -22,12 +22,15 @@ public class ClassClassAttributesCompartmentItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public ClassClassAttributesCompartmentItemSemanticEditPolicy() {
+		super(WaveElementTypes.Class_2017);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (WaveElementTypes.Attribute_2001 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getClassifier_Attributes());
-			}
 			return getGEFWrapper(new AttributeCreateCommand(req));
 		}
 		return super.getCreateCommand(req);

@@ -22,12 +22,15 @@ public class ControllerPageViewsCompartmentItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public ControllerPageViewsCompartmentItemSemanticEditPolicy() {
+		super(WaveElementTypes.Controller_2026);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (WaveElementTypes.View_13007 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getController_Views());
-			}
 			return getGEFWrapper(new ViewCreateCommand(req));
 		}
 		return super.getCreateCommand(req);

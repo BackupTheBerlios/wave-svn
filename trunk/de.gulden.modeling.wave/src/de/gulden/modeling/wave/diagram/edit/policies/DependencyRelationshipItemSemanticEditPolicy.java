@@ -36,6 +36,13 @@ public class DependencyRelationshipItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public DependencyRelationshipItemSemanticEditPolicy() {
+		super(WaveElementTypes.DependencyRelationship_3001);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getDestroyElementCommand(DestroyElementRequest req) {
 		return getGEFWrapper(new DestroyElementCommand(req));
 	}

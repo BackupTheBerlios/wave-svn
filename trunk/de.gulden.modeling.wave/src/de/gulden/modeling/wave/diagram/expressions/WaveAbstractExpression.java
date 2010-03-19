@@ -106,7 +106,7 @@ public abstract class WaveAbstractExpression {
 				return doEvaluate(context, env);
 			} catch (Exception e) {
 				WaveDiagramEditorPlugin.getInstance().logError(
-						"Expression evaluation failure: " + body(), e);//$NON-NLS-1$
+						"Expression evaluation failure: " + body(), e); //$NON-NLS-1$
 			}
 		}
 		return null;

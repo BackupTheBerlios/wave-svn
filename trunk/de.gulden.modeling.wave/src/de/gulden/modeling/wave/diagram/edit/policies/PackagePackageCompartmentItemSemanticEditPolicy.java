@@ -25,33 +25,24 @@ public class PackagePackageCompartmentItemSemanticEditPolicy extends
 	/**
 	 * @generated
 	 */
+	public PackagePackageCompartmentItemSemanticEditPolicy() {
+		super(WaveElementTypes.Package_2021);
+	}
+
+	/**
+	 * @generated
+	 */
 	protected Command getCreateCommand(CreateElementRequest req) {
 		if (WaveElementTypes.Class_13003 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new Class2CreateCommand(req));
 		}
 		if (WaveElementTypes.Interface_13004 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new Interface2CreateCommand(req));
 		}
 		if (WaveElementTypes.Package_13005 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new Package2CreateCommand(req));
 		}
 		if (WaveElementTypes.Include_13010 == req.getElementType()) {
-			if (req.getContainmentFeature() == null) {
-				req.setContainmentFeature(WavePackage.eINSTANCE
-						.getPackage_Members());
-			}
 			return getGEFWrapper(new Include2CreateCommand(req));
 		}
 		return super.getCreateCommand(req);

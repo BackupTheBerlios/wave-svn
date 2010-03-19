@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 
 import de.gulden.modeling.wave.diagram.edit.parts.ActionEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.ActorEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.AreaEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.Class2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ClassEditPart;
@@ -35,11 +36,18 @@ import de.gulden.modeling.wave.diagram.edit.parts.ControllerEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ControllerPageActionsCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ControllerPageViewsCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.DocumentationEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Include2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.IncludeEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.Interface2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.InterfaceEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ModelEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.Package2EditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.PackageEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.PackagePackageCompartment2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.PackagePackageCompartmentEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.StyleSheetEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.UsecaseEditPart;
+import de.gulden.modeling.wave.diagram.edit.parts.UsecaseSubsystemEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.View2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartment2EditPart;
@@ -59,75 +67,75 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 		IGraphicalEditPart editPart = (IGraphicalEditPart) host
 				.getAdapter(IGraphicalEditPart.class);
 		if (editPart instanceof ClassEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(2);
 			types.add(WaveElementTypes.Attribute_2001);
 			types.add(WaveElementTypes.Operation_2002);
 			return types;
 		}
 		if (editPart instanceof InterfaceEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Operation_2003);
 			return types;
 		}
 		if (editPart instanceof ControllerEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(2);
 			types.add(WaveElementTypes.Attribute_2004);
 			types.add(WaveElementTypes.Operation_2009);
 			return types;
 		}
 		if (editPart instanceof ActionEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Operation_13008);
 			return types;
 		}
 		if (editPart instanceof ViewEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Operation_13009);
 			return types;
 		}
 		if (editPart instanceof AreaEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.View_13002);
 			return types;
 		}
 		if (editPart instanceof View2EditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Operation_13009);
 			return types;
 		}
 		if (editPart instanceof Class2EditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(2);
 			types.add(WaveElementTypes.Attribute_2001);
 			types.add(WaveElementTypes.Operation_2002);
 			return types;
 		}
 		if (editPart instanceof Interface2EditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Operation_2003);
 			return types;
 		}
 		if (editPart instanceof ControllerPageActionsCompartmentEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Action_13006);
 			return types;
 		}
 		if (editPart instanceof ControllerPageViewsCompartmentEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.View_13007);
 			return types;
 		}
 		if (editPart instanceof ViewViewAreaCompartmentEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Area_13001);
 			return types;
 		}
 		if (editPart instanceof ViewViewAreaCompartment2EditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(1);
 			types.add(WaveElementTypes.Area_13001);
 			return types;
 		}
 		if (editPart instanceof PackagePackageCompartmentEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(4);
 			types.add(WaveElementTypes.Class_13003);
 			types.add(WaveElementTypes.Interface_13004);
 			types.add(WaveElementTypes.Package_13005);
@@ -135,7 +143,7 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 			return types;
 		}
 		if (editPart instanceof PackagePackageCompartment2EditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(4);
 			types.add(WaveElementTypes.Class_13003);
 			types.add(WaveElementTypes.Interface_13004);
 			types.add(WaveElementTypes.Package_13005);
@@ -143,7 +151,7 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 			return types;
 		}
 		if (editPart instanceof ModelEditPart) {
-			List types = new ArrayList();
+			ArrayList types = new ArrayList(10);
 			types.add(WaveElementTypes.Class_2017);
 			types.add(WaveElementTypes.Interface_2018);
 			types.add(WaveElementTypes.Controller_2026);
@@ -166,19 +174,59 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
 				.getAdapter(IGraphicalEditPart.class);
 		if (sourceEditPart instanceof ClassEditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.RealizationRelationship_3003);
-			return types;
+			return ((ClassEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof InterfaceEditPart) {
+			return ((InterfaceEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof ControllerEditPart) {
+			return ((ControllerEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof IncludeEditPart) {
+			return ((IncludeEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof PackageEditPart) {
+			return ((PackageEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof StyleSheetEditPart) {
+			return ((StyleSheetEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof UsecaseSubsystemEditPart) {
+			return ((UsecaseSubsystemEditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof ActorEditPart) {
+			return ((ActorEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof UsecaseEditPart) {
+			return ((UsecaseEditPart) sourceEditPart).getMARelTypesOnSource();
 		}
 		if (sourceEditPart instanceof ActionEditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.ActionToViewTransition_3005);
-			return types;
+			return ((ActionEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof ViewEditPart) {
+			return ((ViewEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof AreaEditPart) {
+			return ((AreaEditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof View2EditPart) {
+			return ((View2EditPart) sourceEditPart).getMARelTypesOnSource();
 		}
 		if (sourceEditPart instanceof Class2EditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.RealizationRelationship_3003);
-			return types;
+			return ((Class2EditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof Interface2EditPart) {
+			return ((Interface2EditPart) sourceEditPart)
+					.getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof Package2EditPart) {
+			return ((Package2EditPart) sourceEditPart).getMARelTypesOnSource();
+		}
+		if (sourceEditPart instanceof Include2EditPart) {
+			return ((Include2EditPart) sourceEditPart).getMARelTypesOnSource();
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -189,30 +237,64 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 	public List getRelTypesOnTarget(IAdaptable target) {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
 				.getAdapter(IGraphicalEditPart.class);
+		if (targetEditPart instanceof ClassEditPart) {
+			return ((ClassEditPart) targetEditPart).getMARelTypesOnTarget();
+		}
 		if (targetEditPart instanceof InterfaceEditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.RealizationRelationship_3003);
-			return types;
+			return ((InterfaceEditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof ControllerEditPart) {
+			return ((ControllerEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof IncludeEditPart) {
+			return ((IncludeEditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof PackageEditPart) {
+			return ((PackageEditPart) targetEditPart).getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof DocumentationEditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.ModelMemberDocs_4015);
-			return types;
+			return ((DocumentationEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof StyleSheetEditPart) {
+			return ((StyleSheetEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof UsecaseSubsystemEditPart) {
+			return ((UsecaseSubsystemEditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof ActorEditPart) {
+			return ((ActorEditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof UsecaseEditPart) {
+			return ((UsecaseEditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof ActionEditPart) {
+			return ((ActionEditPart) targetEditPart).getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof ViewEditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.ActionToViewTransition_3005);
-			return types;
+			return ((ViewEditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof AreaEditPart) {
+			return ((AreaEditPart) targetEditPart).getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof View2EditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.ActionToViewTransition_3005);
-			return types;
+			return ((View2EditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof Class2EditPart) {
+			return ((Class2EditPart) targetEditPart).getMARelTypesOnTarget();
 		}
 		if (targetEditPart instanceof Interface2EditPart) {
-			List types = new ArrayList();
-			types.add(WaveElementTypes.RealizationRelationship_3003);
-			return types;
+			return ((Interface2EditPart) targetEditPart)
+					.getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof Package2EditPart) {
+			return ((Package2EditPart) targetEditPart).getMARelTypesOnTarget();
+		}
+		if (targetEditPart instanceof Include2EditPart) {
+			return ((Include2EditPart) targetEditPart).getMARelTypesOnTarget();
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -227,34 +309,72 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
 				.getAdapter(IGraphicalEditPart.class);
 		if (sourceEditPart instanceof ClassEditPart) {
-			List types = new ArrayList();
-			if (targetEditPart instanceof InterfaceEditPart) {
-				types.add(WaveElementTypes.RealizationRelationship_3003);
-			}
-			if (targetEditPart instanceof Interface2EditPart) {
-				types.add(WaveElementTypes.RealizationRelationship_3003);
-			}
-			return types;
+			return ((ClassEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof InterfaceEditPart) {
+			return ((InterfaceEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof ControllerEditPart) {
+			return ((ControllerEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof IncludeEditPart) {
+			return ((IncludeEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof PackageEditPart) {
+			return ((PackageEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof StyleSheetEditPart) {
+			return ((StyleSheetEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof UsecaseSubsystemEditPart) {
+			return ((UsecaseSubsystemEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof ActorEditPart) {
+			return ((ActorEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof UsecaseEditPart) {
+			return ((UsecaseEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		if (sourceEditPart instanceof ActionEditPart) {
-			List types = new ArrayList();
-			if (targetEditPart instanceof ViewEditPart) {
-				types.add(WaveElementTypes.ActionToViewTransition_3005);
-			}
-			if (targetEditPart instanceof View2EditPart) {
-				types.add(WaveElementTypes.ActionToViewTransition_3005);
-			}
-			return types;
+			return ((ActionEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof ViewEditPart) {
+			return ((ViewEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof AreaEditPart) {
+			return ((AreaEditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof View2EditPart) {
+			return ((View2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		if (sourceEditPart instanceof Class2EditPart) {
-			List types = new ArrayList();
-			if (targetEditPart instanceof InterfaceEditPart) {
-				types.add(WaveElementTypes.RealizationRelationship_3003);
-			}
-			if (targetEditPart instanceof Interface2EditPart) {
-				types.add(WaveElementTypes.RealizationRelationship_3003);
-			}
-			return types;
+			return ((Class2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof Interface2EditPart) {
+			return ((Interface2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof Package2EditPart) {
+			return ((Package2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
+		}
+		if (sourceEditPart instanceof Include2EditPart) {
+			return ((Include2EditPart) sourceEditPart)
+					.getMARelTypesOnSourceAndTarget(targetEditPart);
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -266,43 +386,77 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 			IElementType relationshipType) {
 		IGraphicalEditPart targetEditPart = (IGraphicalEditPart) target
 				.getAdapter(IGraphicalEditPart.class);
+		if (targetEditPart instanceof ClassEditPart) {
+			return ((ClassEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
 		if (targetEditPart instanceof InterfaceEditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Class_2017);
-			}
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Class_13003);
-			}
-			return types;
+			return ((InterfaceEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof ControllerEditPart) {
+			return ((ControllerEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof IncludeEditPart) {
+			return ((IncludeEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof PackageEditPart) {
+			return ((PackageEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof DocumentationEditPart) {
-			List types = new ArrayList();
-			return types;
+			return ((DocumentationEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof StyleSheetEditPart) {
+			return ((StyleSheetEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof UsecaseSubsystemEditPart) {
+			return ((UsecaseSubsystemEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof ActorEditPart) {
+			return ((ActorEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof UsecaseEditPart) {
+			return ((UsecaseEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof ActionEditPart) {
+			return ((ActionEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof ViewEditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.ActionToViewTransition_3005) {
-				types.add(WaveElementTypes.Action_13006);
-			}
-			return types;
+			return ((ViewEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof AreaEditPart) {
+			return ((AreaEditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof View2EditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.ActionToViewTransition_3005) {
-				types.add(WaveElementTypes.Action_13006);
-			}
-			return types;
+			return ((View2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof Class2EditPart) {
+			return ((Class2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
 		}
 		if (targetEditPart instanceof Interface2EditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Class_2017);
-			}
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Class_13003);
-			}
-			return types;
+			return ((Interface2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof Package2EditPart) {
+			return ((Package2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
+		}
+		if (targetEditPart instanceof Include2EditPart) {
+			return ((Include2EditPart) targetEditPart)
+					.getMATypesForSource(relationshipType);
 		}
 		return Collections.EMPTY_LIST;
 	}
@@ -315,34 +469,72 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 		IGraphicalEditPart sourceEditPart = (IGraphicalEditPart) source
 				.getAdapter(IGraphicalEditPart.class);
 		if (sourceEditPart instanceof ClassEditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Interface_2018);
-			}
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Interface_13004);
-			}
-			return types;
+			return ((ClassEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof InterfaceEditPart) {
+			return ((InterfaceEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof ControllerEditPart) {
+			return ((ControllerEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof IncludeEditPart) {
+			return ((IncludeEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof PackageEditPart) {
+			return ((PackageEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof StyleSheetEditPart) {
+			return ((StyleSheetEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof UsecaseSubsystemEditPart) {
+			return ((UsecaseSubsystemEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof ActorEditPart) {
+			return ((ActorEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof UsecaseEditPart) {
+			return ((UsecaseEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
 		}
 		if (sourceEditPart instanceof ActionEditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.ActionToViewTransition_3005) {
-				types.add(WaveElementTypes.View_13007);
-			}
-			if (relationshipType == WaveElementTypes.ActionToViewTransition_3005) {
-				types.add(WaveElementTypes.View_13002);
-			}
-			return types;
+			return ((ActionEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof ViewEditPart) {
+			return ((ViewEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof AreaEditPart) {
+			return ((AreaEditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof View2EditPart) {
+			return ((View2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
 		}
 		if (sourceEditPart instanceof Class2EditPart) {
-			List types = new ArrayList();
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Interface_2018);
-			}
-			if (relationshipType == WaveElementTypes.RealizationRelationship_3003) {
-				types.add(WaveElementTypes.Interface_13004);
-			}
-			return types;
+			return ((Class2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof Interface2EditPart) {
+			return ((Interface2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof Package2EditPart) {
+			return ((Package2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
+		}
+		if (sourceEditPart instanceof Include2EditPart) {
+			return ((Include2EditPart) sourceEditPart)
+					.getMATypesForTarget(relationshipType);
 		}
 		return Collections.EMPTY_LIST;
 	}
