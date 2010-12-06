@@ -7,7 +7,7 @@
 
 «IMPORT wave»
 
-«EXTENSION common»
+«EXTENSION generator::common»
 
 «REM»
 ------------------------------------------------------------------------------

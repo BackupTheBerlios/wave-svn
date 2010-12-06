@@ -13,18 +13,19 @@
 
 «REM»
 ------------------------------------------------------------------------------
---- Include
+--- Interface
 ------------------------------------------------------------------------------
 «ENDREM»
 
-«DEFINE include FOR Include»
+«DEFINE interface FOR Interface»
 <?php
 /**
- * Include:      "«this.name»"
+ * Interface: "«this.codeName()»"
  *
  «EXPAND model::commentHeader» */
-«IF this.depends().has()-»
-«EXPAND oop::imports-»
-«ENDIF»
-?>«this.code»
+
+«EXPAND generator::oop::modifiers» interface «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ENDIF» {
+«EXPAND generator::oop::operations»
+} // end of interface «this.name»
+?>
 «ENDDEFINE»

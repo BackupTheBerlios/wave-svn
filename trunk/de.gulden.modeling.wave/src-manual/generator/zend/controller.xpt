@@ -7,10 +7,10 @@
 
 «IMPORT wave»
 
-«IMPORT zend»
+«IMPORT generator::zend»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
-«EXTENSION common»
+«EXTENSION generator::common»
 
 «REM»
 ------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ require_once($_basepath."«this.model().basePrefix()»/Wave.php");
 
 class «IF (this.model().projectLayout == EnumProjectLayout::MODULE)»«this.model().name.toFirstUpper()»_«ENDIF»«this.name» extends Zend_Controller_Action
 {
-	«EXPAND oop::operations»
+	«EXPAND generator::oop::operations»
 
 	«EXPAND actions»
 }

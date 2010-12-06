@@ -8,7 +8,7 @@
 «IMPORT wave»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
-«EXTENSION common»
+«EXTENSION generator::common»
 
 «DEFINE config FOR Model»
 

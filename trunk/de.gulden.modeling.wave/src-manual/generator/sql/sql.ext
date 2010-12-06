@@ -6,7 +6,7 @@
  */
 import wave;
 
-extension common; 
+extension generator::common; 
 
 String sqlType( String this ) :
 	( this.isEnumerationType() ? "VARCHAR(50)" : 

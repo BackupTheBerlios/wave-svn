@@ -7,11 +7,11 @@
 
 «IMPORT wave»
 
-«IMPORT zend»
+«IMPORT generator::zend»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
-«EXTENSION common»
+«EXTENSION generator::common»
 
 «DEFINE model FOR Model»
 	«REM» generate Zend project structure «ENDREM»

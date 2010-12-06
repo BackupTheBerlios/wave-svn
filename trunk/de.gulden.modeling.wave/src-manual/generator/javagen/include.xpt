@@ -8,8 +8,8 @@
 «IMPORT wave»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
-«EXTENSION common»
-«EXTENSION sql::sql»
+«EXTENSION generator::common»
+«EXTENSION generator::sql::sql»
 
 «REM»
 ------------------------------------------------------------------------------
@@ -24,7 +24,7 @@
  *
  «EXPAND model::commentHeader» */
 «IF this.depends().has()-»
-«EXPAND oop::imports-»
+«EXPAND generator::oop::imports-»
 «ENDIF»
 ?>«this.code»
 «ENDDEFINE»

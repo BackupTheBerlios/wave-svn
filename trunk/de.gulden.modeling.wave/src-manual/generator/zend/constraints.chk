@@ -1,6 +1,6 @@
 import wave;
 
-extension common;
+extension generator::common;
 
 context Controller
 	ERROR "Controller name '"+this.name+"' must end with ...Controller." :

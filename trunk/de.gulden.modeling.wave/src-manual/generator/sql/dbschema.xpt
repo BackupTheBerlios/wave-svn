@@ -9,8 +9,8 @@
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
-«EXTENSION common»
-«EXTENSION sql::sql»
+«EXTENSION generator::common»
+«EXTENSION generator::sql::sql»
 
 «DEFINE model FOR Model»
 	«EXPAND member»

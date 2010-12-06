@@ -29,11 +29,11 @@
 «ENDDEFINE»
 
 «DEFINE interfaceBody FOR Interface»
-«this.visibility()»«EXPAND oop::modifiers»interface «this.codeName()-»
+«this.visibility()»«EXPAND generator::oop::modifiers»interface «this.codeName()-»
 «IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«IF this.externalExtends.is()», «this.externalExtends»«ENDIF»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF» {
 
 
-«EXPAND oop::operations»
+«EXPAND generator::oop::operations»
 «EXPAND class::inner FOREACH inner»
 } // end of interface «this.name»
 «ENDDEFINE»

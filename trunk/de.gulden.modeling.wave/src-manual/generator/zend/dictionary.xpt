@@ -7,7 +7,7 @@
 
 «IMPORT wave»
 
-«EXTENSION common»
+«EXTENSION generator::common»
 
 «DEFINE dictionary FOR Dictionary»<?php
 // Langstring dictionary for model '«((Model)this.eContainer).name»'

@@ -8,8 +8,8 @@
 «IMPORT wave»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
-«EXTENSION common»
-«EXTENSION sql::sql»
+«EXTENSION generator::common»
+«EXTENSION generator::sql::sql»
 
 «REM»
 ------------------------------------------------------------------------------
@@ -24,7 +24,7 @@
  «EXPAND model::commentHeader» */
  
 «REM»«EXPAND oop::imports-»«ENDREM»
-«EXPAND oop::modifiers»class «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF»«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«ELSEIF this.externalImplements.is()» extends «this.externalImplements»«ENDIF»
+«EXPAND generator::oop::modifiers»class «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF»«IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«ELSEIF this.externalImplements.is()» extends «this.externalImplements»«ENDIF»
 { 	«REM» always provide id handling, also if not persistent «ENDREM»
  	protected $_id = null;
 	
@@ -38,9 +38,9 @@
 		$this->_id = $id;
 	}
 	
-«EXPAND oop::attributes»
-«EXPAND oop::associations»
-«EXPAND oop::operations»
+«EXPAND generator::oop::attributes»
+«EXPAND generator::oop::associations»
+«EXPAND generator::oop::operations»
 «EXPAND classForm::class»
 «IF this.isPersistent && (! this.isAbstract)»
 «storeGlobalVar("generateDBSchema", " ")-»

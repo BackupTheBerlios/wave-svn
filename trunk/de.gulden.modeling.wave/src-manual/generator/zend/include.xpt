@@ -8,24 +8,23 @@
 «IMPORT wave»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
-«EXTENSION common»
-«EXTENSION sql::sql»
+«EXTENSION generator::common»
+«EXTENSION generator::sql::sql»
 
 «REM»
 ------------------------------------------------------------------------------
---- Interface
+--- Include
 ------------------------------------------------------------------------------
 «ENDREM»
 
-«DEFINE interface FOR Interface»
+«DEFINE include FOR Include»
 <?php
 /**
- * Interface: "«this.codeName()»"
+ * Include:      "«this.name»"
  *
  «EXPAND model::commentHeader» */
-
-«EXPAND oop::modifiers» interface «this.codeName()»«IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«ENDIF» {
-«EXPAND oop::operations»
-} // end of interface «this.name»
-?>
+«IF this.depends().has()-»
+«EXPAND generator::oop::imports-»
+«ENDIF»
+?>«this.code»
 «ENDDEFINE»
