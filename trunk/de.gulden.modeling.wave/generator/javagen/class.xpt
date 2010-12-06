@@ -37,13 +37,13 @@ import java.util.*;
 «ENDDEFINE»
 
 «DEFINE classBody FOR Class»
-«this.visibility()»«EXPAND oop::modifiers»class «this.codeName()-»
+«this.visibility()»«EXPAND generator::oop::modifiers»class «this.codeName()-»
 «IF this.extends().has()» extends «FOREACH this.extends() AS ext SEPARATOR ", "»«ext.codeName()»«ENDFOREACH»«IF this.externalExtends.is()», «this.externalExtends»«ENDIF»«ELSEIF this.externalExtends.is()» extends «this.externalExtends»«ENDIF-»
 «IF this.implements().has()» implements «FOREACH this.implements() AS imp SEPARATOR ", "»«imp.codeName()»«ENDFOREACH»«IF this.externalImplements.is()», «this.externalImplements»«ENDIF»«ELSEIF this.externalImplements.is()» implements «this.externalImplements»«ENDIF» {
 	
-«EXPAND oop::attributes»
-«EXPAND oop::associations»
-«EXPAND oop::operations»
+«EXPAND generator::oop::attributes»
+«EXPAND generator::oop::associations»
+«EXPAND generator::oop::operations»
 «IF this.isPersistent && (! this.isAbstract)»
 «storeGlobalVar("generateDBSchema", " ")-»
 «REM»«EXPAND classPersistence::class»«ENDREM»
