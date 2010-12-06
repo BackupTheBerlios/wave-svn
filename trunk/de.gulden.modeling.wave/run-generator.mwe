@@ -11,8 +11,8 @@ workflow script for manually running code-generation
  -->
 
 	<!-- CHANGE PATHS TO YOUR CONFIGURATION  --> 
-	<property name="model" value="/home/models/runtime-memocenter/de.gulden.modeling.emdsd.api/src/de/gulden/modeling/emdsd/api/workflow/workflow.wave"/>
-	<property name="sourceFolder" value="/home/models/runtime-memocenter/de.gulden.modeling.emdsd.api/src"/>
+	<property name="model" value="/home/user/runtime-memocenter/de.gulden.modeling.emdsd.model/emdsd.wave"/>
+	<property name="sourceFolder" value="/home/user/runtime-memocenter/de.gulden.modeling.emdsd.api.test/src"/>
 	<!-- - - - - - - - - - - - - - - - - - - --> 
 
 	<component class="org.eclipse.xtend.typesystem.emf.XmiReader">
@@ -41,7 +41,7 @@ workflow script for manually running code-generation
 			<metaModelPackage value="de.gulden.modeling.wave.WavePackage"/>
 		</metaModel>
 		<outlet path="${sourceFolder}"/>
-		<expand value="main::generator FOR model"/>
+		<expand value="generator::main::generator FOR model"/>
 	</component>
 	
 </workflow>

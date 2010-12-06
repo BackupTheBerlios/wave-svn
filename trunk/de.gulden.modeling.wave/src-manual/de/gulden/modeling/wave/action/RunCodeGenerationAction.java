@@ -186,7 +186,7 @@ public class RunCodeGenerationAction implements IObjectActionDelegate, IEditorAc
 	}
 	
 	protected void runGenerator() {
-		System.out.println("Code generation starting.");
+		//System.out.println("Code generation starting.");
 		saveEditor(); // save model file before code-generation
 		WorkflowContextDefaultImpl context = new WorkflowContextDefaultImpl();
 		if ((this.editorPart instanceof WaveEditor) || (this.editorPart instanceof WaveDiagramEditor) /*&& (this.model == null)*/) { // workaround for deferred invokation
@@ -310,18 +310,46 @@ public class RunCodeGenerationAction implements IObjectActionDelegate, IEditorAc
 			System.err.println("error generating code: invalid source folder " + outputFolder); // TODO eclipse-error-dialog
 			return; // IRREGULAR EXIT
 		}
+		
+		String xpandCommand = "generator::main::"+invoke+" FOR model";
+		
+		System.out.println("Code generation starting, output to " + outputPath + " invoking '" + xpandCommand + "'");
+		
 		GlobalVarExtensions.storeGlobalVar("outputPath", outputPath);
 		
 		String currentDate = (new SimpleDateFormat( "yyyy-MM-dd HH:mm" )).format(new Date()); // HH:mm:ss.S
 		GlobalVarExtensions.storeGlobalVar("currentDate", currentDate);
 		
 		// TODO run constraint-check
+
+		/*URL url;
+		try {
+		        url = new URL("platform:/plugin/de.gulden.modeling.wave/generator/main.xpt");
+		    InputStream inputStream = url.openConnection().getInputStream();
+		    BufferedReader in = new BufferedReader(new InputStreamReader(inputStream));
+		    String inputLine;
+		 
+		    while ((inputLine = in.readLine()) != null) {
+		        System.out.println(inputLine);
+		    }
+		 
+		    in.close();
+		 
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}*/
 		
 		Generator g = new Generator();
 		g.setFileEncoding("ISO-8859-1");
+		//g.setFileEncoding("UTF-8");
 		g.addMetaModel(metaModel);
 		g.setGenPath( outputPath ); // TODO use Outlet
-		g.setExpand("main::"+invoke+" FOR model");
+		//g.setExpand("main::"+invoke+" FOR model"); 
+		g.setExpand(xpandCommand); // TODO Find out why it is necessary to preprend 
+//															  // "generator::" source folder name.
+//															  // Unlike call via MWE-script, and unlike in earlier
+//															  // versions of MWE/OAW, classpath settings seem not
+//															  // to have effect here.
 		g.setExceptionHandler(exceptionHandler);
 		g.invoke(context, new NullProgressMonitor(), issues);
 	}		

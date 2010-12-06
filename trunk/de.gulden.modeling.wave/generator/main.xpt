@@ -8,7 +8,7 @@
 «IMPORT wave»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
-«EXTENSION common»
+«EXTENSION generator::common»
 
 «DEFINE generator FOR wave::Model»
 
@@ -26,7 +26,7 @@
 	«IF (this.generatorTarget == EnumGeneratorTarget::ZEND)»
 		«EXPAND zend::model::model»
 	«ELSE»
-		«EXPAND java::model::model»
+		«EXPAND generator::javagen::model::model»
 	«ENDIF»
 	
 	---------------- 

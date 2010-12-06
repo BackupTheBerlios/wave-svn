@@ -1,12 +1,12 @@
-#Fri Jan 29 10:08:47 CET 2010
+#Mon Dec 06 18:15:19 CET 2010
 eclipse.preferences.version=1
 encoding//generator/common.xpt=ISO-8859-1
-encoding//generator/java/class.xpt=ISO-8859-1
-encoding//generator/java/dictionary.xpt=ISO-8859-1
-encoding//generator/java/enumeration.xpt=ISO-8859-1
-encoding//generator/java/include.xpt=ISO-8859-1
-encoding//generator/java/interface.xpt=ISO-8859-1
-encoding//generator/java/model.xpt=ISO-8859-1
+encoding//generator/javagen/class.xpt=ISO-8859-1
+encoding//generator/javagen/dictionary.xpt=ISO-8859-1
+encoding//generator/javagen/enumeration.xpt=ISO-8859-1
+encoding//generator/javagen/include.xpt=ISO-8859-1
+encoding//generator/javagen/interface.xpt=ISO-8859-1
+encoding//generator/javagen/model.xpt=ISO-8859-1
 encoding//generator/main.xpt=ISO-8859-1
 encoding//generator/oop.xpt=ISO-8859-1
 encoding//generator/roundtrip/model_roundtrip.xpt=ISO-8859-1

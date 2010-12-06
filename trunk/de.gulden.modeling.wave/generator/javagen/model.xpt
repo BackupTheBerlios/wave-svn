@@ -7,11 +7,11 @@
 
 «IMPORT wave»
 
-«IMPORT java»
+«IMPORT generator::javagen»
 
 «EXTENSION org::eclipse::xtend::util::stdlib::globalvar»
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
-«EXTENSION common»
+«EXTENSION generator::common»
 «REM»«EXTENSION java::commonJava»«ENDREM»
 «REM»«EXTENSION zend::commonZend»«ENDREM»
 
