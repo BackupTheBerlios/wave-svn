@@ -41,11 +41,23 @@ String sourceFileSuffix( ModelMember this ) :
 	: 
 	"java";
 
-String sourceFileName( OOPClassifier this ) :
+String sourceFileNameCompilationUnit( OOPClassifier this ) :
 	targetPHP() ?
 	this.model().classPrefix().concat("/", this.package().path().concat("/", "models/")) + this.name + ".php"
 	:
 	( this.model().basePackage.concat( ".", this.package().qualifiedName()) ).replaceAll("[.]", "/") + "/" + this.name + "." + this.sourceFileSuffix();
+
+String sourceFileName( Class this ) :
+	this.sourceFileNameCompilationUnit();
+
+String sourceFileName( Interface this ) :
+	this.sourceFileNameCompilationUnit();
+
+String sourceFileName( Enumeration this ) :
+	this.sourceFileNameCompilationUnit();
+
+String sourceFileName( OOPClassifier this ) : // unmatched
+	null; 
 
 //String sourceFileName( Enumeration this ) :
 //	this.model().basePrefix().concat("/", this.package().path().concat("/", "models/")) + this.name + ".php";

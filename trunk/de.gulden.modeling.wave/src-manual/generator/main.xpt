@@ -24,7 +24,7 @@
 	     Code
 	----------------
 	«IF (this.generatorTarget == EnumGeneratorTarget::ZEND)»
-		«EXPAND zend::model::model»
+		«EXPAND generator::zend::model::model»
 	«ELSE»
 		«EXPAND generator::javagen::model::model»
 	«ENDIF»
