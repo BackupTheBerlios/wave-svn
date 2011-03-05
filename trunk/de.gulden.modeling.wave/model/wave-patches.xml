@@ -95,13 +95,14 @@ method code should be generated when changes to the metamodel have occurred.
   	  Use 'rectilinear' line-style for all relationships.
   	  [de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(View)]
   	-->
-  	
+  	<!--
     <replace file="de/gulden/modeling/wave/diagram/providers/WaveViewProvider.java" summary="yes">
       <replacetoken>edge.setBendpoints(bendpoints);</replacetoken>
       <replacevalue>edge.setBendpoints( bendpoints );
         de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
       </replacevalue>
     </replace>
+    -->
 
   	<!--
   	  Deactivate Area creation tool
