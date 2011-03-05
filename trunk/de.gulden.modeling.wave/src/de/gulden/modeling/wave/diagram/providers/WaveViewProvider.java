@@ -1440,9 +1440,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(DependencyRelationshipEditPart.VISUAL_ID));
@@ -1504,13 +1502,10 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(InheritanceRelationshipEditPart.VISUAL_ID));
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
 		edge.setElement(domainElement);
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
@@ -1560,9 +1555,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(RealizationRelationshipEditPart.VISUAL_ID));
@@ -1615,9 +1608,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(AssociationRelationshipEditPart.VISUAL_ID));
@@ -1696,9 +1687,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(ActionToViewTransitionEditPart.VISUAL_ID));
@@ -1759,9 +1748,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(ModelMemberDocsEditPart.VISUAL_ID));
@@ -1814,9 +1801,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(ViewTransitionEditPart.VISUAL_ID));
@@ -1877,9 +1862,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(DependencyRelationship2EditPart.VISUAL_ID));
@@ -1941,9 +1924,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints( bendpoints );
-        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
-      
+		edge.setBendpoints(bendpoints);
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(DependencyRelationship3EditPart.VISUAL_ID));
