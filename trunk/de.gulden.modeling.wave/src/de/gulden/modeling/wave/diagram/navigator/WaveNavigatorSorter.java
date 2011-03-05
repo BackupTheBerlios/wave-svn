@@ -23,9 +23,17 @@ public class WaveNavigatorSorter extends ViewerSorter {
 	/**
 	 * @generated
 	 */
+	private static final int SHORTCUTS_CATEGORY = 13011;
+
+	/**
+	 * @generated
+	 */
 	public int category(Object element) {
 		if (element instanceof WaveNavigatorItem) {
 			WaveNavigatorItem item = (WaveNavigatorItem) element;
+			if (item.getView().getEAnnotation("Shortcut") != null) { //$NON-NLS-1$
+				return SHORTCUTS_CATEGORY;
+			}
 			return WaveVisualIDRegistry.getVisualID(item.getView());
 		}
 		return GROUP_CATEGORY;

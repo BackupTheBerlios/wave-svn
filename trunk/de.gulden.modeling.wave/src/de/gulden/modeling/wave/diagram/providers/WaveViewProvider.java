@@ -7,6 +7,7 @@
 package de.gulden.modeling.wave.diagram.providers;
 
 import java.util.ArrayList;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
@@ -15,7 +16,6 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.common.core.service.AbstractProvider;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eclipse.gmf.runtime.diagram.core.providers.AbstractViewProvider;
 import org.eclipse.gmf.runtime.diagram.core.providers.IViewProvider;
 import org.eclipse.gmf.runtime.diagram.core.services.view.CreateDiagramViewOperation;
 import org.eclipse.gmf.runtime.diagram.core.services.view.CreateEdgeViewOperation;
@@ -43,12 +43,12 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
+
 import de.gulden.modeling.wave.diagram.edit.parts.ActionActionOperationCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ActionEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ActionNameEditPart;
@@ -127,83 +127,6 @@ import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartmentEditPar
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewOperationCompartment2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewOperationCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
-import de.gulden.modeling.wave.diagram.view.factories.ActionActionOperationCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ActionNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ActionToViewTransitionConditionViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ActionToViewTransitionViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ActionViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ActorNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ActorViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.AreaViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.AssociationRelationshipMultiplicityAViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.AssociationRelationshipMultiplicityBViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.AssociationRelationshipNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.AssociationRelationshipViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Attribute2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.AttributeViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Class2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassClassAttributesCompartment2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassClassAttributesCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassClassOperationsCompartment2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassClassOperationsCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassName2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ClassViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ControllerNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ControllerPageActionsCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ControllerPageFunctionsCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ControllerPageParametersCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ControllerPageViewsCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ControllerViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DependencyRelationship2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DependencyRelationship3ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DependencyRelationshipStereotype2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DependencyRelationshipStereotype3ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DependencyRelationshipStereotypeViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DependencyRelationshipViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DocumentationTextViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.DocumentationViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Include2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.IncludeName2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.IncludeNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.IncludeViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.InheritanceRelationshipViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Interface2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.InterfaceInterfaceOperationsCompartment2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.InterfaceInterfaceOperationsCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.InterfaceName2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.InterfaceNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.InterfaceViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ModelMemberDocsViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ModelViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Operation2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Operation3ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Operation4ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Operation5ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.OperationViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.Package2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.PackageName2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.PackageNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.PackagePackageCompartment2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.PackagePackageCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.PackageViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.RealizationRelationshipViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.StyleSheetNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.StyleSheetViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.UsecaseSubsystemNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.UsecaseSubsystemViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.UsecaseTextViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.UsecaseViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.View2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewName2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewNameViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewTransitionConditionViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewTransitionViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewViewAreaCompartment2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewViewAreaCompartmentViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewViewOperationCompartment2ViewFactory;
-import de.gulden.modeling.wave.diagram.view.factories.ViewViewOperationCompartmentViewFactory;
 
 /**
  * @generated
@@ -269,8 +192,8 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			if (elementType != null || domainElement == null) {
 				return false;
 			}
-			visualID = WaveVisualIDRegistry.getNodeVisualID(op
-					.getContainerView(), domainElement);
+			visualID = WaveVisualIDRegistry.getNodeVisualID(
+					op.getContainerView(), domainElement);
 		} else {
 			visualID = WaveVisualIDRegistry.getVisualID(op.getSemanticHint());
 			if (elementType != null) {
@@ -284,8 +207,8 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 					return false; // if semantic hint is specified it should be the same as in element type
 				}
 				if (domainElement != null
-						&& visualID != WaveVisualIDRegistry.getNodeVisualID(op
-								.getContainerView(), domainElement)) {
+						&& visualID != WaveVisualIDRegistry.getNodeVisualID(
+								op.getContainerView(), domainElement)) {
 					return false; // visual id for node EClass should match visual id from element type
 				}
 			} else {
@@ -558,9 +481,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -577,16 +500,20 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5019 = createLabel(node, WaveVisualIDRegistry
-				.getType(ClassNameEditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ClassClassAttributesCompartmentEditPart.VISUAL_ID),
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5019 = createLabel(node,
+				WaveVisualIDRegistry.getType(ClassNameEditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ClassClassAttributesCompartmentEditPart.VISUAL_ID),
 				true, false, true, true);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ClassClassOperationsCompartmentEditPart.VISUAL_ID),
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ClassClassOperationsCompartmentEditPart.VISUAL_ID),
 				true, false, true, true);
 		return node;
 	}
@@ -608,9 +535,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -627,11 +554,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5020 = createLabel(node, WaveVisualIDRegistry
-				.getType(InterfaceNameEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5020 = createLabel(node,
+				WaveVisualIDRegistry.getType(InterfaceNameEditPart.VISUAL_ID));
 		createCompartment(
 				node,
 				WaveVisualIDRegistry
@@ -648,9 +575,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(ControllerEditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(ControllerEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		stampShortcut(containerView, node);
@@ -660,9 +585,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -679,24 +604,30 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5033 = createLabel(node, WaveVisualIDRegistry
-				.getType(ControllerNameEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5033 = createLabel(node,
+				WaveVisualIDRegistry.getType(ControllerNameEditPart.VISUAL_ID));
 		createCompartment(
 				node,
 				WaveVisualIDRegistry
 						.getType(ControllerPageParametersCompartmentEditPart.VISUAL_ID),
 				true, false, true, true);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ControllerPageActionsCompartmentEditPart.VISUAL_ID),
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ControllerPageActionsCompartmentEditPart.VISUAL_ID),
 				true, false, false, false);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ControllerPageViewsCompartmentEditPart.VISUAL_ID),
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ControllerPageViewsCompartmentEditPart.VISUAL_ID),
 				true, false, false, false);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ControllerPageFunctionsCompartmentEditPart.VISUAL_ID),
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ControllerPageFunctionsCompartmentEditPart.VISUAL_ID),
 				true, false, true, true);
 		return node;
 	}
@@ -718,9 +649,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -737,11 +668,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5022 = createLabel(node, WaveVisualIDRegistry
-				.getType(IncludeNameEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5022 = createLabel(node,
+				WaveVisualIDRegistry.getType(IncludeNameEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -762,9 +693,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -781,14 +712,15 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5023 = createLabel(node, WaveVisualIDRegistry
-				.getType(PackageNameEditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(PackagePackageCompartmentEditPart.VISUAL_ID), true,
-				false, false, false);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5023 = createLabel(node,
+				WaveVisualIDRegistry.getType(PackageNameEditPart.VISUAL_ID));
+		createCompartment(node,
+				WaveVisualIDRegistry
+						.getType(PackagePackageCompartmentEditPart.VISUAL_ID),
+				true, false, false, false);
 		return node;
 	}
 
@@ -815,9 +747,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -832,8 +764,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
 					.intValue());
 		}
-		Node label5013 = createLabel(node, WaveVisualIDRegistry
-				.getType(DocumentationTextEditPart.VISUAL_ID));
+		Node label5013 = createLabel(node,
+				WaveVisualIDRegistry
+						.getType(DocumentationTextEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -845,9 +778,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(StyleSheetEditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(StyleSheetEditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		stampShortcut(containerView, node);
@@ -857,9 +788,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -876,11 +807,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5024 = createLabel(node, WaveVisualIDRegistry
-				.getType(StyleSheetNameEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5024 = createLabel(node,
+				WaveVisualIDRegistry.getType(StyleSheetNameEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -903,9 +834,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -922,11 +853,12 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5025 = createLabel(node, WaveVisualIDRegistry
-				.getType(UsecaseSubsystemNameEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5025 = createLabel(node,
+				WaveVisualIDRegistry
+						.getType(UsecaseSubsystemNameEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -947,9 +879,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -966,11 +898,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5026 = createLabel(node, WaveVisualIDRegistry
-				.getType(ActorNameEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5026 = createLabel(node,
+				WaveVisualIDRegistry.getType(ActorNameEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -991,9 +923,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1010,11 +942,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5027 = createLabel(node, WaveVisualIDRegistry
-				.getType(UsecaseTextEditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5027 = createLabel(node,
+				WaveVisualIDRegistry.getType(UsecaseTextEditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -1051,9 +983,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(Operation2EditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(Operation2EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		return node;
@@ -1066,9 +996,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(Attribute2EditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(Attribute2EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		return node;
@@ -1094,9 +1022,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1111,10 +1039,12 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
 					.intValue());
 		}
-		Node label5031 = createLabel(node, WaveVisualIDRegistry
-				.getType(ActionNameEditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ActionActionOperationCompartmentEditPart.VISUAL_ID),
+		Node label5031 = createLabel(node,
+				WaveVisualIDRegistry.getType(ActionNameEditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ActionActionOperationCompartmentEditPart.VISUAL_ID),
 				false, false, true, true);
 		return node;
 	}
@@ -1127,9 +1057,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(Operation3EditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(Operation3EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		return node;
@@ -1155,9 +1083,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1172,14 +1100,17 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
 					.intValue());
 		}
-		Node label5032 = createLabel(node, WaveVisualIDRegistry
-				.getType(ViewNameEditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ViewViewOperationCompartmentEditPart.VISUAL_ID),
+		Node label5032 = createLabel(node,
+				WaveVisualIDRegistry.getType(ViewNameEditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ViewViewOperationCompartmentEditPart.VISUAL_ID),
 				false, false, true, true);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ViewViewAreaCompartmentEditPart.VISUAL_ID), true,
-				false, false, false);
+		createCompartment(node,
+				WaveVisualIDRegistry
+						.getType(ViewViewAreaCompartmentEditPart.VISUAL_ID),
+				true, false, false, false);
 		return node;
 	}
 
@@ -1191,9 +1122,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(Operation4EditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(Operation4EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		return node;
@@ -1215,9 +1144,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1234,9 +1163,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
 		return node;
 	}
 
@@ -1260,9 +1189,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1277,14 +1206,17 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			nodeFontStyle.setFontColor(FigureUtilities.RGBToInteger(fontRGB)
 					.intValue());
 		}
-		Node label5018 = createLabel(node, WaveVisualIDRegistry
-				.getType(ViewName2EditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ViewViewOperationCompartment2EditPart.VISUAL_ID),
+		Node label5018 = createLabel(node,
+				WaveVisualIDRegistry.getType(ViewName2EditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ViewViewOperationCompartment2EditPart.VISUAL_ID),
 				false, false, true, true);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ViewViewAreaCompartment2EditPart.VISUAL_ID), true,
-				false, false, false);
+		createCompartment(node,
+				WaveVisualIDRegistry
+						.getType(ViewViewAreaCompartment2EditPart.VISUAL_ID),
+				true, false, false, false);
 		return node;
 	}
 
@@ -1295,9 +1227,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			int index, boolean persisted, PreferencesHint preferencesHint) {
 		Node node = NotationFactory.eINSTANCE.createNode();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createLocation());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(Operation5EditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(Operation5EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		return node;
@@ -1319,9 +1249,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1338,16 +1268,20 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5028 = createLabel(node, WaveVisualIDRegistry
-				.getType(ClassName2EditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ClassClassAttributesCompartment2EditPart.VISUAL_ID),
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5028 = createLabel(node,
+				WaveVisualIDRegistry.getType(ClassName2EditPart.VISUAL_ID));
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ClassClassAttributesCompartment2EditPart.VISUAL_ID),
 				true, false, true, true);
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(ClassClassOperationsCompartment2EditPart.VISUAL_ID),
+		createCompartment(
+				node,
+				WaveVisualIDRegistry
+						.getType(ClassClassOperationsCompartment2EditPart.VISUAL_ID),
 				true, false, true, true);
 		return node;
 	}
@@ -1360,9 +1294,7 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 			PreferencesHint preferencesHint) {
 		Shape node = NotationFactory.eINSTANCE.createShape();
 		node.setLayoutConstraint(NotationFactory.eINSTANCE.createBounds());
-		node
-				.setType(WaveVisualIDRegistry
-						.getType(Interface2EditPart.VISUAL_ID));
+		node.setType(WaveVisualIDRegistry.getType(Interface2EditPart.VISUAL_ID));
 		ViewUtil.insertChildView(containerView, node, index, persisted);
 		node.setElement(domainElement);
 		// initializeFromPreferences 
@@ -1371,9 +1303,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1390,11 +1322,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5029 = createLabel(node, WaveVisualIDRegistry
-				.getType(InterfaceName2EditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5029 = createLabel(node,
+				WaveVisualIDRegistry.getType(InterfaceName2EditPart.VISUAL_ID));
 		createCompartment(
 				node,
 				WaveVisualIDRegistry
@@ -1419,9 +1351,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1438,14 +1370,15 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5030 = createLabel(node, WaveVisualIDRegistry
-				.getType(PackageName2EditPart.VISUAL_ID));
-		createCompartment(node, WaveVisualIDRegistry
-				.getType(PackagePackageCompartment2EditPart.VISUAL_ID), true,
-				false, false, false);
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5030 = createLabel(node,
+				WaveVisualIDRegistry.getType(PackageName2EditPart.VISUAL_ID));
+		createCompartment(node,
+				WaveVisualIDRegistry
+						.getType(PackagePackageCompartment2EditPart.VISUAL_ID),
+				true, false, false, false);
 		return node;
 	}
 
@@ -1465,9 +1398,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle nodeFontStyle = (FontStyle) node
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (nodeFontStyle != null) {
@@ -1484,11 +1417,11 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		org.eclipse.swt.graphics.RGB fillRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_FILL_COLOR);
-		ViewUtil.setStructuralFeatureValue(node, NotationPackage.eINSTANCE
-				.getFillStyle_FillColor(), FigureUtilities
-				.RGBToInteger(fillRGB));
-		Node label5034 = createLabel(node, WaveVisualIDRegistry
-				.getType(IncludeName2EditPart.VISUAL_ID));
+		ViewUtil.setStructuralFeatureValue(node,
+				NotationPackage.eINSTANCE.getFillStyle_FillColor(),
+				FigureUtilities.RGBToInteger(fillRGB));
+		Node label5034 = createLabel(node,
+				WaveVisualIDRegistry.getType(IncludeName2EditPart.VISUAL_ID));
 		return node;
 	}
 
@@ -1502,11 +1435,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(DependencyRelationshipEditPart.VISUAL_ID));
@@ -1517,9 +1453,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1537,11 +1473,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
-		Node label6003 = createLabel(edge, WaveVisualIDRegistry
-				.getType(DependencyRelationshipStereotypeEditPart.VISUAL_ID));
+		Node label6003 = createLabel(
+				edge,
+				WaveVisualIDRegistry
+						.getType(DependencyRelationshipStereotypeEditPart.VISUAL_ID));
 		label6003.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location6003 = (Location) label6003.getLayoutConstraint();
@@ -1560,14 +1499,18 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(InheritanceRelationshipEditPart.VISUAL_ID));
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
 		edge.setElement(domainElement);
 		// initializePreferences
 		final IPreferenceStore prefStore = (IPreferenceStore) preferencesHint
@@ -1575,9 +1518,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1595,8 +1538,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
 		return edge;
 	}
@@ -1611,11 +1555,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(RealizationRelationshipEditPart.VISUAL_ID));
@@ -1626,9 +1573,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1646,8 +1593,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
 		return edge;
 	}
@@ -1662,11 +1610,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(AssociationRelationshipEditPart.VISUAL_ID));
@@ -1677,9 +1628,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1697,11 +1648,13 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
-		Node label4008 = createLabel(edge, WaveVisualIDRegistry
-				.getType(AssociationRelationshipNameEditPart.VISUAL_ID));
+		Node label4008 = createLabel(edge,
+				WaveVisualIDRegistry
+						.getType(AssociationRelationshipNameEditPart.VISUAL_ID));
 		label4008.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location4008 = (Location) label4008.getLayoutConstraint();
@@ -1738,11 +1691,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(ActionToViewTransitionEditPart.VISUAL_ID));
@@ -1753,9 +1709,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1773,11 +1729,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
-		Node label4011 = createLabel(edge, WaveVisualIDRegistry
-				.getType(ActionToViewTransitionConditionEditPart.VISUAL_ID));
+		Node label4011 = createLabel(
+				edge,
+				WaveVisualIDRegistry
+						.getType(ActionToViewTransitionConditionEditPart.VISUAL_ID));
 		label4011.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location4011 = (Location) label4011.getLayoutConstraint();
@@ -1795,11 +1754,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(ModelMemberDocsEditPart.VISUAL_ID));
@@ -1810,9 +1772,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1830,8 +1792,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
 		return edge;
 	}
@@ -1846,11 +1809,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(ViewTransitionEditPart.VISUAL_ID));
@@ -1861,9 +1827,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1881,11 +1847,13 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
-		Node label6002 = createLabel(edge, WaveVisualIDRegistry
-				.getType(ViewTransitionConditionEditPart.VISUAL_ID));
+		Node label6002 = createLabel(edge,
+				WaveVisualIDRegistry
+						.getType(ViewTransitionConditionEditPart.VISUAL_ID));
 		label6002.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location6002 = (Location) label6002.getLayoutConstraint();
@@ -1904,11 +1872,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(DependencyRelationship2EditPart.VISUAL_ID));
@@ -1919,9 +1890,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1939,11 +1910,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
-		Node label6004 = createLabel(edge, WaveVisualIDRegistry
-				.getType(DependencyRelationshipStereotype2EditPart.VISUAL_ID));
+		Node label6004 = createLabel(
+				edge,
+				WaveVisualIDRegistry
+						.getType(DependencyRelationshipStereotype2EditPart.VISUAL_ID));
 		label6004.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location6004 = (Location) label6004.getLayoutConstraint();
@@ -1962,11 +1936,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		edge.getStyles().add(NotationFactory.eINSTANCE.createFontStyle());
 		RelativeBendpoints bendpoints = NotationFactory.eINSTANCE
 				.createRelativeBendpoints();
-		ArrayList points = new ArrayList(2);
+		ArrayList<RelativeBendpoint> points = new ArrayList<RelativeBendpoint>(
+				2);
 		points.add(new RelativeBendpoint());
 		points.add(new RelativeBendpoint());
 		bendpoints.setPoints(points);
-		edge.setBendpoints(bendpoints);
+		edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
+      
 		ViewUtil.insertChildView(containerView, edge, index, persisted);
 		edge.setType(WaveVisualIDRegistry
 				.getType(DependencyRelationship3EditPart.VISUAL_ID));
@@ -1977,9 +1954,9 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 
 		org.eclipse.swt.graphics.RGB lineRGB = PreferenceConverter.getColor(
 				prefStore, IPreferenceConstants.PREF_LINE_COLOR);
-		ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-				.getLineStyle_LineColor(), FigureUtilities
-				.RGBToInteger(lineRGB));
+		ViewUtil.setStructuralFeatureValue(edge,
+				NotationPackage.eINSTANCE.getLineStyle_LineColor(),
+				FigureUtilities.RGBToInteger(lineRGB));
 		FontStyle edgeFontStyle = (FontStyle) edge
 				.getStyle(NotationPackage.Literals.FONT_STYLE);
 		if (edgeFontStyle != null) {
@@ -1997,11 +1974,14 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		Routing routing = Routing.get(prefStore
 				.getInt(IPreferenceConstants.PREF_LINE_STYLE));
 		if (routing != null) {
-			ViewUtil.setStructuralFeatureValue(edge, NotationPackage.eINSTANCE
-					.getRoutingStyle_Routing(), routing);
+			ViewUtil.setStructuralFeatureValue(edge,
+					NotationPackage.eINSTANCE.getRoutingStyle_Routing(),
+					routing);
 		}
-		Node label6005 = createLabel(edge, WaveVisualIDRegistry
-				.getType(DependencyRelationshipStereotype3EditPart.VISUAL_ID));
+		Node label6005 = createLabel(
+				edge,
+				WaveVisualIDRegistry
+						.getType(DependencyRelationshipStereotype3EditPart.VISUAL_ID));
 		label6005.setLayoutConstraint(NotationFactory.eINSTANCE
 				.createLocation());
 		Location location6005 = (Location) label6005.getLayoutConstraint();
@@ -2076,8 +2056,8 @@ public class WaveViewProvider extends AbstractProvider implements IViewProvider 
 		}
 		EObject eObject = (EObject) semanticAdapter.getAdapter(EObject.class);
 		if (eObject != null) {
-			return EMFCoreUtil.resolve(TransactionUtil
-					.getEditingDomain(eObject), eObject);
+			return EMFCoreUtil.resolve(
+					TransactionUtil.getEditingDomain(eObject), eObject);
 		}
 		return null;
 	}

@@ -9,35 +9,30 @@
         xsi:type="gmftool:ToolGroup"
         title="Documentation">
       <tools
-          xsi:type="gmftool:ToolGroup"
-          title="Doc"
-          stack="true">
-        <tools
-            xsi:type="gmftool:CreationTool"
-            title="Documentation"
-            description="Create documentation">
-          <smallIcon
-              xsi:type="gmftool:BundleImage"
-              path="icons/full/obj16/Documentation.gif"
-              bundle="wave"/>
-          <largeIcon
-              xsi:type="gmftool:BundleImage"
-              path="icons/full/obj16/Documentation.gif"
-              bundle="wave"/>
-        </tools>
-        <tools
-            xsi:type="gmftool:CreationTool"
-            title="Connection"
-            description="Connection from model member to documentation">
-          <smallIcon
-              xsi:type="gmftool:BundleImage"
-              path="icons/full/obj16/DocumentationConnection.gif"
-              bundle="wave"/>
-          <largeIcon
-              xsi:type="gmftool:BundleImage"
-              path="icons/full/obj16/DocumentationConnection.gif"
-              bundle="wave"/>
-        </tools>
+          xsi:type="gmftool:CreationTool"
+          title="Documentation"
+          description="Create documentation">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Documentation.gif"
+            bundle="wave"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/Documentation.gif"
+            bundle="wave"/>
+      </tools>
+      <tools
+          xsi:type="gmftool:CreationTool"
+          title="Connection"
+          description="Connection from model member to documentation">
+        <smallIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/DocumentationConnection.gif"
+            bundle="wave"/>
+        <largeIcon
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/DocumentationConnection.gif"
+            bundle="wave"/>
       </tools>
     </tools>
     <tools

@@ -106,10 +106,9 @@ public class WaveDomainNavigatorItem extends PlatformObject {
 		if (obj instanceof de.gulden.modeling.wave.diagram.navigator.WaveDomainNavigatorItem) {
 			return EcoreUtil
 					.getURI(getEObject())
-					.equals(
-							EcoreUtil
-									.getURI(((de.gulden.modeling.wave.diagram.navigator.WaveDomainNavigatorItem) obj)
-											.getEObject()));
+					.equals(EcoreUtil
+							.getURI(((de.gulden.modeling.wave.diagram.navigator.WaveDomainNavigatorItem) obj)
+									.getEObject()));
 		}
 		return super.equals(obj);
 	}

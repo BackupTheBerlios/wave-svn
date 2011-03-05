@@ -3,8 +3,6 @@
  * A Graphical Modeling Framework (GMF) Plugin for Eclipse
  * Copyright Jens Gulden, 2009, mail@jensgulden.de
  * Licensed under the GNU General Public License (GPL)
- *
- * $Id$
  */
 package de.gulden.modeling.wave.impl;
 
@@ -68,7 +66,7 @@ public class AssociationRelationshipImpl extends TopLevelModelMemberImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EnumMultiplicity MULTIPLICITY_A_EDEFAULT = EnumMultiplicity.ZERO_OR_ONE;
+	protected static final EnumMultiplicity MULTIPLICITY_A_EDEFAULT = EnumMultiplicity.ONE;
 
 	/**
 	 * The cached value of the '{@link #getMultiplicityA() <em>Multiplicity A</em>}' attribute.
@@ -88,7 +86,7 @@ public class AssociationRelationshipImpl extends TopLevelModelMemberImpl impleme
 	 * @generated
 	 * @ordered
 	 */
-	protected static final EnumMultiplicity MULTIPLICITY_B_EDEFAULT = EnumMultiplicity.ZERO_OR_ONE;
+	protected static final EnumMultiplicity MULTIPLICITY_B_EDEFAULT = EnumMultiplicity.ZERO_OR_MORE;
 
 	/**
 	 * The cached value of the '{@link #getMultiplicityB() <em>Multiplicity B</em>}' attribute.

@@ -107,8 +107,18 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List getSemanticChildren(View view) {
+	public static boolean isShortcutOrphaned(View view) {
+		return !view.isSetElement() || view.getElement() == null
+				|| view.getElement().eIsProxy();
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getSemanticChildren(View view) {
 		switch (WaveVisualIDRegistry.getVisualID(view)) {
+		case ModelEditPart.VISUAL_ID:
+			return getModel_1000SemanticChildren(view);
 		case AreaEditPart.VISUAL_ID:
 			return getArea_13001SemanticChildren(view);
 		case ClassClassAttributesCompartmentEditPart.VISUAL_ID:
@@ -145,518 +155,22 @@ public class WaveDiagramUpdater {
 			return getInterfaceInterfaceOperationsCompartment_7015SemanticChildren(view);
 		case PackagePackageCompartment2EditPart.VISUAL_ID:
 			return getPackagePackageCompartment_7016SemanticChildren(view);
-		case ModelEditPart.VISUAL_ID:
-			return getModel_1000SemanticChildren(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getArea_13001SemanticChildren(View view) {
+	public static List<WaveNodeDescriptor> getModel_1000SemanticChildren(
+			View view) {
 		if (!view.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Area modelElement = (Area) view.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getViews().iterator(); it.hasNext();) {
-			de.gulden.modeling.wave.View childElement = (de.gulden.modeling.wave.View) it
-					.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == View2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getClassClassAttributesCompartment_7004SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Class modelElement = (Class) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getAttributes().iterator(); it
-				.hasNext();) {
-			Attribute childElement = (Attribute) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == AttributeEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getClassClassOperationsCompartment_7005SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Class modelElement = (Class) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getOperations().iterator(); it
-				.hasNext();) {
-			Operation childElement = (Operation) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == OperationEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getInterfaceInterfaceOperationsCompartment_7006SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Interface modelElement = (Interface) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getOperations().iterator(); it
-				.hasNext();) {
-			Operation childElement = (Operation) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Operation2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getControllerPageParametersCompartment_7017SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Controller modelElement = (Controller) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getAttributes().iterator(); it
-				.hasNext();) {
-			Attribute childElement = (Attribute) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Attribute2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getControllerPageActionsCompartment_7018SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Controller modelElement = (Controller) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getActions().iterator(); it.hasNext();) {
-			Action childElement = (Action) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == ActionEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getControllerPageViewsCompartment_7019SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Controller modelElement = (Controller) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getViews().iterator(); it.hasNext();) {
-			de.gulden.modeling.wave.View childElement = (de.gulden.modeling.wave.View) it
-					.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == ViewEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getControllerPageFunctionsCompartment_7020SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Controller modelElement = (Controller) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getOperations().iterator(); it
-				.hasNext();) {
-			Operation childElement = (Operation) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Operation5EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getActionActionOperationCompartment_7021SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Action modelElement = (Action) containerView.getElement();
-		List result = new LinkedList();
-		{
-			Operation childElement = modelElement.getOperation();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Operation3EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getViewViewOperationCompartment_7022SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
-				.getElement();
-		List result = new LinkedList();
-		{
-			Operation childElement = modelElement.getOperation();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Operation4EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getViewViewAreaCompartment_7023SemanticChildren(View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
-				.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getAreas().iterator(); it.hasNext();) {
-			Area childElement = (Area) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == AreaEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getViewViewOperationCompartment_7002SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
-				.getElement();
-		List result = new LinkedList();
-		{
-			Operation childElement = modelElement.getOperation();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Operation4EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getViewViewAreaCompartment_7003SemanticChildren(View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
-				.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getAreas().iterator(); it.hasNext();) {
-			Area childElement = (Area) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == AreaEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getPackagePackageCompartment_7014SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Package modelElement = (Package) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getMembers().iterator(); it.hasNext();) {
-			TopLevelModelMember childElement = (TopLevelModelMember) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Class2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Interface2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Package2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Include2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getClassClassAttributesCompartment_7012SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Class modelElement = (Class) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getAttributes().iterator(); it
-				.hasNext();) {
-			Attribute childElement = (Attribute) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == AttributeEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getClassClassOperationsCompartment_7013SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Class modelElement = (Class) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getOperations().iterator(); it
-				.hasNext();) {
-			Operation childElement = (Operation) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == OperationEditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getInterfaceInterfaceOperationsCompartment_7015SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Interface modelElement = (Interface) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getOperations().iterator(); it
-				.hasNext();) {
-			Operation childElement = (Operation) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Operation2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getPackagePackageCompartment_7016SemanticChildren(
-			View view) {
-		if (false == view.eContainer() instanceof View) {
-			return Collections.EMPTY_LIST;
-		}
-		View containerView = (View) view.eContainer();
-		if (!containerView.isSetElement()) {
-			return Collections.EMPTY_LIST;
-		}
-		Package modelElement = (Package) containerView.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getMembers().iterator(); it.hasNext();) {
-			TopLevelModelMember childElement = (TopLevelModelMember) it.next();
-			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
-					childElement);
-			if (visualID == Class2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Interface2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Package2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-			if (visualID == Include2EditPart.VISUAL_ID) {
-				result.add(new WaveNodeDescriptor(childElement, visualID));
-				continue;
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * @generated
-	 */
-	public static List getModel_1000SemanticChildren(View view) {
-		if (!view.isSetElement()) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
 		Model modelElement = (Model) view.getElement();
-		List result = new LinkedList();
-		for (Iterator it = modelElement.getMembers().iterator(); it.hasNext();) {
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getMembers().iterator(); it
+				.hasNext();) {
 			TopLevelModelMember childElement = (TopLevelModelMember) it.next();
 			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
 					childElement);
@@ -697,7 +211,7 @@ public class WaveDiagramUpdater {
 				continue;
 			}
 		}
-		for (Iterator it = modelElement.getDocumentation().iterator(); it
+		for (Iterator<?> it = modelElement.getDocumentation().iterator(); it
 				.hasNext();) {
 			Documentation childElement = (Documentation) it.next();
 			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
@@ -713,7 +227,509 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List getContainedLinks(View view) {
+	public static List<WaveNodeDescriptor> getArea_13001SemanticChildren(
+			View view) {
+		if (!view.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Area modelElement = (Area) view.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getViews().iterator(); it.hasNext();) {
+			de.gulden.modeling.wave.View childElement = (de.gulden.modeling.wave.View) it
+					.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == View2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getClassClassAttributesCompartment_7004SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Class modelElement = (Class) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getAttributes().iterator(); it
+				.hasNext();) {
+			Attribute childElement = (Attribute) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == AttributeEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getClassClassOperationsCompartment_7005SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Class modelElement = (Class) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getOperations().iterator(); it
+				.hasNext();) {
+			Operation childElement = (Operation) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == OperationEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getInterfaceInterfaceOperationsCompartment_7006SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Interface modelElement = (Interface) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getOperations().iterator(); it
+				.hasNext();) {
+			Operation childElement = (Operation) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Operation2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getControllerPageParametersCompartment_7017SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Controller modelElement = (Controller) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getAttributes().iterator(); it
+				.hasNext();) {
+			Attribute childElement = (Attribute) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Attribute2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getControllerPageActionsCompartment_7018SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Controller modelElement = (Controller) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getActions().iterator(); it
+				.hasNext();) {
+			Action childElement = (Action) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == ActionEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getControllerPageViewsCompartment_7019SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Controller modelElement = (Controller) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getViews().iterator(); it.hasNext();) {
+			de.gulden.modeling.wave.View childElement = (de.gulden.modeling.wave.View) it
+					.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == ViewEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getControllerPageFunctionsCompartment_7020SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Controller modelElement = (Controller) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getOperations().iterator(); it
+				.hasNext();) {
+			Operation childElement = (Operation) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Operation5EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getActionActionOperationCompartment_7021SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Action modelElement = (Action) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		{
+			Operation childElement = modelElement.getOperation();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Operation3EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getViewViewOperationCompartment_7022SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
+				.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		{
+			Operation childElement = modelElement.getOperation();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Operation4EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getViewViewAreaCompartment_7023SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
+				.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getAreas().iterator(); it.hasNext();) {
+			Area childElement = (Area) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == AreaEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getViewViewOperationCompartment_7002SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
+				.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		{
+			Operation childElement = modelElement.getOperation();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Operation4EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getViewViewAreaCompartment_7003SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) containerView
+				.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getAreas().iterator(); it.hasNext();) {
+			Area childElement = (Area) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == AreaEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getPackagePackageCompartment_7014SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Package modelElement = (Package) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getMembers().iterator(); it
+				.hasNext();) {
+			TopLevelModelMember childElement = (TopLevelModelMember) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Class2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Interface2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Package2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Include2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getClassClassAttributesCompartment_7012SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Class modelElement = (Class) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getAttributes().iterator(); it
+				.hasNext();) {
+			Attribute childElement = (Attribute) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == AttributeEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getClassClassOperationsCompartment_7013SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Class modelElement = (Class) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getOperations().iterator(); it
+				.hasNext();) {
+			Operation childElement = (Operation) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == OperationEditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getInterfaceInterfaceOperationsCompartment_7015SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Interface modelElement = (Interface) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getOperations().iterator(); it
+				.hasNext();) {
+			Operation childElement = (Operation) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Operation2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveNodeDescriptor> getPackagePackageCompartment_7016SemanticChildren(
+			View view) {
+		if (false == view.eContainer() instanceof View) {
+			return Collections.emptyList();
+		}
+		View containerView = (View) view.eContainer();
+		if (!containerView.isSetElement()) {
+			return Collections.emptyList();
+		}
+		Package modelElement = (Package) containerView.getElement();
+		LinkedList<WaveNodeDescriptor> result = new LinkedList<WaveNodeDescriptor>();
+		for (Iterator<?> it = modelElement.getMembers().iterator(); it
+				.hasNext();) {
+			TopLevelModelMember childElement = (TopLevelModelMember) it.next();
+			int visualID = WaveVisualIDRegistry.getNodeVisualID(view,
+					childElement);
+			if (visualID == Class2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Interface2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Package2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+			if (visualID == Include2EditPart.VISUAL_ID) {
+				result.add(new WaveNodeDescriptor(childElement, visualID));
+				continue;
+			}
+		}
+		return result;
+	}
+
+	/**
+	 * @generated
+	 */
+	public static List<WaveLinkDescriptor> getContainedLinks(View view) {
 		switch (WaveVisualIDRegistry.getVisualID(view)) {
 		case ModelEditPart.VISUAL_ID:
 			return getModel_1000ContainedLinks(view);
@@ -784,13 +800,13 @@ public class WaveDiagramUpdater {
 		case DependencyRelationship3EditPart.VISUAL_ID:
 			return getDependencyRelationship_4017ContainedLinks(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getIncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getIncomingLinks(View view) {
 		switch (WaveVisualIDRegistry.getVisualID(view)) {
 		case ClassEditPart.VISUAL_ID:
 			return getClass_2017IncomingLinks(view);
@@ -859,13 +875,13 @@ public class WaveDiagramUpdater {
 		case DependencyRelationship3EditPart.VISUAL_ID:
 			return getDependencyRelationship_4017IncomingLinks(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getOutgoingLinks(View view) {
 		switch (WaveVisualIDRegistry.getVisualID(view)) {
 		case ClassEditPart.VISUAL_ID:
 			return getClass_2017OutgoingLinks(view);
@@ -934,557 +950,515 @@ public class WaveDiagramUpdater {
 		case DependencyRelationship3EditPart.VISUAL_ID:
 			return getDependencyRelationship_4017OutgoingLinks(view);
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getModel_1000ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getModel_1000ContainedLinks(View view) {
 		Model modelElement = (Model) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getClass_2017ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getClass_2017ContainedLinks(View view) {
 		Class modelElement = (Class) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInterface_2018ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getInterface_2018ContainedLinks(
+			View view) {
 		Interface modelElement = (Interface) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getController_2026ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getController_2026ContainedLinks(
+			View view) {
 		Controller modelElement = (Controller) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getContainedTypeModelFacetLinks_ActionToViewTransition_3005(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_ViewTransition_4013(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_ActionToViewTransition_3005(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_ViewTransition_4013(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInclude_2020ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getInclude_2020ContainedLinks(
+			View view) {
 		Include modelElement = (Include) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getPackage_2021ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getPackage_2021ContainedLinks(
+			View view) {
 		Package modelElement = (Package) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDocumentation_2013ContainedLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getDocumentation_2013ContainedLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getStyleSheet_2022ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getStyleSheet_2022ContainedLinks(
+			View view) {
 		StyleSheet modelElement = (StyleSheet) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getUsecaseSubsystem_2023ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getUsecaseSubsystem_2023ContainedLinks(
+			View view) {
 		UsecaseSubsystem modelElement = (UsecaseSubsystem) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActor_2024ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getActor_2024ContainedLinks(View view) {
 		Actor modelElement = (Actor) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getUsecase_2025ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getUsecase_2025ContainedLinks(
+			View view) {
 		Usecase modelElement = (Usecase) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAttribute_2001ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getAttribute_2001ContainedLinks(
+			View view) {
 		Attribute modelElement = (Attribute) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2002ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getOperation_2002ContainedLinks(
+			View view) {
 		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2003ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getOperation_2003ContainedLinks(
+			View view) {
 		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAttribute_2004ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getAttribute_2004ContainedLinks(
+			View view) {
 		Attribute modelElement = (Attribute) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAction_13006ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getAction_13006ContainedLinks(
+			View view) {
 		Action modelElement = (Action) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_13008ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getOperation_13008ContainedLinks(
+			View view) {
 		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getView_13007ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getView_13007ContainedLinks(View view) {
 		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_13009ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getOperation_13009ContainedLinks(
+			View view) {
 		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getArea_13001ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getArea_13001ContainedLinks(View view) {
 		Area modelElement = (Area) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getView_13002ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getView_13002ContainedLinks(View view) {
 		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2009ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getOperation_2009ContainedLinks(
+			View view) {
 		Operation modelElement = (Operation) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getClass_13003ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getClass_13003ContainedLinks(
+			View view) {
 		Class modelElement = (Class) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInterface_13004ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getInterface_13004ContainedLinks(
+			View view) {
 		Interface modelElement = (Interface) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getPackage_13005ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getPackage_13005ContainedLinks(
+			View view) {
 		Package modelElement = (Package) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getContainedTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInclude_13010ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getInclude_13010ContainedLinks(
+			View view) {
 		Include modelElement = (Include) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_3001ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_3001ContainedLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInheritanceRelationship_3002ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getInheritanceRelationship_3002ContainedLinks(
+			View view) {
 		InheritanceRelationship modelElement = (InheritanceRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getRealizationRelationship_3003ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getRealizationRelationship_3003ContainedLinks(
+			View view) {
 		RealizationRelationship modelElement = (RealizationRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAssociationRelationship_3004ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getAssociationRelationship_3004ContainedLinks(
+			View view) {
 		AssociationRelationship modelElement = (AssociationRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActionToViewTransition_3005ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getActionToViewTransition_3005ContainedLinks(
+			View view) {
 		ActionToViewTransition modelElement = (ActionToViewTransition) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getViewTransition_4013ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getViewTransition_4013ContainedLinks(
+			View view) {
 		ViewTransition modelElement = (ViewTransition) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_4016ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_4016ContainedLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_4017ContainedLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_4017ContainedLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getClass_2017IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getClass_2017IncomingLinks(View view) {
 		Class modelElement = (Class) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInterface_2018IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInterface_2018IncomingLinks(
+			View view) {
 		Interface modelElement = (Interface) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_RealizationRelationship_3003(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_RealizationRelationship_3003(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getController_2026IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getController_2026IncomingLinks(
+			View view) {
 		Controller modelElement = (Controller) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInclude_2020IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInclude_2020IncomingLinks(
+			View view) {
 		Include modelElement = (Include) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getPackage_2021IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getPackage_2021IncomingLinks(
+			View view) {
 		Package modelElement = (Package) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDocumentation_2013IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDocumentation_2013IncomingLinks(
+			View view) {
 		Documentation modelElement = (Documentation) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
 		result.addAll(getIncomingFeatureModelFacetLinks_ModelMember_Docs_4015(
 				modelElement, crossReferences));
 		return result;
@@ -1493,1047 +1467,901 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	public static List getStyleSheet_2022IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getStyleSheet_2022IncomingLinks(
+			View view) {
 		StyleSheet modelElement = (StyleSheet) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getUsecaseSubsystem_2023IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getUsecaseSubsystem_2023IncomingLinks(
+			View view) {
 		UsecaseSubsystem modelElement = (UsecaseSubsystem) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActor_2024IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getActor_2024IncomingLinks(View view) {
 		Actor modelElement = (Actor) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getUsecase_2025IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getUsecase_2025IncomingLinks(
+			View view) {
 		Usecase modelElement = (Usecase) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAttribute_2001IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getAttribute_2001IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2002IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_2002IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2003IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_2003IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAttribute_2004IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getAttribute_2004IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAction_13006IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getAction_13006IncomingLinks(
+			View view) {
 		Action modelElement = (Action) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
 		result.addAll(getIncomingTypeModelFacetLinks_ViewTransition_4013(
 				modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_13008IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_13008IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getView_13007IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getView_13007IncomingLinks(View view) {
 		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_ActionToViewTransition_3005(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ActionToViewTransition_3005(
+				modelElement, crossReferences));
 		result.addAll(getIncomingTypeModelFacetLinks_ViewTransition_4013(
 				modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_13009IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_13009IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getArea_13001IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getArea_13001IncomingLinks(View view) {
 		Area modelElement = (Area) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getView_13002IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getView_13002IncomingLinks(View view) {
 		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_ActionToViewTransition_3005(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_ActionToViewTransition_3005(
+				modelElement, crossReferences));
 		result.addAll(getIncomingTypeModelFacetLinks_ViewTransition_4013(
 				modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2009IncomingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_2009IncomingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getClass_13003IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getClass_13003IncomingLinks(View view) {
 		Class modelElement = (Class) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInterface_13004IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInterface_13004IncomingLinks(
+			View view) {
 		Interface modelElement = (Interface) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_RealizationRelationship_3003(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_RealizationRelationship_3003(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getPackage_13005IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getPackage_13005IncomingLinks(
+			View view) {
 		Package modelElement = (Package) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInclude_13010IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInclude_13010IncomingLinks(
+			View view) {
 		Include modelElement = (Include) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_3001IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_3001IncomingLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInheritanceRelationship_3002IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInheritanceRelationship_3002IncomingLinks(
+			View view) {
 		InheritanceRelationship modelElement = (InheritanceRelationship) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getRealizationRelationship_3003IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getRealizationRelationship_3003IncomingLinks(
+			View view) {
 		RealizationRelationship modelElement = (RealizationRelationship) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAssociationRelationship_3004IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getAssociationRelationship_3004IncomingLinks(
+			View view) {
 		AssociationRelationship modelElement = (AssociationRelationship) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActionToViewTransition_3005IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getActionToViewTransition_3005IncomingLinks(
+			View view) {
 		ActionToViewTransition modelElement = (ActionToViewTransition) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getViewTransition_4013IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getViewTransition_4013IncomingLinks(
+			View view) {
 		ViewTransition modelElement = (ViewTransition) view.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_4016IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_4016IncomingLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_4017IncomingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_4017IncomingLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		Map crossReferences = EcoreUtil.CrossReferencer.find(view.eResource()
-				.getResourceSet().getResources());
-		List result = new LinkedList();
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-						modelElement, crossReferences));
-		result
-				.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-						modelElement, crossReferences));
+		Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences = EcoreUtil.CrossReferencer
+				.find(view.eResource().getResourceSet().getResources());
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+				modelElement, crossReferences));
+		result.addAll(getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+				modelElement, crossReferences));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getClass_2017OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getClass_2017OutgoingLinks(View view) {
 		Class modelElement = (Class) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInterface_2018OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInterface_2018OutgoingLinks(
+			View view) {
 		Interface modelElement = (Interface) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getController_2026OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getController_2026OutgoingLinks(
+			View view) {
 		Controller modelElement = (Controller) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInclude_2020OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInclude_2020OutgoingLinks(
+			View view) {
 		Include modelElement = (Include) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getPackage_2021OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getPackage_2021OutgoingLinks(
+			View view) {
 		Package modelElement = (Package) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDocumentation_2013OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getDocumentation_2013OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getStyleSheet_2022OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getStyleSheet_2022OutgoingLinks(
+			View view) {
 		StyleSheet modelElement = (StyleSheet) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getUsecaseSubsystem_2023OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getUsecaseSubsystem_2023OutgoingLinks(
+			View view) {
 		UsecaseSubsystem modelElement = (UsecaseSubsystem) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActor_2024OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getActor_2024OutgoingLinks(View view) {
 		Actor modelElement = (Actor) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getUsecase_2025OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getUsecase_2025OutgoingLinks(
+			View view) {
 		Usecase modelElement = (Usecase) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAttribute_2001OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getAttribute_2001OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2002OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_2002OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2003OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_2003OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAttribute_2004OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getAttribute_2004OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAction_13006OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getAction_13006OutgoingLinks(
+			View view) {
 		Action modelElement = (Action) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_ActionToViewTransition_3005(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_ViewTransition_4013(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ActionToViewTransition_3005(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ViewTransition_4013(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_13008OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_13008OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getView_13007OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getView_13007OutgoingLinks(View view) {
 		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_ViewTransition_4013(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ViewTransition_4013(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_13009OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_13009OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getArea_13001OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getArea_13001OutgoingLinks(View view) {
 		Area modelElement = (Area) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getView_13002OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getView_13002OutgoingLinks(View view) {
 		de.gulden.modeling.wave.View modelElement = (de.gulden.modeling.wave.View) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_ViewTransition_4013(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_ViewTransition_4013(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getOperation_2009OutgoingLinks(View view) {
-		return Collections.EMPTY_LIST;
+	public static List<WaveLinkDescriptor> getOperation_2009OutgoingLinks(
+			View view) {
+		return Collections.emptyList();
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getClass_13003OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getClass_13003OutgoingLinks(View view) {
 		Class modelElement = (Class) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_RealizationRelationship_3003(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInterface_13004OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInterface_13004OutgoingLinks(
+			View view) {
 		Interface modelElement = (Interface) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getPackage_13005OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getPackage_13005OutgoingLinks(
+			View view) {
 		Package modelElement = (Package) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInclude_13010OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInclude_13010OutgoingLinks(
+			View view) {
 		Include modelElement = (Include) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_3001OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_3001OutgoingLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getInheritanceRelationship_3002OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getInheritanceRelationship_3002OutgoingLinks(
+			View view) {
 		InheritanceRelationship modelElement = (InheritanceRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getRealizationRelationship_3003OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getRealizationRelationship_3003OutgoingLinks(
+			View view) {
 		RealizationRelationship modelElement = (RealizationRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getAssociationRelationship_3004OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getAssociationRelationship_3004OutgoingLinks(
+			View view) {
 		AssociationRelationship modelElement = (AssociationRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getActionToViewTransition_3005OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getActionToViewTransition_3005OutgoingLinks(
+			View view) {
 		ActionToViewTransition modelElement = (ActionToViewTransition) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getViewTransition_4013OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getViewTransition_4013OutgoingLinks(
+			View view) {
 		ViewTransition modelElement = (ViewTransition) view.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_4016OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_4016OutgoingLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	public static List getDependencyRelationship_4017OutgoingLinks(View view) {
+	public static List<WaveLinkDescriptor> getDependencyRelationship_4017OutgoingLinks(
+			View view) {
 		DependencyRelationship modelElement = (DependencyRelationship) view
 				.getElement();
-		List result = new LinkedList();
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
-		result
-				.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
-		result
-				.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(modelElement));
+		result.addAll(getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(modelElement));
+		result.addAll(getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(modelElement));
 		return result;
 	}
 
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_DependencyRelationship_3001(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_DependencyRelationship_3001(
 			Package container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof DependencyRelationship) {
@@ -2556,10 +2384,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_InheritanceRelationship_3002(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_InheritanceRelationship_3002(
 			Package container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof InheritanceRelationship) {
@@ -2582,10 +2410,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_RealizationRelationship_3003(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_RealizationRelationship_3003(
 			Package container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof RealizationRelationship) {
@@ -2608,10 +2436,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_AssociationRelationship_3004(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_AssociationRelationship_3004(
 			Package container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof AssociationRelationship) {
@@ -2634,11 +2462,11 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_ActionToViewTransition_3005(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_ActionToViewTransition_3005(
 			Controller container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getTransitionsActionToView().iterator(); links
-				.hasNext();) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getTransitionsActionToView()
+				.iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof ActionToViewTransition) {
 				continue;
@@ -2660,10 +2488,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_ViewTransition_4013(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_ViewTransition_4013(
 			Controller container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getTransitionsView().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getTransitionsView().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof ViewTransition) {
@@ -2686,10 +2514,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_DependencyRelationship_4016(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_DependencyRelationship_4016(
 			Package container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof DependencyRelationship) {
@@ -2712,10 +2540,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getContainedTypeModelFacetLinks_DependencyRelationship_4017(
+	private static Collection<WaveLinkDescriptor> getContainedTypeModelFacetLinks_DependencyRelationship_4017(
 			Package container) {
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof DependencyRelationship) {
@@ -2738,13 +2566,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
-			ModelMember target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_DependencyRelationship_3001(
+			ModelMember target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getDependencyRelationship_Supplier()
 					|| false == setting.getEObject() instanceof DependencyRelationship) {
@@ -2767,13 +2595,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
-			Classifier target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_InheritanceRelationship_3002(
+			Classifier target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getInheritanceRelationship_Parent()
 					|| false == setting.getEObject() instanceof InheritanceRelationship) {
@@ -2796,13 +2624,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_RealizationRelationship_3003(
-			Interface target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_RealizationRelationship_3003(
+			Interface target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getRealizationRelationship_ParentInterface()
 					|| false == setting.getEObject() instanceof RealizationRelationship) {
@@ -2825,13 +2653,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
-			OOPClassifier target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_AssociationRelationship_3004(
+			OOPClassifier target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getAssociationRelationship_B()
 					|| false == setting.getEObject() instanceof AssociationRelationship) {
@@ -2854,13 +2682,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_ActionToViewTransition_3005(
-			de.gulden.modeling.wave.View target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_ActionToViewTransition_3005(
+			de.gulden.modeling.wave.View target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getActionToViewTransition_Target()
 					|| false == setting.getEObject() instanceof ActionToViewTransition) {
@@ -2883,13 +2711,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingFeatureModelFacetLinks_ModelMember_Docs_4015(
-			Documentation target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingFeatureModelFacetLinks_ModelMember_Docs_4015(
+			Documentation target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() == WavePackage.eINSTANCE
 					.getModelMember_Docs()) {
 				result.add(new WaveLinkDescriptor(setting.getEObject(), target,
@@ -2903,13 +2731,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_ViewTransition_4013(
-			ControllerMemberExecutable target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_ViewTransition_4013(
+			ControllerMemberExecutable target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getViewTransition_Target()
 					|| false == setting.getEObject() instanceof ViewTransition) {
@@ -2931,13 +2759,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
-			ModelMember target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_DependencyRelationship_4016(
+			ModelMember target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getDependencyRelationship_Supplier()
 					|| false == setting.getEObject() instanceof DependencyRelationship) {
@@ -2960,13 +2788,13 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
-			ModelMember target, Map crossReferences) {
-		Collection result = new LinkedList();
-		Collection settings = (Collection) crossReferences.get(target);
-		for (Iterator it = settings.iterator(); it.hasNext();) {
-			EStructuralFeature.Setting setting = (EStructuralFeature.Setting) it
-					.next();
+	private static Collection<WaveLinkDescriptor> getIncomingTypeModelFacetLinks_DependencyRelationship_4017(
+			ModelMember target,
+			Map<EObject, Collection<EStructuralFeature.Setting>> crossReferences) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		Collection<EStructuralFeature.Setting> settings = crossReferences
+				.get(target);
+		for (EStructuralFeature.Setting setting : settings) {
 			if (setting.getEStructuralFeature() != WavePackage.eINSTANCE
 					.getDependencyRelationship_Supplier()
 					|| false == setting.getEObject() instanceof DependencyRelationship) {
@@ -2989,7 +2817,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_DependencyRelationship_3001(
 			ModelMember source) {
 		Package container = null;
 		// Find container element for the link.
@@ -3002,10 +2830,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof DependencyRelationship) {
@@ -3031,7 +2859,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_InheritanceRelationship_3002(
 			Classifier source) {
 		Package container = null;
 		// Find container element for the link.
@@ -3044,10 +2872,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof InheritanceRelationship) {
@@ -3073,7 +2901,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_RealizationRelationship_3003(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_RealizationRelationship_3003(
 			Class source) {
 		Package container = null;
 		// Find container element for the link.
@@ -3086,10 +2914,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof RealizationRelationship) {
@@ -3115,7 +2943,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_AssociationRelationship_3004(
 			OOPClassifier source) {
 		Package container = null;
 		// Find container element for the link.
@@ -3128,10 +2956,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof AssociationRelationship) {
@@ -3157,7 +2985,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_ActionToViewTransition_3005(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_ActionToViewTransition_3005(
 			Action source) {
 		Controller container = null;
 		// Find container element for the link.
@@ -3170,11 +2998,11 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getTransitionsActionToView().iterator(); links
-				.hasNext();) {
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getTransitionsActionToView()
+				.iterator(); links.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof ActionToViewTransition) {
 				continue;
@@ -3199,10 +3027,10 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(
+	private static Collection<WaveLinkDescriptor> getOutgoingFeatureModelFacetLinks_ModelMember_Docs_4015(
 			ModelMember source) {
-		Collection result = new LinkedList();
-		for (Iterator destinations = source.getDocs().iterator(); destinations
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> destinations = source.getDocs().iterator(); destinations
 				.hasNext();) {
 			Documentation destination = (Documentation) destinations.next();
 			result.add(new WaveLinkDescriptor(source, destination,
@@ -3215,7 +3043,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_ViewTransition_4013(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_ViewTransition_4013(
 			ControllerMemberExecutable source) {
 		Controller container = null;
 		// Find container element for the link.
@@ -3228,10 +3056,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getTransitionsView().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getTransitionsView().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof ViewTransition) {
@@ -3257,7 +3085,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_DependencyRelationship_4016(
 			ModelMember source) {
 		Package container = null;
 		// Find container element for the link.
@@ -3270,10 +3098,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof DependencyRelationship) {
@@ -3299,7 +3127,7 @@ public class WaveDiagramUpdater {
 	/**
 	 * @generated
 	 */
-	private static Collection getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(
+	private static Collection<WaveLinkDescriptor> getOutgoingTypeModelFacetLinks_DependencyRelationship_4017(
 			ModelMember source) {
 		Package container = null;
 		// Find container element for the link.
@@ -3312,10 +3140,10 @@ public class WaveDiagramUpdater {
 			}
 		}
 		if (container == null) {
-			return Collections.EMPTY_LIST;
+			return Collections.emptyList();
 		}
-		Collection result = new LinkedList();
-		for (Iterator links = container.getMembers().iterator(); links
+		LinkedList<WaveLinkDescriptor> result = new LinkedList<WaveLinkDescriptor>();
+		for (Iterator<?> links = container.getMembers().iterator(); links
 				.hasNext();) {
 			EObject linkObject = (EObject) links.next();
 			if (false == linkObject instanceof DependencyRelationship) {

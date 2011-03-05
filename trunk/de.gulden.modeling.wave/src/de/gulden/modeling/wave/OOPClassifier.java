@@ -3,13 +3,10 @@
  * A Graphical Modeling Framework (GMF) Plugin for Eclipse
  * Copyright Jens Gulden, 2009, mail@jensgulden.de
  * Licensed under the GNU General Public License (GPL)
- *
- * $Id$
  */
 package de.gulden.modeling.wave;
 
 import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -144,7 +141,7 @@ public interface OOPClassifier extends Classifier {
 	 * The list contents are of type {@link de.gulden.modeling.wave.OOPClassifier}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Inner</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Inner</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->

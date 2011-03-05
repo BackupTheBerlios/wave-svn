@@ -9,12 +9,10 @@ package de.gulden.modeling.wave.diagram.edit.commands;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
@@ -23,7 +21,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import de.gulden.modeling.wave.Attribute;
 import de.gulden.modeling.wave.Classifier;
 import de.gulden.modeling.wave.WaveFactory;
-import de.gulden.modeling.wave.WavePackage;
 
 /**
  * @generated
@@ -38,6 +35,7 @@ public class Attribute2CreateCommand extends EditElementCommand {
 	}
 
 	/**
+	 * FIXME: replace with setElementToEdit()
 	 * @generated
 	 */
 	protected EObject getElementToEdit() {

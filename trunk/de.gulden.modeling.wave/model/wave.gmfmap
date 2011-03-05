@@ -7,16 +7,16 @@
     xmlns:gmftool="http://www.eclipse.org/gmf/2005/ToolDefinition">
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Class"/>
+          href="wave.ecore#_TD4WROGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#ClassNameLabel"/>
         <features
-            href="wave.ecore#//Classifier/name"/>
+            href="wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -26,16 +26,16 @@
       <children
           compartment="//@nodes.0/@ownedChild/@compartments.0">
         <containmentFeature
-            href="wave.ecore#//Classifier/attributes"/>
+            href="wave.ecore#_TD2hBeGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//Attribute"/>
+              href="wave.ecore#_TD3IKeGuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#AttributeSignatureLabel"/>
             <features
-                href="wave.ecore#//ClassifierMember/signature"/>
+                href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -47,16 +47,16 @@
       <children
           compartment="//@nodes.0/@ownedChild/@compartments.1">
         <containmentFeature
-            href="wave.ecore#//Classifier/operations"/>
+            href="wave.ecore#_TD2hAuGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//Operation"/>
+              href="wave.ecore#_TD3IF-GuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#OperationSignatureLabel"/>
             <features
-                href="wave.ecore#//ClassifierMember/signature"/>
+                href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -79,16 +79,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Interface"/>
+          href="wave.ecore#_TD4WSeGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#InterfaceNameLabel"/>
         <features
-            href="wave.ecore#//Classifier/name"/>
+            href="wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -98,16 +98,16 @@
       <children
           compartment="//@nodes.1/@ownedChild/@compartments.0">
         <containmentFeature
-            href="wave.ecore#//Classifier/operations"/>
+            href="wave.ecore#_TD2hAuGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//Operation"/>
+              href="wave.ecore#_TD3IF-GuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#OperationSignatureLabel"/>
             <features
-                href="wave.ecore#//ClassifierMember/signature"/>
+                href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -125,16 +125,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Controller"/>
+          href="wave.ecore#_TD2hCOGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#PageNameLabel"/>
         <features
-            href="wave.ecore#//Classifier/name"/>
+            href="wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -144,16 +144,16 @@
       <children
           compartment="//@nodes.2/@ownedChild/@compartments.0">
         <containmentFeature
-            href="wave.ecore#//Classifier/attributes"/>
+            href="wave.ecore#_TD2hBeGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//Attribute"/>
+              href="wave.ecore#_TD3IKeGuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#AttributeSignatureLabel"/>
             <features
-                href="wave.ecore#//ClassifierMember/signature"/>
+                href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -165,16 +165,16 @@
       <children
           compartment="//@nodes.2/@ownedChild/@compartments.1">
         <containmentFeature
-            href="wave.ecore#//Controller/actions"/>
+            href="wave.ecore#_TD2hCeGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//Action"/>
+              href="wave.ecore#_TD3IIeGuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#ActionNameLabel"/>
             <features
-                href="wave.ecore#//ControllerMember/name"/>
+                href="wave.ecore#_TD5kXOGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -184,16 +184,16 @@
           <children
               compartment="//@nodes.2/@ownedChild/@children.1/@ownedChild/@compartments.0">
             <containmentFeature
-                href="wave.ecore#//ControllerMemberExecutable/operation"/>
+                href="wave.ecore#_TD8AnuGuEd6cOJBz96zHHQ"/>
             <ownedChild>
               <domainMetaElement
-                  href="wave.ecore#//Operation"/>
+                  href="wave.ecore#_TD3IF-GuEd6cOJBz96zHHQ"/>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
                     href="wave.gmfgraph#OperationSignatureLabel"/>
                 <features
-                    href="wave.ecore#//ClassifierMember/signature"/>
+                    href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
@@ -212,16 +212,16 @@
       <children
           compartment="//@nodes.2/@ownedChild/@compartments.2">
         <containmentFeature
-            href="wave.ecore#//Controller/views"/>
+            href="wave.ecore#_TD2hCuGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//View"/>
+              href="wave.ecore#_TD3IJ-GuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#ViewNameLabel"/>
             <features
-                href="wave.ecore#//ControllerMember/name"/>
+                href="wave.ecore#_TD5kXOGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -231,16 +231,16 @@
           <children
               compartment="//@nodes.2/@ownedChild/@children.2/@ownedChild/@compartments.0">
             <containmentFeature
-                href="wave.ecore#//ControllerMemberExecutable/operation"/>
+                href="wave.ecore#_TD8AnuGuEd6cOJBz96zHHQ"/>
             <ownedChild>
               <domainMetaElement
-                  href="wave.ecore#//Operation"/>
+                  href="wave.ecore#_TD3IF-GuEd6cOJBz96zHHQ"/>
               <labelMappings
                   xsi:type="gmfmap:FeatureLabelMapping">
                 <diagramLabel
                     href="wave.gmfgraph#OperationSignatureLabel"/>
                 <features
-                    href="wave.ecore#//ClassifierMember/signature"/>
+                    href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
               </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
@@ -252,10 +252,10 @@
           <children
               compartment="//@nodes.2/@ownedChild/@children.2/@ownedChild/@compartments.1">
             <containmentFeature
-                href="wave.ecore#//View/areas"/>
+                href="wave.ecore#_TD3IKOGuEd6cOJBz96zHHQ"/>
             <ownedChild>
               <domainMetaElement
-                  href="wave.ecore#//Area"/>
+                  href="wave.ecore#_TD8AluGuEd6cOJBz96zHHQ"/>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="wave.gmftool#//@palette/@tools.2/@tools.2"/>
@@ -264,7 +264,7 @@
               <children
                   referencedChild="//@nodes.2/@ownedChild/@children.2/@ownedChild">
                 <containmentFeature
-                    href="wave.ecore#//Area/views"/>
+                    href="wave.ecore#_TD8AmOGuEd6cOJBz96zHHQ"/>
               </children>
             </ownedChild>
           </children>
@@ -283,16 +283,16 @@
       <children
           compartment="//@nodes.2/@ownedChild/@compartments.3">
         <containmentFeature
-            href="wave.ecore#//Classifier/operations"/>
+            href="wave.ecore#_TD2hAuGuEd6cOJBz96zHHQ"/>
         <ownedChild>
           <domainMetaElement
-              href="wave.ecore#//Operation"/>
+              href="wave.ecore#_TD3IF-GuEd6cOJBz96zHHQ"/>
           <labelMappings
               xsi:type="gmfmap:FeatureLabelMapping">
             <diagramLabel
                 href="wave.gmfgraph#OperationSignatureLabel"/>
             <features
-                href="wave.ecore#//ClassifierMember/signature"/>
+                href="wave.ecore#_TD49WuGuEd6cOJBz96zHHQ"/>
           </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
@@ -325,16 +325,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Include"/>
+          href="wave.ecore#_TD49bOGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#IncludeNameLabel"/>
         <features
-            href="wave.ecore#//Classifier/name"/>
+            href="wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -345,16 +345,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Package"/>
+          href="wave.ecore#_TD4WOOGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#PackageNameLabel"/>
         <features
-            href="wave.ecore#//Package/name"/>
+            href="wave.ecore#_TD4WOeGuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -365,25 +365,25 @@
           compartment="//@nodes.4/@ownedChild/@compartments.0"
           referencedChild="//@nodes.0/@ownedChild">
         <containmentFeature
-            href="wave.ecore#//Package/members"/>
+            href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
       </children>
       <children
           compartment="//@nodes.4/@ownedChild/@compartments.0"
           referencedChild="//@nodes.1/@ownedChild">
         <containmentFeature
-            href="wave.ecore#//Package/members"/>
+            href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
       </children>
       <children
           compartment="//@nodes.4/@ownedChild/@compartments.0"
           referencedChild="//@nodes.4/@ownedChild">
         <containmentFeature
-            href="wave.ecore#//Package/members"/>
+            href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
       </children>
       <children
           compartment="//@nodes.4/@ownedChild/@compartments.0"
           referencedChild="//@nodes.3/@ownedChild">
         <containmentFeature
-            href="wave.ecore#//Package/members"/>
+            href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
       </children>
       <compartments
           children="//@nodes.4/@ownedChild/@children.0 //@nodes.4/@ownedChild/@children.1 //@nodes.4/@ownedChild/@children.2 //@nodes.4/@ownedChild/@children.3">
@@ -394,16 +394,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Model/documentation"/>
+        href="wave.ecore#_TD3vPOGuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Documentation"/>
+          href="wave.ecore#_TD49R-GuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#DocumentationTextLabel"/>
         <features
-            href="wave.ecore#//Documentation/text"/>
+            href="wave.ecore#_TD49SOGuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -414,16 +414,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//StyleSheet"/>
+          href="wave.ecore#_TD5kUuGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#StyleSheetNameLabel"/>
         <features
-            href="wave.ecore#//Classifier/name"/>
+            href="wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -434,16 +434,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//UsecaseSubsystem"/>
+          href="wave.ecore#_TD7ZneGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#UsecaseSubsystemNameLabel"/>
         <features
-            href="wave.ecore#//UsecaseSubsystem/name"/>
+            href="wave.ecore#_TD7Zn-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -454,16 +454,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Actor"/>
+          href="wave.ecore#_TD8AlOGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#ActorNameLabel"/>
         <features
-            href="wave.ecore#//Classifier/name"/>
+            href="wave.ecore#_TD2hA-GuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -474,16 +474,16 @@
   </nodes>
   <nodes>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <ownedChild>
       <domainMetaElement
-          href="wave.ecore#//Usecase"/>
+          href="wave.ecore#_TD8AkOGuEd6cOJBz96zHHQ"/>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping">
         <diagramLabel
             href="wave.gmfgraph#UsecaseTextLabel"/>
         <features
-            href="wave.ecore#//Usecase/text"/>
+            href="wave.ecore#_TD8AkuGuEd6cOJBz96zHHQ"/>
       </labelMappings>
       <tool
           xsi:type="gmftool:CreationTool"
@@ -494,7 +494,7 @@
   </nodes>
   <links>
     <domainMetaElement
-        href="wave.ecore#//DependencyRelationship"/>
+        href="wave.ecore#_TD4WPOGuEd6cOJBz96zHHQ"/>
     <domainSpecialization
         body="self.stereotype->isEmpty()"/>
     <labelMappings
@@ -503,10 +503,10 @@
       <diagramLabel
           href="wave.gmfgraph#DependencyRelationshipStereotypeLabel"/>
       <features
-          href="wave.ecore#//ModelMember/stereotype"/>
+          href="wave.ecore#_TD4WNuGuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.4/@tools.1"/>
@@ -514,16 +514,16 @@
         href="wave.gmfgraph#DependencyRelationshipConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//DependencyRelationship/client"/>
+        href="wave.ecore#_TD4WPeGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//DependencyRelationship/supplier"/>
+        href="wave.ecore#_TD4WP-GuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//InheritanceRelationship"/>
+        href="wave.ecore#_TD3IOeGuEd6cOJBz96zHHQ"/>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.4/@tools.2"/>
@@ -531,16 +531,16 @@
         href="wave.gmfgraph#InheritanceRelationshipConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//InheritanceRelationship/child"/>
+        href="wave.ecore#_TD3vIuGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//InheritanceRelationship/parent"/>
+        href="wave.ecore#_TD3vIOGuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//RealizationRelationship"/>
+        href="wave.ecore#_TD3vJOGuEd6cOJBz96zHHQ"/>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.4/@tools.3"/>
@@ -548,20 +548,20 @@
         href="wave.gmfgraph#RealizationRelationshipConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//RealizationRelationship/implementingClass"/>
+        href="wave.ecore#_TD3vJuGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//RealizationRelationship/parentInterface"/>
+        href="wave.ecore#_TD3vJeGuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//AssociationRelationship"/>
+        href="wave.ecore#_TD2hDeGuEd6cOJBz96zHHQ"/>
     <labelMappings
         xsi:type="gmfmap:FeatureLabelMapping">
       <diagramLabel
           href="wave.gmfgraph#AssociationNameLabel"/>
       <features
-          href="wave.ecore#//AssociationRelationship/name"/>
+          href="wave.ecore#_TD3IEOGuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <labelMappings
         xsi:type="gmfmap:FeatureLabelMapping"
@@ -569,17 +569,17 @@
       <diagramLabel
           href="wave.gmfgraph#AssociationMultiplicityALabel"/>
       <features
-          href="wave.ecore#//AssociationRelationship/multiplicityA"/>
+          href="wave.ecore#_TD3IEuGuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <labelMappings
         xsi:type="gmfmap:FeatureLabelMapping">
       <diagramLabel
           href="wave.gmfgraph#AssociationMultiplicityBLabel"/>
       <features
-          href="wave.ecore#//AssociationRelationship/multiplicityB"/>
+          href="wave.ecore#_TD3IE-GuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.4/@tools.0"/>
@@ -587,23 +587,23 @@
         href="wave.gmfgraph#AssociationRelationshipConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//AssociationRelationship/a"/>
+        href="wave.ecore#_TD3IFOGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//AssociationRelationship/b"/>
+        href="wave.ecore#_TD3IFeGuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//ActionToViewTransition"/>
+        href="wave.ecore#_TD4WTeGuEd6cOJBz96zHHQ"/>
     <labelMappings
         xsi:type="gmfmap:FeatureLabelMapping">
       <diagramLabel
           href="wave.gmfgraph#ActionToViewConditionLabel"/>
       <features
-          href="wave.ecore#//Transition/condition"/>
+          href="wave.ecore#_TD8Ar-GuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <containmentFeature
-        href="wave.ecore#//Controller/transitionsActionToView"/>
+        href="wave.ecore#_TD2hC-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.2/@tools.3"/>
@@ -611,33 +611,33 @@
         href="wave.gmfgraph#ActionToViewConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//ActionToViewTransition/source"/>
+        href="wave.ecore#_TD4WUOGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//ActionToViewTransition/target"/>
+        href="wave.ecore#_TD4WTuGuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <tool
         xsi:type="gmftool:CreationTool"
-        href="wave.gmftool#//@palette/@tools.0/@tools.0/@tools.1"/>
+        href="wave.gmftool#//@palette/@tools.0/@tools.1"/>
     <diagramLink
         href="wave.gmfgraph#DocumentationConnection"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//ModelMember/docs"/>
+        href="wave.ecore#_TD4WNeGuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//ViewTransition"/>
+        href="wave.ecore#_TD5kVuGuEd6cOJBz96zHHQ"/>
     <labelMappings
         xsi:type="gmfmap:FeatureLabelMapping">
       <diagramLabel
           href="wave.gmfgraph#ViewTransitionConditionLabel"/>
       <features
-          href="wave.ecore#//Transition/condition"/>
+          href="wave.ecore#_TD8Ar-GuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <containmentFeature
-        href="wave.ecore#//Controller/transitionsView"/>
+        href="wave.ecore#_TD2hDOGuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.2/@tools.4"/>
@@ -645,14 +645,14 @@
         href="wave.gmfgraph#ViewTransitionConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//ViewTransition/source"/>
+        href="wave.ecore#_TD5kV-GuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//ViewTransition/target"/>
+        href="wave.ecore#_TD5kWOGuEd6cOJBz96zHHQ"/>
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//DependencyRelationship"/>
+        href="wave.ecore#_TD4WPOGuEd6cOJBz96zHHQ"/>
     <domainSpecialization
         body="self.stereotype='includes'"/>
     <domainInitializer
@@ -661,7 +661,7 @@
           xsi:type="gmfmap:FeatureValueSpec">
         <feature
             xsi:type="ecore:EAttribute"
-            href="wave.ecore#//ModelMember/stereotype"/>
+            href="wave.ecore#_TD4WNuGuEd6cOJBz96zHHQ"/>
         <value
             body="'includes'"/>
       </initializers>
@@ -672,10 +672,10 @@
       <diagramLabel
           href="wave.gmfgraph#DependencyRelationshipStereotypeLabel"/>
       <features
-          href="wave.ecore#//ModelMember/stereotype"/>
+          href="wave.ecore#_TD4WNuGuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.5/@tools.3"/>
@@ -683,10 +683,10 @@
         href="wave.gmfgraph#DependencyRelationshipConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//DependencyRelationship/client"/>
+        href="wave.ecore#_TD4WPeGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//DependencyRelationship/supplier"/>
+        href="wave.ecore#_TD4WP-GuEd6cOJBz96zHHQ"/>
     <creationConstraints>
       <sourceEnd
           body="self.oclIsKindOf(Usecase)"/>
@@ -696,7 +696,7 @@
   </links>
   <links>
     <domainMetaElement
-        href="wave.ecore#//DependencyRelationship"/>
+        href="wave.ecore#_TD4WPOGuEd6cOJBz96zHHQ"/>
     <domainSpecialization
         body="self.stereotype='extends'"/>
     <domainInitializer
@@ -705,7 +705,7 @@
           xsi:type="gmfmap:FeatureValueSpec">
         <feature
             xsi:type="ecore:EAttribute"
-            href="wave.ecore#//ModelMember/stereotype"/>
+            href="wave.ecore#_TD4WNuGuEd6cOJBz96zHHQ"/>
         <value
             body="'extends'"/>
       </initializers>
@@ -716,10 +716,10 @@
       <diagramLabel
           href="wave.gmfgraph#DependencyRelationshipStereotypeLabel"/>
       <features
-          href="wave.ecore#//ModelMember/stereotype"/>
+          href="wave.ecore#_TD4WNuGuEd6cOJBz96zHHQ"/>
     </labelMappings>
     <containmentFeature
-        href="wave.ecore#//Package/members"/>
+        href="wave.ecore#_TD4WO-GuEd6cOJBz96zHHQ"/>
     <tool
         xsi:type="gmftool:CreationTool"
         href="wave.gmftool#//@palette/@tools.5/@tools.4"/>
@@ -727,10 +727,10 @@
         href="wave.gmfgraph#DependencyRelationshipConnection"/>
     <sourceMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//DependencyRelationship/client"/>
+        href="wave.ecore#_TD4WPeGuEd6cOJBz96zHHQ"/>
     <linkMetaFeature
         xsi:type="ecore:EReference"
-        href="wave.ecore#//DependencyRelationship/supplier"/>
+        href="wave.ecore#_TD4WP-GuEd6cOJBz96zHHQ"/>
     <creationConstraints>
       <sourceEnd
           body="self.oclIsKindOf(Usecase)"/>
@@ -742,9 +742,9 @@
     <diagramCanvas
         href="wave.gmfgraph#wave"/>
     <domainModel
-        href="wave.ecore#/"/>
+        href="wave.ecore#_TD2hAOGuEd6cOJBz96zHHQ"/>
     <domainMetaElement
-        href="wave.ecore#//Model"/>
+        href="wave.ecore#_TD3vLOGuEd6cOJBz96zHHQ"/>
     <palette
         href="wave.gmftool#//@palette"/>
   </diagram>

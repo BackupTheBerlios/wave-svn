@@ -66,92 +66,8 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 	public List getTypesForPopupBar(IAdaptable host) {
 		IGraphicalEditPart editPart = (IGraphicalEditPart) host
 				.getAdapter(IGraphicalEditPart.class);
-		if (editPart instanceof ClassEditPart) {
-			ArrayList types = new ArrayList(2);
-			types.add(WaveElementTypes.Attribute_2001);
-			types.add(WaveElementTypes.Operation_2002);
-			return types;
-		}
-		if (editPart instanceof InterfaceEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Operation_2003);
-			return types;
-		}
-		if (editPart instanceof ControllerEditPart) {
-			ArrayList types = new ArrayList(2);
-			types.add(WaveElementTypes.Attribute_2004);
-			types.add(WaveElementTypes.Operation_2009);
-			return types;
-		}
-		if (editPart instanceof ActionEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Operation_13008);
-			return types;
-		}
-		if (editPart instanceof ViewEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Operation_13009);
-			return types;
-		}
-		if (editPart instanceof AreaEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.View_13002);
-			return types;
-		}
-		if (editPart instanceof View2EditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Operation_13009);
-			return types;
-		}
-		if (editPart instanceof Class2EditPart) {
-			ArrayList types = new ArrayList(2);
-			types.add(WaveElementTypes.Attribute_2001);
-			types.add(WaveElementTypes.Operation_2002);
-			return types;
-		}
-		if (editPart instanceof Interface2EditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Operation_2003);
-			return types;
-		}
-		if (editPart instanceof ControllerPageActionsCompartmentEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Action_13006);
-			return types;
-		}
-		if (editPart instanceof ControllerPageViewsCompartmentEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.View_13007);
-			return types;
-		}
-		if (editPart instanceof ViewViewAreaCompartmentEditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Area_13001);
-			return types;
-		}
-		if (editPart instanceof ViewViewAreaCompartment2EditPart) {
-			ArrayList types = new ArrayList(1);
-			types.add(WaveElementTypes.Area_13001);
-			return types;
-		}
-		if (editPart instanceof PackagePackageCompartmentEditPart) {
-			ArrayList types = new ArrayList(4);
-			types.add(WaveElementTypes.Class_13003);
-			types.add(WaveElementTypes.Interface_13004);
-			types.add(WaveElementTypes.Package_13005);
-			types.add(WaveElementTypes.Include_13010);
-			return types;
-		}
-		if (editPart instanceof PackagePackageCompartment2EditPart) {
-			ArrayList types = new ArrayList(4);
-			types.add(WaveElementTypes.Class_13003);
-			types.add(WaveElementTypes.Interface_13004);
-			types.add(WaveElementTypes.Package_13005);
-			types.add(WaveElementTypes.Include_13010);
-			return types;
-		}
 		if (editPart instanceof ModelEditPart) {
-			ArrayList types = new ArrayList(10);
+			ArrayList<IElementType> types = new ArrayList<IElementType>(10);
 			types.add(WaveElementTypes.Class_2017);
 			types.add(WaveElementTypes.Interface_2018);
 			types.add(WaveElementTypes.Controller_2026);
@@ -162,6 +78,90 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
 			types.add(WaveElementTypes.Actor_2024);
 			types.add(WaveElementTypes.Usecase_2025);
+			return types;
+		}
+		if (editPart instanceof ClassEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+			types.add(WaveElementTypes.Attribute_2001);
+			types.add(WaveElementTypes.Operation_2002);
+			return types;
+		}
+		if (editPart instanceof InterfaceEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Operation_2003);
+			return types;
+		}
+		if (editPart instanceof ControllerEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+			types.add(WaveElementTypes.Attribute_2004);
+			types.add(WaveElementTypes.Operation_2009);
+			return types;
+		}
+		if (editPart instanceof ActionEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Operation_13008);
+			return types;
+		}
+		if (editPart instanceof ViewEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Operation_13009);
+			return types;
+		}
+		if (editPart instanceof AreaEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.View_13002);
+			return types;
+		}
+		if (editPart instanceof View2EditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Operation_13009);
+			return types;
+		}
+		if (editPart instanceof Class2EditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(2);
+			types.add(WaveElementTypes.Attribute_2001);
+			types.add(WaveElementTypes.Operation_2002);
+			return types;
+		}
+		if (editPart instanceof Interface2EditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Operation_2003);
+			return types;
+		}
+		if (editPart instanceof ControllerPageActionsCompartmentEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Action_13006);
+			return types;
+		}
+		if (editPart instanceof ControllerPageViewsCompartmentEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.View_13007);
+			return types;
+		}
+		if (editPart instanceof ViewViewAreaCompartmentEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Area_13001);
+			return types;
+		}
+		if (editPart instanceof ViewViewAreaCompartment2EditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(1);
+			types.add(WaveElementTypes.Area_13001);
+			return types;
+		}
+		if (editPart instanceof PackagePackageCompartmentEditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(4);
+			types.add(WaveElementTypes.Class_13003);
+			types.add(WaveElementTypes.Interface_13004);
+			types.add(WaveElementTypes.Package_13005);
+			types.add(WaveElementTypes.Include_13010);
+			return types;
+		}
+		if (editPart instanceof PackagePackageCompartment2EditPart) {
+			ArrayList<IElementType> types = new ArrayList<IElementType>(4);
+			types.add(WaveElementTypes.Class_13003);
+			types.add(WaveElementTypes.Interface_13004);
+			types.add(WaveElementTypes.Package_13005);
+			types.add(WaveElementTypes.Include_13010);
 			return types;
 		}
 		return Collections.EMPTY_LIST;
@@ -544,8 +544,8 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 	 */
 	public EObject selectExistingElementForSource(IAdaptable target,
 			IElementType relationshipType) {
-		return selectExistingElement(target, getTypesForSource(target,
-				relationshipType));
+		return selectExistingElement(target,
+				getTypesForSource(target, relationshipType));
 	}
 
 	/**
@@ -553,8 +553,8 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 	 */
 	public EObject selectExistingElementForTarget(IAdaptable source,
 			IElementType relationshipType) {
-		return selectExistingElement(source, getTypesForTarget(source,
-				relationshipType));
+		return selectExistingElement(source,
+				getTypesForTarget(source, relationshipType));
 	}
 
 	/**
@@ -570,9 +570,10 @@ public class WaveModelingAssistantProvider extends ModelingAssistantProvider {
 			return null;
 		}
 		Diagram diagram = (Diagram) editPart.getRoot().getContents().getModel();
-		Collection elements = new HashSet();
-		for (Iterator it = diagram.getElement().eAllContents(); it.hasNext();) {
-			EObject element = (EObject) it.next();
+		HashSet<EObject> elements = new HashSet<EObject>();
+		for (Iterator<EObject> it = diagram.getElement().eAllContents(); it
+				.hasNext();) {
+			EObject element = it.next();
 			if (isApplicableElement(element, types)) {
 				elements.add(element);
 			}

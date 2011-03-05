@@ -13,7 +13,6 @@ import org.eclipse.gmf.runtime.emf.commands.core.commands.DuplicateEObjectsComma
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.DuplicateElementsRequest;
 
-import de.gulden.modeling.wave.WavePackage;
 import de.gulden.modeling.wave.diagram.edit.commands.ActorCreateCommand;
 import de.gulden.modeling.wave.diagram.edit.commands.ClassCreateCommand;
 import de.gulden.modeling.wave.diagram.edit.commands.ControllerCreateCommand;

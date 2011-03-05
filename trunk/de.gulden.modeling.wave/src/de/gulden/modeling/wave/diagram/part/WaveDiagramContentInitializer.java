@@ -110,6 +110,17 @@ public class WaveDiagramContentInitializer {
 	/**
 	 * @generated
 	 */
+	private void createModel_1000Children(View view) {
+		Collection childNodeDescriptors = WaveDiagramUpdater
+				.getModel_1000SemanticChildren(view);
+		for (Iterator it = childNodeDescriptors.iterator(); it.hasNext();) {
+			createNode(view, (WaveNodeDescriptor) it.next());
+		}
+	}
+
+	/**
+	 * @generated
+	 */
 	private void createClass_2017Children(View view) {
 		myDomain2NotationMap.put(view.getElement(), view);
 		myLinkDescriptors.addAll(WaveDiagramUpdater
@@ -590,22 +601,11 @@ public class WaveDiagramContentInitializer {
 	/**
 	 * @generated
 	 */
-	private void createModel_1000Children(View view) {
-		Collection childNodeDescriptors = WaveDiagramUpdater
-				.getModel_1000SemanticChildren(view);
-		for (Iterator it = childNodeDescriptors.iterator(); it.hasNext();) {
-			createNode(view, (WaveNodeDescriptor) it.next());
-		}
-	}
-
-	/**
-	 * @generated
-	 */
 	private void createNode(View parentView, WaveNodeDescriptor nodeDescriptor) {
 		final String nodeType = WaveVisualIDRegistry.getType(nodeDescriptor
 				.getVisualID());
-		Node node = ViewService.createNode(parentView, nodeDescriptor
-				.getModelElement(), nodeType,
+		Node node = ViewService.createNode(parentView,
+				nodeDescriptor.getModelElement(), nodeType,
 				WaveDiagramEditorPlugin.DIAGRAM_PREFERENCES_HINT);
 		switch (nodeDescriptor.getVisualID()) {
 		case ClassEditPart.VISUAL_ID:
@@ -715,8 +715,8 @@ public class WaveDiagramContentInitializer {
 							.get(nextLinkDescriptor.getDestination()));
 					it.remove();
 					if (nextLinkDescriptor.getModelElement() != null) {
-						myDomain2NotationMap.put(nextLinkDescriptor
-								.getModelElement(), edge);
+						myDomain2NotationMap.put(
+								nextLinkDescriptor.getModelElement(), edge);
 					}
 					continueLinkCreation = true;
 					switch (nextLinkDescriptor.getVisualID()) {

@@ -7,9 +7,9 @@
 package de.gulden.modeling.wave.diagram.edit.policies;
 
 import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
@@ -48,7 +48,7 @@ public class DocumentationItemSemanticEditPolicy extends
 		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
 				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
-		for (Iterator it = view.getTargetEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (WaveVisualIDRegistry.getVisualID(incomingLink) == ModelMemberDocsEditPart.VISUAL_ID) {
 				DestroyReferenceRequest r = new DestroyReferenceRequest(
@@ -98,8 +98,8 @@ public class DocumentationItemSemanticEditPolicy extends
 	protected Command getCompleteCreateRelationshipCommand(
 			CreateRelationshipRequest req) {
 		if (WaveElementTypes.ModelMemberDocs_4015 == req.getElementType()) {
-			return getGEFWrapper(new ModelMemberDocsCreateCommand(req, req
-					.getSource(), req.getTarget()));
+			return getGEFWrapper(new ModelMemberDocsCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		return null;
 	}

@@ -79,7 +79,7 @@ public class ModelMemberDocsReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Documentation && newEnd instanceof ModelMember)) {
 			return false;
 		}
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
 				.canExistModelMemberDocs_4015(getNewSource(), getOldTarget());
 	}
 
@@ -90,7 +90,7 @@ public class ModelMemberDocsReorientCommand extends EditElementCommand {
 		if (!(oldEnd instanceof Documentation && newEnd instanceof Documentation)) {
 			return false;
 		}
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
 				.canExistModelMemberDocs_4015(getOldSource(), getNewTarget());
 	}
 

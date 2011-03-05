@@ -79,10 +79,9 @@ public class WaveNavigatorItem extends WaveAbstractNavigatorItem {
 		if (obj instanceof de.gulden.modeling.wave.diagram.navigator.WaveNavigatorItem) {
 			return EcoreUtil
 					.getURI(getView())
-					.equals(
-							EcoreUtil
-									.getURI(((de.gulden.modeling.wave.diagram.navigator.WaveNavigatorItem) obj)
-											.getView()));
+					.equals(EcoreUtil
+							.getURI(((de.gulden.modeling.wave.diagram.navigator.WaveNavigatorItem) obj)
+									.getView()));
 		}
 		return super.equals(obj);
 	}

@@ -60,7 +60,7 @@ public class ModelMemberDocsCreateCommand extends EditElementCommand {
 			return true; // link creation is in progress; source is not defined yet
 		}
 		// target may be null here but it's possible to check constraint
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
 				.canCreateModelMemberDocs_4015(getSource(), getTarget());
 	}
 

@@ -26,6 +26,9 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import de.gulden.modeling.wave.diagram.edit.policies.WaveBaseItemSemanticEditPolicy;
+import de.gulden.modeling.wave.diagram.expressions.WaveOCLFactory;
+import de.gulden.modeling.wave.diagram.providers.ElementInitializers;
 import de.gulden.modeling.wave.provider.WaveItemProviderAdapterFactory;
 
 /**
@@ -62,6 +65,21 @@ public class WaveDiagramEditorPlugin extends AbstractUIPlugin {
 	/**
 	 * @generated
 	 */
+	private WaveBaseItemSemanticEditPolicy.LinkConstraints linkConstraints;
+
+	/**
+	 * @generated
+	 */
+	private ElementInitializers initializers;
+
+	/**
+	 * @generated
+	 */
+	private WaveOCLFactory oclFactory;
+
+	/**
+	 * @generated
+	 */
 	public WaveDiagramEditorPlugin() {
 	}
 
@@ -82,6 +100,9 @@ public class WaveDiagramEditorPlugin extends AbstractUIPlugin {
 	public void stop(BundleContext context) throws Exception {
 		adapterFactory.dispose();
 		adapterFactory = null;
+		linkConstraints = null;
+		initializers = null;
+		oclFactory = null;
 		instance = null;
 		super.stop(context);
 	}
@@ -97,7 +118,7 @@ public class WaveDiagramEditorPlugin extends AbstractUIPlugin {
 	 * @generated
 	 */
 	protected ComposedAdapterFactory createAdapterFactory() {
-		List factories = new ArrayList();
+		ArrayList<AdapterFactory> factories = new ArrayList<AdapterFactory>();
 		fillItemProviderFactories(factories);
 		return new ComposedAdapterFactory(factories);
 	}
@@ -105,7 +126,7 @@ public class WaveDiagramEditorPlugin extends AbstractUIPlugin {
 	/**
 	 * @generated
 	 */
-	protected void fillItemProviderFactories(List factories) {
+	protected void fillItemProviderFactories(List<AdapterFactory> factories) {
 		factories.add(new WaveItemProviderAdapterFactory());
 		factories.add(new ResourceItemProviderAdapterFactory());
 		factories.add(new ReflectiveItemProviderAdapterFactory());
@@ -196,6 +217,49 @@ public class WaveDiagramEditorPlugin extends AbstractUIPlugin {
 			documentProvider = new WaveDocumentProvider();
 		}
 		return documentProvider;
+	}
+
+	/**
+	 * @generated
+	 */
+	public WaveBaseItemSemanticEditPolicy.LinkConstraints getLinkConstraints() {
+		return linkConstraints;
+	}
+
+	/**
+	 * @generated
+	 */
+	public void setLinkConstraints(
+			WaveBaseItemSemanticEditPolicy.LinkConstraints lc) {
+		this.linkConstraints = lc;
+	}
+
+	/**
+	 * @generated
+	 */
+	public ElementInitializers getElementInitializers() {
+		return initializers;
+	}
+
+	/**
+	 * @generated
+	 */
+	public void setElementInitializers(ElementInitializers i) {
+		this.initializers = i;
+	}
+
+	/**
+	 * @generated
+	 */
+	public WaveOCLFactory getWaveOCLFactory() {
+		return oclFactory;
+	}
+
+	/**
+	 * @generated
+	 */
+	public void setWaveOCLFactory(WaveOCLFactory f) {
+		this.oclFactory = f;
 	}
 
 	/**

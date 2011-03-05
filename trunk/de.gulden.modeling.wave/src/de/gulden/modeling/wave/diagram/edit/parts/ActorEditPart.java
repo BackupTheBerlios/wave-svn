@@ -7,7 +7,9 @@
 package de.gulden.modeling.wave.diagram.edit.parts;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
 import org.eclipse.draw2d.Ellipse;
 import org.eclipse.draw2d.GridData;
 import org.eclipse.draw2d.GridLayout;
@@ -36,8 +38,8 @@ import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
-
 import org.eclipse.swt.graphics.Color;
+
 import de.gulden.modeling.wave.diagram.edit.policies.ActorItemSemanticEditPolicy;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
 import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
@@ -85,7 +87,7 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected LayoutEditPolicy createLayoutEditPolicy() {
-		LayoutEditPolicy lep = new LayoutEditPolicy() {
+		org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy lep = new org.eclipse.gmf.runtime.diagram.ui.editpolicies.LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
 				EditPolicy result = child
@@ -111,8 +113,7 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	 * @generated
 	 */
 	protected IFigure createNodeShape() {
-		ActorFigure figure = new ActorFigure();
-		return primaryShape = figure;
+		return primaryShape = new ActorFigure();
 	}
 
 	/**
@@ -268,8 +269,8 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnSource() {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+	public List<IElementType> getMARelTypesOnSource() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(6);
 		types.add(WaveElementTypes.DependencyRelationship_3001);
 		types.add(WaveElementTypes.InheritanceRelationship_3002);
 		types.add(WaveElementTypes.AssociationRelationship_3004);
@@ -282,9 +283,9 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnSourceAndTarget(
+	public List<IElementType> getMARelTypesOnSourceAndTarget(
 			IGraphicalEditPart targetEditPart) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (targetEditPart instanceof ClassEditPart) {
 			types.add(WaveElementTypes.DependencyRelationship_3001);
 		}
@@ -495,211 +496,81 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMATypesForTarget(
-			IElementType relationshipType) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+	public List<IElementType> getMATypesForTarget(IElementType relationshipType) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Package_2021);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Action_13006);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.View_13007);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Area_13001);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.View_13002);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Package_13005);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Include_13010);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
+		} else if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Include_13010);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
+		} else if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
+		} else if (relationshipType == WaveElementTypes.ModelMemberDocs_4015) {
 			types.add(WaveElementTypes.Documentation_2013);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
+		} else if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Package_2021);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Action_13006);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.View_13007);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Area_13001);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.View_13002);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Package_13005);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Include_13010);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
+		} else if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Package_2021);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Action_13006);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.View_13007);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Area_13001);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.View_13002);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Package_13005);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Include_13010);
 		}
 		return types;
@@ -708,8 +579,8 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMARelTypesOnTarget() {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+	public List<IElementType> getMARelTypesOnTarget() {
+		ArrayList<IElementType> types = new ArrayList<IElementType>(5);
 		types.add(WaveElementTypes.DependencyRelationship_3001);
 		types.add(WaveElementTypes.InheritanceRelationship_3002);
 		types.add(WaveElementTypes.AssociationRelationship_3004);
@@ -721,208 +592,79 @@ public class ActorEditPart extends ShapeNodeEditPart {
 	/**
 	 * @generated
 	 */
-	public List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/getMATypesForSource(
-			IElementType relationshipType) {
-		List/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/types = new ArrayList/*<org.eclipse.gmf.runtime.emf.type.core.IElementType>*/();
+	public List<IElementType> getMATypesForSource(IElementType relationshipType) {
+		LinkedList<IElementType> types = new LinkedList<IElementType>();
 		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Package_2021);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Action_13006);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.View_13007);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Area_13001);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.View_13002);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Package_13005);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_3001) {
 			types.add(WaveElementTypes.Include_13010);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
+		} else if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.InheritanceRelationship_3002) {
 			types.add(WaveElementTypes.Include_13010);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
+		} else if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.AssociationRelationship_3004) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
+		} else if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Package_2021);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Action_13006);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.View_13007);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Area_13001);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.View_13002);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Package_13005);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4016) {
 			types.add(WaveElementTypes.Include_13010);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
+		} else if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Class_2017);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Interface_2018);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Controller_2026);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Include_2020);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Package_2021);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.StyleSheet_2022);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.UsecaseSubsystem_2023);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Actor_2024);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Usecase_2025);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Action_13006);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.View_13007);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Area_13001);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.View_13002);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Class_13003);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Interface_13004);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Package_13005);
-		}
-		if (relationshipType == WaveElementTypes.DependencyRelationship_4017) {
 			types.add(WaveElementTypes.Include_13010);
 		}
 		return types;

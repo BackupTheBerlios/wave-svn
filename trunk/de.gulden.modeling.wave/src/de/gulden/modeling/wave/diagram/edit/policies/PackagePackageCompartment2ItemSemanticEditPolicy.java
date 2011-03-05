@@ -9,7 +9,6 @@ package de.gulden.modeling.wave.diagram.edit.policies;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
 
-import de.gulden.modeling.wave.WavePackage;
 import de.gulden.modeling.wave.diagram.edit.commands.Class2CreateCommand;
 import de.gulden.modeling.wave.diagram.edit.commands.Include2CreateCommand;
 import de.gulden.modeling.wave.diagram.edit.commands.Interface2CreateCommand;

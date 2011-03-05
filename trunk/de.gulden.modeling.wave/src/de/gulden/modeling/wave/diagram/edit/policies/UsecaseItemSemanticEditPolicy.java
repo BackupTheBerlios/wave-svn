@@ -7,9 +7,9 @@
 package de.gulden.modeling.wave.diagram.edit.policies;
 
 import java.util.Iterator;
+
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.DestroyElementCommand;
@@ -64,7 +64,7 @@ public class UsecaseItemSemanticEditPolicy extends
 		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
 				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
-		for (Iterator it = view.getTargetEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (WaveVisualIDRegistry.getVisualID(incomingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
 				DestroyElementRequest r = new DestroyElementRequest(
@@ -102,7 +102,7 @@ public class UsecaseItemSemanticEditPolicy extends
 				continue;
 			}
 		}
-		for (Iterator it = view.getSourceEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
 			if (WaveVisualIDRegistry.getVisualID(outgoingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
 				DestroyElementRequest r = new DestroyElementRequest(
@@ -191,8 +191,8 @@ public class UsecaseItemSemanticEditPolicy extends
 					req.getSource(), req.getTarget()));
 		}
 		if (WaveElementTypes.ModelMemberDocs_4015 == req.getElementType()) {
-			return getGEFWrapper(new ModelMemberDocsCreateCommand(req, req
-					.getSource(), req.getTarget()));
+			return getGEFWrapper(new ModelMemberDocsCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (WaveElementTypes.DependencyRelationship_4016 == req
 				.getElementType()) {

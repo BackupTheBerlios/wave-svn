@@ -3,8 +3,6 @@
  * A Graphical Modeling Framework (GMF) Plugin for Eclipse
  * Copyright Jens Gulden, 2009, mail@jensgulden.de
  * Licensed under the GNU General Public License (GPL)
- *
- * $Id$
  */
 package de.gulden.modeling.wave.presentation;
 
@@ -1298,7 +1296,7 @@ public class WaveEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {

@@ -14,26 +14,8 @@ run. This is useful, as here we collect all changes in those places where update
 method code should be generated when changes to the metamodel have occurred.
 -->
 	
-<!-- invoke oaW workflow:
-<target name='generate'>
-    <taskdef name="workflow" classname="org.eclipse.emf.mwe.core.ant.WorkflowAntTask"/>
-    <workflow file='path/workflow.oaw'>
-        <param name='baseDir' value='/base/'/>
-    </workflow>
-</target>
--->	
-
-  <!--property name="src" location="src"/-->
-
   <target name="patch">
 
-    <!--
-    <replace file="de/gulden/modeling/wave/diagram/part/WaveVisualIDRegistry.java"
-      token="if (!ModelEditPart.MODEL_ID.equals(containerModelID)) {"
-      value="if ( ! de.gulden.modeling.wave.util.WaveUtil.allowedContainerModelIDs.contains(containerModelID) ) { // generated NOT, CHANGED BY wave-patches.xml"
-      summary="yes"/>
-    -->
-  	
     <!-- 
       Load icons from bundle 'de.gulden.modeling.wave', instead of 'wave'. 
     -->
@@ -110,62 +92,25 @@ method code should be generated when changes to the metamodel have occurred.
     <property name="replace_rectilinearLinestyle" value="index, persisted);${line.separator}        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view); // @injected"/>
 
   	<!--
-  	  Use 'rectilinear' line-style for relationships.
+  	  Use 'rectilinear' line-style for all relationships.
   	  [de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(View)]
   	-->
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/DependencyRelationshipViewFactory.java" summary="yes">
-      <replacetoken>index, persisted);</replacetoken>
-      <replacevalue>index,persisted);
-      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
-      </replacevalue>
-    </replace>
-        
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/InheritanceRelationshipViewFactory.java" summary="yes">
-      <replacetoken>index, persisted);</replacetoken>
-      <replacevalue>index,persisted);
-      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
-      </replacevalue>
-    </replace>
-        
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/RealizationRelationshipViewFactory.java" summary="yes">
-      <replacetoken>index, persisted);</replacetoken>
-      <replacevalue>index,persisted);
-      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
-      </replacevalue>
-    </replace>
-        
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/ViewTransitionViewFactory.java" summary="yes">
-      <replacetoken>index, persisted);</replacetoken>
-      <replacevalue>index,persisted);
-      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
-      </replacevalue>
-    </replace>
   	
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/ActionToViewTransitionViewFactory.java" summary="yes">
-      <replacetoken>index, persisted);</replacetoken>
-      <replacevalue>index,persisted);
-      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
+    <replace file="de/gulden/modeling/wave/diagram/providers/WaveViewProvider.java" summary="yes">
+      <replacetoken>edge.setBendpoints(bendpoints);</replacetoken>
+      <replacevalue>edge.setBendpoints( bendpoints );
+        de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(edge);
       </replacevalue>
     </replace>
-        
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/AssociationRelationshipViewFactory.java" summary="yes">
-      <replacetoken>index, persisted);</replacetoken>
-      <replacevalue>index,persisted);
-      de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);
-      </replacevalue>
-    </replace>
-    
-    <!--<replace file="de/gulden/modeling/wave/diagram/view/factories/DependencyRelationshipViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/InheritanceRelationshipViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/RealizationRelationshipViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />
-    <replace file="de/gulden/modeling/wave/diagram/view/factories/ViewTransitionViewFactory.java" token="index, persisted);" value="index,persisted); de.gulden.modeling.wave.util.WaveUtil.setRectilinearLineStyle(view);" summary="yes" />-->
-  	
+
+  	<!--
+  	  Deactivate Area creation tool
+  	-->
     <replace file="de/gulden/modeling/wave/diagram/part/WavePaletteFactory.java" 
     	     token="paletteContainer.add(createArea3CreationTool());" 
     	     value="//paletteContainer.add(createArea3CreationTool()) ;" 
     	     summary="yes" />
   	
-
   	<!-- 
   	  Special behaviour of attribute / operation parts 
   	-->
@@ -325,7 +270,8 @@ method code should be generated when changes to the metamodel have occurred.
   	</replace>
     
     <!-- 
-      Use 'canonical edit policy' for Action and View compartments. 
+      Use 'canonical edit policy' for Action and View compartments.
+      Classes for this have to be generated with the synchronized switch temporarily set to true in .gmfgen. 
     -->
     <replace file="de/gulden/modeling/wave/diagram/edit/parts/ActionActionOperationCompartmentEditPart.java" summary="yes">
       <replacetoken>new DragDropEditPolicy());
@@ -363,23 +309,6 @@ method code should be generated when changes to the metamodel have occurred.
     		summary="yes"/>
   	    
     <echo>Minimal invasive changes done.</echo>
-  	
-  <!--  
-    <replace 
-      file="de/gulden/modeling/wave/diagram/part/WaveVisualIDRegistry.java"
-      token="public class WaveVisualIDRegistry {"
-      value="public class WaveVisualIDRegistry {
-      
-  /**&#10;
-   * MANUALLY ADDED through wave-patches.xml, no 'generated NOT' here.
-   */
-
-  protected final static Collection&#60;String&#62; allowedContainerModelIDs = Arrays
-      .asList(new String[] { ModelEditPart.MODEL_ID,
-          &#34;Process Control Flow&#34; //$NON-NLS-1$
-      });
-  "/>
-  -->    
 
   </target>
 

@@ -63,7 +63,7 @@ import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
 /**
  * @generated
  */
-public class WaveElementTypes extends ElementInitializers {
+public class WaveElementTypes {
 
 	/**
 	 * @generated
@@ -74,7 +74,7 @@ public class WaveElementTypes extends ElementInitializers {
 	/**
 	 * @generated
 	 */
-	private static Map elements;
+	private static Map<IElementType, ENamedElement> elements;
 
 	/**
 	 * @generated
@@ -84,7 +84,7 @@ public class WaveElementTypes extends ElementInitializers {
 	/**
 	 * @generated
 	 */
-	private static Set KNOWN_ELEMENT_TYPES;
+	private static Set<IElementType> KNOWN_ELEMENT_TYPES;
 
 	/**
 	 * @generated
@@ -336,7 +336,7 @@ public class WaveElementTypes extends ElementInitializers {
 	public static ENamedElement getElement(IAdaptable hint) {
 		Object type = hint.getAdapter(IElementType.class);
 		if (elements == null) {
-			elements = new IdentityHashMap();
+			elements = new IdentityHashMap<IElementType, ENamedElement>();
 
 			elements.put(Model_1000, WavePackage.eINSTANCE.getModel());
 
@@ -344,21 +344,19 @@ public class WaveElementTypes extends ElementInitializers {
 
 			elements.put(Interface_2018, WavePackage.eINSTANCE.getInterface());
 
-			elements
-					.put(Controller_2026, WavePackage.eINSTANCE.getController());
+			elements.put(Controller_2026, WavePackage.eINSTANCE.getController());
 
 			elements.put(Include_2020, WavePackage.eINSTANCE.getInclude());
 
 			elements.put(Package_2021, WavePackage.eINSTANCE.getPackage());
 
-			elements.put(Documentation_2013, WavePackage.eINSTANCE
-					.getDocumentation());
+			elements.put(Documentation_2013,
+					WavePackage.eINSTANCE.getDocumentation());
 
-			elements
-					.put(StyleSheet_2022, WavePackage.eINSTANCE.getStyleSheet());
+			elements.put(StyleSheet_2022, WavePackage.eINSTANCE.getStyleSheet());
 
-			elements.put(UsecaseSubsystem_2023, WavePackage.eINSTANCE
-					.getUsecaseSubsystem());
+			elements.put(UsecaseSubsystem_2023,
+					WavePackage.eINSTANCE.getUsecaseSubsystem());
 
 			elements.put(Actor_2024, WavePackage.eINSTANCE.getActor());
 
@@ -394,32 +392,32 @@ public class WaveElementTypes extends ElementInitializers {
 
 			elements.put(Include_13010, WavePackage.eINSTANCE.getInclude());
 
-			elements.put(DependencyRelationship_3001, WavePackage.eINSTANCE
-					.getDependencyRelationship());
+			elements.put(DependencyRelationship_3001,
+					WavePackage.eINSTANCE.getDependencyRelationship());
 
-			elements.put(InheritanceRelationship_3002, WavePackage.eINSTANCE
-					.getInheritanceRelationship());
+			elements.put(InheritanceRelationship_3002,
+					WavePackage.eINSTANCE.getInheritanceRelationship());
 
-			elements.put(RealizationRelationship_3003, WavePackage.eINSTANCE
-					.getRealizationRelationship());
+			elements.put(RealizationRelationship_3003,
+					WavePackage.eINSTANCE.getRealizationRelationship());
 
-			elements.put(AssociationRelationship_3004, WavePackage.eINSTANCE
-					.getAssociationRelationship());
+			elements.put(AssociationRelationship_3004,
+					WavePackage.eINSTANCE.getAssociationRelationship());
 
-			elements.put(ActionToViewTransition_3005, WavePackage.eINSTANCE
-					.getActionToViewTransition());
+			elements.put(ActionToViewTransition_3005,
+					WavePackage.eINSTANCE.getActionToViewTransition());
 
-			elements.put(ModelMemberDocs_4015, WavePackage.eINSTANCE
-					.getModelMember_Docs());
+			elements.put(ModelMemberDocs_4015,
+					WavePackage.eINSTANCE.getModelMember_Docs());
 
-			elements.put(ViewTransition_4013, WavePackage.eINSTANCE
-					.getViewTransition());
+			elements.put(ViewTransition_4013,
+					WavePackage.eINSTANCE.getViewTransition());
 
-			elements.put(DependencyRelationship_4016, WavePackage.eINSTANCE
-					.getDependencyRelationship());
+			elements.put(DependencyRelationship_4016,
+					WavePackage.eINSTANCE.getDependencyRelationship());
 
-			elements.put(DependencyRelationship_4017, WavePackage.eINSTANCE
-					.getDependencyRelationship());
+			elements.put(DependencyRelationship_4017,
+					WavePackage.eINSTANCE.getDependencyRelationship());
 		}
 		return (ENamedElement) elements.get(type);
 	}
@@ -436,7 +434,7 @@ public class WaveElementTypes extends ElementInitializers {
 	 */
 	public static boolean isKnownElementType(IElementType elementType) {
 		if (KNOWN_ELEMENT_TYPES == null) {
-			KNOWN_ELEMENT_TYPES = new HashSet();
+			KNOWN_ELEMENT_TYPES = new HashSet<IElementType>();
 			KNOWN_ELEMENT_TYPES.add(Model_1000);
 			KNOWN_ELEMENT_TYPES.add(Class_2017);
 			KNOWN_ELEMENT_TYPES.add(Interface_2018);

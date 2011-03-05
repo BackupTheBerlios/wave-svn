@@ -10,26 +10,20 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ReconnectRequest;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.command.ICompositeCommand;
 import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.SemanticEditPolicy;
-import org.eclipse.gmf.runtime.diagram.ui.requests.EditCommandRequestWrapper;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
-import org.eclipse.gmf.runtime.emf.type.core.ElementTypeRegistry;
-import org.eclipse.gmf.runtime.emf.type.core.IEditHelperContext;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
@@ -44,22 +38,26 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.MoveRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientReferenceRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ReorientRelationshipRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.SetRequest;
-import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 
 import de.gulden.modeling.wave.Action;
+import de.gulden.modeling.wave.ActionToViewTransition;
+import de.gulden.modeling.wave.AssociationRelationship;
 import de.gulden.modeling.wave.Class;
 import de.gulden.modeling.wave.Classifier;
 import de.gulden.modeling.wave.Controller;
 import de.gulden.modeling.wave.ControllerMemberExecutable;
+import de.gulden.modeling.wave.DependencyRelationship;
 import de.gulden.modeling.wave.Documentation;
+import de.gulden.modeling.wave.InheritanceRelationship;
 import de.gulden.modeling.wave.Interface;
 import de.gulden.modeling.wave.ModelMember;
 import de.gulden.modeling.wave.OOPClassifier;
 import de.gulden.modeling.wave.Package;
+import de.gulden.modeling.wave.RealizationRelationship;
+import de.gulden.modeling.wave.ViewTransition;
 import de.gulden.modeling.wave.WavePackage;
 import de.gulden.modeling.wave.diagram.edit.helpers.WaveBaseEditHelper;
-import de.gulden.modeling.wave.diagram.expressions.WaveAbstractExpression;
 import de.gulden.modeling.wave.diagram.expressions.WaveOCLFactory;
 import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
 import de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry;
@@ -72,7 +70,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 
 	/**
 	 * Extended request data key to hold editpart visual id.
-	 * 
 	 * @generated
 	 */
 	public static final String VISUAL_ID_KEY = "visual_id"; //$NON-NLS-1$
@@ -103,8 +100,8 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 			Object view = ((ReconnectRequest) request).getConnectionEditPart()
 					.getModel();
 			if (view instanceof View) {
-				Integer id = new Integer(WaveVisualIDRegistry
-						.getVisualID((View) view));
+				Integer id = new Integer(
+						WaveVisualIDRegistry.getVisualID((View) view));
 				request.getExtendedData().put(VISUAL_ID_KEY, id);
 			}
 		}
@@ -113,7 +110,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 
 	/**
 	 * Returns visual id from request parameters.
-	 * 
 	 * @generated
 	 */
 	protected int getVisualID(IEditCommandRequest request) {
@@ -155,8 +151,7 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 			Command editPolicyCommand) {
 		if (editPolicyCommand != null) {
 			ICommand command = editPolicyCommand instanceof ICommandProxy ? ((ICommandProxy) editPolicyCommand)
-					.getICommand()
-					: new CommandProxy(editPolicyCommand);
+					.getICommand() : new CommandProxy(editPolicyCommand);
 			request.setParameter(WaveBaseEditHelper.EDIT_POLICY_COMMAND,
 					command);
 		}
@@ -304,7 +299,6 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 
 	/**
 	 * Returns editing domain from the host edit part.
-	 * 
 	 * @generated
 	 */
 	protected TransactionalEditingDomain getEditingDomain() {
@@ -330,80 +324,78 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 	/**
 	 * @generated
 	 */
+	public static LinkConstraints getLinkConstraints() {
+		LinkConstraints cached = WaveDiagramEditorPlugin.getInstance()
+				.getLinkConstraints();
+		if (cached == null) {
+			WaveDiagramEditorPlugin.getInstance().setLinkConstraints(
+					cached = new LinkConstraints());
+		}
+		return cached;
+	}
+
+	/**
+	 * @generated
+	 */
 	public static class LinkConstraints {
 
 		/**
 		 * @generated
 		 */
-		private static final String OPPOSITE_END_VAR = "oppositeEnd"; //$NON-NLS-1$
+		LinkConstraints() {
+			// use static method #getLinkConstraints() to access instance
+		}
 
 		/**
 		 * @generated
 		 */
-		private static WaveAbstractExpression DependencyRelationship_4016_SourceExpression;
-		/**
-		 * @generated
-		 */
-		private static WaveAbstractExpression DependencyRelationship_4016_TargetExpression;
-		/**
-		 * @generated
-		 */
-		private static WaveAbstractExpression DependencyRelationship_4017_SourceExpression;
-		/**
-		 * @generated
-		 */
-		private static WaveAbstractExpression DependencyRelationship_4017_TargetExpression;
-
-		/**
-		 * @generated
-		 */
-		public static boolean canCreateDependencyRelationship_3001(
-				Package container, ModelMember source, ModelMember target) {
-			return canExistDependencyRelationship_3001(container, source,
+		public boolean canCreateDependencyRelationship_3001(Package container,
+				ModelMember source, ModelMember target) {
+			return canExistDependencyRelationship_3001(container, null, source,
 					target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateInheritanceRelationship_3002(
-				Package container, Classifier source, Classifier target) {
-			return canExistInheritanceRelationship_3002(container, source,
-					target);
+		public boolean canCreateInheritanceRelationship_3002(Package container,
+				Classifier source, Classifier target) {
+			return canExistInheritanceRelationship_3002(container, null,
+					source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateRealizationRelationship_3003(
-				Package container, Class source, Interface target) {
-			return canExistRealizationRelationship_3003(container, source,
-					target);
+		public boolean canCreateRealizationRelationship_3003(Package container,
+				Class source, Interface target) {
+			return canExistRealizationRelationship_3003(container, null,
+					source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateAssociationRelationship_3004(
-				Package container, OOPClassifier source, OOPClassifier target) {
-			return canExistAssociationRelationship_3004(container, source,
-					target);
+		public boolean canCreateAssociationRelationship_3004(Package container,
+				OOPClassifier source, OOPClassifier target) {
+			return canExistAssociationRelationship_3004(container, null,
+					source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateActionToViewTransition_3005(
+		public boolean canCreateActionToViewTransition_3005(
 				Controller container, Action source,
 				de.gulden.modeling.wave.View target) {
-			return canExistActionToViewTransition_3005(container, source,
+			return canExistActionToViewTransition_3005(container, null, source,
 					target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateModelMemberDocs_4015(ModelMember source,
+		public boolean canCreateModelMemberDocs_4015(ModelMember source,
 				Documentation target) {
 			if (source != null) {
 				if (source.getDocs().contains(target)) {
@@ -417,75 +409,79 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateViewTransition_4013(
-				Controller container, ControllerMemberExecutable source,
+		public boolean canCreateViewTransition_4013(Controller container,
+				ControllerMemberExecutable source,
 				ControllerMemberExecutable target) {
-			return canExistViewTransition_4013(container, source, target);
+			return canExistViewTransition_4013(container, null, source, target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateDependencyRelationship_4016(
-				Package container, ModelMember source, ModelMember target) {
-			return canExistDependencyRelationship_4016(container, source,
+		public boolean canCreateDependencyRelationship_4016(Package container,
+				ModelMember source, ModelMember target) {
+			return canExistDependencyRelationship_4016(container, null, source,
 					target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canCreateDependencyRelationship_4017(
-				Package container, ModelMember source, ModelMember target) {
-			return canExistDependencyRelationship_4017(container, source,
+		public boolean canCreateDependencyRelationship_4017(Package container,
+				ModelMember source, ModelMember target) {
+			return canExistDependencyRelationship_4017(container, null, source,
 					target);
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canExistDependencyRelationship_3001(
-				Package container, ModelMember source, ModelMember target) {
+		public boolean canExistDependencyRelationship_3001(Package container,
+				DependencyRelationship linkInstance, ModelMember source,
+				ModelMember target) {
 			return true;
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canExistInheritanceRelationship_3002(
-				Package container, Classifier source, Classifier target) {
+		public boolean canExistInheritanceRelationship_3002(Package container,
+				InheritanceRelationship linkInstance, Classifier source,
+				Classifier target) {
 			return true;
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canExistRealizationRelationship_3003(
-				Package container, Class source, Interface target) {
+		public boolean canExistRealizationRelationship_3003(Package container,
+				RealizationRelationship linkInstance, Class source,
+				Interface target) {
 			return true;
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canExistAssociationRelationship_3004(
-				Package container, OOPClassifier source, OOPClassifier target) {
+		public boolean canExistAssociationRelationship_3004(Package container,
+				AssociationRelationship linkInstance, OOPClassifier source,
+				OOPClassifier target) {
 			return true;
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canExistActionToViewTransition_3005(
-				Controller container, Action source,
-				de.gulden.modeling.wave.View target) {
+		public boolean canExistActionToViewTransition_3005(
+				Controller container, ActionToViewTransition linkInstance,
+				Action source, de.gulden.modeling.wave.View target) {
 			return true;
 		}
 
 		/**
 		 * @generated
 		 */
-		public static boolean canExistModelMemberDocs_4015(ModelMember source,
+		public boolean canExistModelMemberDocs_4015(ModelMember source,
 				Documentation target) {
 			return true;
 		}
@@ -493,8 +489,8 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public static boolean canExistViewTransition_4013(Controller container,
-				ControllerMemberExecutable source,
+		public boolean canExistViewTransition_4013(Controller container,
+				ViewTransition linkInstance, ControllerMemberExecutable source,
 				ControllerMemberExecutable target) {
 			return true;
 		}
@@ -502,43 +498,44 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public static boolean canExistDependencyRelationship_4016(
-				Package container, ModelMember source, ModelMember target) {
+		public boolean canExistDependencyRelationship_4016(Package container,
+				DependencyRelationship linkInstance, ModelMember source,
+				ModelMember target) {
 			try {
 				if (source == null) {
 					return true;
+				} else {
+					Map<String, EClassifier> env = Collections
+							.<String, EClassifier> singletonMap(
+									"oppositeEnd", WavePackage.eINSTANCE.getModelMember()); //$NON-NLS-1$
+					Object sourceVal = WaveOCLFactory.getExpression(3,
+							WavePackage.eINSTANCE.getModelMember(), env)
+							.evaluate(
+									source,
+									Collections.singletonMap(
+											"oppositeEnd", target)); //$NON-NLS-1$
+					if (false == sourceVal instanceof Boolean
+							|| !((Boolean) sourceVal).booleanValue()) {
+						return false;
+					} // else fall-through
 				}
-				if (DependencyRelationship_4016_SourceExpression == null) {
-					Map env = Collections.singletonMap(OPPOSITE_END_VAR,
-							WavePackage.eINSTANCE.getModelMember());
-					DependencyRelationship_4016_SourceExpression = WaveOCLFactory
-							.getExpression(
-									"self.oclIsKindOf(Usecase)", WavePackage.eINSTANCE.getModelMember(), env); //$NON-NLS-1$
-				}
-				Object sourceVal = DependencyRelationship_4016_SourceExpression
-						.evaluate(source, Collections.singletonMap(
-								OPPOSITE_END_VAR, target));
-				if (false == sourceVal instanceof Boolean
-						|| !((Boolean) sourceVal).booleanValue()) {
-					return false;
-				} // else fall-through
 				if (target == null) {
 					return true;
+				} else {
+					Map<String, EClassifier> env = Collections
+							.<String, EClassifier> singletonMap(
+									"oppositeEnd", WavePackage.eINSTANCE.getModelMember()); //$NON-NLS-1$
+					Object targetVal = WaveOCLFactory.getExpression(4,
+							WavePackage.eINSTANCE.getModelMember(), env)
+							.evaluate(
+									target,
+									Collections.singletonMap(
+											"oppositeEnd", source)); //$NON-NLS-1$
+					if (false == targetVal instanceof Boolean
+							|| !((Boolean) targetVal).booleanValue()) {
+						return false;
+					} // else fall-through
 				}
-				if (DependencyRelationship_4016_TargetExpression == null) {
-					Map env = Collections.singletonMap(OPPOSITE_END_VAR,
-							WavePackage.eINSTANCE.getModelMember());
-					DependencyRelationship_4016_TargetExpression = WaveOCLFactory
-							.getExpression(
-									"self.oclIsKindOf(Usecase)", WavePackage.eINSTANCE.getModelMember(), env); //$NON-NLS-1$
-				}
-				Object targetVal = DependencyRelationship_4016_TargetExpression
-						.evaluate(target, Collections.singletonMap(
-								OPPOSITE_END_VAR, source));
-				if (false == targetVal instanceof Boolean
-						|| !((Boolean) targetVal).booleanValue()) {
-					return false;
-				} // else fall-through
 				return true;
 			} catch (Exception e) {
 				WaveDiagramEditorPlugin.getInstance().logError(
@@ -550,43 +547,44 @@ public class WaveBaseItemSemanticEditPolicy extends SemanticEditPolicy {
 		/**
 		 * @generated
 		 */
-		public static boolean canExistDependencyRelationship_4017(
-				Package container, ModelMember source, ModelMember target) {
+		public boolean canExistDependencyRelationship_4017(Package container,
+				DependencyRelationship linkInstance, ModelMember source,
+				ModelMember target) {
 			try {
 				if (source == null) {
 					return true;
+				} else {
+					Map<String, EClassifier> env = Collections
+							.<String, EClassifier> singletonMap(
+									"oppositeEnd", WavePackage.eINSTANCE.getModelMember()); //$NON-NLS-1$
+					Object sourceVal = WaveOCLFactory.getExpression(7,
+							WavePackage.eINSTANCE.getModelMember(), env)
+							.evaluate(
+									source,
+									Collections.singletonMap(
+											"oppositeEnd", target)); //$NON-NLS-1$
+					if (false == sourceVal instanceof Boolean
+							|| !((Boolean) sourceVal).booleanValue()) {
+						return false;
+					} // else fall-through
 				}
-				if (DependencyRelationship_4017_SourceExpression == null) {
-					Map env = Collections.singletonMap(OPPOSITE_END_VAR,
-							WavePackage.eINSTANCE.getModelMember());
-					DependencyRelationship_4017_SourceExpression = WaveOCLFactory
-							.getExpression(
-									"self.oclIsKindOf(Usecase)", WavePackage.eINSTANCE.getModelMember(), env); //$NON-NLS-1$
-				}
-				Object sourceVal = DependencyRelationship_4017_SourceExpression
-						.evaluate(source, Collections.singletonMap(
-								OPPOSITE_END_VAR, target));
-				if (false == sourceVal instanceof Boolean
-						|| !((Boolean) sourceVal).booleanValue()) {
-					return false;
-				} // else fall-through
 				if (target == null) {
 					return true;
+				} else {
+					Map<String, EClassifier> env = Collections
+							.<String, EClassifier> singletonMap(
+									"oppositeEnd", WavePackage.eINSTANCE.getModelMember()); //$NON-NLS-1$
+					Object targetVal = WaveOCLFactory.getExpression(8,
+							WavePackage.eINSTANCE.getModelMember(), env)
+							.evaluate(
+									target,
+									Collections.singletonMap(
+											"oppositeEnd", source)); //$NON-NLS-1$
+					if (false == targetVal instanceof Boolean
+							|| !((Boolean) targetVal).booleanValue()) {
+						return false;
+					} // else fall-through
 				}
-				if (DependencyRelationship_4017_TargetExpression == null) {
-					Map env = Collections.singletonMap(OPPOSITE_END_VAR,
-							WavePackage.eINSTANCE.getModelMember());
-					DependencyRelationship_4017_TargetExpression = WaveOCLFactory
-							.getExpression(
-									"self.oclIsKindOf(Usecase)", WavePackage.eINSTANCE.getModelMember(), env); //$NON-NLS-1$
-				}
-				Object targetVal = DependencyRelationship_4017_TargetExpression
-						.evaluate(target, Collections.singletonMap(
-								OPPOSITE_END_VAR, source));
-				if (false == targetVal instanceof Boolean
-						|| !((Boolean) targetVal).booleanValue()) {
-					return false;
-				} // else fall-through
 				return true;
 			} catch (Exception e) {
 				WaveDiagramEditorPlugin.getInstance().logError(

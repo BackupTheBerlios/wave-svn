@@ -9,7 +9,6 @@ package de.gulden.modeling.wave.diagram.edit.parts;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Point;
@@ -27,7 +26,6 @@ import org.eclipse.gmf.runtime.common.ui.services.parser.IParser;
 import org.eclipse.gmf.runtime.common.ui.services.parser.IParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserEditStatus;
 import org.eclipse.gmf.runtime.common.ui.services.parser.ParserOptions;
-import org.eclipse.gmf.runtime.common.ui.services.parser.ParserService;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart;
@@ -83,7 +81,7 @@ public class Attribute2EditPart extends ClassifierMemberEditPartBase implements
 	/**
 	 * @generated
 	 */
-	private List parserElements;
+	private List<?> parserElements;
 
 	/**
 	 * @generated
@@ -181,6 +179,7 @@ public class Attribute2EditPart extends ClassifierMemberEditPartBase implements
 	/**
 	 * @generated
 	 */
+	@SuppressWarnings("rawtypes")
 	protected List getModelChildren() {
 		return Collections.EMPTY_LIST;
 	}
@@ -269,14 +268,17 @@ public class Attribute2EditPart extends ClassifierMemberEditPartBase implements
 					final IParser parser = getParser();
 					try {
 						IParserEditStatus valid = (IParserEditStatus) getEditingDomain()
-								.runExclusive(new RunnableWithResult.Impl() {
+								.runExclusive(
+										new RunnableWithResult.Impl<IParserEditStatus>() {
 
-									public void run() {
-										setResult(parser.isValidEditString(
-												new EObjectAdapter(element),
-												(String) value));
-									}
-								});
+											public void run() {
+												setResult(parser
+														.isValidEditString(
+																new EObjectAdapter(
+																		element),
+																(String) value));
+											}
+										});
 						return valid.getCode() == ParserEditStatus.EDITABLE ? null
 								: valid.getMessage();
 					} catch (InterruptedException ie) {
@@ -328,9 +330,9 @@ public class Attribute2EditPart extends ClassifierMemberEditPartBase implements
 	 */
 	protected DirectEditManager getManager() {
 		if (manager == null) {
-			setManager(new TextDirectEditManager(this, TextDirectEditManager
-					.getTextCellEditorClass(this), WaveEditPartFactory
-					.getTextCellEditorLocator(this)));
+			setManager(new TextDirectEditManager(this,
+					TextDirectEditManager.getTextCellEditorClass(this),
+					WaveEditPartFactory.getTextCellEditorLocator(this)));
 		}
 		return manager;
 	}
@@ -382,12 +384,10 @@ public class Attribute2EditPart extends ClassifierMemberEditPartBase implements
 					if (isActive() && isEditable()) {
 						if (theRequest
 								.getExtendedData()
-								.get(
-										RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR) instanceof Character) {
+								.get(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR) instanceof Character) {
 							Character initialChar = (Character) theRequest
 									.getExtendedData()
-									.get(
-											RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR);
+									.get(RequestConstants.REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR);
 							performDirectEdit(initialChar.charValue());
 						} else if ((theRequest instanceof DirectEditRequest)
 								&& (getEditText().equals(getLabelText()))) {
@@ -462,9 +462,10 @@ public class Attribute2EditPart extends ClassifierMemberEditPartBase implements
 		FontStyle style = (FontStyle) getFontStyleOwnerView().getStyle(
 				NotationPackage.eINSTANCE.getFontStyle());
 		if (style != null) {
-			FontData fontData = new FontData(style.getFontName(), style
-					.getFontHeight(), (style.isBold() ? SWT.BOLD : SWT.NORMAL)
-					| (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
+			FontData fontData = new FontData(style.getFontName(),
+					style.getFontHeight(), (style.isBold() ? SWT.BOLD
+							: SWT.NORMAL)
+							| (style.isItalic() ? SWT.ITALIC : SWT.NORMAL));
 			setFont(fontData);
 		}
 	}

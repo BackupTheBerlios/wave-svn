@@ -7,16 +7,17 @@
 package de.gulden.modeling.wave.diagram.part;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.gef.Tool;
 import org.eclipse.gef.palette.PaletteContainer;
 import org.eclipse.gef.palette.PaletteGroup;
 import org.eclipse.gef.palette.PaletteRoot;
-import org.eclipse.gef.palette.PaletteStack;
 import org.eclipse.gef.palette.ToolEntry;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeConnectionTool;
 import org.eclipse.gmf.runtime.diagram.ui.tools.UnspecifiedTypeCreationTool;
+import org.eclipse.gmf.runtime.emf.type.core.IElementType;
 
 import de.gulden.modeling.wave.diagram.providers.WaveElementTypes;
 
@@ -45,7 +46,8 @@ public class WavePaletteFactory {
 		PaletteGroup paletteContainer = new PaletteGroup(
 				Messages.Documentation1Group_title);
 		paletteContainer.setId("createDocumentation1Group"); //$NON-NLS-1$
-		paletteContainer.add(createDoc1Group());
+		paletteContainer.add(createDocumentation1CreationTool());
+		paletteContainer.add(createConnection2CreationTool());
 		return paletteContainer;
 	}
 
@@ -127,27 +129,46 @@ public class WavePaletteFactory {
 	}
 
 	/**
-	 * Creates "Doc" palette tool group
 	 * @generated
 	 */
-	private PaletteContainer createDoc1Group() {
-		PaletteStack paletteContainer = new PaletteStack(
-				Messages.Doc1Group_title, null, null);
-		paletteContainer.setId("createDoc1Group"); //$NON-NLS-1$
-		paletteContainer.add(createDocumentation1CreationTool());
-		paletteContainer.add(createConnection2CreationTool());
-		return paletteContainer;
+	private ToolEntry createDocumentation1CreationTool() {
+		NodeToolEntry entry = new NodeToolEntry(
+				Messages.Documentation1CreationTool_title,
+				Messages.Documentation1CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.Documentation_2013));
+		entry.setId("createDocumentation1CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Documentation.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Documentation.gif")); //$NON-NLS-1$
+		return entry;
+	}
+
+	/**
+	 * @generated
+	 */
+	private ToolEntry createConnection2CreationTool() {
+		LinkToolEntry entry = new LinkToolEntry(
+				Messages.Connection2CreationTool_title,
+				Messages.Connection2CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.ModelMemberDocs_4015));
+		entry.setId("createConnection2CreationTool"); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DocumentationConnection.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DocumentationConnection.gif")); //$NON-NLS-1$
+		return entry;
 	}
 
 	/**
 	 * @generated
 	 */
 	private ToolEntry createController1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.Controller_2026);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Controller1CreationTool_title,
-				Messages.Controller1CreationTool_desc, types);
+				Messages.Controller1CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.Controller_2026));
 		entry.setId("createController1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(WaveDiagramEditorPlugin
 				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Controller.gif")); //$NON-NLS-1$
@@ -160,7 +181,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createClass2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(2);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(WaveElementTypes.Class_2017);
 		types.add(WaveElementTypes.Class_13003);
 		NodeToolEntry entry = new NodeToolEntry(
@@ -178,7 +199,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createInterface3CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(2);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(WaveElementTypes.Interface_2018);
 		types.add(WaveElementTypes.Interface_13004);
 		NodeToolEntry entry = new NodeToolEntry(
@@ -196,7 +217,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createInclude4CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(2);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(WaveElementTypes.Include_2020);
 		types.add(WaveElementTypes.Include_13010);
 		NodeToolEntry entry = new NodeToolEntry(
@@ -214,11 +235,10 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createStyleSheet5CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.StyleSheet_2022);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.StyleSheet5CreationTool_title,
-				Messages.StyleSheet5CreationTool_desc, types);
+				Messages.StyleSheet5CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.StyleSheet_2022));
 		entry.setId("createStyleSheet5CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(WaveDiagramEditorPlugin
 				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/StyleSheet.gif")); //$NON-NLS-1$
@@ -231,7 +251,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createPackage6CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(2);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(WaveElementTypes.Package_2021);
 		types.add(WaveElementTypes.Package_13005);
 		NodeToolEntry entry = new NodeToolEntry(
@@ -249,11 +269,10 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createAction1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.Action_13006);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Action1CreationTool_title,
-				Messages.Action1CreationTool_desc, types);
+				Messages.Action1CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.Action_13006));
 		entry.setId("createAction1CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(WaveDiagramEditorPlugin
 				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Action.gif")); //$NON-NLS-1$
@@ -266,7 +285,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createView2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(2);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(WaveElementTypes.View_13007);
 		types.add(WaveElementTypes.View_13002);
 		NodeToolEntry entry = new NodeToolEntry(
@@ -284,11 +303,10 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createArea3CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.Area_13001);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Area3CreationTool_title,
-				Messages.Area3CreationTool_desc, types);
+				Messages.Area3CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.Area_13001));
 		entry.setId("createArea3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(WaveDiagramEditorPlugin
 				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Area.gif")); //$NON-NLS-1$
@@ -301,18 +319,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createTransition4CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.ActionToViewTransition_3005);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Transition4CreationTool_title,
-				Messages.Transition4CreationTool_desc, types);
+				Messages.Transition4CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.ActionToViewTransition_3005));
 		entry.setId("createTransition4CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ActionToViewTransition.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ActionToViewTransition.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ActionToViewTransition.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ActionToViewTransition.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -320,18 +336,15 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createFlow5CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.ViewTransition_4013);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Flow5CreationTool_title,
-				Messages.Flow5CreationTool_desc, types);
+				Messages.Flow5CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.ViewTransition_4013));
 		entry.setId("createFlow5CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ViewTransition.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ViewTransition.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ViewTransition.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ViewTransition.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -339,7 +352,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createAttribute1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(2);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(2);
 		types.add(WaveElementTypes.Attribute_2001);
 		types.add(WaveElementTypes.Attribute_2004);
 		NodeToolEntry entry = new NodeToolEntry(
@@ -357,7 +370,7 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createOperation2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(5);
+		ArrayList<IElementType> types = new ArrayList<IElementType>(5);
 		types.add(WaveElementTypes.Operation_2002);
 		types.add(WaveElementTypes.Operation_2003);
 		types.add(WaveElementTypes.Operation_13008);
@@ -378,18 +391,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createAssociation1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.AssociationRelationship_3004);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Association1CreationTool_title,
-				Messages.Association1CreationTool_desc, types);
+				Messages.Association1CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.AssociationRelationship_3004));
 		entry.setId("createAssociation1CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/AssociationRelationship.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/AssociationRelationship.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/AssociationRelationship.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/AssociationRelationship.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -397,18 +408,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createDependency2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.DependencyRelationship_3001);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Dependency2CreationTool_title,
-				Messages.Dependency2CreationTool_desc, types);
+				Messages.Dependency2CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.DependencyRelationship_3001));
 		entry.setId("createDependency2CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DependencyRelationship.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DependencyRelationship.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DependencyRelationship.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DependencyRelationship.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -416,18 +425,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createInheritance3CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.InheritanceRelationship_3002);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Inheritance3CreationTool_title,
-				Messages.Inheritance3CreationTool_desc, types);
+				Messages.Inheritance3CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.InheritanceRelationship_3002));
 		entry.setId("createInheritance3CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/InheritanceRelationship.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/InheritanceRelationship.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/InheritanceRelationship.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/InheritanceRelationship.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -435,18 +442,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createRealization4CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.RealizationRelationship_3003);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Realization4CreationTool_title,
-				Messages.Realization4CreationTool_desc, types);
+				Messages.Realization4CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.RealizationRelationship_3003));
 		entry.setId("createRealization4CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/RealizationRelationship.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/RealizationRelationship.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/RealizationRelationship.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/RealizationRelationship.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -454,18 +459,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createSubsystem1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.UsecaseSubsystem_2023);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Subsystem1CreationTool_title,
-				Messages.Subsystem1CreationTool_desc, types);
+				Messages.Subsystem1CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.UsecaseSubsystem_2023));
 		entry.setId("createSubsystem1CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/UsecaseSubsystem.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/UsecaseSubsystem.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/UsecaseSubsystem.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/UsecaseSubsystem.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -473,11 +476,10 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createActor2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.Actor_2024);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.Actor2CreationTool_title,
-				Messages.Actor2CreationTool_desc, types);
+				Messages.Actor2CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.Actor_2024));
 		entry.setId("createActor2CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(WaveDiagramEditorPlugin
 				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Actor.gif")); //$NON-NLS-1$
@@ -490,11 +492,10 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createUseCase3CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.Usecase_2025);
 		NodeToolEntry entry = new NodeToolEntry(
 				Messages.UseCase3CreationTool_title,
-				Messages.UseCase3CreationTool_desc, types);
+				Messages.UseCase3CreationTool_desc,
+				Collections.singletonList(WaveElementTypes.Usecase_2025));
 		entry.setId("createUseCase3CreationTool"); //$NON-NLS-1$
 		entry.setSmallIcon(WaveDiagramEditorPlugin
 				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Usecase.gif")); //$NON-NLS-1$
@@ -507,18 +508,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createIncludes4CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.DependencyRelationship_4016);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Includes4CreationTool_title,
-				Messages.Includes4CreationTool_desc, types);
+				Messages.Includes4CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.DependencyRelationship_4016));
 		entry.setId("createIncludes4CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/IncludesRelationship.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/IncludesRelationship.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/IncludesRelationship.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/IncludesRelationship.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -526,56 +525,16 @@ public class WavePaletteFactory {
 	 * @generated
 	 */
 	private ToolEntry createExtends5CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.DependencyRelationship_4017);
 		LinkToolEntry entry = new LinkToolEntry(
 				Messages.Extends5CreationTool_title,
-				Messages.Extends5CreationTool_desc, types);
+				Messages.Extends5CreationTool_desc,
+				Collections
+						.singletonList(WaveElementTypes.DependencyRelationship_4017));
 		entry.setId("createExtends5CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ExtendsRelationship.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ExtendsRelationship.gif")); //$NON-NLS-1$
-		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private ToolEntry createDocumentation1CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.Documentation_2013);
-		NodeToolEntry entry = new NodeToolEntry(
-				Messages.Documentation1CreationTool_title,
-				Messages.Documentation1CreationTool_desc, types);
-		entry.setId("createDocumentation1CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Documentation.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/Documentation.gif")); //$NON-NLS-1$
-		return entry;
-	}
-
-	/**
-	 * @generated
-	 */
-	private ToolEntry createConnection2CreationTool() {
-		List/*<IElementType>*/types = new ArrayList/*<IElementType>*/(1);
-		types.add(WaveElementTypes.ModelMemberDocs_4015);
-		LinkToolEntry entry = new LinkToolEntry(
-				Messages.Connection2CreationTool_title,
-				Messages.Connection2CreationTool_desc, types);
-		entry.setId("createConnection2CreationTool"); //$NON-NLS-1$
-		entry
-				.setSmallIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DocumentationConnection.gif")); //$NON-NLS-1$
-		entry
-				.setLargeIcon(WaveDiagramEditorPlugin
-						.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/DocumentationConnection.gif")); //$NON-NLS-1$
+		entry.setSmallIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ExtendsRelationship.gif")); //$NON-NLS-1$
+		entry.setLargeIcon(WaveDiagramEditorPlugin
+				.findImageDescriptor("/de.gulden.modeling.wave/icons/full/obj16/ExtendsRelationship.gif")); //$NON-NLS-1$
 		return entry;
 	}
 
@@ -587,13 +546,13 @@ public class WavePaletteFactory {
 		/**
 		 * @generated
 		 */
-		private final List elementTypes;
+		private final List<IElementType> elementTypes;
 
 		/**
 		 * @generated
 		 */
 		private NodeToolEntry(String title, String description,
-				List elementTypes) {
+				List<IElementType> elementTypes) {
 			super(title, description, null, null);
 			this.elementTypes = elementTypes;
 		}
@@ -616,13 +575,13 @@ public class WavePaletteFactory {
 		/**
 		 * @generated
 		 */
-		private final List relationshipTypes;
+		private final List<IElementType> relationshipTypes;
 
 		/**
 		 * @generated
 		 */
 		private LinkToolEntry(String title, String description,
-				List relationshipTypes) {
+				List<IElementType> relationshipTypes) {
 			super(title, description, null, null);
 			this.relationshipTypes = relationshipTypes;
 		}

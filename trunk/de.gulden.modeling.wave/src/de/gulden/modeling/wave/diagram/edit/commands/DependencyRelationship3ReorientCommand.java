@@ -78,9 +78,9 @@ public class DependencyRelationship3ReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Package container = (Package) getLink().eContainer();
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistDependencyRelationship_4017(container, getNewSource(),
-						target);
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistDependencyRelationship_4017(container, getLink(),
+						getNewSource(), target);
 	}
 
 	/**
@@ -95,9 +95,9 @@ public class DependencyRelationship3ReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Package container = (Package) getLink().eContainer();
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistDependencyRelationship_4017(container, source,
-						getNewTarget());
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistDependencyRelationship_4017(container, getLink(),
+						source, getNewTarget());
 	}
 
 	/**

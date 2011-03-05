@@ -3,8 +3,6 @@
  * A Graphical Modeling Framework (GMF) Plugin for Eclipse
  * Copyright Jens Gulden, 2009, mail@jensgulden.de
  * Licensed under the GNU General Public License (GPL)
- *
- * $Id$
  */
 package de.gulden.modeling.wave;
 
@@ -4939,7 +4937,6 @@ public interface WavePackage extends EPackage {
 	 */
 	int ENUM_WIDGET_TYPE = 52;
 
-
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.EnumProjectLayout <em>Enum Project Layout</em>}' enum.
 	 * <!-- begin-user-doc -->
@@ -4950,7 +4947,6 @@ public interface WavePackage extends EPackage {
 	 */
 	int ENUM_PROJECT_LAYOUT = 53;
 
-
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.EnumLabelMode <em>Enum Label Mode</em>}' enum.
 	 * <!-- begin-user-doc -->
@@ -4960,7 +4956,6 @@ public interface WavePackage extends EPackage {
 	 * @generated
 	 */
 	int ENUM_LABEL_MODE = 54;
-
 
 	/**
 	 * The meta object id for the '{@link de.gulden.modeling.wave.EnumGeneratorTarget <em>Enum Generator Target</em>}' enum.

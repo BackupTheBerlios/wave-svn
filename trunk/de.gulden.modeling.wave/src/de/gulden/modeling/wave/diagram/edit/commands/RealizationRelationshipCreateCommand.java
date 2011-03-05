@@ -9,12 +9,10 @@ package de.gulden.modeling.wave.diagram.edit.commands;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.CommandResult;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.emf.type.core.IElementType;
-import org.eclipse.gmf.runtime.emf.type.core.commands.CreateElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.commands.EditElementCommand;
 import org.eclipse.gmf.runtime.emf.type.core.requests.ConfigureRequest;
 import org.eclipse.gmf.runtime.emf.type.core.requests.CreateElementRequest;
@@ -25,7 +23,6 @@ import de.gulden.modeling.wave.Interface;
 import de.gulden.modeling.wave.Package;
 import de.gulden.modeling.wave.RealizationRelationship;
 import de.gulden.modeling.wave.WaveFactory;
-import de.gulden.modeling.wave.WavePackage;
 import de.gulden.modeling.wave.diagram.edit.policies.WaveBaseItemSemanticEditPolicy;
 
 /**
@@ -79,7 +76,7 @@ public class RealizationRelationshipCreateCommand extends EditElementCommand {
 		if (getContainer() == null) {
 			return false;
 		}
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
 				.canCreateRealizationRelationship_3003(getContainer(),
 						getSource(), getTarget());
 	}
@@ -174,4 +171,5 @@ public class RealizationRelationshipCreateCommand extends EditElementCommand {
 		}
 		return null;
 	}
+
 }

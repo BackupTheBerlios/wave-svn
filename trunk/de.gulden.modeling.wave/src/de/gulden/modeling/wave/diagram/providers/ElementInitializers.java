@@ -15,14 +15,18 @@ import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
  * @generated
  */
 public class ElementInitializers {
+
+	protected ElementInitializers() {
+		// use #getInstance to access cached instance
+	}
+
 	/**
 	 * @generated
 	 */
-	public static void init_DependencyRelationship_4016(
-			DependencyRelationship instance) {
+	public void init_DependencyRelationship_4016(DependencyRelationship instance) {
 		try {
-			Object value_0 = WaveOCLFactory.getExpression("\'includes\'",
-					WavePackage.eINSTANCE.getDependencyRelationship())
+			Object value_0 = WaveOCLFactory.getExpression(2,
+					WavePackage.eINSTANCE.getDependencyRelationship(), null)
 					.evaluate(instance);
 			instance.setStereotype((String) value_0);
 		} catch (RuntimeException e) {
@@ -34,11 +38,10 @@ public class ElementInitializers {
 	/**
 	 * @generated
 	 */
-	public static void init_DependencyRelationship_4017(
-			DependencyRelationship instance) {
+	public void init_DependencyRelationship_4017(DependencyRelationship instance) {
 		try {
-			Object value_0 = WaveOCLFactory.getExpression("\'extends\'",
-					WavePackage.eINSTANCE.getDependencyRelationship())
+			Object value_0 = WaveOCLFactory.getExpression(6,
+					WavePackage.eINSTANCE.getDependencyRelationship(), null)
 					.evaluate(instance);
 			instance.setStereotype((String) value_0);
 		} catch (RuntimeException e) {
@@ -47,4 +50,16 @@ public class ElementInitializers {
 		}
 	}
 
+	/**
+	 * @generated
+	 */
+	public static ElementInitializers getInstance() {
+		ElementInitializers cached = WaveDiagramEditorPlugin.getInstance()
+				.getElementInitializers();
+		if (cached == null) {
+			WaveDiagramEditorPlugin.getInstance().setElementInitializers(
+					cached = new ElementInitializers());
+		}
+		return cached;
+	}
 }

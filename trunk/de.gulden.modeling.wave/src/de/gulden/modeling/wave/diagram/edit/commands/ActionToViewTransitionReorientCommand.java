@@ -79,9 +79,9 @@ public class ActionToViewTransitionReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Controller container = (Controller) getLink().eContainer();
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistActionToViewTransition_3005(container, getNewSource(),
-						target);
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistActionToViewTransition_3005(container, getLink(),
+						getNewSource(), target);
 	}
 
 	/**
@@ -96,9 +96,9 @@ public class ActionToViewTransitionReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Controller container = (Controller) getLink().eContainer();
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistActionToViewTransition_3005(container, source,
-						getNewTarget());
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistActionToViewTransition_3005(container, getLink(),
+						source, getNewTarget());
 	}
 
 	/**

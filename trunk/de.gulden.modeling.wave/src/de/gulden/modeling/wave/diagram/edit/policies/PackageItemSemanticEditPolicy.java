@@ -10,7 +10,6 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.gef.commands.Command;
-import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.common.core.command.ICompositeCommand;
 import org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
@@ -69,7 +68,7 @@ public class PackageItemSemanticEditPolicy extends
 		CompositeTransactionalCommand cmd = new CompositeTransactionalCommand(
 				getEditingDomain(), null);
 		cmd.setTransactionNestingEnabled(false);
-		for (Iterator it = view.getTargetEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getTargetEdges().iterator(); it.hasNext();) {
 			Edge incomingLink = (Edge) it.next();
 			if (WaveVisualIDRegistry.getVisualID(incomingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
 				DestroyElementRequest r = new DestroyElementRequest(
@@ -93,7 +92,7 @@ public class PackageItemSemanticEditPolicy extends
 				continue;
 			}
 		}
-		for (Iterator it = view.getSourceEdges().iterator(); it.hasNext();) {
+		for (Iterator<?> it = view.getSourceEdges().iterator(); it.hasNext();) {
 			Edge outgoingLink = (Edge) it.next();
 			if (WaveVisualIDRegistry.getVisualID(outgoingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
 				DestroyElementRequest r = new DestroyElementRequest(
@@ -143,16 +142,16 @@ public class PackageItemSemanticEditPolicy extends
 	 */
 	private void addDestroyChildNodesCommand(ICompositeCommand cmd) {
 		View view = (View) getHost().getModel();
-		for (Iterator nit = view.getChildren().iterator(); nit.hasNext();) {
+		for (Iterator<?> nit = view.getChildren().iterator(); nit.hasNext();) {
 			Node node = (Node) nit.next();
 			switch (WaveVisualIDRegistry.getVisualID(node)) {
 			case PackagePackageCompartmentEditPart.VISUAL_ID:
-				for (Iterator cit = node.getChildren().iterator(); cit
+				for (Iterator<?> cit = node.getChildren().iterator(); cit
 						.hasNext();) {
 					Node cnode = (Node) cit.next();
 					switch (WaveVisualIDRegistry.getVisualID(cnode)) {
 					case Class2EditPart.VISUAL_ID:
-						for (Iterator it = cnode.getTargetEdges().iterator(); it
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
 								.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(incomingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -196,7 +195,7 @@ public class PackageItemSemanticEditPolicy extends
 								continue;
 							}
 						}
-						for (Iterator it = cnode.getSourceEdges().iterator(); it
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
 								.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(outgoingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -265,7 +264,7 @@ public class PackageItemSemanticEditPolicy extends
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case Interface2EditPart.VISUAL_ID:
-						for (Iterator it = cnode.getTargetEdges().iterator(); it
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
 								.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(incomingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -317,7 +316,7 @@ public class PackageItemSemanticEditPolicy extends
 								continue;
 							}
 						}
-						for (Iterator it = cnode.getSourceEdges().iterator(); it
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
 								.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(outgoingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -378,7 +377,7 @@ public class PackageItemSemanticEditPolicy extends
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case Package2EditPart.VISUAL_ID:
-						for (Iterator it = cnode.getTargetEdges().iterator(); it
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
 								.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(incomingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -406,7 +405,7 @@ public class PackageItemSemanticEditPolicy extends
 								continue;
 							}
 						}
-						for (Iterator it = cnode.getSourceEdges().iterator(); it
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
 								.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(outgoingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -451,7 +450,7 @@ public class PackageItemSemanticEditPolicy extends
 						// cmd.add(new org.eclipse.gmf.runtime.diagram.core.commands.DeleteCommand(getEditingDomain(), cnode));
 						break;
 					case Include2EditPart.VISUAL_ID:
-						for (Iterator it = cnode.getTargetEdges().iterator(); it
+						for (Iterator<?> it = cnode.getTargetEdges().iterator(); it
 								.hasNext();) {
 							Edge incomingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(incomingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -487,7 +486,7 @@ public class PackageItemSemanticEditPolicy extends
 								continue;
 							}
 						}
-						for (Iterator it = cnode.getSourceEdges().iterator(); it
+						for (Iterator<?> it = cnode.getSourceEdges().iterator(); it
 								.hasNext();) {
 							Edge outgoingLink = (Edge) it.next();
 							if (WaveVisualIDRegistry.getVisualID(outgoingLink) == DependencyRelationshipEditPart.VISUAL_ID) {
@@ -567,8 +566,8 @@ public class PackageItemSemanticEditPolicy extends
 					req.getSource(), req.getTarget()));
 		}
 		if (WaveElementTypes.ModelMemberDocs_4015 == req.getElementType()) {
-			return getGEFWrapper(new ModelMemberDocsCreateCommand(req, req
-					.getSource(), req.getTarget()));
+			return getGEFWrapper(new ModelMemberDocsCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (WaveElementTypes.DependencyRelationship_4016 == req
 				.getElementType()) {

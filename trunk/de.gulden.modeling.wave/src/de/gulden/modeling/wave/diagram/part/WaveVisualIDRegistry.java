@@ -91,7 +91,6 @@ import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartment2EditPa
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewAreaCompartmentEditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewOperationCompartment2EditPart;
 import de.gulden.modeling.wave.diagram.edit.parts.ViewViewOperationCompartmentEditPart;
-import de.gulden.modeling.wave.diagram.expressions.WaveAbstractExpression;
 import de.gulden.modeling.wave.diagram.expressions.WaveOCLFactory;
 
 /**
@@ -107,21 +106,6 @@ public class WaveVisualIDRegistry {
 	 * @generated
 	 */
 	private static final String DEBUG_KEY = "de.gulden.modeling.wave/debug/visualID"; //$NON-NLS-1$
-
-	/**
-	 * @generated
-	 */
-	private static WaveAbstractExpression DependencyRelationship_3001_Constraint;
-
-	/**
-	 * @generated
-	 */
-	private static WaveAbstractExpression DependencyRelationship_4016_Constraint;
-
-	/**
-	 * @generated
-	 */
-	private static WaveAbstractExpression DependencyRelationship_4017_Constraint;
 
 	/**
 	 * @generated
@@ -174,7 +158,7 @@ public class WaveVisualIDRegistry {
 	 * @generated
 	 */
 	public static String getType(int visualID) {
-		return String.valueOf(visualID);
+		return Integer.toString(visualID);
 	}
 
 	/**
@@ -202,7 +186,7 @@ public class WaveVisualIDRegistry {
 		String containerModelID = de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry
 				.getModelID(containerView);
 		if (!ModelEditPart.MODEL_ID.equals(containerModelID)
-				&& !"Process Control Flow".equals(containerModelID)) { //$NON-NLS-1$
+				&& !"Process Control Flow".equals(containerModelID) && !"Wave".equals(containerModelID)) { //$NON-NLS-1$ //$NON-NLS-2$
 			return -1;
 		}
 		int containerVisualID;
@@ -217,6 +201,48 @@ public class WaveVisualIDRegistry {
 			}
 		}
 		switch (containerVisualID) {
+		case ModelEditPart.VISUAL_ID:
+			if (WavePackage.eINSTANCE.getClass_().isSuperTypeOf(
+					domainElement.eClass())) {
+				return ClassEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getInterface().isSuperTypeOf(
+					domainElement.eClass())) {
+				return InterfaceEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getController().isSuperTypeOf(
+					domainElement.eClass())) {
+				return ControllerEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getInclude().isSuperTypeOf(
+					domainElement.eClass())) {
+				return IncludeEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getPackage().isSuperTypeOf(
+					domainElement.eClass())) {
+				return PackageEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getDocumentation().isSuperTypeOf(
+					domainElement.eClass())) {
+				return DocumentationEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getStyleSheet().isSuperTypeOf(
+					domainElement.eClass())) {
+				return StyleSheetEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getUsecaseSubsystem().isSuperTypeOf(
+					domainElement.eClass())) {
+				return UsecaseSubsystemEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getActor().isSuperTypeOf(
+					domainElement.eClass())) {
+				return ActorEditPart.VISUAL_ID;
+			}
+			if (WavePackage.eINSTANCE.getUsecase().isSuperTypeOf(
+					domainElement.eClass())) {
+				return UsecaseEditPart.VISUAL_ID;
+			}
+			break;
 		case AreaEditPart.VISUAL_ID:
 			if (WavePackage.eINSTANCE.getView().isSuperTypeOf(
 					domainElement.eClass())) {
@@ -349,48 +375,6 @@ public class WaveVisualIDRegistry {
 				return Include2EditPart.VISUAL_ID;
 			}
 			break;
-		case ModelEditPart.VISUAL_ID:
-			if (WavePackage.eINSTANCE.getClass_().isSuperTypeOf(
-					domainElement.eClass())) {
-				return ClassEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getInterface().isSuperTypeOf(
-					domainElement.eClass())) {
-				return InterfaceEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getController().isSuperTypeOf(
-					domainElement.eClass())) {
-				return ControllerEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getInclude().isSuperTypeOf(
-					domainElement.eClass())) {
-				return IncludeEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getPackage().isSuperTypeOf(
-					domainElement.eClass())) {
-				return PackageEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getDocumentation().isSuperTypeOf(
-					domainElement.eClass())) {
-				return DocumentationEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getStyleSheet().isSuperTypeOf(
-					domainElement.eClass())) {
-				return StyleSheetEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getUsecaseSubsystem().isSuperTypeOf(
-					domainElement.eClass())) {
-				return UsecaseSubsystemEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getActor().isSuperTypeOf(
-					domainElement.eClass())) {
-				return ActorEditPart.VISUAL_ID;
-			}
-			if (WavePackage.eINSTANCE.getUsecase().isSuperTypeOf(
-					domainElement.eClass())) {
-				return UsecaseEditPart.VISUAL_ID;
-			}
-			break;
 		}
 		return -1;
 	}
@@ -402,7 +386,7 @@ public class WaveVisualIDRegistry {
 		String containerModelID = de.gulden.modeling.wave.diagram.part.WaveVisualIDRegistry
 				.getModelID(containerView);
 		if (!ModelEditPart.MODEL_ID.equals(containerModelID)
-				&& !"Process Control Flow".equals(containerModelID)) { //$NON-NLS-1$
+				&& !"Process Control Flow".equals(containerModelID) && !"Wave".equals(containerModelID)) { //$NON-NLS-1$ //$NON-NLS-2$
 			return false;
 		}
 		int containerVisualID;
@@ -417,6 +401,38 @@ public class WaveVisualIDRegistry {
 			}
 		}
 		switch (containerVisualID) {
+		case ModelEditPart.VISUAL_ID:
+			if (ClassEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (InterfaceEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (ControllerEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (IncludeEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (PackageEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (DocumentationEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (StyleSheetEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (UsecaseSubsystemEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (ActorEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			if (UsecaseEditPart.VISUAL_ID == nodeVisualID) {
+				return true;
+			}
+			break;
 		case ClassEditPart.VISUAL_ID:
 			if (ClassNameEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -661,38 +677,6 @@ public class WaveVisualIDRegistry {
 				return true;
 			}
 			break;
-		case ModelEditPart.VISUAL_ID:
-			if (ClassEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (InterfaceEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (ControllerEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (IncludeEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (PackageEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (DocumentationEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (StyleSheetEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (UsecaseSubsystemEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (ActorEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			if (UsecaseEditPart.VISUAL_ID == nodeVisualID) {
-				return true;
-			}
-			break;
 		case DependencyRelationshipEditPart.VISUAL_ID:
 			if (DependencyRelationshipStereotypeEditPart.VISUAL_ID == nodeVisualID) {
 				return true;
@@ -793,12 +777,8 @@ public class WaveVisualIDRegistry {
 	 */
 	private static boolean isDependencyRelationship_3001(
 			DependencyRelationship domainElement) {
-		if (DependencyRelationship_3001_Constraint == null) { // lazy initialization
-			DependencyRelationship_3001_Constraint = WaveOCLFactory
-					.getExpression(
-							"self.stereotype->isEmpty()", WavePackage.eINSTANCE.getDependencyRelationship()); //$NON-NLS-1$
-		}
-		Object result = DependencyRelationship_3001_Constraint
+		Object result = WaveOCLFactory.getExpression(0,
+				WavePackage.eINSTANCE.getDependencyRelationship(), null)
 				.evaluate(domainElement);
 		return result instanceof Boolean && ((Boolean) result).booleanValue();
 	}
@@ -808,12 +788,8 @@ public class WaveVisualIDRegistry {
 	 */
 	private static boolean isDependencyRelationship_4016(
 			DependencyRelationship domainElement) {
-		if (DependencyRelationship_4016_Constraint == null) { // lazy initialization
-			DependencyRelationship_4016_Constraint = WaveOCLFactory
-					.getExpression(
-							"self.stereotype=\'includes\'", WavePackage.eINSTANCE.getDependencyRelationship()); //$NON-NLS-1$
-		}
-		Object result = DependencyRelationship_4016_Constraint
+		Object result = WaveOCLFactory.getExpression(1,
+				WavePackage.eINSTANCE.getDependencyRelationship(), null)
 				.evaluate(domainElement);
 		return result instanceof Boolean && ((Boolean) result).booleanValue();
 	}
@@ -823,12 +799,8 @@ public class WaveVisualIDRegistry {
 	 */
 	private static boolean isDependencyRelationship_4017(
 			DependencyRelationship domainElement) {
-		if (DependencyRelationship_4017_Constraint == null) { // lazy initialization
-			DependencyRelationship_4017_Constraint = WaveOCLFactory
-					.getExpression(
-							"self.stereotype=\'extends\'", WavePackage.eINSTANCE.getDependencyRelationship()); //$NON-NLS-1$
-		}
-		Object result = DependencyRelationship_4017_Constraint
+		Object result = WaveOCLFactory.getExpression(5,
+				WavePackage.eINSTANCE.getDependencyRelationship(), null)
 				.evaluate(domainElement);
 		return result instanceof Boolean && ((Boolean) result).booleanValue();
 	}

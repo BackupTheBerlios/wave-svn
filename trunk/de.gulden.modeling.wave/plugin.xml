@@ -257,7 +257,7 @@
       <viewProvider class="de.gulden.modeling.wave.diagram.providers.WaveViewProvider">
          <Priority name="Lowest"/>
          <object id="referencing-diagrams" class="org.eclipse.gmf.runtime.notation.Diagram">
-            <method name="getType()" value="Process Control Flow"/>
+            <method name="getType()" value="Process Control Flow,Wave"/>
          </object>
          <context viewClass="org.eclipse.gmf.runtime.notation.Node" containerViews="referencing-diagrams"/>
          <context viewClass="org.eclipse.gmf.runtime.notation.Diagram" semanticHints="Wave"/>

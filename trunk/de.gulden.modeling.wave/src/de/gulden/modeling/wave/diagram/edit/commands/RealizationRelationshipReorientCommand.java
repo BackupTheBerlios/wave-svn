@@ -79,8 +79,8 @@ public class RealizationRelationshipReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Package container = (Package) getLink().eContainer();
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistRealizationRelationship_3003(container,
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistRealizationRelationship_3003(container, getLink(),
 						getNewSource(), target);
 	}
 
@@ -96,9 +96,9 @@ public class RealizationRelationshipReorientCommand extends EditElementCommand {
 			return false;
 		}
 		Package container = (Package) getLink().eContainer();
-		return WaveBaseItemSemanticEditPolicy.LinkConstraints
-				.canExistRealizationRelationship_3003(container, source,
-						getNewTarget());
+		return WaveBaseItemSemanticEditPolicy.getLinkConstraints()
+				.canExistRealizationRelationship_3003(container, getLink(),
+						source, getNewTarget());
 	}
 
 	/**

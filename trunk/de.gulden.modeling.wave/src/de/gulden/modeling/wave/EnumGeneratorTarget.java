@@ -3,8 +3,6 @@
  * A Graphical Modeling Framework (GMF) Plugin for Eclipse
  * Copyright Jens Gulden, 2009, mail@jensgulden.de
  * Licensed under the GNU General Public License (GPL)
- *
- * $Id$
  */
 package de.gulden.modeling.wave;
 
@@ -32,7 +30,9 @@ public enum EnumGeneratorTarget implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	NONE(0, "NONE", ""), /**
+	NONE(0, "NONE", ""),
+
+	/**
 	 * The '<em><b>JAVA</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -50,7 +50,9 @@ public enum EnumGeneratorTarget implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	PHP5(2, "PHP5", "Standalone PHP5"), /**
+	PHP5(2, "PHP5", "Standalone PHP5"),
+
+	/**
 	 * The '<em><b>ZEND</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

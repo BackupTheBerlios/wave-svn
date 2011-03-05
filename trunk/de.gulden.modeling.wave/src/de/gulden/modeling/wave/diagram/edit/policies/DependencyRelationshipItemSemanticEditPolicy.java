@@ -68,8 +68,8 @@ public class DependencyRelationshipItemSemanticEditPolicy extends
 					req.getSource(), req.getTarget()));
 		}
 		if (WaveElementTypes.ModelMemberDocs_4015 == req.getElementType()) {
-			return getGEFWrapper(new ModelMemberDocsCreateCommand(req, req
-					.getSource(), req.getTarget()));
+			return getGEFWrapper(new ModelMemberDocsCreateCommand(req,
+					req.getSource(), req.getTarget()));
 		}
 		if (WaveElementTypes.DependencyRelationship_4016 == req
 				.getElementType()) {

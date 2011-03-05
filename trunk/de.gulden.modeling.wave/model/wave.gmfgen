@@ -18,7 +18,9 @@
     <viewmap
         xsi:type="gmfgen:FigureViewmap"
         figureQualifiedClassName="org.eclipse.draw2d.FreeformLayer"/>
+    <containsShortcutsTo>Wave</containsShortcutsTo>
     <shortcutsProvidedFor>Process Control Flow</shortcutsProvidedFor>
+    <shortcutsProvidedFor>Wave</shortcutsProvidedFor>
     <domainDiagramElement
         href="wave.genmodel#//wave/Model"/>
     <childNodes
@@ -1895,24 +1897,19 @@
       <groups
           title="Documentation">
         <entries
-            xsi:type="gmfgen:ToolGroup"
-            title="Doc"
-            stack="true">
-          <entries
-              xsi:type="gmfgen:ToolEntry"
-              title="Documentation"
-              description="Create documentation"
-              largeIconPath="/wave/icons/full/obj16/Documentation.gif"
-              smallIconPath="/wave/icons/full/obj16/Documentation.gif"
-              genNodes="//@diagram/@topLevelNodes.5"/>
-          <entries
-              xsi:type="gmfgen:ToolEntry"
-              title="Connection"
-              description="Connection from model member to documentation"
-              largeIconPath="/wave/icons/full/obj16/DocumentationConnection.gif"
-              smallIconPath="/wave/icons/full/obj16/DocumentationConnection.gif"
-              genLinks="//@diagram/@links.5"/>
-        </entries>
+            xsi:type="gmfgen:ToolEntry"
+            title="Documentation"
+            description="Create documentation"
+            largeIconPath="/wave/icons/full/obj16/Documentation.gif"
+            smallIconPath="/wave/icons/full/obj16/Documentation.gif"
+            genNodes="//@diagram/@topLevelNodes.5"/>
+        <entries
+            xsi:type="gmfgen:ToolEntry"
+            title="Connection"
+            description="Connection from model member to documentation"
+            largeIconPath="/wave/icons/full/obj16/DocumentationConnection.gif"
+            smallIconPath="/wave/icons/full/obj16/DocumentationConnection.gif"
+            genLinks="//@diagram/@links.5"/>
       </groups>
       <groups
           title="Elements">
