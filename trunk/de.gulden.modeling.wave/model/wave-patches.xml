@@ -178,7 +178,12 @@ method code should be generated when changes to the metamodel have occurred.
     	     value="void refreshXXXFont(" 
     	     summary="yes" />
   	
-
+    <!-- use Rectilinear line style as default -->
+    <replace file="de/gulden/modeling/wave/diagram/preferences/DiagramConnectionsPreferencePage.java" 
+    	     token="extends ConnectionsPreferencePage {" 
+    	     value="extends DiagramConnectionsPreferencePageBase {" 
+    	     summary="yes" />
+  	
     <replace file="de/gulden/modeling/wave/diagram/edit/helpers/WaveBaseEditHelper.java" summary="yes">
       <replacetoken>super.getInsteadCommand(req);</replacetoken>
 	  <!-- this would lead to an infinite recursive execution of the create command, when an element is created inside another editor via shortcut -->
@@ -272,7 +277,7 @@ method code should be generated when changes to the metamodel have occurred.
     
     <!-- 
       Use 'canonical edit policy' for Action and View compartments.
-      Classes for this have to be generated with the synchronized switch temporarily set to true in .gmfgen. 
+      Classes for this are generated with the synchronized switch temporarily set to 'true' in .gmfgen, later set back to 'false'. 
     -->
     <replace file="de/gulden/modeling/wave/diagram/edit/parts/ActionActionOperationCompartmentEditPart.java" summary="yes">
       <replacetoken>new DragDropEditPolicy());

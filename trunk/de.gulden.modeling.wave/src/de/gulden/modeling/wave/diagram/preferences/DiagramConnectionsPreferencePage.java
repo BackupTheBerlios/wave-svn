@@ -13,7 +13,7 @@ import de.gulden.modeling.wave.diagram.part.WaveDiagramEditorPlugin;
 /**
  * @generated
  */
-public class DiagramConnectionsPreferencePage extends ConnectionsPreferencePage {
+public class DiagramConnectionsPreferencePage extends DiagramConnectionsPreferencePageBase {
 
 	/**
 	 * @generated
